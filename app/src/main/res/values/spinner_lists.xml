@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string-array name="race_list">
+		<item>Human (+1 to any 2) # Human</item>
+		<item>Dragonborn () # Dragonborn</item>
+		<item>Dwarf (+2 Con) # Hill # Mountain</item>
+		<item>Elf (+2 Int)</item>
+		<item>Half-Elf (+2 Cha, +1 to any 2)</item>
+		<item>Halfling (+2 Dex)</item>
+		<item>Half-Orc (Str +2, Con +1)</item>
+		<item>Gnome (+2 Int)</item>
+		<item>Tiefling (+1 Int, +2 Cha)</item>
+	</string-array>
+
+	<string-array name="class_list">
+		<item>Fighter # Champion # Battle Master # Eldritch Knight</item>
+		<item>Rogue</item>
+		<item>Mage</item>
+	</string-array>
+
+	<string-array name="human">
+		<item>Human</item>
+	</string-array>
+
+	<string-array name="dwarf">
+		<item>Hill (+1 Wis)</item>
+		<item>Mountain (+2 Str)</item>
+	</string-array>
+</resources>

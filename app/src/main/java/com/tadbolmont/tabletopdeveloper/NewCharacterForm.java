@@ -11,8 +11,8 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import java.util.ArrayList;
-
-import static android.view.View.VISIBLE;
+import java.util.HashMap;
+import java.util.Map;
 
 public class NewCharacterForm extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
 
@@ -32,16 +32,7 @@ public class NewCharacterForm extends AppCompatActivity implements AdapterView.O
 		
 		createRaceSpinner();
 		createClassSpinner();
-
-		//Populates Level Spinner
-		levelSpinner= findViewById(R.id.level_spinner);
-		levelSpinner.setOnItemSelectedListener(this);
-		//Create an ArrayAdapter using the int array and a spinner layout
-		ArrayAdapter<Integer> levelAdapter= new ArrayAdapter<>(this, R.layout.spinner_item, LEVELS);
-		//Specify the layout to use when the list of choices appears
-		levelAdapter.setDropDownViewResource(R.layout.spinner_item);
-		//Apply the classAdapter to the spinner
-		levelSpinner.setAdapter(levelAdapter);
+		createLevelSpinner();
 	}
 	
 	//Populates Race Spinner
@@ -49,7 +40,7 @@ public class NewCharacterForm extends AppCompatActivity implements AdapterView.O
 		raceSpinner= findViewById(R.id.race_spinner);
 		raceSpinner.setOnItemSelectedListener(this);
 		//Create an ArrayAdapter
-		raceList = getResources().getStringArray(R.array.race_list);
+		raceList= getResources().getStringArray(R.array.race_list);
 		ArrayList<String> mainRaceNames= new ArrayList<>();
 		for(String race : raceList){
 			String raceName= (race.split(" # "))[0];
@@ -64,34 +55,46 @@ public class NewCharacterForm extends AppCompatActivity implements AdapterView.O
 		
 		raceSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener(){
 			public void onItemSelected(AdapterView<?> adapterView, View view, int in, long l){
-				final TextView raceTest= findViewById(R.id.testing);
 				int index= raceSpinner.getSelectedItemPosition();
-				raceTest.setText(raceList[index]);
 				
 				//Creates radio buttons for subrace selection
 				RadioGroup subRaceSelection= findViewById(R.id.sub_race);
 				subRaceSelection.removeAllViews();
 				String selectedRace= raceList[index];
+				
 				String[] raceInfo= selectedRace.split(" # ");
-				for(int i=1; i<raceInfo.length; i++){
-					RadioButton rb= new RadioButton(NewCharacterForm.this);
-					subRaceSelection.addView(rb);
-					rb.setText(raceInfo[i]);
-					rb.setTextColor(getResources().getColor(R.color.textColorPrimary));
-				}
 				
 				subRaceSelection.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener(){
 					@Override
 					public void onCheckedChanged(RadioGroup group, int checkedId){
 						RadioButton rb= group.findViewById(checkedId);
-						raceTest.setText(rb.getText());
+						//change subrace info displayed
+						//TESTING
+						TextView testView= findViewById(R.id.testView);
+						testView.setText("");
+						String subRaceNameRaw= rb.getText().toString();
+						String subRaceName= subRaceNameRaw.substring(0,subRaceNameRaw.indexOf(" ("));
+						CharacterRace subRaceInfo= CharacterInfo.getRace(subRaceName);
+						
+						testView.setText(subRaceInfo.toString());
+						//TESTING
 					}
 				});
+				
+				for(int i=1; i<raceInfo.length; i++){
+					RadioButton rb= new RadioButton(NewCharacterForm.this);
+					subRaceSelection.addView(rb);
+					rb.setText(raceInfo[i]);
+					rb.setTextColor(getResources().getColor(R.color.textColorPrimary));
+					
+					if(i==1){ subRaceSelection.check(rb.getId()); } //sets first radio button as default
+				}
 			}
 			public void onNothingSelected(AdapterView<?> adapterView){}
 		});
 	}
 	
+	//Populates Class Spinner
 	private void createClassSpinner(){
 		classSpinner= findViewById(R.id.class_spinner);
 		classSpinner.setOnItemSelectedListener(this);
@@ -121,13 +124,6 @@ public class NewCharacterForm extends AppCompatActivity implements AdapterView.O
 				archetypeSelection.removeAllViews();
 				String selectedClass= classList[index];
 				String[] classInfo= selectedClass.split(" # ");
-				for(int i=1; i<classInfo.length; i++){
-					RadioButton rb= new RadioButton(NewCharacterForm.this);
-					archetypeSelection.addView(rb);
-					rb.setText(classInfo[i]);
-					rb.setTextColor(getResources().getColor(R.color.textColorPrimary));
-				}
-				archetypeSelection.setVisibility(VISIBLE);
 				
 				archetypeSelection.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener(){
 					@Override
@@ -136,9 +132,32 @@ public class NewCharacterForm extends AppCompatActivity implements AdapterView.O
 						classTest.setText(rb.getText());
 					}
 				});
+				
+				for(int i=1; i<classInfo.length; i++){
+					RadioButton rb= new RadioButton(NewCharacterForm.this);
+					archetypeSelection.addView(rb);
+					rb.setText(classInfo[i]);
+					rb.setTextColor(getResources().getColor(R.color.textColorPrimary));
+					
+					if(i==1){ archetypeSelection.check(rb.getId()); } //sets first radio button as default
+				}
+				
+				
 			}
 			public void onNothingSelected(AdapterView<?> adapterView){}
 		});
+	}
+	
+	//Populates Level Spinner
+	private void createLevelSpinner(){
+		levelSpinner= findViewById(R.id.level_spinner);
+		levelSpinner.setOnItemSelectedListener(this);
+		//Create an ArrayAdapter using the int array and a spinner layout
+		ArrayAdapter<Integer> levelAdapter= new ArrayAdapter<>(this, R.layout.spinner_item, LEVELS);
+		//Specify the layout to use when the list of choices appears
+		levelAdapter.setDropDownViewResource(R.layout.spinner_item);
+		//Apply the classAdapter to the spinner
+		levelSpinner.setAdapter(levelAdapter);
 	}
 	
 	public void onItemSelected(AdapterView<?> parent, View view, int pos, long id){}

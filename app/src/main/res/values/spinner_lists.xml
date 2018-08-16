@@ -1,21 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 	<string-array name="race_list">
-		<item>Human (+1 to any 2) # Human</item>
-		<item>Dragonborn () # Dragonborn</item>
-		<item>Dwarf (+2 Con) # Hill # Mountain</item>
-		<item>Elf (+2 Int)</item>
-		<item>Half-Elf (+2 Cha, +1 to any 2)</item>
-		<item>Halfling (+2 Dex)</item>
-		<item>Half-Orc (Str +2, Con +1)</item>
-		<item>Gnome (+2 Int)</item>
-		<item>Tiefling (+1 Int, +2 Cha)</item>
+		<!--<item>MAIN RACE NAME # SUB-RACE NAME (ASI)</item>-->
+		<item>Human # Human (+1 to any 2)</item>
+		<item>Aarakocra # Aarakocra (+2 Dex, +1 Wis)</item>
+		<item>Aasimar # Aasimar (+2 Cha, +1 Wis)</item>
+		<item>Dragonborn # Dragonborn (+2 Str, +1 Cha)</item>
+		<item>Dwarf # Hill Dwarf (+2 Con, +1 Wis) # Mountain Dwarf (+2 Con, +2 Str) # Duergar (+2 Con, +1 Str)</item>
+		<item>Elf # High Elf (+2 Dex, +1 Int) # Wood Elf (+2 Dex,  +1 Wis) # Drow (+2 Dex, +1 Cha) # Eladrin (+2 Dex, +1 Cha) # Sea Elf (+2 Dex, +1 Con) # Shadar-Kai (+2 Dex, +1 Con)</item>
+		<item>Firbolg # Firbolg (+2 Wis, +1 Str)</item>
+		<item>Genasi # Air Genasi (+2 Con, +1 Dex) # Earth Genasi (+2 Con, +1 Str) # Fire Genasi (+2 Con, +1 Int) # Water Genasi (+2 Con, +1 Wis)</item>
+		<item>Gith # Githyanki (+2 Str, +1 Int) # Githzerai (+2 Wis, +1 Int)</item>
+		<item>Gnome # Forest Gnome (+2 Int, +1 Dex) # Rock Gnome (+2 Int, +1 Con) #  Svirfneblin (+2 Int, +1 Dex)</item>
+		<item>Goblinoid # Bugbear (+2 Str, +1 Dex) # Goblin (+2 Dex, +1 Con) # Hobgoblin (+2 Con, +1 Int)</item>
+		<item>Goliath # Goliath (+2 Str, +1 Con)</item>
+		<item>Half-Elf # Half-Elf (+2 Cha, +1 to any 2)</item>
+		<item>Halfling # Lightfoot Halfling (+2 Dex, +1 Cha) # Stout Halfling (+2 Dex, +1 Con)</item>
+		<item>Half-Orc # Half-Orc (Str +2, Con +1)</item>
+		<item>Kenku # Kenku {+2 Dex, +1 Wis}</item>
+		<item>Kobold # Kobold (+2 Dex, -2 Str)</item>
+		<item>Lizardfolk # Lizardfolk (+2 Con, +1 Wis)</item>
+		<item>Tabaxi # Tabaxi (+2 Dex, +1 Cha)</item>
+		<item>Tiefling # Tiefling (+1 Int, +2 Cha)</item>
+		<item>Triton</item>
+		<item>Yuan-Ti Pureblood</item>
 	</string-array>
 
 	<string-array name="class_list">
 		<item>Fighter # Champion # Battle Master # Eldritch Knight</item>
-		<item>Rogue</item>
-		<item>Mage</item>
+		<item>Rogue # Thief # Assassin # Arcane Trickster</item>
+		<item>Wizard # Abjurer # Conjurer # Diviner # Enchanter # Evoker # Illusionist # Necromancer # Transmuter</item>
 	</string-array>
 
 	<string-array name="human">

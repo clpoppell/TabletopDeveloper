@@ -1,0 +1,434 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<!--
+		Sub-Race Name (index 0)
+		Ability Score Increase (index 1)
+		Age Range (index 2)
+		Size (index 3)
+		Speed (index 4)
+		Languages (index 5)
+		Darkvision (0, 60, or 120) (index 6)
+		Additional Movement Type
+		Skill Proficiencies
+		Feat
+		Attacks
+		Cantrips
+		Spells
+		Damage Resistances
+		Advantages/Immunities
+		Weapon Proficiencies
+		Tool Proficiencies
+		Conditional Expertise
+	-->
+	<string name="race_info">
+		<!-- Human -->
+		Human /
+		ASI: +1 Choice, +1 Choice /
+		Age: 16-80 /
+		Size: Medium /
+		Speed: 30 /
+		Languages: Common, Choice /
+		Darkvision: 0 /
+		Feat: Choice /
+		Skill Proficiencies: Choice
+		#
+		<!-- Aarakocra -->
+		Aarakocra /
+		ASI: +2 Dex, +1 Wis /
+		Age: 3-30 /
+		Size: Medium /
+		Speed: 25 /
+		Languages: Common, Aarakocra, Auran /
+		Darkvision: 0 /
+		Weapon Proficiencies: unarmed strikes
+		#
+		<!-- Aasimar -->
+		Aasimar /
+		ASI: +2 Cha, +1 Wis /
+		Age: 16-90 /
+		Size: Medium /
+		Speed: 30 /
+		Languages: Common, Celestial /
+		Darkvision: 60 /
+		Cantrips: (Cha) Light /
+		Spells: (Cha) Lesser Restoration (3), Daylight (5) /
+		Damage Resistances: Necrotic 50%, Radiant 50%
+		#
+		<!-- Dragonorn -->
+		Dragonborn /
+		ASI: +2 Str, +1 Cha /
+		Age: 15-70 /
+		Size: Medium /
+		Speed: 30 /
+		Languages: Common, Draconic /
+		Darkvision: 0
+		#
+		<!-- Dwarf -->
+		Hill Dwarf /
+		ASI: +2 Con, +1 Wis /
+		Age: 50-300 /
+		Size: Medium /
+		Speed: 25 /
+		Languages: Common, Dwarvish /
+		Darkvision: 60 /
+		Damage Resistances: Poison 50% /
+		Advantages/Immunities: Poison advantage /
+		Weapon Proficiencies: battleaxe, handaxe, throwing hammer, warhammer
+		#
+		Mountain Dwarf /
+		ASI: +2 Con, +2 Str /
+		Age: 50-300 /
+		Size: Medium /
+		Speed: 25 /
+		Languages: Common, Dwarvish /
+		Darkvision: 60 /
+		Damage Resistances: Poison 50% /
+		Advantages/Immunities: Poison advantage /
+		Weapon Proficiencies: battleaxe, handaxe, throwing hammer, warhammer /
+		Tool Proficiencies: light armor, medium armor
+		#
+		Duergar /
+		ASI: +2 Con, +1 Str /
+		Age: 50-300 /
+		Size: Medium /
+		Speed: 25 /
+		Languages: Common, Dwarvish, Undercommon /
+		Darkvision: 120 /
+		Spells: (Int) Enlarge (3), Invisibility (5) /
+		Advantages/Immunities: Charm advantage, Paralyze advantage, Illusions advantage
+		#
+		<!-- Elf -->
+		High Elf /
+		ASI: +2 Dex, +1 Int /
+		Age: 50-700 /
+		Size: Medium /
+		Speed: 30 /
+		Languages: Common, Elvish, Choice /
+		Darkvision: 60
+		Skill Proficiencies: Perception /
+		Cantrips: (Int) Choice /
+		Advantages/Immunities: Charm advantage, Sleep immune /
+		Weapon Proficiencies: longsword, shortsword, shortbow, longbow
+		#
+		Wood Elf /
+		ASI: +2 Dex, +1 Wis /
+		Age: 50-700 /
+		Size: Medium /
+		Speed: 35 /
+		Languages: Common, Elvish /
+		Darkvision: 60 /
+		Advantages/Immunities: Charm advantage, Sleep immune /
+		Weapon Proficiencies: longsword, shortsword, shortbow, longbow
+		#
+		Drow /
+		ASI: +2 Dex, +1 Cha /
+		Age: 50-700 /
+		Size: Medium /
+		Speed: 30 /
+		Languages: Common, Elvish, Undercommon /
+		Darkvision: 120 /
+		Skill Proficiencies: Perception /
+		Cantrips: (Cha) Dancing Lights /
+		Spells: (Cha) Faerie Fire (3), Darkness (5) /
+		Advantages/Immunities: Charm advantage, Sleep immune /
+		Weapon Proficiencies: rapiers, shortswords, hand crossbows
+		#
+		Eladrin /
+		ASI: +2 Dex, +1 Cha /
+		Age: 50-700 /
+		Size: Medium /
+		Speed: 30 /
+		Languages: Common, , Elvish /
+		Darkvision: 60 /
+		Skill Proficiencies: Perception /
+		Advantages/Immunities: Charm advantage, Sleep immune
+		#
+		Sea Elf /
+		ASI: +2 Dex, +1 Con /
+		Age: 50-700 /
+		Size: Medium /
+		Speed: 30 /
+		Languages: Common, Elvish, Aquan /
+		Darkvision: 60 /
+		Skill Proficiencies: Perception /
+		Advantages/Immunities: Charm advantage, Sleep immune
+		#
+		Shadar-Kai /
+		ASI: +2 Dex, +1 Con /
+		Age: 50-700 /
+		Size: Medium /
+		Speed: 30 /
+		Languages: Common, Elvish /
+		Darkvision: 60 /
+		Skill Proficiencies: Perception /
+		Damage Resistances: Necrotic 50% /
+		Advantages/Immunities: Charm advantage, Sleep immune /
+		Weapon Proficiencies: spear, trident, light crossbow, net
+		#
+		<!-- Firbolg -->
+		Firbolg /
+		ASI: +2 Wis, +1 Str /
+		Age: 30-450 /
+		Size: Medium /
+		Speed: 30 /
+		Languages: Common, Elvish, Giant /
+		Darkvision: 60 /
+		Spells: (Wis) Detect Magic (1), Disguise Self (1)
+		#
+		<!-- Genasi -->
+		Air Genasi /
+		ASI: +2 Con, +1 Dex /
+		Age: 16-110 /
+		Size: Medium /
+		Speed: 30 /
+		Languages: Common, Primordial /
+		Darkvision: 0 /
+		Spells: (Con) Levitate (1)
+		#
+		Earth Genasi /
+		ASI: +2 Con, +1 Str /
+		Age: 16-110 /
+		Size: Medium /
+		Speed: 30 /
+		Languages: Common, Primordial /
+		Darkvision: 0 /
+		Spells: (Con) Pass Without Trace (1)
+		#
+		Fire Genasi /
+		ASI: +2 Con, +1 Int /
+		Age: 16-110 /
+		Size: Medium /
+		Speed: 30 /
+		Languages: Common, Primordial /
+		Darkvision: 60 /
+		Cantrips: (Con) Produce Flames /
+		Spells: (Con) Burning Hands (3) /
+		Damage Resistances: Fire 50%
+		#
+		Water Genasi /
+		ASI: +2 Con, +1 Wis /
+		Age: 16-110 /
+		Size: Medium /
+		Speed: 30 /
+		Languages: Common, Primordial /
+		Darkvision: 0 /
+		Cantrips: (Con) Shape Water /
+		Spells: (Con) Create or Destroy Water (3) /
+		Damage Resistances: Acid 50%
+		#
+		<!-- Gith -->
+		Githyanki /
+		ASI: +2 Str, +1 Int /
+		Age: /
+		Size: /
+		Speed: 30 /
+		Languages: Common, Gith, Choice /
+		Darkvision: 0 /
+		Cantrips: (Int) Mage Hand /
+		Spells: (Int) Jump (3), Misty Step (5) /
+		Weapon Proficiencies: shortswords, longswords, greatswords /
+		Tool Proficiencies: light armor, medium armor
+		#
+		Githzerai /
+		ASI: +2 Wis, +1 Int /
+		Age: /
+		Size: /
+		Speed: 30 /
+		Languages: Common, Gith /
+		Darkvision: 0 /
+		Cantrips: (Int) Mage Hand /
+		Spells: (Int) Shield (3), Detect Thoughts (5) /
+		Advantages/Immunities: Charm advantage, Fright advantage
+		#
+		<!-- Gnome -->
+		Forest Gnome /
+		ASI: +2 Int, +1 Dex /
+		Age: 20-300 /
+		Size: Small /
+		Speed: 25 /
+		Languages: Common, Gnomish /
+		Darkvision: 60 /
+		Cantrips: Minor Illusion (Int) /
+		Advantages/Immunities: Int (magic), Wis (magic), Cha (magic)
+		#
+		Rock Gnome /
+		ASI: +2 Int, +1 Con /
+		Age: 20-300 /
+		Size: Small /
+		Speed: 25 /
+		Languages: Common, Gnomish /
+		Darkvision: 60 /
+		Advantages/Immunities: Int (magic), Wis (magic), Cha (magic) /
+		Tool Proficiencies: tinker’s tools
+		#
+		Svirfneblin /
+		ASI: +2 Int, +1 Dex /
+		Age: 20-300 /
+		Size: Small /
+		Speed: 25 /
+		Languages: Common, Gnomish, Undercommon /
+		Darkvision: 120 /
+		Advantages/Immunities: Int (magic), Wis (magic), Cha (magic)
+		#
+		<!-- Goblinoid -->
+		Bugbear /
+		ASI: +2 Str, +1 Dex /
+		Age: 16-70 /
+		Size: Medium /
+		Speed: 30 /
+		Languages: Common, Goblin /
+		Darkvision: 60 /
+		Skill Proficiencies: Stealth
+		#
+		Goblin /
+		ASI: +2 Dex, +1 Con /
+		Age: 8-55 /
+		Size: Small /
+		Speed: 30 /
+		Languages: Common, Goblin /
+		Darkvision: 60 /
+		#
+		Hobgoblin /
+		ASI: +2 Con, +1 Int /
+		Age: 16-80 /
+		Size: Medium /
+		Speed: 30 /
+		Languages: Common, Goblin /
+		Darkvision: 60 /
+		Tool Proficiencies: light armor
+		#
+		<!-- Goliath -->
+		Goliath /
+		ASI: +2 Str, +1 Con /
+		Age: 16- 80 /
+		Size: Medium /
+		Languages: Common, Giant /
+		Darkvision: 0 /
+		Skill Proficiencies: Athletics
+		#
+		<!-- Half-Elf -->
+		Half-Elf /
+		ASI: +2 Cha, +1 Choice, +1 Choice /
+		Age: 20-180 /
+		Size: Medium /
+		Speed: 30 /
+		Languages: Common, Elvish, Choice /
+		Darkvision: 60 /
+		Skill Proficiencies: Choice /
+		Advantages/Immunities: Charm advantage, Sleep immune
+		#
+		<!-- Halfling -->
+		Lightfoot Halfling /
+		ASI: +2 Dex, +1 Cha /
+		Age: 20-130 /
+		Size: Small /
+		Speed: 25 /
+		Languages: Common, Halfling /
+		Darkvision: 0 /
+		Advantages/Immunities: Fright advantage
+		#
+		Stout Halfling /
+		Lightfoot Halfling /
+		ASI: +2 Dex, +1 Con /
+		Age: 20-130 /
+		Size: Small /
+		Speed: 25 /
+		Languages: Common, Halfling /
+		Darkvision: 0 /
+		Damage Resistances: Poison 50% /
+		Advantages/Immunities: Fright advantage, Poison advantage
+		#
+		<!-- Half-Orc -->
+		Half-Orc /
+		ASI: +2 Str, +1 Con /
+		Age: 14-70 /
+		Size: Medium /
+		Speed: 30 /
+		Languages: Common, Orc /
+		Darkvision: 60 /
+		Skill Proficiencies: Intimidation
+		#
+		<!-- Kenku -->
+		Kenku /
+		ASI: +2 Dex, +1 Wis /
+		Age: 12-55 /
+		Size: Medium /
+		Speed: 30 /
+		Languages: Common, Auran /
+		Darkvision: 0
+		#
+		<!-- Kobold -->
+		Kobold /
+		ASI: +2 Dex, -2 Str /
+		Age: 6-110 /
+		Size: Small /
+		Speed: 30 /
+		Languages: Common, Draconic /
+		Darkvision: 60
+		#
+		<!-- Lizardfolk -->
+		Lizardfolk /
+		ASI: +2 Con, +1 Wis /
+		Age: 14-60 /
+		Size: Medium /
+		Speed: 30 /
+		Languages: Common, Draconic /
+		Darkvision: 0
+		#
+		<!-- Orc -->
+		Orc /
+		ASI: +2 Str, +1 Con, -2 Int /
+		Age: 12-45 /
+		Size: Medium /
+		Speed: 30 /
+		Languages: Common, Orc /
+		Darkvision: 60 /
+		Skill Proficiencies: Intimidation
+		#
+		<!-- Tabaxi -->
+		Tabaxi /
+		ASI: +2 Dex, +1 Cha /
+		Age: 16-80 /
+		Size: Medium /
+		Speed: 30 /
+		Languages: Common, Choice /
+		Darkvision: 60 /
+		Skill Proficiencies: Perception, Stealth
+		#
+		<!-- Tiefling -->
+		Tiefling /
+		ASI: +2 Cha, +1 Int /
+		Age: 16-85 /
+		Size: Medium /
+		Speed: 30 /
+		Languages: Common, Infernal /
+		Darkvision: 60 /
+		Cantrips: (Cha) Thaumaturgy /
+		Spells: (Cha) Hellish Rebuke (3), Darkness (5) /
+		Damage Resistances: Fire 50%
+		#
+		<!-- Triton -->
+		Triton /
+		ASI: +1 Str, +1 Con, +1 Cha /
+		Age: 15-190 /
+		Size: Medium /
+		Speed: 30 /
+		Languages: Common, Primordial /
+		Darkvision: 0 /
+		Spells: (Cha) Fog Cloud (1), Gust of Wind (3), Wall of Water (5) /
+		Damage Resistances: Cold
+		#
+		<!-- Yuan-Ti -->
+		Yuan-Ti Pureblood /
+		ASI: +2 Cha, +1 Int /
+		Age: 16-80 /
+		Size: Medium /
+		Speed: 30 /
+		Languages: Common, Abyssal, Draconic /
+		Darkvision: 60 /
+		Cantrips: (Cha) Poison Spray /
+		Spells: (Cha) Suggestion (3) /
+		Damage Resistances: Poison 50 % /
+		Advantages/Immunities: Magic advantage, Poison immune
+	</string>
+</resources>

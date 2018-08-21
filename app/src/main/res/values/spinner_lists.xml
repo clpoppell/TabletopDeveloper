@@ -5,7 +5,8 @@
 		<item>Human # Human (+1 to any 2)</item>
 		<item>Aarakocra # Aarakocra (+2 Dex, +1 Wis)</item>
 		<item>Aasimar # Aasimar (+2 Cha, +1 Wis)</item>
-		<item>Dragonborn # Dragonborn (+2 Str, +1 Cha)</item>
+		<item>Dragonborn # Black Dragonborn (+2 Str, +1 Cha) # Blue Dragonborn (+2 Str, +1 Cha) # Brass Dragonborn (+2 Str, +1 Cha) # Bronze Dragonborn (+2 Str, +1 Cha) # Copper Dragonborn (+2 Str, +1 Cha) #
+			Gold Dragonborn (+2 Str, +1 Cha) # Green Dragonborn (+2 Str, +1 Cha) # Red Dragonborn (+2 Str, +1 Cha) # Silver Dragonborn (+2 Str, +1 Cha) # White Dragonborn (+2 Str, +1 Cha)</item>
 		<item>Dwarf # Hill Dwarf (+2 Con, +1 Wis) # Mountain Dwarf (+2 Con, +2 Str) # Duergar (+2 Con, +1 Str)</item>
 		<item>Elf # High Elf (+2 Dex, +1 Int) # Wood Elf (+2 Dex,  +1 Wis) # Drow (+2 Dex, +1 Cha) # Eladrin (+2 Dex, +1 Cha) # Sea Elf (+2 Dex, +1 Con) # Shadar-Kai (+2 Dex, +1 Con)</item>
 		<item>Firbolg # Firbolg (+2 Wis, +1 Str)</item>
@@ -22,8 +23,8 @@
 		<item>Lizardfolk # Lizardfolk (+2 Con, +1 Wis)</item>
 		<item>Tabaxi # Tabaxi (+2 Dex, +1 Cha)</item>
 		<item>Tiefling # Tiefling (+1 Int, +2 Cha)</item>
-		<item>Triton</item>
-		<item>Yuan-Ti Pureblood</item>
+		<item>Triton # Triton (+1 Str, +1 Con, +1 Cha)</item>
+		<item>Yuan-Ti # Yuan-Ti Pureblood (+2 Cha, +1 Int)</item>
 	</string-array>
 
 	<string-array name="class_list">
@@ -32,12 +33,12 @@
 		<item>Wizard # Abjurer # Conjurer # Diviner # Enchanter # Evoker # Illusionist # Necromancer # Transmuter</item>
 	</string-array>
 
-	<string-array name="human">
-		<item>Human</item>
-	</string-array>
-
-	<string-array name="dwarf">
-		<item>Hill (+1 Wis)</item>
-		<item>Mountain (+2 Str)</item>
+	<string-array name="stats">
+		<item>Str</item>
+		<item>Dex</item>
+		<item>Con</item>
+		<item>Int</item>
+		<item>Wis</item>
+		<item>Cha</item>
 	</string-array>
 </resources>

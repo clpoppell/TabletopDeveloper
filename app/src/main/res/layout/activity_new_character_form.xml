@@ -84,12 +84,69 @@
 				android:textColor="@color/textColorPrimary" />
 		</LinearLayout>
 
-		<TextView
-			android:id="@+id/testing"
+		<LinearLayout
+			android:id="@+id/asi_selection_layout"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
-			android:textColor="@color/textColorPrimary"
-			android:visibility="visible" />
+			android:orientation="horizontal"
+			android:visibility="gone">
+
+			<TextView
+				android:id="@+id/asi_select_textView"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginEnd="8dp"
+				android:layout_marginLeft="8dp"
+				android:layout_marginRight="8dp"
+				android:layout_marginStart="8dp"
+				android:layout_marginTop="8dp"
+				android:text="@string/asi_selection"
+				android:textColor="@color/textColorPrimary"
+				android:textSize="16sp" />
+
+			<Spinner
+				android:id="@+id/asi_select_spinner"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginEnd="8dp"
+				android:layout_marginLeft="8dp"
+				android:layout_marginRight="8dp"
+				android:layout_marginStart="8dp"
+				android:layout_marginTop="4dp"
+				android:textColor="@color/textColorPrimary" />
+		</LinearLayout>
+
+		<LinearLayout
+			android:id="@+id/asi_selection_layout2"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:orientation="horizontal"
+			android:visibility="gone">
+
+			<TextView
+				android:id="@+id/asi_select_textView2"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginEnd="8dp"
+				android:layout_marginLeft="8dp"
+				android:layout_marginRight="8dp"
+				android:layout_marginStart="8dp"
+				android:layout_marginTop="8dp"
+				android:text="@string/asi_selection"
+				android:textColor="@color/textColorPrimary"
+				android:textSize="16sp" />
+
+			<Spinner
+				android:id="@+id/asi_select_spinner2"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginEnd="8dp"
+				android:layout_marginLeft="8dp"
+				android:layout_marginRight="8dp"
+				android:layout_marginStart="8dp"
+				android:layout_marginTop="4dp"
+				android:textColor="@color/textColorPrimary" />
+		</LinearLayout>
 
 		<RadioGroup
 			android:id="@+id/sub_race"
@@ -98,6 +155,13 @@
 			android:visibility="visible">
 
 		</RadioGroup>
+
+		<TextView
+			android:id="@+id/race_info_display"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:textColor="@color/textColorPrimary"
+			android:visibility="visible" />
 
 		<LinearLayout
 			android:id="@+id/class_layout"
@@ -183,5 +247,13 @@
 			android:layout_height="wrap_content"
 			android:textColor="@color/textColorPrimary"
 			android:visibility="visible" />
+
+		<Button
+			android:id="@+id/button2"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:onClick="completeCharacter"
+			android:text="@string/complete_char_creation"
+			android:textColor="@color/textColorPrimary" />
 	</LinearLayout>
 </ScrollView>

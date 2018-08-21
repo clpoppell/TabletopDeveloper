@@ -10,4 +10,14 @@
 	<string name="race_selection">Race:</string>
 	<string name="class_selection">Class:</string>
 	<string name="level_selection">Level:</string>
+	<string name="title_activity_character_display">CharacterDisplay</string>
+	<string name="complete_char_creation">Complete</string>
+
+	<string name="strength_abb">Str</string>
+	<string name="dexterity_abb">Dex</string>
+	<string name="constitution_abb">Con</string>
+	<string name="intelligence_abb">Int</string>
+	<string name="wisdom_abb">Wis</string>
+	<string name="charisma_abb">Cha</string>
+	<string name="asi_selection">Choose Stat:</string>
 </resources>

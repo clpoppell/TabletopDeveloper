@@ -12,15 +12,11 @@ public final class CharacterInfo{
 	
 	private static Map<String, CharacterRace> createRaceInfo(){
 		Map<String, CharacterRace> races= new HashMap<>();
-		String[] raceDesc= (RES.getString(R.string.race_info)).split("#");
+		String[] raceDesc= RES.getStringArray(R.array.race_info);
 		for(String charRace : raceDesc){
-			String key= charRace.substring(0,charRace.indexOf('/')).trim();
-			String[] value= charRace.split(" / ");
-			String[] statMods= value[1].substring(5).split(", ");
-			
-			CharacterRace race= new CharacterRace(value[0], statMods);
-			
-			races.put(key, race);
+			String[] raceFeatures= charRace.split(" / ");
+			CharacterRace race= new CharacterRace(raceFeatures);
+			races.put(raceFeatures[0].trim(), race);
 		}
 		return races;
 	}

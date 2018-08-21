@@ -8,9 +8,9 @@
 		Speed (index 4)
 		Languages (index 5)
 		Darkvision (0, 60, or 120) (index 6)
-		Additional Movement Type
+		Additional Movement Types
 		Skill Proficiencies
-		Feat
+		Feats
 		Attacks
 		Cantrips
 		Spells
@@ -19,8 +19,12 @@
 		Weapon Proficiencies
 		Tool Proficiencies
 		Conditional Expertise
+		Powerful Build
+		Natural Armor
+		Reach
 	-->
-	<string name="race_info">
+	<string-array name="race_info">
+		<item>
 		<!-- Human -->
 		Human /
 		ASI: +1 Choice, +1 Choice /
@@ -29,9 +33,10 @@
 		Speed: 30 /
 		Languages: Common, Choice /
 		Darkvision: 0 /
-		Feat: Choice /
-		Skill Proficiencies: Choice
-		#
+		Skill Proficiencies: Choice (Any) /
+		Feats: Choice
+		</item>
+		<item>
 		<!-- Aarakocra -->
 		Aarakocra /
 		ASI: +2 Dex, +1 Wis /
@@ -40,8 +45,11 @@
 		Speed: 25 /
 		Languages: Common, Aarakocra, Auran /
 		Darkvision: 0 /
-		Weapon Proficiencies: unarmed strikes
-		#
+		Additional Movement Types: Flight 50 /
+		Attacks: Talons, 5, melee, 1d4, DC:no, Str /
+		Plain Text: Flight. You cannot fly if you are wearing medium or heavy armor.
+		</item>
+		<item>
 		<!-- Aasimar -->
 		Aasimar /
 		ASI: +2 Cha, +1 Wis /
@@ -51,18 +59,131 @@
 		Languages: Common, Celestial /
 		Darkvision: 60 /
 		Cantrips: (Cha) Light /
-		Spells: (Cha) Lesser Restoration (3), Daylight (5) /
+		Spells: (Cha) (LR), Lesser Restoration (3), Daylight (5) /
 		Damage Resistances: Necrotic 50%, Radiant 50%
-		#
+		</item>
+		<item>
 		<!-- Dragonorn -->
-		Dragonborn /
+		Black Dragonborn /
 		ASI: +2 Str, +1 Cha /
 		Age: 15-70 /
 		Size: Medium /
 		Speed: 30 /
 		Languages: Common, Draconic /
-		Darkvision: 0
-		#
+		Darkvision: 0 /
+		Attacks: Breath Weapon, 30, line, 2d6, Acid, DC:half:Dex, Con /
+		Damage Resistances: Acid 50% /
+		Plain Text: Breath Weapon. The damage increases to 3d6 at 6th level, 4d6 at 11th level, and 5d6 at 16th level. After you use your breath weapon, you can’t use it again until you complete a short or long rest.
+		</item>
+		<item>
+		Blue Dragonborn /
+		ASI: +2 Str, +1 Cha /
+		Age: 15-70 /
+		Size: Medium /
+		Speed: 30 /
+		Languages: Common, Draconic /
+		Darkvision: 0 /
+		Attacks: Breath Weapon, 30, line, 2d6, Lightning, DC:half:Dex, Con /
+		Damage Resistances: Lightning 50% /
+		Plain Text: Breath Weapon. The damage increases to 3d6 at 6th level, 4d6 at 11th level, and 5d6 at 16th level. After you use your breath weapon, you can’t use it again until you complete a short or long rest.
+		</item>
+		<item>
+		Brass Dragonborn /
+		ASI: +2 Str, +1 Cha /
+		Age: 15-70 /
+		Size: Medium /
+		Speed: 30 /
+		Languages: Common, Draconic /
+		Darkvision: 0 /
+		Attacks: Breath Weapon, 30, line, 2d6, Fire, DC:half:Dex, Con /
+		Damage Resistances: Fire 50% /
+		Plain Text: Breath Weapon. The damage increases to 3d6 at 6th level, 4d6 at 11th level, and 5d6 at 16th level. After you use your breath weapon, you can’t use it again until you complete a short or long rest.
+		</item>
+		<item>
+		Bronze Dragonborn /
+		ASI: +2 Str, +1 Cha /
+		Age: 15-70 /
+		Size: Medium /
+		Speed: 30 /
+		Languages: Common, Draconic /
+		Darkvision: 0 /
+		Attacks: Breath Weapon, 30, line, 2d6, Lightning, DC:half:Dex, Con /
+		Damage Resistances: Lightning 50% /
+		Plain Text: Breath Weapon. The damage increases to 3d6 at 6th level, 4d6 at 11th level, and 5d6 at 16th level. After you use your breath weapon, you can’t use it again until you complete a short or long rest.
+		</item>
+		<item>
+		Copper Dragonborn /
+		ASI: +2 Str, +1 Cha /
+		Age: 15-70 /
+		Size: Medium /
+		Speed: 30 /
+		Languages: Common, Draconic /
+		Darkvision: 0 /
+		Attacks: Breath Weapon, 30, line, 2d6, Acid, DC:half:Dex, Con /
+		Damage Resistances: Acid 50% /
+		Plain Text: Breath Weapon. The damage increases to 3d6 at 6th level, 4d6 at 11th level, and 5d6 at 16th level. After you use your breath weapon, you can’t use it again until you complete a short or long rest.
+		</item>
+		<item>
+		Gold Dragonborn /
+		ASI: +2 Str, +1 Cha /
+		Age: 15-70 /
+		Size: Medium /
+		Speed: 30 /
+		Languages: Common, Draconic /
+		Darkvision: 0 /
+		Attacks: Breath Weapon, 15, cone, 2d6, Fire, DC:half:Dex, Con /
+		Damage Resistances: Fire 50% /
+		Plain Text: Breath Weapon. The damage increases to 3d6 at 6th level, 4d6 at 11th level, and 5d6 at 16th level. After you use your breath weapon, you can’t use it again until you complete a short or long rest.
+		</item>
+		<item>
+		Green Dragonborn /
+		ASI: +2 Str, +1 Cha /
+		Age: 15-70 /
+		Size: Medium /
+		Speed: 30 /
+		Languages: Common, Draconic /
+		Darkvision: 0 /
+		Attacks: Breath Weapon, 15, cone, 2d6, Poison, DC:half:Con, Con /
+		Damage Resistances: Poison 50% /
+		Plain Text: Breath Weapon. The damage increases to 3d6 at 6th level, 4d6 at 11th level, and 5d6 at 16th level. After you use your breath weapon, you can’t use it again until you complete a short or long rest.
+		</item>
+		<item>
+		Red Dragonborn /
+		ASI: +2 Str, +1 Cha /
+		Age: 15-70 /
+		Size: Medium /
+		Speed: 30 /
+		Languages: Common, Draconic /
+		Darkvision: 0 /
+		Attacks: Breath Weapon, 15, cone, 2d6, Fire, DC:half:Dex, Con /
+		Damage Resistances: Fire 50% /
+		Plain Text: Breath Weapon. The damage increases to 3d6 at 6th level, 4d6 at 11th level, and 5d6 at 16th level. After you use your breath weapon, you can’t use it again until you complete a short or long rest.
+		</item>
+		<item>
+		Silver Dragonborn /
+		ASI: +2 Str, +1 Cha /
+		Age: 15-70 /
+		Size: Medium /
+		Speed: 30 /
+		Languages: Common, Draconic /
+		Darkvision: 0 /
+		Attacks: Breath Weapon, 15, cone, 2d6, Cold, DC:half:Con, Con /
+		Damage Resistances: Cold 50% /
+		Plain Text: Breath Weapon. The damage increases to 3d6 at 6th level, 4d6 at 11th level, and 5d6 at 16th level. After you use your breath weapon, you can’t use it again until you complete a short or long rest.
+		</item>
+		<item>
+		White Dragonborn /
+		ASI: +2 Str, +1 Cha /
+		Age: 15-70 /
+		Size: Medium /
+		Speed: 30 /
+		Languages: Common, Draconic /
+		Darkvision: 0 /
+		Attacks: Breath Weapon, 15, cone, 2d6, Cold, DC:half:Con, Con /
+		Damage Resistances: Cold 50% /
+		Plain Text: Breath Weapon. The damage increases to 3d6 at 6th level, 4d6 at 11th level, and 5d6 at 16th level. After you use your breath weapon, you can’t use it again until you complete a short or long rest.
+		</item>
+		<item>
 		<!-- Dwarf -->
 		Hill Dwarf /
 		ASI: +2 Con, +1 Wis /
@@ -73,10 +194,13 @@
 		Darkvision: 60 /
 		Damage Resistances: Poison 50% /
 		Advantages/Immunities: Poison advantage /
-		Weapon Proficiencies: battleaxe, handaxe, throwing hammer, warhammer
-		#
+		Weapon Proficiencies: battleaxe, handaxe, throwing hammer, warhammer /
+		Tool Proficiencies: Choice (smith’s tools, brewer’s supplies, mason’s tools) /
+		Conditional Expertise: History, origin of stonework
+		</item>
+		<item>
 		Mountain Dwarf /
-		ASI: +2 Con, +2 Str /
+		ASI: +2 Con, +2 Str, +1 HP /
 		Age: 50-300 /
 		Size: Medium /
 		Speed: 25 /
@@ -85,8 +209,10 @@
 		Damage Resistances: Poison 50% /
 		Advantages/Immunities: Poison advantage /
 		Weapon Proficiencies: battleaxe, handaxe, throwing hammer, warhammer /
-		Tool Proficiencies: light armor, medium armor
-		#
+		Tool Proficiencies: light armor, medium armor, Choice (smith’s tools, brewer’s supplies, mason’s tools) /
+		Conditional Expertise: History, origin of stonework
+		</item>
+		<item>
 		Duergar /
 		ASI: +2 Con, +1 Str /
 		Age: 50-300 /
@@ -94,9 +220,14 @@
 		Speed: 25 /
 		Languages: Common, Dwarvish, Undercommon /
 		Darkvision: 120 /
-		Spells: (Int) Enlarge (3), Invisibility (5) /
-		Advantages/Immunities: Charm advantage, Paralyze advantage, Illusions advantage
-		#
+		Spells: (Int) (LR), Enlarge (3), Invisibility (5) /
+		Advantages/Immunities: Charm advantage, Paralyze advantage, Illusions advantage /
+		Tool Proficiencies: Choice (smith’s tools, brewer’s supplies, mason’s tools) /
+		Conditional Expertise: History (origin of stonework) /
+		Plain Text: Duergar Magic. When you reach 3rd level, you can cast the enlarge/reduce spell on yourself once with this trait, using only the spell's enlarge option. When you reach 5th level, you can cast the invisibility spell on yourself once with this trait. You don't need material components for either spell, and you can't cast them while you're in direct sunlight, although sunlight has no effect on them once cast. /
+		Plain Text: Sunlight Sensitivity. You have disadvantage on attack rolls and on Wisdom (Perception) checks that rely on sight when you, the target of your attack, or whatever you are trying to perceive is in direct sunlight.
+		</item>
+		<item>
 		<!-- Elf -->
 		High Elf /
 		ASI: +2 Dex, +1 Int /
@@ -104,12 +235,14 @@
 		Size: Medium /
 		Speed: 30 /
 		Languages: Common, Elvish, Choice /
-		Darkvision: 60
+		Darkvision: 60 /
 		Skill Proficiencies: Perception /
-		Cantrips: (Int) Choice /
+		Cantrips: (Int) Choice (Wizard) /
 		Advantages/Immunities: Charm advantage, Sleep immune /
-		Weapon Proficiencies: longsword, shortsword, shortbow, longbow
-		#
+		Weapon Proficiencies: longsword, shortsword, shortbow, longbow /
+		Plain Text: Trance. Elves don’t need to sleep. Instead, they meditate deeply, remaining semiconscious, for 4 hours a day. While meditating, you can dream after a fashion; such dreams are actually mental exercises that have become reflexive through years of practice. After resting in this way, you gain the same benefit that a human does from 8 hours of sleep.
+		</item>
+		<item>
 		Wood Elf /
 		ASI: +2 Dex, +1 Wis /
 		Age: 50-700 /
@@ -118,8 +251,11 @@
 		Languages: Common, Elvish /
 		Darkvision: 60 /
 		Advantages/Immunities: Charm advantage, Sleep immune /
-		Weapon Proficiencies: longsword, shortsword, shortbow, longbow
-		#
+		Weapon Proficiencies: longsword, shortsword, shortbow, longbow /
+		Plain Text: Trance. Elves don’t need to sleep. Instead, they meditate deeply, remaining semiconscious, for 4 hours a day. While meditating, you can dream after a fashion; such dreams are actually mental exercises that have become reflexive through years of practice. After resting in this way, you gain the same benefit that a human does from 8 hours of sleep. /
+		Plain Text: Mask of the Wild. You can attempt to hide even when you are only lightly obscured by foliage, heavy rain, falling snow, mist, and other natural phenomena.
+		</item>
+		<item>
 		Drow /
 		ASI: +2 Dex, +1 Cha /
 		Age: 50-700 /
@@ -129,10 +265,13 @@
 		Darkvision: 120 /
 		Skill Proficiencies: Perception /
 		Cantrips: (Cha) Dancing Lights /
-		Spells: (Cha) Faerie Fire (3), Darkness (5) /
+		Spells: (Cha) (LR), Faerie Fire (3), Darkness (5) /
 		Advantages/Immunities: Charm advantage, Sleep immune /
-		Weapon Proficiencies: rapiers, shortswords, hand crossbows
-		#
+		Weapon Proficiencies: rapiers, shortswords, hand crossbows /
+		Plain Text: Trance. Elves don’t need to sleep. Instead, they meditate deeply, remaining semiconscious, for 4 hours a day. While meditating, you can dream after a fashion; such dreams are actually mental exercises that have become reflexive through years of practice. After resting in this way, you gain the same benefit that a human does from 8 hours of sleep. /
+		Plain Text: Sunlight Sensitivity. You have disadvantage on attack rolls and on Wisdom (Perception) checks that rely on sight when you, the target of your attack, or whatever you are trying to perceive is in direct sunlight.
+		</item>
+		<item>
 		Eladrin /
 		ASI: +2 Dex, +1 Cha /
 		Age: 50-700 /
@@ -141,8 +280,15 @@
 		Languages: Common, , Elvish /
 		Darkvision: 60 /
 		Skill Proficiencies: Perception /
-		Advantages/Immunities: Charm advantage, Sleep immune
-		#
+		Advantages/Immunities: Charm advantage, Sleep immune /
+		Plain Text: Trance. Elves don’t need to sleep. Instead, they meditate deeply, remaining semiconscious, for 4 hours a day. While meditating, you can dream after a fashion; such dreams are actually mental exercises that have become reflexive through years of practice. After resting in this way, you gain the same benefit that a human does from 8 hours of sleep. /
+		Plain Text: Fey Step. As a bonus action, you can magically teleport up to 30 feet to an unoccupied space you can see. Once you use this trait, you can\'t do so again until you finish a short or long rest. When you reach 3rd level, your Fey Step gains an additional effect based on your season; if the effect requires a saving throw, the DC equals 8 +your proficiency bonus+ your Charisma modifier:
+			\n\tAutumn. Immediately after you use your Fey Step, up to two creatures of your choice that you can see within 10 feet of you must succeed on a Wisdom saving throw or be charmed by you for 1 minute, or until you or your companions deal any damage to it.
+			\n\tWinter. When you use your Fey Step, one creature of your choice that you can see within 5 feet of you before you teleport must succeed on a Wisdom saving throw or be frightened of you until the end of your next turn.
+			\n\tSpring. When you use your Fey Step, you can touch one willing creature within 5 feet of you. That creature then teleports instead of you, appearing in an unoccupied space of your choice that you can see within 30 feet of you.
+			\n\tSummer. Immediately after you use your Fey Step, each creature of your choice that you can see within 5 feet of you takes fire damage equal to your Charisma modifier (minimum of 1 damage).
+		</item>
+		<item>
 		Sea Elf /
 		ASI: +2 Dex, +1 Con /
 		Age: 50-700 /
@@ -150,9 +296,14 @@
 		Speed: 30 /
 		Languages: Common, Elvish, Aquan /
 		Darkvision: 60 /
+		Additional Movement Types: Swim 30 /
 		Skill Proficiencies: Perception /
-		Advantages/Immunities: Charm advantage, Sleep immune
-		#
+		Advantages/Immunities: Charm advantage, Sleep immune /
+		Plain Text: Trance. Elves don’t need to sleep. Instead, they meditate deeply, remaining semiconscious, for 4 hours a day. While meditating, you can dream after a fashion; such dreams are actually mental exercises that have become reflexive through years of practice. After resting in this way, you gain the same benefit that a human does from 8 hours of sleep. /
+		Plain Text: Child of the Sea. You can breathe air and water. /
+		Plain Text: Friend ofthe Sea. Using gestures and sounds, you can communicate simple ideas with any beast that has an innate swimming speed.
+		</item>
+		<item>
 		Shadar-Kai /
 		ASI: +2 Dex, +1 Con /
 		Age: 50-700 /
@@ -163,8 +314,11 @@
 		Skill Proficiencies: Perception /
 		Damage Resistances: Necrotic 50% /
 		Advantages/Immunities: Charm advantage, Sleep immune /
-		Weapon Proficiencies: spear, trident, light crossbow, net
-		#
+		Weapon Proficiencies: spear, trident, light crossbow, net /
+		Plain Text: Trance. Elves don’t need to sleep. Instead, they meditate deeply, remaining semiconscious, for 4 hours a day. While meditating, you can dream after a fashion; such dreams are actually mental exercises that have become reflexive through years of practice. After resting in this way, you gain the same benefit that a human does from 8 hours of sleep. /
+		Blessing of the Raven Queen. As a bonus action, you can magically teleport up to 30 feet to an unoccupied space you can see. Once you use this trait, you can't do so again until you finish a long rest. Starting at 3rd level, you also gain resistance to all damage when you teleport using this trait. The resistance lasts until the start of your next turn. During that time, you appear ghostly and translucent.
+		</item>
+		<item>
 		<!-- Firbolg -->
 		Firbolg /
 		ASI: +2 Wis, +1 Str /
@@ -173,8 +327,14 @@
 		Speed: 30 /
 		Languages: Common, Elvish, Giant /
 		Darkvision: 60 /
-		Spells: (Wis) Detect Magic (1), Disguise Self (1)
-		#
+		Spells: (Wis) (SR), Detect Magic (1), Disguise Self (1) /
+		Powerful Build: Large /
+		Plain Text: Firbolg Magic. When you cast disguise self with this trait, you can seem up to 3 feet shorter than normal, allowing you to more easily blend in with humans and elves. /
+		Plain Text: Hidden Step. As a bonus action, you can magically turn invisible until the start of your next turn or until you attack, make a damage roll, or force someone to make a saving throw. Once you use this trait, you can't use it again until you finish a short or long rest. /
+		Plain Text: Speech of Beast and Leaf. You have the ability to communicate in a limited manner with beasts and plants. They can understand the meaning of your words, though you have no special ability to understand them in return. You have advantage on all Charisma checks you make to influence them. /
+		Plain Text: Powerful Build. You count as one size larger when determining your carrying capacity and the weight you can push, drag, or lift.
+		</item>
+		<item>
 		<!-- Genasi -->
 		Air Genasi /
 		ASI: +2 Con, +1 Dex /
@@ -183,8 +343,10 @@
 		Speed: 30 /
 		Languages: Common, Primordial /
 		Darkvision: 0 /
-		Spells: (Con) Levitate (1)
-		#
+		Spells: (Con) (LR), Levitate (1) /
+		Plain Text: Unending Breath. You can hold your breath indefinitely while you’re not incapacitated.
+		</item>
+		<item>
 		Earth Genasi /
 		ASI: +2 Con, +1 Str /
 		Age: 16-110 /
@@ -192,8 +354,10 @@
 		Speed: 30 /
 		Languages: Common, Primordial /
 		Darkvision: 0 /
-		Spells: (Con) Pass Without Trace (1)
-		#
+		Spells: (Con) (LR), Pass Without Trace (1) /
+		Plain Text: Earth Walk. You can move across difficult terrain made of earth or stone without expending extra movement.
+		</item>
+		<item>
 		Fire Genasi /
 		ASI: +2 Con, +1 Int /
 		Age: 16-110 /
@@ -202,9 +366,11 @@
 		Languages: Common, Primordial /
 		Darkvision: 60 /
 		Cantrips: (Con) Produce Flames /
-		Spells: (Con) Burning Hands (3) /
-		Damage Resistances: Fire 50%
-		#
+		Spells: (Con) (LR), Burning Hands (3) /
+		Damage Resistances: Fire 50% /
+		Plain Text: Darkvision. Your ties to the Elemental Plane of Fire make your darkvision unusual: everything you see in darkness is in a shade of red.
+		</item>
+		<item>
 		Water Genasi /
 		ASI: +2 Con, +1 Wis /
 		Age: 16-110 /
@@ -212,34 +378,40 @@
 		Speed: 30 /
 		Languages: Common, Primordial /
 		Darkvision: 0 /
+		Additional Movement Types: Swim 30 /
 		Cantrips: (Con) Shape Water /
-		Spells: (Con) Create or Destroy Water (3) /
-		Damage Resistances: Acid 50%
-		#
+		Spells: (Con) (LR), Create or Destroy Water (3) /
+		Damage Resistances: Acid 50% /
+		Plain Text: Amphibious. You can breathe air and water.
+		</item>
+		<item>
 		<!-- Gith -->
 		Githyanki /
 		ASI: +2 Str, +1 Int /
-		Age: /
-		Size: /
+		Age: 16-90 /
+		Size: Medium /
 		Speed: 30 /
 		Languages: Common, Gith, Choice /
 		Darkvision: 0 /
+		Skill Proficiencies: Choice (Any) /
 		Cantrips: (Int) Mage Hand /
-		Spells: (Int) Jump (3), Misty Step (5) /
+		Spells: (Int) (LR), Jump (3), Misty Step (5) /
 		Weapon Proficiencies: shortswords, longswords, greatswords /
 		Tool Proficiencies: light armor, medium armor
-		#
+		</item>
+		<item>
 		Githzerai /
 		ASI: +2 Wis, +1 Int /
-		Age: /
-		Size: /
+		Age: 16-90 /
+		Size: Medium /
 		Speed: 30 /
 		Languages: Common, Gith /
 		Darkvision: 0 /
 		Cantrips: (Int) Mage Hand /
-		Spells: (Int) Shield (3), Detect Thoughts (5) /
+		Spells: (Int) (LR), Shield (3), Detect Thoughts (5) /
 		Advantages/Immunities: Charm advantage, Fright advantage
-		#
+		</item>
+		<item>
 		<!-- Gnome -->
 		Forest Gnome /
 		ASI: +2 Int, +1 Dex /
@@ -249,8 +421,10 @@
 		Languages: Common, Gnomish /
 		Darkvision: 60 /
 		Cantrips: Minor Illusion (Int) /
-		Advantages/Immunities: Int (magic), Wis (magic), Cha (magic)
-		#
+		Advantages/Immunities: Int (magic), Wis (magic), Cha (magic) /
+		Plain Text: Speak with Small Beasts. Through sounds and gestures, you can communicate simple ideas with Small or smaller beasts. Forest gnomes love animals and often keep squirrels, badgers, rabbits, moles, woodpeckers, and other creatures as beloved pets.
+		</item>
+		<item>
 		Rock Gnome /
 		ASI: +2 Int, +1 Con /
 		Age: 20-300 /
@@ -259,8 +433,14 @@
 		Languages: Common, Gnomish /
 		Darkvision: 60 /
 		Advantages/Immunities: Int (magic), Wis (magic), Cha (magic) /
-		Tool Proficiencies: tinker’s tools
-		#
+		Tool Proficiencies: tinker’s tools /
+		Conditional Expertise: History (magic items, alchemical objects, technological devices) /
+		Plain Text: Tinker. Using tinker's tools, you can spend 1 hour and 10 gp worth of materials to construct a Tiny clockwork device (AC 5, 1 hp). The device ceases to function after 24 hours (unless you spend 1 hour repairing it to keep the device functioning), or when you use your action to dismantle it; at that time, you can reclaim the materials used to create it. You can have up to three such devices active at a time. When you create a device, choose one of the following options:
+			\n\tClockwork Toy. This toy is a clockwork animal, monster, or person, such as a frog, mouse, bird, dragon, or soldier. When placed on the ground, the toy moves 5 feet across the ground on each of your turns in a random direction. It makes noises as appropriate to the creature it represents.
+			\n\tFire Starter. The device produces a miniature flame, which you can use to light a candle, torch, or campfire. Using the device requires your action.
+			\n\tMusic Box. When opened, this music box plays a single song at a moderate volume. The box stops playing when it reaches the song’s end or when it is closed.
+		</item>
+		<item>
 		Svirfneblin /
 		ASI: +2 Int, +1 Dex /
 		Age: 20-300 /
@@ -268,8 +448,10 @@
 		Speed: 25 /
 		Languages: Common, Gnomish, Undercommon /
 		Darkvision: 120 /
-		Advantages/Immunities: Int (magic), Wis (magic), Cha (magic)
-		#
+		Advantages/Immunities: Int (magic), Wis (magic), Cha (magic) /
+		Plain Text: Stone Camouflage. You have advantage on Dexterity (Stealth) checks to hide in rocky terrain and underground.
+		</item>
+		<item>
 		<!-- Goblinoid -->
 		Bugbear /
 		ASI: +2 Str, +1 Dex /
@@ -278,8 +460,13 @@
 		Speed: 30 /
 		Languages: Common, Goblin /
 		Darkvision: 60 /
-		Skill Proficiencies: Stealth
-		#
+		Skill Proficiencies: Stealth /
+		Powerful Build: Large /
+		Reach: 5 /
+		Plain Text: Surprise Attack. If you surprise a creature and hit it with an attack on your first turn in combat, the attack deals an extra 2d6 damage to it. You can use this trait only once per combat. /
+		Plain Text: Powerful Build. You count as one size larger when determining your carrying capacity and the weight you can push, drag, or lift.
+		</item>
+		<item>
 		Goblin /
 		ASI: +2 Dex, +1 Con /
 		Age: 8-55 /
@@ -287,7 +474,10 @@
 		Speed: 30 /
 		Languages: Common, Goblin /
 		Darkvision: 60 /
-		#
+		Plain Text: Fury of the Small. When you damage a creature with an attack or a spell and the creature's size is larger than yours, you can cause the attack or spell to deal extra damage to the creature. The extra damage equals your level. Once you use this trait, you can't use it again until you finish a short or long rest. /
+		Plain Text: Nimble Escape. You can take the Disengage or Hide action as a bonus action on each of your turns.
+		</item>
+		<item>
 		Hobgoblin /
 		ASI: +2 Con, +1 Int /
 		Age: 16-80 /
@@ -295,17 +485,26 @@
 		Speed: 30 /
 		Languages: Common, Goblin /
 		Darkvision: 60 /
-		Tool Proficiencies: light armor
-		#
+		Weapon Proficiencies: Choice (martial), Choice (martial) /
+		Tool Proficiencies: light armor /
+		Plain Text: Saving Face. Hobgoblins are careful not to show weakness in front of their allies, for fear of losing status. If you miss with an attack roll or fail an ability check or a saving throw, you can gain a bonus to the roll equal to the number of allies you can see within 30 feet of you (maximum bonus of +5). Once you use this trait, you can't use it again until you finish a short or long rest.
+		</item>
+		<item>
 		<!-- Goliath -->
 		Goliath /
 		ASI: +2 Str, +1 Con /
 		Age: 16- 80 /
 		Size: Medium /
+		Speed: 30 /
 		Languages: Common, Giant /
 		Darkvision: 0 /
-		Skill Proficiencies: Athletics
-		#
+		Skill Proficiencies: Athletics /
+		Powerful Build: Large /
+		Plain Text: Stone’s Endurance. You can focus yourself to occasionally shrug off injury. When you take damage, you can use your reaction to roll a d12. Add your Constitution modifier to the number rolled, and reduce the damage by that total. After you use this trait, you can’t use it again until you finish a short or long rest. /
+		Plain Text: Mountain Born. You’re acclimated to high altitude, including elevations above 20,000 feet. You’re also naturally adapted to cold climates. /
+		Plain Text: Powerful Build. You count as one size larger when determining your carrying capacity and the weight you can push, drag, or lift.
+		</item>
+		<item>
 		<!-- Half-Elf -->
 		Half-Elf /
 		ASI: +2 Cha, +1 Choice, +1 Choice /
@@ -316,7 +515,8 @@
 		Darkvision: 60 /
 		Skill Proficiencies: Choice /
 		Advantages/Immunities: Charm advantage, Sleep immune
-		#
+		</item>
+		<item>
 		<!-- Halfling -->
 		Lightfoot Halfling /
 		ASI: +2 Dex, +1 Cha /
@@ -325,10 +525,13 @@
 		Speed: 25 /
 		Languages: Common, Halfling /
 		Darkvision: 0 /
-		Advantages/Immunities: Fright advantage
-		#
+		Advantages/Immunities: Fright advantage /
+		Plain Text: Lucky. When you roll a 1 on an attack roll, ability check, or saving throw, you can reroll the die and must use the new roll. /
+		Plain Text: Halfling Nimbleness. You can move through the space of any creature that is of a size larger than yours. /
+		Plain Text: Naturally Stealthy. You can attempt to hide even when you are obscured only by a creature that is at least one size larger than you.
+		</item>
+		<item>
 		Stout Halfling /
-		Lightfoot Halfling /
 		ASI: +2 Dex, +1 Con /
 		Age: 20-130 /
 		Size: Small /
@@ -336,8 +539,11 @@
 		Languages: Common, Halfling /
 		Darkvision: 0 /
 		Damage Resistances: Poison 50% /
-		Advantages/Immunities: Fright advantage, Poison advantage
-		#
+		Advantages/Immunities: Fright advantage, Poison advantage /
+		Plain Text: Lucky. When you roll a 1 on an attack roll, ability check, or saving throw, you can reroll the die and must use the new roll. /
+		Plain Text: Halfling Nimbleness. You can move through the space of any creature that is of a size larger than yours.
+		</item>
+		<item>
 		<!-- Half-Orc -->
 		Half-Orc /
 		ASI: +2 Str, +1 Con /
@@ -346,8 +552,11 @@
 		Speed: 30 /
 		Languages: Common, Orc /
 		Darkvision: 60 /
-		Skill Proficiencies: Intimidation
-		#
+		Skill Proficiencies: Intimidation /
+		Plain Text: Relentless Endurance. When you are reduced to 0 hit points but not killed outright, you can drop to 1 hit point instead. You can’t use this feature again until you finish a long rest. /
+		Plain Text: Savage Attacks. When you score a critical hit with a melee weapon attack, you can roll one of the weapon’s damage dice one additional time and add it to the extra damage of the critical hit.
+		</item>
+		<item>
 		<!-- Kenku -->
 		Kenku /
 		ASI: +2 Dex, +1 Wis /
@@ -355,8 +564,12 @@
 		Size: Medium /
 		Speed: 30 /
 		Languages: Common, Auran /
-		Darkvision: 0
-		#
+		Darkvision: 0 /
+		Skill Proficiencies: Choice (Acrobatics, Deception, Stealth, Sleight of Hand), Choice (Acrobatics, Deception, Stealth, Sleight of Hand) /
+		Plain Text: Expert Forgery. You can duplicate other creatures' handwriting and craftwork. You have advantage on all checks made to produce forgeries or duplicates of existing objects. /
+		Plain Text: Mimicry. You can mimic sounds you have heard, including voices. A creature that hears the sounds you make can tell they are imitations with a successful Wisdom (Insight) check opposed by your Charisma (Deception) check.
+		</item>
+		<item>
 		<!-- Kobold -->
 		Kobold /
 		ASI: +2 Dex, -2 Str /
@@ -364,8 +577,12 @@
 		Size: Small /
 		Speed: 30 /
 		Languages: Common, Draconic /
-		Darkvision: 60
-		#
+		Darkvision: 60 /
+		Plain Text: Grovel, Cower, and Beg. As an action on your tum, you can cower pathetically to distract nearby foes. Until the end of your next turn, your allies gain advantage on attack rolls against enemies within 10 feet of you that can see you. Once you use this trait, you can't use it again until you finish a short or long rest. /
+		Plain Text: Pack Tactics. You have advantage on an attack roll against a creature if at least one of your allies is within 5 feet of the creature and the ally isn't incapacitated. /
+		Plain Text: Sunlight Sensitivity. You have disadvantage on attack rolls and on Wisdom (Perception) checks that rely on sight when you, the target ofyour attack, or whatever you are trying to perceive is in direct sunlight.
+		</item>
+		<item>
 		<!-- Lizardfolk -->
 		Lizardfolk /
 		ASI: +2 Con, +1 Wis /
@@ -373,8 +590,16 @@
 		Size: Medium /
 		Speed: 30 /
 		Languages: Common, Draconic /
-		Darkvision: 0
-		#
+		Darkvision: 0 /
+		Additional Movement Types: Swim 30 /
+		Skill Proficiencies: Choice (Animal Handling, Nature, Perception, Stealth, Survival), Choice (Animal Handling, Nature, Perception, Stealth, Survival) /
+		Attacks: Bite, 5, melee, 1d6+Str, Piercing, DC:no, Str /
+		Natural	Armor: 13 /
+		Plain Text: Cunning Artisan. As part of a short rest, you can harvest bone and hide from a slain beast, construct, dragon, monstrosity, or plant creature of size Small or larger to create one of the following items: a shield, a club, a javelin, or ld4 darts or blowgun needles. To use this trait, you need a blade, such as a dagger, or appropriate artisan's tools, such as leatherworker's tools. /
+		Plain Text: Hold Breath. You can hold your breath for up to 15 minutes at a time. /
+		Plain Text: Hungry Jaws. In battle, you can throw yourself into a vicious feeding frenzy. As a bonus action, you can make a special attack with your bite. If the attack hits, it deals its normal damage, and you gain temporary hit points (minimum of 1) equal to your Constitution modifier, and you can't use this trait again until you finish a short or long rest.
+		</item>
+		<item>
 		<!-- Orc -->
 		Orc /
 		ASI: +2 Str, +1 Con, -2 Int /
@@ -383,8 +608,12 @@
 		Speed: 30 /
 		Languages: Common, Orc /
 		Darkvision: 60 /
-		Skill Proficiencies: Intimidation
-		#
+		Skill Proficiencies: Intimidation /
+		Powerful Build: Large /
+		Plain Text: Aggressive. As a bonus action, you can move up to your speed toward an enemy of your choice that you can see or hear. You must end this move closer to the enemy than you started. /
+		Plain Text: Powerful Build. You count as one size larger when determining your carrying capacity and the weight you can push, drag, or lift.
+		</item>
+		<item>
 		<!-- Tabaxi -->
 		Tabaxi /
 		ASI: +2 Dex, +1 Cha /
@@ -393,8 +622,12 @@
 		Speed: 30 /
 		Languages: Common, Choice /
 		Darkvision: 60 /
-		Skill Proficiencies: Perception, Stealth
-		#
+		Skill Proficiencies: Perception, Stealth /
+		Additional Movement Types: Climb 20 /
+		Attacks: Claws, 5, melee,  1d4+Str, Slashing, DC:no, Str /
+		Feline Agility. Your reflexes and agility allow you to move with a burst of speed. When you move on your turn in combat, you can double your speed until the end of the turn. Once you use this trait, you can't use it again until you move O feet on one of your turns.
+		</item>
+		<item>
 		<!-- Tiefling -->
 		Tiefling /
 		ASI: +2 Cha, +1 Int /
@@ -404,9 +637,10 @@
 		Languages: Common, Infernal /
 		Darkvision: 60 /
 		Cantrips: (Cha) Thaumaturgy /
-		Spells: (Cha) Hellish Rebuke (3), Darkness (5) /
+		Spells: (Cha) (LR), Hellish Rebuke (3), Darkness (5) /
 		Damage Resistances: Fire 50%
-		#
+		</item>
+		<item>
 		<!-- Triton -->
 		Triton /
 		ASI: +1 Str, +1 Con, +1 Cha /
@@ -415,9 +649,14 @@
 		Speed: 30 /
 		Languages: Common, Primordial /
 		Darkvision: 0 /
-		Spells: (Cha) Fog Cloud (1), Gust of Wind (3), Wall of Water (5) /
-		Damage Resistances: Cold
-		#
+		Additional Movement Types: Swim 30 /
+		Spells: (Cha) (LR), Fog Cloud (1), Gust of Wind (3), Wall of Water (5) /
+		Damage Resistances: Cold /
+		Plain Text: Amphibious. You can breathe air and water. /
+		Plain Text: Emissary of the Sea. Aquatic beasts have an extraordinary affinity with your people. You can communicate simple ideas with beasts that can breathe water. They can understand the meaning of your words, though you have no special ability to understand them in return. /
+		Plain Text: Guardians of the Depths. You ignore any of the drawbacks caused by a deep, underwater environment.
+		</item>
+		<item>
 		<!-- Yuan-Ti -->
 		Yuan-Ti Pureblood /
 		ASI: +2 Cha, +1 Int /
@@ -427,8 +666,10 @@
 		Languages: Common, Abyssal, Draconic /
 		Darkvision: 60 /
 		Cantrips: (Cha) Poison Spray /
-		Spells: (Cha) Suggestion (3) /
+		Spells: (Cha) (LR), Suggestion (3) /
 		Damage Resistances: Poison 50 % /
-		Advantages/Immunities: Magic advantage, Poison immune
-	</string>
+		Advantages/Immunities: Magic advantage, Poison immune /
+		Plain Text: Innate Spellcasting. You can cast Animal Friendship an unlimited number of times with this trait, but you can target only snakes with it.
+		</item>
+	</string-array>
 </resources>

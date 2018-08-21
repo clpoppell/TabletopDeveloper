@@ -14,7 +14,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void newCharacter(View view){
-        Intent intent= new Intent( this, NewCharacterForm.class);
+        Intent intent= new Intent(this, NewCharacterForm.class);
         startActivity(intent);
     }
 }

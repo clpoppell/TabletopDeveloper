@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	tools:context=".CharacterDisplay">
+
+
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:orientation="vertical">
+
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:layout_gravity="center_horizontal"
+			android:orientation="horizontal">
+
+			<TextView
+				android:id="@+id/str_label"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_weight="0"
+				android:layout_marginStart="8dp"
+				android:layout_marginEnd="4dp"
+				android:text="@string/strength_abb"
+				android:textColor="@color/textColorPrimary"
+				android:textSize="20sp" />
+
+			<EditText
+				android:id="@+id/str_editText"
+				android:layout_width="40dp"
+				android:layout_height="40dp"
+				android:layout_weight="0"
+				android:background="@drawable/text_input_border"
+				android:ems="10"
+				android:hint="@string/name_entry_hint"
+				android:inputType="number"
+				android:maxLength="2"
+				android:paddingStart="10dp"
+				android:paddingEnd="10dp" />
+
+			<TextView
+				android:id="@+id/str_mod"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_weight="0"
+				android:layout_marginStart="4dp"
+				android:layout_marginEnd="4dp"
+				android:text="@string/strength_abb"
+				android:textColor="@color/textColorPrimary"
+				android:textSize="20sp" />
+
+			<View
+				android:layout_width="2dp"
+				android:layout_height="match_parent"
+				android:background="@color/textColorSecondary" />
+
+			<TextView
+				android:id="@+id/dex_label"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_weight="0"
+				android:layout_marginStart="4dp"
+				android:layout_marginEnd="4dp"
+				android:text="@string/strength_abb"
+				android:textColor="@color/textColorPrimary"
+				android:textSize="20sp" />
+
+			<EditText
+				android:id="@+id/dex_editText"
+				android:layout_width="40dp"
+				android:layout_height="40dp"
+				android:layout_weight="0"
+				android:background="@drawable/text_input_border"
+				android:ems="10"
+				android:hint="@string/name_entry_hint"
+				android:inputType="number"
+				android:maxLength="2"
+				android:paddingStart="10dp"
+				android:paddingEnd="10dp" />
+
+			<TextView
+				android:id="@+id/dex_mod"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_weight="0"
+				android:layout_marginStart="4dp"
+				android:layout_marginEnd="4dp"
+				android:text="@string/strength_abb"
+				android:textColor="@color/textColorPrimary"
+				android:textSize="20sp" />
+
+			<View
+				android:layout_width="2dp"
+				android:layout_height="match_parent"
+				android:background="@color/textColorSecondary" />
+
+			<TextView
+				android:id="@+id/con_label"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_weight="0"
+				android:layout_marginStart="4dp"
+				android:layout_marginEnd="4dp"
+				android:text="@string/strength_abb"
+				android:textColor="@color/textColorPrimary"
+				android:textSize="20sp" />
+
+			<EditText
+				android:id="@+id/con_editText"
+				android:layout_width="40dp"
+				android:layout_height="40dp"
+				android:layout_weight="0"
+				android:background="@drawable/text_input_border"
+				android:ems="10"
+				android:hint="@string/name_entry_hint"
+				android:inputType="number"
+				android:maxLength="2"
+				android:paddingStart="10dp"
+				android:paddingEnd="10dp" />
+
+			<TextView
+				android:id="@+id/con_mod"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_weight="0"
+				android:layout_marginStart="4dp"
+				android:layout_marginEnd="4dp"
+				android:text="@string/strength_abb"
+				android:textColor="@color/textColorPrimary"
+				android:textSize="20sp" />
+
+		</LinearLayout>
+
+		<TextView
+			android:id="@+id/char_display"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_margin="@dimen/text_margin"
+			android:layout_weight="1"
+			android:singleLine="false"
+			android:textColor="@color/textColorPrimary" />
+	</LinearLayout>
+</android.support.v4.widget.NestedScrollView>

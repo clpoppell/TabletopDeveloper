@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-	xmlns:app="http://schemas.android.com/apk/res-auto"
-	xmlns:tools="http://schemas.android.com/tools"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent">
 
 	<LinearLayout
-		android:layout_width="match_parent"
+		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:orientation="vertical" >
 
+		<!-- Name Entry -->
 		<LinearLayout
 			android:id="@+id/name_layout"
-			android:layout_width="match_parent"
+			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
+			android:layout_gravity="center_vertical"
 			android:layout_marginEnd="8dp"
 			android:layout_marginStart="8dp"
 			android:layout_marginTop="8dp"
@@ -37,23 +37,23 @@
 			<EditText
 				android:id="@+id/name_editText"
 				android:layout_width="240dp"
-				android:layout_height="45dp"
-				android:layout_marginEnd="8dp"
-				android:layout_marginLeft="8dp"
-				android:layout_marginRight="8dp"
-				android:layout_marginStart="8dp"
-				android:layout_marginTop="8dp"
+				android:layout_height="40dp"
+				android:background="@drawable/text_input_border"
 				android:ems="10"
 				android:hint="@string/name_entry_hint"
 				android:inputType="textPersonName"
+				android:paddingEnd="10dp"
+				android:paddingStart="10dp"
 				android:textColor="@color/textColorPrimary"
 				android:textSize="18sp" />
 		</LinearLayout>
 
+		<!-- Race Selection -->
 		<LinearLayout
 			android:id="@+id/race_layout"
-			android:layout_width="match_parent"
+			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
+			android:layout_gravity="center_vertical"
 			android:layout_marginEnd="8dp"
 			android:layout_marginStart="8dp"
 			android:layout_marginTop="8dp"
@@ -81,58 +81,51 @@
 				android:layout_marginRight="8dp"
 				android:layout_marginStart="8dp"
 				android:layout_marginTop="4dp"
+				android:background="@drawable/text_input_border"
+				android:spinnerMode="dialog"
 				android:textColor="@color/textColorPrimary" />
 		</LinearLayout>
 
-		<LinearLayout
-			android:id="@+id/asi_selection_layout"
-			android:layout_width="match_parent"
+		<!-- Subrace Selection -->
+		<RadioGroup
+			android:id="@+id/sub_race"
+			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
+			android:paddingStart="25dp"
+			android:visibility="visible">
+		</RadioGroup>
+
+		<!-- Ability Score Increase -->
+		<LinearLayout
+			android:id="@+id/asi_layout"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_gravity="center_vertical"
 			android:orientation="horizontal"
-			android:visibility="gone">
+			android:paddingStart="50dp">
 
 			<TextView
-				android:id="@+id/asi_select_textView"
+				android:id="@+id/asi_textView"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
-				android:layout_marginEnd="8dp"
-				android:layout_marginLeft="8dp"
-				android:layout_marginRight="8dp"
-				android:layout_marginStart="8dp"
-				android:layout_marginTop="8dp"
-				android:text="@string/asi_selection"
+				android:layout_marginTop="4dp"
 				android:textColor="@color/textColorPrimary"
 				android:textSize="16sp" />
 
 			<Spinner
-				android:id="@+id/asi_select_spinner"
+				android:id="@+id/asi_select_spinner1"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
-				android:layout_marginEnd="8dp"
-				android:layout_marginLeft="8dp"
-				android:layout_marginRight="8dp"
-				android:layout_marginStart="8dp"
 				android:layout_marginTop="4dp"
+				android:background="@drawable/text_input_border"
+				android:spinnerMode="dialog"
 				android:textColor="@color/textColorPrimary" />
-		</LinearLayout>
-
-		<LinearLayout
-			android:id="@+id/asi_selection_layout2"
-			android:layout_width="match_parent"
-			android:layout_height="match_parent"
-			android:orientation="horizontal"
-			android:visibility="gone">
 
 			<TextView
-				android:id="@+id/asi_select_textView2"
+				android:id="@+id/asi_select_mod_textView1"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
-				android:layout_marginEnd="8dp"
-				android:layout_marginLeft="8dp"
-				android:layout_marginRight="8dp"
-				android:layout_marginStart="8dp"
-				android:layout_marginTop="8dp"
-				android:text="@string/asi_selection"
+				android:layout_marginTop="4dp"
 				android:textColor="@color/textColorPrimary"
 				android:textSize="16sp" />
 
@@ -140,32 +133,186 @@
 				android:id="@+id/asi_select_spinner2"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
-				android:layout_marginEnd="8dp"
-				android:layout_marginLeft="8dp"
-				android:layout_marginRight="8dp"
-				android:layout_marginStart="8dp"
 				android:layout_marginTop="4dp"
+				android:background="@drawable/text_input_border"
+				android:spinnerMode="dialog"
+				android:textColor="@color/textColorPrimary" />
+
+			<TextView
+				android:id="@+id/asi_select_mod_textView2"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="4dp"
+				android:textColor="@color/textColorPrimary"
+				android:textSize="16sp" />
+		</LinearLayout>
+
+		<!-- Skills -->
+		<LinearLayout
+			android:id="@+id/skill_layout"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_gravity="center_vertical"
+			android:orientation="horizontal"
+			android:paddingStart="50dp"
+			android:visibility="gone">
+
+			<TextView
+				android:id="@+id/skill_textView1"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="4dp"
+				android:text="@string/skill_selection"
+				android:textColor="@color/textColorPrimary"
+				android:textSize="16sp" />
+
+			<Spinner
+				android:id="@+id/skill_select_spinner1"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="4dp"
+				android:background="@drawable/text_input_border"
+				android:spinnerMode="dialog"
+				android:textColor="@color/textColorPrimary" />
+
+			<TextView
+				android:id="@+id/skill_textView2"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="4dp"
+				android:text=","
+				android:textColor="@color/textColorPrimary"
+				android:textSize="16sp" />
+
+			<Spinner
+				android:id="@+id/skill_select_spinner2"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="4dp"
+				android:background="@drawable/text_input_border"
+				android:spinnerMode="dialog"
 				android:textColor="@color/textColorPrimary" />
 		</LinearLayout>
 
-		<RadioGroup
-			android:id="@+id/sub_race"
+		<!-- Feat -->
+		<LinearLayout
+			android:id="@+id/feat_selection_layout"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
-			android:visibility="visible">
+			android:layout_gravity="center_vertical"
+			android:paddingStart="50dp"
+			android:orientation="horizontal"
+			android:visibility="gone">
 
-		</RadioGroup>
+			<TextView
+				android:id="@+id/feat_select_textView"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginEnd="4dp"
+				android:layout_marginTop="4dp"
+				android:text="@string/feat_selection"
+				android:textColor="@color/textColorPrimary"
+				android:textSize="16sp" />
+
+			<Spinner
+				android:id="@+id/feat_select_spinner"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="4dp"
+				android:background="@drawable/text_input_border"
+				android:spinnerMode="dialog"
+				android:textColor="@color/textColorPrimary" />
+
+		</LinearLayout>
+
+		<!-- Weapons -->
+		<LinearLayout
+			android:id="@+id/weapon_proficiency_layout"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_gravity="center_vertical"
+			android:orientation="horizontal"
+			android:visibility="gone"
+			android:paddingStart="50dp">
+
+			<TextView
+				android:id="@+id/weapon_textView"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="4dp"
+				android:textColor="@color/textColorPrimary"
+				android:textSize="16sp" />
+
+			<Spinner
+				android:id="@+id/weapon_select_spinner1"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginEnd="4dp"
+				android:layout_marginTop="4dp"
+				android:background="@drawable/text_input_border"
+				android:spinnerMode="dialog"
+				android:textColor="@color/textColorPrimary" />
+
+			<TextView
+				android:id="@+id/weapon_textView2"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginEnd="4dp"
+				android:layout_marginTop="4dp"
+				android:text=","
+				android:textColor="@color/textColorPrimary"
+				android:textSize="16sp"
+				android:visibility="gone" />
+
+			<Spinner
+				android:id="@+id/weapon_select_spinner2"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="4dp"
+				android:background="@drawable/text_input_border"
+				android:spinnerMode="dialog"
+				android:textColor="@color/textColorPrimary"
+				android:visibility="gone" />
+		</LinearLayout>
+
+		<!-- Languagea -->
+		<LinearLayout
+			android:id="@+id/language_layout"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_gravity="center_vertical"
+			android:orientation="horizontal"
+			android:paddingStart="50dp">
+
+			<TextView
+				android:id="@+id/language_textView"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:textColor="@color/textColorPrimary"
+				android:textSize="16sp" />
+
+			<Spinner
+				android:id="@+id/language_select_spinner"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="4dp"
+				android:background="@drawable/text_input_border"
+				android:spinnerMode="dialog"
+				android:textColor="@color/textColorPrimary" />
+		</LinearLayout>
 
 		<TextView
 			android:id="@+id/race_info_display"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
+			android:paddingStart="50dp"
+			android:paddingEnd="50dp"
 			android:textColor="@color/textColorPrimary"
 			android:visibility="visible" />
 
 		<LinearLayout
 			android:id="@+id/class_layout"
-			android:layout_width="match_parent"
+			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:layout_marginEnd="8dp"
 			android:layout_marginStart="8dp"
@@ -194,6 +341,7 @@
 				android:layout_marginRight="8dp"
 				android:layout_marginStart="8dp"
 				android:layout_marginTop="4dp"
+				android:background="@drawable/text_input_border"
 				android:textColor="@color/textColorPrimary" />
 		</LinearLayout>
 
@@ -212,7 +360,7 @@
 
 		<LinearLayout
 			android:id="@+id/level_layout"
-			android:layout_width="match_parent"
+			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:layout_marginBottom="8dp"
 			android:layout_marginEnd="8dp"
@@ -238,6 +386,7 @@
 				android:layout_marginLeft="8dp"
 				android:layout_marginRight="8dp"
 				android:layout_marginTop="8dp"
+				android:background="@drawable/text_input_border"
 				android:textColor="@color/textColorPrimary" />
 		</LinearLayout>
 

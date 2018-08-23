@@ -19,5 +19,7 @@
 	<string name="intelligence_abb">Int</string>
 	<string name="wisdom_abb">Wis</string>
 	<string name="charisma_abb">Cha</string>
-	<string name="asi_selection">Choose Stat:</string>
+
+	<string name="skill_selection">Racial Skills:</string>
+	<string name="feat_selection">Bonus Feat:</string>
 </resources>

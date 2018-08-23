@@ -75,7 +75,6 @@
 				android:layout_weight="0"
 				android:background="@drawable/text_input_border"
 				android:ems="10"
-				android:hint="@string/name_entry_hint"
 				android:inputType="number"
 				android:maxLength="2"
 				android:paddingStart="10dp"

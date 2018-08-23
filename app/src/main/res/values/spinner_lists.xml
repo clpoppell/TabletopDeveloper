@@ -18,7 +18,7 @@
 		<item>Half-Elf # Half-Elf (+2 Cha, +1 to any 2)</item>
 		<item>Halfling # Lightfoot Halfling (+2 Dex, +1 Cha) # Stout Halfling (+2 Dex, +1 Con)</item>
 		<item>Half-Orc # Half-Orc (Str +2, Con +1)</item>
-		<item>Kenku # Kenku {+2 Dex, +1 Wis}</item>
+		<item>Kenku # Kenku (+2 Dex, +1 Wis)</item>
 		<item>Kobold # Kobold (+2 Dex, -2 Str)</item>
 		<item>Lizardfolk # Lizardfolk (+2 Con, +1 Wis)</item>
 		<item>Tabaxi # Tabaxi (+2 Dex, +1 Cha)</item>
@@ -40,5 +40,78 @@
 		<item>Int</item>
 		<item>Wis</item>
 		<item>Cha</item>
+	</string-array>
+
+	<string-array name="skill_list">
+		<item>Acrobatics - Dex</item>
+		<item>Animal Handling - Wis</item>
+		<item>Arcana - Int</item>
+		<item>Athletics - Str</item>
+		<item>Deception - Cha</item>
+		<item>History - Int</item>
+		<item>Insight - Wis</item>
+		<item>Intimidation - Cha</item>
+		<item>Investigation - Int</item>
+		<item>Medicine - Wis</item>
+		<item>Nature - Int</item>
+		<item>Perception - Wis</item>
+		<item>Performance - Cha</item>
+		<item>Persuasion - Cha</item>
+		<item>Religion - Int</item>
+		<item>Sleight of Hand - Dex</item>
+		<item>Stealth - Dex</item>
+		<item>Survival - Wis</item>
+	</string-array>
+
+	<string-array name="language_list">
+		<item>Common</item>
+		<item>Dwarvish</item>
+		<item>Elvish</item>
+		<item>Giant</item>
+		<item>Gnomish</item>
+		<item>Goblin</item>
+		<item>Halfling</item>
+		<item>Orc</item>
+		<item>Abyssal</item>
+		<item>Celestial</item>
+		<item>Draconic</item>
+		<item>Deep Speech</item>
+		<item>Infernal</item>
+		<item>Primordial</item>
+		<item>Sylvan</item>
+		<item>Undercommon</item>
+	</string-array>
+
+	<string-array name="feat_list">
+		<item>Actor</item>
+		<item>Alert</item>
+		<item>Athlete</item>
+	</string-array>
+
+	<string-array name="weapon_list">
+		<item>Battleaxe # Martial # 10 gp # 1d8 # slashing # 4 lb. # Versatile (1d10)</item>
+		<item>Flail # Martial # 10 gp # 1d8 # bludgeoning # 2 lb. # —</item>
+		<item>Glaive # Martial # 20 gp # 1d10 # slashing # 6 lb. # Heavy, reach, two-handed</item>
+		<item>Greataxe # Martial # 30 gp # 1d12 # slashing # 7 lb. # Heavy, two-handed</item>
+		<item>Greatsword # Martial # 50 gp # 2d6 # slashing # 6 lb. # Heavy, two-handed</item>
+		<item>Halberd # Martial # 20 gp # 1d10 # slashing # 6 lb. # Heavy, reach, two-handed</item>
+		<item>Lance # Martial # 10 gp # 1d12 # piercing # 6 lb. # Reach, special</item>
+		<item>Longsword # Martial # 15 gp # 1d8 # slashing # 3 lb. # Versatile (1d10)</item>
+		<item>Maul # Martial # 10 gp # 2d6 # bludgeoning # 10 lb. # Heavy, two-handed</item>
+		<item>Morningstar # Martial # 15 gp # 1d8 # piercing # 4 lb. # —</item>
+		<item>Pike # Martial # 5 gp # 1d10 # piercing # 18 lb. # Heavy, reach, two-handed</item>
+		<item>Rapier # Martial # 25 gp # 1d8 # piercing # 2 lb. # Finesse</item>
+		<item>Scimitar # Martial # 25 gp # 1d6 # slashing # 3 lb. # Finesse, light</item>
+		<item>Shortsword # Martial # 10 gp # 1d6 # piercing # 2 lb. # Finesse, light</item>
+		<item>Trident # Martial # 5 gp # 1d6 # piercing # 4 lb. # Thrown (range 20/60), versatile (1d8)</item>
+		<item>War Pick # Martial # 5 gp # 1d8 # piercing # 2 lb. # —</item>
+		<item>Warhammer # Martial # 15 # gp # 1d8 # bludgeoning # 2 lb. # Versatile (1d10)</item>
+		<item>Whip # Martial # 2 gp # 1d4 # slashing # 3 lb. # Finesse, reach</item>
+
+		<item>Blowgun # Martial # 10 gp # 1 # piercing # 1 lb. # Ammunition (range 25/100), loading</item>
+		<item>Hand Crossbow # Martial # 75 gp # 1d6 # piercing # 3 lb. # Ammunition (range 30/120), light, loading</item>
+		<item>Heavy Crossbow # Martial # 50 gp # 1d10 # piercing # 18 lb. # Ammunition (range 100/400), heavy, loading, two-handed</item>
+		<item>Longbow # Martial # 50 gp # 1d8 # piercing # 2 lb. # Ammunition (range 150/600), heavy, two-handed</item>
+		<item>Net # Martial # 1 gp # — # — # 3 lb. # Special, thrown (range 5/15)</item>
 	</string-array>
 </resources>

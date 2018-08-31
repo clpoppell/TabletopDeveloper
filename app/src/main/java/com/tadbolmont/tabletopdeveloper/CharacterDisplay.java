@@ -7,6 +7,8 @@ import android.widget.TextView;
 
 import java.util.Map;
 
+import tabletop_5e_character_design.CharacterRace;
+
 public class CharacterDisplay extends Activity{
 	
 	@Override
@@ -21,11 +23,11 @@ public class CharacterDisplay extends Activity{
 		Intent pIntent=getIntent();
 		String[] charInfo= pIntent.getStringArrayExtra(NewCharacterForm.EXTRA_MESSAGE_CHARACTER);
 		TextView display= findViewById(R.id.char_display);
-		CharacterRace race= CharacterInfo.getRace(charInfo[1]);
+		CharacterRace race= GameInfo.getRace(charInfo[1]);
 		Map<String,Integer> stats= race.getStatMods();
 		String s= "";
 		for(Map.Entry<String,Integer> stat : stats.entrySet()){ s += stat.getKey() + ": " + stat.getValue();  }
-		// CharacterInfo.getRace(charInfo[1]).toString();
+		// GameInfo.getRace(charInfo[1]).toString();
 		display.setText(s);
 	}
 }

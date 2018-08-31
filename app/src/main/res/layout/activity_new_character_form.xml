@@ -147,7 +147,16 @@
 				android:textSize="16sp" />
 		</LinearLayout>
 
-		<!-- Skills -->
+		<!-- Physical Features -->
+		<TextView
+			android:id="@+id/physical_features_textView"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginStart="50dp"
+			android:textColor="@color/textColorPrimary"
+			android:textSize="16sp" />
+
+		<!-- Skilss -->
 		<LinearLayout
 			android:id="@+id/skill_layout"
 			android:layout_width="wrap_content"
@@ -225,6 +234,16 @@
 
 		</LinearLayout>
 
+		<!-- Attacks -->
+		<TextView
+			android:id="@+id/racial_attack_textView"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginStart="50dp"
+			android:textColor="@color/textColorPrimary"
+			android:textSize="16sp"
+			android:visibility="gone" />
+
 		<!-- Weapons -->
 		<LinearLayout
 			android:id="@+id/weapon_proficiency_layout"
@@ -275,7 +294,94 @@
 				android:visibility="gone" />
 		</LinearLayout>
 
-		<!-- Languagea -->
+		<!-- Tools -->
+		<LinearLayout
+			android:id="@+id/tool_selection_layout"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_gravity="center_vertical"
+			android:orientation="horizontal"
+			android:paddingStart="50dp"
+			android:visibility="gone">
+
+			<TextView
+				android:id="@+id/tool_select_textView"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginEnd="4dp"
+				android:layout_marginTop="4dp"
+				android:textColor="@color/textColorPrimary"
+				android:textSize="16sp" />
+
+			<Spinner
+				android:id="@+id/tool_select_spinner"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="4dp"
+				android:background="@drawable/text_input_border"
+				android:spinnerMode="dialog"
+				android:textColor="@color/textColorPrimary"
+				android:visibility="gone" />
+
+		</LinearLayout>
+
+		<!-- Cantrip -->
+		<LinearLayout
+			android:id="@+id/cantrip_layout"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_gravity="center_vertical"
+			android:orientation="horizontal"
+			android:visibility="gone"
+			android:paddingStart="50dp">
+
+			<TextView
+				android:id="@+id/cantrip_textView"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="4dp"
+				android:textColor="@color/textColorPrimary"
+				android:textSize="16sp" />
+
+			<Spinner
+				android:id="@+id/cantrip_select_spinner"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginEnd="4dp"
+				android:layout_marginTop="4dp"
+				android:background="@drawable/text_input_border"
+				android:spinnerMode="dialog"
+				android:textColor="@color/textColorPrimary" />
+
+			<TextView
+				android:id="@+id/cantrip_textView2"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:textColor="@color/textColorPrimary"
+				android:textSize="16sp" />
+		</LinearLayout>
+
+		<!-- Spells -->
+		<TextView
+			android:id="@+id/racial_spell_textView"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginStart="50dp"
+			android:layout_marginTop="4dp"
+			android:textColor="@color/textColorPrimary"
+			android:textSize="16sp"
+			android:visibility="gone" />
+
+		<!--  -->
+		<TextView
+			android:id="@+id/race_info_display"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:paddingStart="50dp"
+			android:textColor="@color/textColorPrimary"
+			android:textSize="16sp" />
+
+		<!-- Languages -->
 		<LinearLayout
 			android:id="@+id/language_layout"
 			android:layout_width="wrap_content"
@@ -295,20 +401,10 @@
 				android:id="@+id/language_select_spinner"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
-				android:layout_marginTop="4dp"
 				android:background="@drawable/text_input_border"
 				android:spinnerMode="dialog"
 				android:textColor="@color/textColorPrimary" />
 		</LinearLayout>
-
-		<TextView
-			android:id="@+id/race_info_display"
-			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
-			android:paddingStart="50dp"
-			android:paddingEnd="50dp"
-			android:textColor="@color/textColorPrimary"
-			android:visibility="visible" />
 
 		<LinearLayout
 			android:id="@+id/class_layout"

@@ -46,7 +46,8 @@
 		Languages: Common, Aarakocra, Auran /
 		Darkvision: 0 /
 		Additional Movement Types: Flight 50 /
-		Attacks: Talons, 5, melee, 1d4, DC:no, Str /
+		Attacks: Talons, 5, melee, 1d4+, Slashing, DC:no, Str /
+		Weapon Proficiencies: unarmed strikes /
 		Plain Text: Flight. You cannot fly if you are wearing medium or heavy armor.
 		</item>
 		<item>
@@ -58,8 +59,8 @@
 		Speed: 30 /
 		Languages: Common, Celestial /
 		Darkvision: 60 /
-		Cantrips: (Cha) Light /
-		Spells: (Cha) (LR), Lesser Restoration (3), Daylight (5) /
+		Cantrips: Cha - Light /
+		Spells: (Cha) (LR), Lesser Restoration-3, Daylight-5 /
 		Damage Resistances: Necrotic 50%, Radiant 50%
 		</item>
 		<item>
@@ -71,7 +72,7 @@
 		Speed: 30 /
 		Languages: Common, Draconic /
 		Darkvision: 0 /
-		Attacks: Breath Weapon, 30, line, 2d6, Acid, DC:half:Dex, Con /
+		Attacks: Breath Weapon, 30, line, 2d6, Acid, DC:half:Dex, Con, LR /
 		Damage Resistances: Acid 50% /
 		Plain Text: Breath Weapon. The damage of your breath weapon increases to 3d6 at 6th level, 4d6 at 11th level, and 5d6 at 16th level. After you use your breath weapon, you can’t use it again until you complete a short or long rest.
 		</item>
@@ -83,7 +84,7 @@
 		Speed: 30 /
 		Languages: Common, Draconic /
 		Darkvision: 0 /
-		Attacks: Breath Weapon, 30, line, 2d6, Lightning, DC:half:Dex, Con /
+		Attacks: Breath Weapon, 30, line, 2d6, Lightning, DC:half:Dex, Con, LR /
 		Damage Resistances: Lightning 50% /
 		Plain Text: Breath Weapon. The damage of your breath weapon increases to 3d6 at 6th level, 4d6 at 11th level, and 5d6 at 16th level. After you use your breath weapon, you can’t use it again until you complete a short or long rest.
 		</item>
@@ -95,7 +96,7 @@
 		Speed: 30 /
 		Languages: Common, Draconic /
 		Darkvision: 0 /
-		Attacks: Breath Weapon, 30, line, 2d6, Fire, DC:half:Dex, Con /
+		Attacks: Breath Weapon, 30, line, 2d6, Fire, DC:half:Dex, Con, LR /
 		Damage Resistances: Fire 50% /
 		Plain Text: Breath Weapon. The damage of your breath weapon increases to 3d6 at 6th level, 4d6 at 11th level, and 5d6 at 16th level. After you use your breath weapon, you can’t use it again until you complete a short or long rest.
 		</item>
@@ -107,7 +108,7 @@
 		Speed: 30 /
 		Languages: Common, Draconic /
 		Darkvision: 0 /
-		Attacks: Breath Weapon, 30, line, 2d6, Lightning, DC:half:Dex, Con /
+		Attacks: Breath Weapon, 30, line, 2d6, Lightning, DC:half:Dex, Con, LR /
 		Damage Resistances: Lightning 50% /
 		Plain Text: Breath Weapon. The damage of your breath weapon increases to 3d6 at 6th level, 4d6 at 11th level, and 5d6 at 16th level. After you use your breath weapon, you can’t use it again until you complete a short or long rest.
 		</item>
@@ -119,7 +120,7 @@
 		Speed: 30 /
 		Languages: Common, Draconic /
 		Darkvision: 0 /
-		Attacks: Breath Weapon, 30, line, 2d6, Acid, DC:half:Dex, Con /
+		Attacks: Breath Weapon, 30, line, 2d6, Acid, DC:half:Dex, Con, LR /
 		Damage Resistances: Acid 50% /
 		Plain Text: Breath Weapon. The damage of your breath weapon increases to 3d6 at 6th level, 4d6 at 11th level, and 5d6 at 16th level. After you use your breath weapon, you can’t use it again until you complete a short or long rest.
 		</item>
@@ -131,7 +132,7 @@
 		Speed: 30 /
 		Languages: Common, Draconic /
 		Darkvision: 0 /
-		Attacks: Breath Weapon, 15, cone, 2d6, Fire, DC:half:Dex, Con /
+		Attacks: Breath Weapon, 15, cone, 2d6, Fire, DC:half:Dex, Con, LR /
 		Damage Resistances: Fire 50% /
 		Plain Text: Breath Weapon. The damage of your breath weapon increases to 3d6 at 6th level, 4d6 at 11th level, and 5d6 at 16th level. After you use your breath weapon, you can’t use it again until you complete a short or long rest.
 		</item>
@@ -143,7 +144,7 @@
 		Speed: 30 /
 		Languages: Common, Draconic /
 		Darkvision: 0 /
-		Attacks: Breath Weapon, 15, cone, 2d6, Poison, DC:half:Con, Con /
+		Attacks: Breath Weapon, 15, cone, 2d6, Poison, DC:half:Con, Con, LR /
 		Damage Resistances: Poison 50% /
 		Plain Text: Breath Weapon. The damage of your breath weapon increases to 3d6 at 6th level, 4d6 at 11th level, and 5d6 at 16th level. After you use your breath weapon, you can’t use it again until you complete a short or long rest.
 		</item>
@@ -155,7 +156,7 @@
 		Speed: 30 /
 		Languages: Common, Draconic /
 		Darkvision: 0 /
-		Attacks: Breath Weapon, 15, cone, 2d6, Fire, DC:half:Dex, Con /
+		Attacks: Breath Weapon, 15, cone, 2d6, Fire, DC:half:Dex, Con, LR /
 		Damage Resistances: Fire 50% /
 		Plain Text: Breath Weapon. The damage of your breath weapon increases to 3d6 at 6th level, 4d6 at 11th level, and 5d6 at 16th level. After you use your breath weapon, you can’t use it again until you complete a short or long rest.
 		</item>
@@ -167,7 +168,7 @@
 		Speed: 30 /
 		Languages: Common, Draconic /
 		Darkvision: 0 /
-		Attacks: Breath Weapon, 15, cone, 2d6, Cold, DC:half:Con, Con /
+		Attacks: Breath Weapon, 15, cone, 2d6, Cold, DC:half:Con, Con, LR /
 		Damage Resistances: Cold 50% /
 		Plain Text: Breath Weapon. The damage of your breath weapon increases to 3d6 at 6th level, 4d6 at 11th level, and 5d6 at 16th level. After you use your breath weapon, you can’t use it again until you complete a short or long rest.
 		</item>
@@ -179,7 +180,7 @@
 		Speed: 30 /
 		Languages: Common, Draconic /
 		Darkvision: 0 /
-		Attacks: Breath Weapon, 15, cone, 2d6, Cold, DC:half:Con, Con /
+		Attacks: Breath Weapon, 15, cone, 2d6, Cold, DC:half:Con, Con, LR /
 		Damage Resistances: Cold 50% /
 		Plain Text: Breath Weapon. The damage of your breath weapon increases to 3d6 at 6th level, 4d6 at 11th level, and 5d6 at 16th level. After you use your breath weapon, you can’t use it again until you complete a short or long rest.
 		</item>
@@ -195,8 +196,8 @@
 		Damage Resistances: Poison 50% /
 		Advantages/Immunities: Poison advantage /
 		Weapon Proficiencies: battleaxe, handaxe, throwing hammer, warhammer /
-		Tool Proficiencies: Choice (smith’s tools, brewer’s supplies, mason’s tools) /
-		Conditional Expertise: History, origin of stonework
+		Tool Proficiencies: Choice (smith\’s tools - brewer\’s supplies - mason\’s tools) /
+		Conditional Expertise: History - origin of stonework
 		</item>
 		<item>
 		Mountain Dwarf /
@@ -209,8 +210,9 @@
 		Damage Resistances: Poison 50% /
 		Advantages/Immunities: Poison advantage /
 		Weapon Proficiencies: battleaxe, handaxe, throwing hammer, warhammer /
-		Tool Proficiencies: light armor, medium armor, Choice (smith’s tools, brewer’s supplies, mason’s tools) /
-		Conditional Expertise: History, origin of stonework
+		Armor Proficiencies: light armor, medium armor /
+		Tool Proficiencies: Choice (smith\’s tools - brewer\’s supplies - mason\’s tools) /
+		Conditional Expertise: History - origin of stonework
 		</item>
 		<item>
 		Duergar /
@@ -220,10 +222,10 @@
 		Speed: 25 /
 		Languages: Common, Dwarvish, Undercommon /
 		Darkvision: 120 /
-		Spells: (Int) (LR), Enlarge (3), Invisibility (5) /
+		Spells: (Int) (LR), Enlarge-3, Invisibility-5 /
 		Advantages/Immunities: Charm advantage, Paralyze advantage, Illusions advantage /
-		Tool Proficiencies: Choice (smith’s tools, brewer’s supplies, mason’s tools) /
-		Conditional Expertise: History (origin of stonework) /
+		Tool Proficiencies: Choice (smith\’s tools - brewer\’s supplies - mason\’s tools) /
+		Conditional Expertise: History - origin of stonework /
 		Plain Text: Duergar Magic. When you reach 3rd level, you can cast the enlarge/reduce spell on yourself once with this trait, using only the spell's enlarge option. When you reach 5th level, you can cast the invisibility spell on yourself once with this trait. You don't need material components for either spell, and you can't cast them while you're in direct sunlight, although sunlight has no effect on them once cast. /
 		Plain Text: Sunlight Sensitivity. You have disadvantage on attack rolls and on Wisdom (Perception) checks that rely on sight when you, the target of your attack, or whatever you are trying to perceive is in direct sunlight.
 		</item>
@@ -237,7 +239,7 @@
 		Languages: Common, Elvish, Choice /
 		Darkvision: 60 /
 		Skill Proficiencies: Perception /
-		Cantrips: (Int) Choice (Wizard) /
+		Cantrips: Int - Choice (Wizard) /
 		Advantages/Immunities: Charm advantage, Sleep immune /
 		Weapon Proficiencies: longsword, shortsword, shortbow, longbow /
 		Plain Text: Trance. Elves don’t need to sleep. Instead, they meditate deeply, remaining semiconscious, for 4 hours a day. While meditating, you can dream after a fashion; such dreams are actually mental exercises that have become reflexive through years of practice. After resting in this way, you gain the same benefit that a human does from 8 hours of sleep.
@@ -265,8 +267,8 @@
 		Languages: Common, Elvish, Undercommon /
 		Darkvision: 120 /
 		Skill Proficiencies: Perception /
-		Cantrips: (Cha) Dancing Lights /
-		Spells: (Cha) (LR), Faerie Fire (3), Darkness (5) /
+		Cantrips: Cha - Dancing Lights /
+		Spells: (Cha) (LR), Faerie Fire-3, Darkness-5 /
 		Advantages/Immunities: Charm advantage, Sleep immune /
 		Weapon Proficiencies: rapiers, shortswords, hand crossbows /
 		Plain Text: Trance. Elves don’t need to sleep. Instead, they meditate deeply, remaining semiconscious, for 4 hours a day. While meditating, you can dream after a fashion; such dreams are actually mental exercises that have become reflexive through years of practice. After resting in this way, you gain the same benefit that a human does from 8 hours of sleep. /
@@ -278,7 +280,7 @@
 		Age: 50-700 /
 		Size: Medium /
 		Speed: 30 /
-		Languages: Common, , Elvish /
+		Languages: Common, Elvish /
 		Darkvision: 60 /
 		Skill Proficiencies: Perception /
 		Advantages/Immunities: Charm advantage, Sleep immune /
@@ -328,7 +330,7 @@
 		Speed: 30 /
 		Languages: Common, Elvish, Giant /
 		Darkvision: 60 /
-		Spells: (Wis) (SR), Detect Magic (1), Disguise Self (1) /
+		Spells: (Wis) (SR), Detect Magic-1, Disguise Self-1 /
 		Powerful Build: Large /
 		Plain Text: Firbolg Magic. When you cast disguise self with this trait, you can seem up to 3 feet shorter than normal, allowing you to more easily blend in with humans and elves. /
 		Plain Text: Hidden Step. As a bonus action, you can magically turn invisible until the start of your next turn or until you attack, make a damage roll, or force someone to make a saving throw. Once you use this trait, you can't use it again until you finish a short or long rest. /
@@ -344,7 +346,7 @@
 		Speed: 30 /
 		Languages: Common, Primordial /
 		Darkvision: 0 /
-		Spells: (Con) (LR), Levitate (1) /
+		Spells: (Con) (LR), Levitate-1 /
 		Plain Text: Unending Breath. You can hold your breath indefinitely while you’re not incapacitated.
 		</item>
 		<item>
@@ -355,7 +357,7 @@
 		Speed: 30 /
 		Languages: Common, Primordial /
 		Darkvision: 0 /
-		Spells: (Con) (LR), Pass Without Trace (1) /
+		Spells: (Con) (LR), Pass Without Trace-1 /
 		Plain Text: Earth Walk. You can move across difficult terrain made of earth or stone without expending extra movement.
 		</item>
 		<item>
@@ -366,8 +368,8 @@
 		Speed: 30 /
 		Languages: Common, Primordial /
 		Darkvision: 60 /
-		Cantrips: (Con) Produce Flames /
-		Spells: (Con) (LR), Burning Hands (3) /
+		Cantrips: Con - Produce Flames /
+		Spells: (Con) (LR), Burning Hands-3 /
 		Damage Resistances: Fire 50% /
 		Plain Text: Darkvision. Your ties to the Elemental Plane of Fire make your darkvision unusual: everything you see in darkness is in a shade of red.
 		</item>
@@ -380,8 +382,8 @@
 		Languages: Common, Primordial /
 		Darkvision: 0 /
 		Additional Movement Types: Swim 30 /
-		Cantrips: (Con) Shape Water /
-		Spells: (Con) (LR), Create or Destroy Water (3) /
+		Cantrips: Con - Shape Water /
+		Spells: (Con) (LR), Create or Destroy Water-3 /
 		Damage Resistances: Acid 50% /
 		Plain Text: Amphibious. You can breathe air and water.
 		</item>
@@ -395,10 +397,10 @@
 		Languages: Common, Gith, Choice /
 		Darkvision: 0 /
 		Skill Proficiencies: Choice (Any) /
-		Cantrips: (Int) Mage Hand /
-		Spells: (Int) (LR), Jump (3), Misty Step (5) /
+		Cantrips: Int - Mage Hand /
+		Spells: (Int) (LR), Jump-3, Misty Step-5 /
 		Weapon Proficiencies: shortswords, longswords, greatswords /
-		Tool Proficiencies: light armor, medium armor
+		Armor Proficiencies: light armor, medium armor
 		</item>
 		<item>
 		Githzerai /
@@ -408,8 +410,8 @@
 		Speed: 30 /
 		Languages: Common, Gith /
 		Darkvision: 0 /
-		Cantrips: (Int) Mage Hand /
-		Spells: (Int) (LR), Shield (3), Detect Thoughts (5) /
+		Cantrips: Int - Mage Hand /
+		Spells: (Int) (LR), Shield-3, Detect Thoughts-5 /
 		Advantages/Immunities: Charm advantage, Fright advantage
 		</item>
 		<item>
@@ -421,8 +423,8 @@
 		Speed: 25 /
 		Languages: Common, Gnomish /
 		Darkvision: 60 /
-		Cantrips: Minor Illusion (Int) /
-		Advantages/Immunities: Int (magic), Wis (magic), Cha (magic) /
+		Cantrips: Int - Minor Illusion /
+		Advantages/Immunities: Magic(Int-Wis-Cha) advantage /
 		Plain Text: Speak with Small Beasts. Through sounds and gestures, you can communicate simple ideas with Small or smaller beasts. Forest gnomes love animals and often keep squirrels, badgers, rabbits, moles, woodpeckers, and other creatures as beloved pets.
 		</item>
 		<item>
@@ -433,9 +435,9 @@
 		Speed: 25 /
 		Languages: Common, Gnomish /
 		Darkvision: 60 /
-		Advantages/Immunities: Int (magic), Wis (magic), Cha (magic) /
-		Tool Proficiencies: tinker’s tools /
-		Conditional Expertise: History (magic items, alchemical objects, technological devices) /
+		Advantages/Immunities: Magic(Int-Wis-Cha) advantage /
+		Tool Proficiencies: tinker\’s tools /
+		Conditional Expertise: History - magic items, alchemical objects, and technological devices /
 		Plain Text: Tinker. Using tinker\'s tools, you can spend 1 hour and 10 gp worth of materials to construct a Tiny clockwork device (AC 5, 1 hp). The device ceases to function after 24 hours (unless you spend 1 hour repairing it to keep the device functioning), or when you use your action to dismantle it; at that time, you can reclaim the materials used to create it. You can have up to three such devices active at a time. When you create a device, choose one of the following options:
 			\n\tClockwork Toy. This toy is a clockwork animal, monster, or person, such as a frog, mouse, bird, dragon, or soldier. When placed on the ground, the toy moves 5 feet across the ground on each of your turns in a random direction. It makes noises as appropriate to the creature it represents.
 			\n\tFire Starter. The device produces a miniature flame, which you can use to light a candle, torch, or campfire. Using the device requires your action.
@@ -449,7 +451,7 @@
 		Speed: 25 /
 		Languages: Common, Gnomish, Undercommon /
 		Darkvision: 120 /
-		Advantages/Immunities: Int (magic), Wis (magic), Cha (magic) /
+		Advantages/Immunities: Magic(Int-Wis-Cha) advantage /
 		Plain Text: Stone Camouflage. You have advantage on Dexterity (Stealth) checks to hide in rocky terrain and underground.
 		</item>
 		<item>
@@ -487,7 +489,7 @@
 		Languages: Common, Goblin /
 		Darkvision: 60 /
 		Weapon Proficiencies: Choice (martial), Choice (martial) /
-		Tool Proficiencies: light armor /
+		Armor Proficiencies: light armor /
 		Plain Text: Saving Face. Hobgoblins are careful not to show weakness in front of their allies, for fear of losing status. If you miss with an attack roll or fail an ability check or a saving throw, you can gain a bonus to the roll equal to the number of allies you can see within 30 feet of you (maximum bonus of +5). Once you use this trait, you can't use it again until you finish a short or long rest.
 		</item>
 		<item>
@@ -594,7 +596,7 @@
 		Darkvision: 0 /
 		Additional Movement Types: Swim 30 /
 		Skill Proficiencies: Choice (Animal Handling, Nature, Perception, Stealth, Survival), Choice (Animal Handling, Nature, Perception, Stealth, Survival) /
-		Attacks: Bite, 5, melee, 1d6+Str, Piercing, DC:no, Str /
+		Attacks: Bite, 5, melee, 1d6+, Piercing, DC:no, Str /
 		Natural	Armor: 13 /
 		Plain Text: Cunning Artisan. As part of a short rest, you can harvest bone and hide from a slain beast, construct, dragon, monstrosity, or plant creature of size Small or larger to create one of the following items: a shield, a club, a javelin, or ld4 darts or blowgun needles. To use this trait, you need a blade, such as a dagger, or appropriate artisan's tools, such as leatherworker's tools. /
 		Plain Text: Hold Breath. You can hold your breath for up to 15 minutes at a time. /
@@ -625,7 +627,7 @@
 		Darkvision: 60 /
 		Skill Proficiencies: Perception; Stealth /
 		Additional Movement Types: Climb 20 /
-		Attacks: Claws, 5, melee,  1d4+Str, Slashing, DC:no, Str /
+		Attacks: Claws, 5, melee, 1d4+, Slashing, DC:no, Str /
 		Feline Agility. Your reflexes and agility allow you to move with a burst of speed. When you move on your turn in combat, you can double your speed until the end of the turn. Once you use this trait, you can't use it again until you move O feet on one of your turns.
 		</item>
 		<item>
@@ -637,8 +639,8 @@
 		Speed: 30 /
 		Languages: Common, Infernal /
 		Darkvision: 60 /
-		Cantrips: (Cha) Thaumaturgy /
-		Spells: (Cha) (LR), Hellish Rebuke (3), Darkness (5) /
+		Cantrips: Cha - Thaumaturgy /
+		Spells: (Cha) (LR), Hellish Rebuke-3, Darkness-5 /
 		Damage Resistances: Fire 50%
 		</item>
 		<item>
@@ -651,8 +653,8 @@
 		Languages: Common, Primordial /
 		Darkvision: 0 /
 		Additional Movement Types: Swim 30 /
-		Spells: (Cha) (LR), Fog Cloud (1), Gust of Wind (3), Wall of Water (5) /
-		Damage Resistances: Cold /
+		Spells: (Cha) (LR), Fog Cloud-1, Gust of Wind-3, Wall of Water-5 /
+		Damage Resistances: Cold 50% /
 		Plain Text: Amphibious. You can breathe air and water. /
 		Plain Text: Emissary of the Sea. Aquatic beasts have an extraordinary affinity with your people. You can communicate simple ideas with beasts that can breathe water. They can understand the meaning of your words, though you have no special ability to understand them in return. /
 		Plain Text: Guardians of the Depths. You ignore any of the drawbacks caused by a deep, underwater environment.
@@ -666,9 +668,9 @@
 		Speed: 30 /
 		Languages: Common, Abyssal, Draconic /
 		Darkvision: 60 /
-		Cantrips: (Cha) Poison Spray /
-		Spells: (Cha) (LR), Suggestion (3) /
-		Damage Resistances: Poison 50 % /
+		Cantrips: Cha - Poison Spray /
+		Spells: (Cha) (LR), Suggestion-3 /
+		Damage Resistances: Poison 50% /
 		Advantages/Immunities: Magic advantage, Poison immune /
 		Plain Text: Innate Spellcasting. You can cast Animal Friendship an unlimited number of times with this trait, but you can target only snakes with it.
 		</item>

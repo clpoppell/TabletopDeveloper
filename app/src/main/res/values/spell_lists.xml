@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+	<string-array name="spell_lists">
+		<!-- Wizard -->
+		<item>
+		<!-- Wizard Cantrips -->
+		Wizard Cantrips -
+			Acid Splash,
+			Blade Ward,
+			Booming Blade,
+			Chill Touch,
+			Control Flames,
+			Create Bonfire,
+			Dancing Lights,
+			Fire Bolt,
+			Friends,
+			Frostbite,
+			Green-Flame Blade,
+			Gust,
+			Infestation,
+			Light,
+			Lightning Lure,
+			Mage Hand,
+			Mending,
+			Message,
+			Minor Illusion,
+			Mold Earth,
+			Poison Spray,
+			Prestidigitation,
+			Ray of Frost,
+			Shape Water,
+			Shocking Grasp,
+			Sword Burst,
+			Thunderclap,
+			Toll the Dead,
+			True Strike
+		</item>
+		<item>
+		<!-- Wizard Spells -->
+		Wizard 1st -
+			Alarm,
+			Burning Hands
+		</item>
+
+
+
+
+	</string-array>
+</resources>

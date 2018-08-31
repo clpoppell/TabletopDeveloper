@@ -28,8 +28,17 @@
 	</string-array>
 
 	<string-array name="class_list">
+		<item>Barbarian</item>
+		<item>Bard</item>
+		<item>Cleric</item>
+		<item>Druid</item>
 		<item>Fighter # Champion # Battle Master # Eldritch Knight</item>
+		<item>Monk</item>
+		<item>Paladin</item>
+		<item>Ranger</item>
 		<item>Rogue # Thief # Assassin # Arcane Trickster</item>
+		<item>Sorcerer</item>
+		<item>Warlock</item>
 		<item>Wizard # Abjurer # Conjurer # Diviner # Enchanter # Evoker # Illusionist # Necromancer # Transmuter</item>
 	</string-array>
 

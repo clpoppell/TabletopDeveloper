@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string-array name="class_equipment_lists">
+		<item>
+			<!-- Barbarian -->
+			Barbarian /
+			PACK: explorer\'s pack /
+			ARMOR: none /
+			WEAPON: greataxe (or) weapon-martial-melee #
+			WEAPON: #two handaxe (or) weapon-simple #
+			WEAPON: #four javelin /
+			TOOL: none
+		</item>
+		<item>
+			<!-- Bard -->
+			Bard /
+			PACK: diplomat\'s pack (or) entertainer\'s pack /
+			ARMOR: leather armor /
+			WEAPON: rapier (or) longsword (or) weapon-simple #
+			WEAPON: dagger /
+			TOOL: #3 instrument
+		</item>
+		<item>
+			<!-- Cleric -->
+			Cleric /
+			PACK: priest\'s pack (or) explorer\'s pack /
+			ARMOR: scale mail, shield (or) leather armor, shield (or) chain mail, shield (proficiency) /
+			WEAPON: mace (or) warhammer (proficiency) #
+			WEAPON: weapon-simple /
+			TOOL: holy symbol
+		</item>
+		<item>
+			<!-- Druid -->
+			Druid /
+			PACK: explorer\'s pack /
+			ARMOR: leather armor /
+			WEAPON: scimitar (or) weapon-simple-melee #
+			WEAPON: wooden shield (or) weapon-simple /
+			TOOL: druidic focus
+		</item>
+		<item>
+			<!-- Fighter -->
+			Fighter /
+			PACK: dungeoneer\'s pack (or) explorer\'s pack /
+			ARMOR: chain mail (or) leather armor, longbow /
+			WEAPON: weapon-martial, shield (or) #two martial-weapons #
+			WEAPON: light crossbow (or) #two handaxes /
+			TOOL: none
+		</item>
+		<item>
+			<!-- Monk -->
+			Monk /
+			PACK: dungeoneer\'s pack (or) explorer\'s pack /
+			ARMOR: none /
+			WEAPON: shortsword (or) weapon-simple #
+			WEAPON: #10 dart /
+			TOOL: none
+		</item>
+		<item>
+			<!-- Paladin -->
+			Paladin /
+			PACK: priest\'s pack (or) explorer\'s pack /
+			ARMOR: chain mail /
+			WEAPON: weapon-martial, shield (or) #two weapon-martial #
+			WEAPON: #five javelins (or) weapon-simple-melee /
+			TOOL: holy symbol
+		</item>
+		<item>
+			<!-- Ranger -->
+			Ranger /
+			PACK: dungeoneer\'s pack (or) explorer\'s pack /
+			ARMOR: scale mail (or) leather armor /
+			WEAPON: #two shortswords (or) #two weapon-simple-melee #
+			WEAPON: longbow /
+			TOOL: none
+		</item>
+		<item>
+			<!-- Rogue -->
+			Rogue /
+			PACK: burglar\'s pack (or) dungeoneer\'s pack (or) explorer\'s pack /
+			ARMOR: leather armor /
+			WEAPON: rapier (or) shortsword #
+			WEAPON: shortbow (or) shortsword #
+			WEAPON: #two dagger /
+			TOOL: thieves\' tools
+		</item>
+		<item>
+			<!-- Sorcerer -->
+			Sorcerer /
+			PACK: dungeoneer\'s pack (or) explorer\'s pack /
+			ARMOR: none /
+			WEAPON: weapon-simple #
+			WEAPON: #two dagger /
+			TOOL: component pouch (or) arcane focus
+		</item>
+		<item>
+			<!-- Warlock -->
+			Warlock /
+			PACK: scholar\'s pack (or) dungeoneer\'s pack /
+			ARMOR: leather armor /
+			WEAPON: weapon-simple #
+			WEAPON: weapon-simple, #two dagger /
+			TOOL: component pouch (or) arcane focus
+		</item>
+		<item>
+			<!-- Wizard -->
+			Wizard /
+			PACK: scholar\'s pack (or) explorer\'s pack /
+			ARMOR: none /
+			WEAPON: quarterstaff (or) dagger /
+			TOOL: component pouch and a spellbook (or) arcane focus and a spellbook
+		</item>
+	</string-array>
+</resources>

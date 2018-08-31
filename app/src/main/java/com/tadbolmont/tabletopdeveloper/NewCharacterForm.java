@@ -1,9 +1,8 @@
 package com.tadbolmont.tabletopdeveloper;
 
 import android.content.Intent;
-import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -14,12 +13,20 @@ import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.google.common.base.Joiner;
+
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+
+import tabletop_5e_character_design.CharacterAttack;
+import tabletop_5e_character_design.CharacterClass;
+import tabletop_5e_character_design.CharacterRace;
+import tabletop_5e_character_design.CharacterSpell;
+import tabletop_5e_character_design.RacialSpellList;
 
 public class NewCharacterForm extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
 	
@@ -33,6 +40,8 @@ public class NewCharacterForm extends AppCompatActivity implements AdapterView.O
 	private Spinner featSpinner;
 	private Spinner weaponSpinner1;
 	private Spinner weaponSpinner2;
+	private Spinner toolSpinner;
+	private Spinner cantripSpinner;
 	private Spinner languageSpinner;
 	private Spinner classSpinner;
 	private Spinner levelSpinner;
@@ -48,6 +57,8 @@ public class NewCharacterForm extends AppCompatActivity implements AdapterView.O
 	private ArrayList<String> languageExclusions;
 	private ArrayList<String> charSkills= new ArrayList<>();
 	
+	private CharacterRace subRaceInfo;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState){
 		setTheme(R.style.AppTheme);
@@ -61,7 +72,7 @@ public class NewCharacterForm extends AppCompatActivity implements AdapterView.O
 		createLevelSpinner();
 	}
 	
-	//Populates Race Spinner
+	//region Set-Up Methods
 	private void createRaceSpinner(){
 		raceSpinner= findViewById(R.id.race_spinner);
 		//Create an ArrayAdapter
@@ -81,7 +92,6 @@ public class NewCharacterForm extends AppCompatActivity implements AdapterView.O
 		raceSpinner.setOnItemSelectedListener(this);
 	}
 	
-	//Populates Class Spinner
 	private void createClassSpinner(){
 		classSpinner= findViewById(R.id.class_spinner);
 		classSpinner.setOnItemSelectedListener(this);
@@ -103,8 +113,9 @@ public class NewCharacterForm extends AppCompatActivity implements AdapterView.O
 			public void onItemSelected(AdapterView<?> adapterView, View view, int in, long l){
 				final TextView classTest= findViewById(R.id.testing2);
 				int index= classSpinner.getSelectedItemPosition();
-				classTest.setText(classList[index]);
-				
+				String[] key= classList[index].split(" # ");
+				CharacterClass testClass= GameInfo.getClass(key[0]);
+				classTest.setText(testClass.toString());
 				
 				//Creates radio buttons for class archetype selection
 				RadioGroup archetypeSelection= findViewById(R.id.archetype);
@@ -116,7 +127,7 @@ public class NewCharacterForm extends AppCompatActivity implements AdapterView.O
 					@Override
 					public void onCheckedChanged(RadioGroup group, int checkedId){
 						RadioButton rb= group.findViewById(checkedId);
-						classTest.setText(rb.getText());
+						//classTest.setText(rb.getText());
 					}
 				});
 				
@@ -135,7 +146,6 @@ public class NewCharacterForm extends AppCompatActivity implements AdapterView.O
 		});
 	}
 	
-	//Populates Level Spinner
 	private void createLevelSpinner(){
 		levelSpinner= findViewById(R.id.level_spinner);
 		levelSpinner.setOnItemSelectedListener(this);
@@ -147,7 +157,6 @@ public class NewCharacterForm extends AppCompatActivity implements AdapterView.O
 		levelSpinner.setAdapter(levelAdapter);
 	}
 	
-	//region Set-Up Methods
 	private void asiSelectionSetup(){
 		findViewById(R.id.asi_select_spinner1).setVisibility(Spinner.VISIBLE);
 		findViewById(R.id.asi_select_mod_textView1).setVisibility(TextView.VISIBLE);
@@ -172,16 +181,33 @@ public class NewCharacterForm extends AppCompatActivity implements AdapterView.O
 		asiSpinner1.setOnItemSelectedListener(this);
 	}
 	
+	private void physFeaturesSetup(){
+		TextView physFeaturesTextView= findViewById(R.id.physical_features_textView);
+		CharacterRace charRace= GameInfo.getRace(subRaceName);
+		
+		StringBuilder s= new StringBuilder("Size: ").append(charRace.getSize()).append("\n");
+		s.append("Speed: ").append(charRace.getSpeed()).append(" ft.");
+		
+		String additionalMovement= charRace.getAdditionalMovementTypes();
+		if(additionalMovement != null){ s.append(", ").append(additionalMovement).append(" ft."); }
+		
+		int darkvision= charRace.getDarkvisionRange();
+		if(darkvision > 0){ s.append("\n").append("Darkvision: ").append(darkvision).append(" ft."); }
+		
+		physFeaturesTextView.setText(s);
+	}
+	
 	private void skillSelectionSetup(){
-		String[] skills= CharacterInfo.getRace(subRaceName).getRacialSkills();
+		String[] skills= GameInfo.getRace(subRaceName).getRacialSkills();
 		int numSkillSelection= 0;
 		String s= "Racial Skills: ";
 		if(skills != null){
 			findViewById(R.id.skill_layout).setVisibility(LinearLayout.VISIBLE);
-			for(int i= 0; i < skills.length; i++){
-				if(CharacterRace.isSkillSelection(skills[i])){ numSkillSelection++; }
-				else{
-					s += skills[i] + ", ";
+			for(String skill : skills){
+				if(CharacterRace.isSkillSelection(skill)){
+					numSkillSelection++;
+				} else{
+					s += skill + ", ";
 				}
 			}
 			
@@ -210,6 +236,17 @@ public class NewCharacterForm extends AppCompatActivity implements AdapterView.O
 		}
 	}
 	
+	private List<String> createSkillList(String s){
+		if(s.equals("(Any)")){
+			Map<String, String> skillMap= GameInfo.getSkillMap();
+			return new ArrayList<>(skillMap.keySet());
+		}
+		else{
+			String skillChoices= s.substring(1, s.length() - 1);
+			return new ArrayList<>(Arrays.asList(skillChoices.split(", ")));
+		}
+	}
+	
 	private void featSelectionSetup(){
 		findViewById(R.id.feat_selection_layout).setVisibility(LinearLayout.VISIBLE);
 		
@@ -224,15 +261,15 @@ public class NewCharacterForm extends AppCompatActivity implements AdapterView.O
 	}
 	
 	private void weaponSelectionSetup(){
-		String[] weaponProficiencies= CharacterInfo.getRace(subRaceName).getRacialWeaponTraining();
+		String[] weaponProficiencies= subRaceInfo.getRacialWeaponTraining();
 		String s= "Weapons: ";
 		if(weaponProficiencies != null){
 			findViewById(R.id.weapon_proficiency_layout).setVisibility(LinearLayout.VISIBLE);
-			if(CharacterInfo.getRace(subRaceName).hasWeaponChoice()){
+			if(subRaceInfo.hasWeaponChoice()){
 				weaponSpinner1= findViewById(R.id.weapon_select_spinner1);
 				weaponSpinner1.setVisibility(Spinner.VISIBLE);
 				//Create an ArrayAdapter
-				String[] weaponList= CharacterInfo.getMartialWeapons();
+				String[] weaponList= GameInfo.getMartialWeapons();
 				final ArrayAdapter<String> weaponAdapter1= new ArrayAdapter<>(this, R.layout.spinner_item, weaponList);
 				//Specify the layout to use when the list of choices appears
 				weaponAdapter1.setDropDownViewResource(R.layout.spinner_item_bg);
@@ -250,6 +287,115 @@ public class NewCharacterForm extends AppCompatActivity implements AdapterView.O
 		weaponTextView1.setText(s);
 	}
 	
+	private void toolSelectionSetup(){
+		String[] toolProficiencies= subRaceInfo.getRacialToolTraining();
+		String s= "Tools: ";
+		if(toolProficiencies != null){
+			findViewById(R.id.tool_selection_layout).setVisibility(LinearLayout.VISIBLE);
+			for(String tool : toolProficiencies){
+				if(CharacterRace.isToolChoice(tool)){
+					s += ",";
+					toolSpinner= findViewById(R.id.tool_select_spinner);
+					toolSpinner.setVisibility(Spinner.VISIBLE);
+					//Create an ArrayAdapter
+					String choiceString= tool.substring(tool.indexOf("(") + 1, tool.indexOf(")"));
+					String [] toolList= choiceString.split(" - ");
+					final ArrayAdapter<String> toolAdapter= new ArrayAdapter<>(this, R.layout.spinner_item, toolList);
+					//Specify the layout to use when the list of choices appears
+					toolAdapter.setDropDownViewResource(R.layout.spinner_item_bg);
+					//Apply the statAdapter to the spinner
+					toolSpinner.setAdapter(toolAdapter);
+					//Sets the item selection listener
+					toolSpinner.setOnItemSelectedListener(this);
+				}
+				else{ s += tool + ", "; }
+			}
+			TextView toolTextView= findViewById(R.id.tool_select_textView);
+			toolTextView.setText(s.substring(0, s.lastIndexOf(",")));
+		}
+	}
+	
+	private void cantripSelectionSetup(){
+		CharacterRace charRace= GameInfo.getRace(subRaceName);
+		CharacterSpell cantrip= charRace.getRacialCantrip();
+		String s= "Cantrip: ";
+		
+		if(cantrip != null){
+			findViewById(R.id.cantrip_layout).setVisibility(LinearLayout.VISIBLE);
+			if(charRace.hasCantripChoice()){
+				String key= cantrip.spellName.substring(cantrip.spellName.indexOf("(") + 1, cantrip.spellName.indexOf(")"));
+				String[] cantrips= GameInfo.getSpellList(key + " Cantrips");
+				
+				TextView cantripTextView2= findViewById(R.id.cantrip_textView2);
+				cantripTextView2.setVisibility(TextView.VISIBLE);
+				String cantripStat= " (" + charRace.getRacialCantrip().statUsed + ")";
+				cantripTextView2.setText(cantripStat);
+				
+				cantripSpinner= findViewById(R.id.cantrip_select_spinner);
+				cantripSpinner.setVisibility(Spinner.VISIBLE);
+				//Create an ArrayAdapter;
+				ArrayAdapter<String> cantripAdapter= new ArrayAdapter<>(this, R.layout.spinner_item, cantrips);
+				//Specify the layout to use when the list of choices appears
+				cantripAdapter.setDropDownViewResource(R.layout.spinner_item_bg);
+				//Apply the statAdapter to the spinner
+				cantripSpinner.setAdapter(cantripAdapter);
+			}
+			else{
+				s += cantrip.spellName + " (" + cantrip.statUsed + ")";
+			}
+			TextView cantripTextView= findViewById(R.id.cantrip_textView);
+			cantripTextView.setText(s);
+		}
+	}
+	
+	private void spellInfoSetup(){
+		TextView racialSpellTextView= findViewById(R.id.racial_spell_textView);
+		RacialSpellList racialSpells= GameInfo.getRace(subRaceName).getRacialSpellList();
+		if(racialSpells != null){
+			StringBuilder s= new StringBuilder("Racial Spells: ");
+			for(CharacterSpell spell : racialSpells.getSpellList()){
+				s.append(spell.spellName).append(" - Level ").append(spell.levelGained).append("\n\t");
+			}
+			s.append("Regain: ").append(racialSpells.restRegain).append(", Casting Stat: ").append(racialSpells.getSpellList().get(0).statUsed);
+			racialSpellTextView.setVisibility(TextView.VISIBLE);
+			racialSpellTextView.setText(s);
+		}
+	}
+	
+	private void otherInfoSetup(){
+		TextView otherInfoTextView= findViewById(R.id.race_info_display);
+		StringBuilder s= new StringBuilder("");
+		
+		ArrayList<DamageResistance> resisList= subRaceInfo.getRacialDamageResistances();
+		if(resisList != null){
+			for(DamageResistance r : resisList){ s.append(r.damageType).append(" resistance, "); }
+			s.deleteCharAt(s.lastIndexOf(","));
+			s.append("\n");
+		}
+		
+		ArrayList<ConditionDefense> defenseList= subRaceInfo.getRacialDefenses();
+		if(defenseList != null){
+			s.append(Joiner.on(", ").join(defenseList));
+			s.append("\n");
+		}
+		
+		String conditionalExpertise= subRaceInfo.getRacialConditionalExpertise();
+		if(conditionalExpertise != null){
+			String[] conditional= conditionalExpertise.split(" - ");
+			s.append("Expertise on ").append(conditional[0]).append(" checks related to ").append(conditional[1]);
+			s.append("\n");
+		}
+		
+		ArrayList<String> plainTextFeatureList= subRaceInfo.getPlainTextFeatures();
+		if(plainTextFeatureList != null){ s.append(Joiner.on("\n").join(plainTextFeatureList)); }
+		else{ s.deleteCharAt(s.lastIndexOf("\n")); }
+		
+		if(s.length() > 0){
+			otherInfoTextView.setVisibility(TextView.VISIBLE);
+			otherInfoTextView.setText(s.toString().replace("-", ", "));
+		}
+	}
+	
 	private void languageSelectionSetup(){
 		languageSpinner= findViewById(R.id.language_select_spinner);
 		languageSpinner.setVisibility(LinearLayout.VISIBLE);
@@ -265,17 +411,6 @@ public class NewCharacterForm extends AppCompatActivity implements AdapterView.O
 	}
 	//endregion
 	
-	private List<String> createSkillList(String s){
-		if(s.equals("(Any)")){
-			Map<String, String> skillMap= CharacterInfo.getSkillMap();
-			return new ArrayList<>(skillMap.keySet());
-		}
-		else{
-			String skillChoices= s.substring(1, s.length() - 1);
-			return new ArrayList<>(Arrays.asList(skillChoices.split(", ")));
-		}
-	}
-	
 	public void completeCharacter(View view){
 		Intent intent= new Intent(this, CharacterDisplay.class);
 		EditText nameBox= findViewById(R.id.name_editText);
@@ -284,103 +419,45 @@ public class NewCharacterForm extends AppCompatActivity implements AdapterView.O
 		startActivity(intent);
 	}
 	
+	private void resetViewVisibility(){
+		findViewById(R.id.asi_select_spinner1).setVisibility(Spinner.GONE);
+		findViewById(R.id.asi_select_mod_textView1).setVisibility(TextView.GONE);
+		findViewById(R.id.asi_select_spinner2).setVisibility(Spinner.GONE);
+		findViewById(R.id.asi_select_mod_textView2).setVisibility(TextView.GONE);
+		
+		findViewById(R.id.skill_layout).setVisibility(LinearLayout.GONE);
+		findViewById(R.id.skill_select_spinner1).setVisibility(Spinner.GONE);
+		findViewById(R.id.skill_textView2).setVisibility(TextView.GONE);
+		findViewById(R.id.skill_select_spinner2).setVisibility(Spinner.GONE);
+		
+		findViewById(R.id.feat_selection_layout).setVisibility(LinearLayout.GONE);
+		
+		findViewById(R.id.racial_attack_textView).setVisibility(TextView.GONE);
+		
+		findViewById(R.id.weapon_proficiency_layout).setVisibility(LinearLayout.GONE);
+		findViewById(R.id.weapon_select_spinner1).setVisibility(Spinner.GONE);
+		
+		findViewById(R.id.tool_selection_layout).setVisibility(LinearLayout.GONE);
+		findViewById(R.id.tool_select_spinner).setVisibility(Spinner.GONE);
+		
+		findViewById(R.id.cantrip_layout).setVisibility(LinearLayout.GONE);
+		findViewById(R.id.cantrip_select_spinner).setVisibility(Spinner.GONE);
+		findViewById(R.id.cantrip_textView2).setVisibility(TextView.GONE);
+		
+		findViewById(R.id.racial_spell_textView).setVisibility(TextView.GONE);
+		
+		findViewById(R.id.race_info_display).setVisibility(TextView.GONE);
+		
+		findViewById(R.id.language_select_spinner).setVisibility(Spinner.GONE);
+	}
+	
+	//region onItemSelected
 	public void onItemSelected(AdapterView<?> parent, View view, int pos, long id){
 		String selection;
 		
 		switch(parent.getId()){
 			case R.id.race_spinner:
-				int index= raceSpinner.getSelectedItemPosition();
-				
-				//Creates radio buttons for subrace selection
-				RadioGroup subRaceSelection= findViewById(R.id.sub_race);
-				subRaceSelection.removeAllViews();
-				String selectedRace= raceList[index];
-				
-				String[] raceInfo= selectedRace.split(" # ");
-				
-				subRaceSelection.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener(){
-					@Override
-					public void onCheckedChanged(RadioGroup group, int checkedId){
-						RadioButton rb= group.findViewById(checkedId);
-						
-						//region Visibility Turn Off
-						findViewById(R.id.asi_select_spinner1).setVisibility(Spinner.GONE);
-						findViewById(R.id.asi_select_mod_textView1).setVisibility(TextView.GONE);
-						findViewById(R.id.asi_select_spinner2).setVisibility(Spinner.GONE);
-						findViewById(R.id.asi_select_mod_textView2).setVisibility(TextView.GONE);
-						
-						findViewById(R.id.skill_layout).setVisibility(LinearLayout.GONE);
-						findViewById(R.id.skill_select_spinner1).setVisibility(Spinner.GONE);
-						findViewById(R.id.skill_textView2).setVisibility(TextView.GONE);
-						findViewById(R.id.skill_select_spinner2).setVisibility(Spinner.GONE);
-						
-						findViewById(R.id.feat_selection_layout).setVisibility(LinearLayout.GONE);
-						
-						findViewById(R.id.weapon_proficiency_layout).setVisibility(LinearLayout.GONE);
-						findViewById(R.id.weapon_select_spinner1).setVisibility(Spinner.GONE);
-						
-						findViewById(R.id.language_select_spinner).setVisibility(Spinner.GONE);
-						//endregion
-						
-						//TESTING
-						TextView raceInfoDisplay= findViewById(R.id.race_info_display);
-						raceInfoDisplay.setText("");
-						String subRaceNameRaw= rb.getText().toString();
-						int index= subRaceNameRaw.indexOf("(");
-						subRaceName= subRaceNameRaw.substring(0, index);
-						CharacterRace subRaceInfo= CharacterInfo.getRace(subRaceName);
-						
-						raceInfoDisplay.setText(subRaceInfo.toString());
-						//TESTING
-						
-						TextView asiTextView= findViewById(R.id.asi_textView);
-						Map<String, Integer> asis= subRaceInfo.getStatMods();
-						asiExclusion= "";
-						NumberFormat plusMinusNF = new DecimalFormat("+#;-#");
-						String asiString= "ASI: ";
-						for(String s : asis.keySet()){
-							if(!s.equals("Choice")){
-								asiTextView.setVisibility(TextView.VISIBLE);
-								asiString += s + " " + plusMinusNF.format(asis.get(s)) + ", ";
-								asiExclusion= s;
-							}
-						}
-						if(subRaceInfo.hasASIChoice()){ asiSelectionSetup(); }
-						else{ asiString= asiString.substring(0, asiString.lastIndexOf(",")); }
-						asiTextView.setText(asiString);
-						
-						skillSelectionSetup();
-						
-						if(subRaceInfo.hasFeatChoice()){ featSelectionSetup(); }
-						
-						weaponSelectionSetup();
-						
-						TextView languageTextView= findViewById(R.id.language_textView);
-						String[] raceLanguages= subRaceInfo.getRacialLanguages();
-						Boolean hasChoice= false;
-						String s= "Languages: ";
-						languageExclusions= new ArrayList<>();
-						for(String language : raceLanguages){
-							if(language.equals("Choice")){ hasChoice= true; }
-							else{
-								s += language + ", ";
-								languageExclusions.add(language);
-							}
-						}
-						if(hasChoice){ languageSelectionSetup(); }
-						else{ s = s.substring(0, s.lastIndexOf(", ")); }
-						languageTextView.setText(s);
-					}
-				});
-				
-				for(int i= 1; i<raceInfo.length; i++){
-					RadioButton rb= new RadioButton(NewCharacterForm.this);
-					subRaceSelection.addView(rb);
-					rb.setText(raceInfo[i]);
-					rb.setTextColor(getResources().getColor(R.color.textColorPrimary));
-					
-					if(i == 1){ subRaceSelection.check(rb.getId()); } //sets first radio button as default
-				}
+				onRaceItemSelected();
 				break;
 			case R.id.asi_select_spinner1:
 				selection= asiSpinner1.getSelectedItem().toString();
@@ -413,7 +490,7 @@ public class NewCharacterForm extends AppCompatActivity implements AdapterView.O
 				weaponSpinner2.setVisibility(Spinner.VISIBLE);
 				findViewById(R.id.weapon_textView2).setVisibility(TextView.VISIBLE);
 				//Create an ArrayAdapter
-				ArrayList<String> weaponList2= new ArrayList<>(Arrays.asList(CharacterInfo.getMartialWeapons()));
+				ArrayList<String> weaponList2= new ArrayList<>(Arrays.asList(GameInfo.getMartialWeapons()));
 				weaponList2.remove(selection);
 				ArrayAdapter<String> weaponAdapter2= new ArrayAdapter<>(App.getContext(), R.layout.spinner_item, weaponList2);
 				//Specify the layout to use when the list of choices appears
@@ -423,6 +500,96 @@ public class NewCharacterForm extends AppCompatActivity implements AdapterView.O
 				break;
 		}
 	}
+	
+	private void onRaceItemSelected(){
+		int index= raceSpinner.getSelectedItemPosition();
+		
+		//Creates radio buttons for subrace selection
+		RadioGroup subRaceSelection= findViewById(R.id.sub_race);
+		subRaceSelection.removeAllViews();
+		String selectedRace= raceList[index];
+		
+		String[] raceInfo= selectedRace.split(" # ");
+		
+		subRaceSelection.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener(){
+			@Override
+			public void onCheckedChanged(RadioGroup group, int checkedId){
+				RadioButton rb= group.findViewById(checkedId);
+				
+				resetViewVisibility();
+				
+				String subRaceNameRaw= rb.getText().toString();
+				int index= subRaceNameRaw.indexOf("(");
+				subRaceName= subRaceNameRaw.substring(0, index);
+				subRaceInfo= GameInfo.getRace(subRaceName);
+				
+				otherInfoSetup();
+				
+				TextView asiTextView= findViewById(R.id.asi_textView);
+				Map<String, Integer> asis= subRaceInfo.getStatMods();
+				asiExclusion= "";
+				NumberFormat plusMinusNF = new DecimalFormat("+#;-#");
+				StringBuilder asiString= new StringBuilder("ASI: ");
+				for(String s : asis.keySet()){
+					if(!s.equals("Choice")){
+						asiTextView.setVisibility(TextView.VISIBLE);
+						asiString.append(s).append(" ").append(plusMinusNF.format(asis.get(s))).append(", ");
+						asiExclusion= s;
+					}
+				}
+				if(subRaceInfo.hasASIChoice()){ asiSelectionSetup(); }
+				else{ asiString.deleteCharAt(asiString.lastIndexOf(",")); }
+				asiTextView.setText(asiString);
+				
+				physFeaturesSetup();
+				
+				skillSelectionSetup();
+				
+				if(subRaceInfo.hasFeatChoice()){ featSelectionSetup(); }
+				
+				CharacterAttack racialAttack= GameInfo.getRace(subRaceName).getRacialAttack();
+				if(racialAttack != null){
+					TextView racialAttackTextView= findViewById(R.id.racial_attack_textView);
+					racialAttackTextView.setText(racialAttack.toString());
+					racialAttackTextView.setVisibility(TextView.VISIBLE);
+				}
+				
+				weaponSelectionSetup();
+				
+				toolSelectionSetup();
+				
+				cantripSelectionSetup();
+				
+				spellInfoSetup();
+				
+				TextView languageTextView= findViewById(R.id.language_textView);
+				String[] raceLanguages= subRaceInfo.getRacialLanguages();
+				Boolean hasChoice= false;
+				StringBuilder s= new StringBuilder("Languages: ");
+				languageExclusions= new ArrayList<>();
+				for(String language : raceLanguages){
+					if(language.equals("Choice")){ hasChoice= true; }
+					else{
+						s.append(language).append(", ");
+						languageExclusions.add(language);
+					}
+				}
+				if(hasChoice){ languageSelectionSetup(); }
+				else{ s.deleteCharAt(s.lastIndexOf(",")); }
+				languageTextView.setText(s);
+			}
+		});
+		
+		for(int i= 1; i<raceInfo.length; i++){
+			RadioButton rb= new RadioButton(NewCharacterForm.this);
+			subRaceSelection.addView(rb);
+			rb.setText(raceInfo[i]);
+			rb.setTextColor(getResources().getColor(R.color.textColorPrimary));
+			
+			if(i == 1){ subRaceSelection.check(rb.getId()); } //sets first radio button as default
+		}
+	}
 
 	public void onNothingSelected(AdapterView<?> parent){}
+	//endregion
 }

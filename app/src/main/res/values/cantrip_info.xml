@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<!--  -->
+	<string-array name="cantrips">
+		<item>Acid Splash # Conjuration # 1 action # VS # Concentration: no</item>
+		<item>Blade Ward # Abjuration # 1 action # VS # Concentration: no</item>
+		<item>Booming Blade # Evocation # 1 action # VM # Concentration: no</item>
+		<item>Chill Touch # Necromancy # 1 action # VS # Concentration: no</item>
+		<item>Control Flames # Transmutation # 1 action # S # Concentration: no</item>
+		<item>Create Bonfire # Conjuration # 1 action # VS # Concentration: yes</item>
+		<item>Dancing Lights # Evocation # 1 action # VSM # Concentration: yes</item>
+		<item>Druidcraft # Transmutation # 1 action # VS # Concentration: no</item>
+		<item>Eldritch Blast # Evocation # 1 action # VS # Concentration: no</item>
+		<item>Fire Bolt # Evocation # 1 action # VS # Concentration: no</item>
+		<item>Friends # Enchantment # 1 action # SM # Concentration: yes</item>
+		<item>Frostbite # Evocation # 1 action # VS # Concentration: no</item>
+		<item>Green-Flame Blade # Evocation # 1 action # VM # Concentration: no</item>
+		<item>Guidance # Divination # 1 action # VS # Concentration: yes</item>
+		<item>Gust # Transmutation # 1 action # VS # Concentration: no</item>
+		<item>Infestation # Conjuration # 1 action # VSM # Concentration: no</item>
+		<item>Light # Evocation # 1 action # VM # Concentration: no</item>
+		<item>Lightning Lure # Evocation # 1 action # V # Concentration: no</item>
+		<item>Mage Hand # Conjuration # 1 action # VS # Concentration: no</item>
+		<item>Magic Stone # Transmutation # 1 bonus action # VS # Concentration: no</item>
+		<item>Mending # Transmutation # 1 minute # VSM # Concentration: no</item>
+		<item>Message # Transmutation # 1 action # VSM # Concentration: no</item>
+		<item>Minor Illusion # Illusion # 1 action # SM # Concentration: no</item>
+		<item>Mold Earth # Transmutation # 1 action # S # Concentration: no</item>
+		<item>Poison Spray # Conjuration # 1 action # VS # Concentration: no</item>
+		<item>Prestidigitation # Transmutation # 1 action # VS # Concentration: no</item>
+		<item>Primal Savagery # Transmutation # 1 action # S # Concentration: no</item>
+		<item>Produce Flame # Conjuration # 1 action # VS # Concentration: no</item>
+		<item>Ray of Frost # Evocation # 1 action # VS # Concentration: no</item>
+		<item>Resistance # Abjuration # 1 action # VSM # Concentration: yes</item>
+		<item>Sacred Flame # Evocation # 1 action # VS # Concentration: no</item>
+		<item>Shape Water # Transmutation # 1 action # S # Concentration: no</item>
+		<item>Shillelagh # Transmutation # 1 bonus action # VSM # Concentration: no</item>
+		<item>Shocking Grasp # Evocation # 1 action # VS # Concentration: no</item>
+		<item>Spare the Dying # Necromancy # 1 action # VS # Concentration: no</item>
+		<item>Sword Burst # Conjuration # 1 action # V # Concentration: no</item>
+		<item>Thaumaturgy # Transmutation # 1 action # V # Concentration: no</item>
+		<item>Thorn Whip # Transmutation # 1 action # VSM # Concentration: no</item>
+		<item>Thunderclap # Evocation # 1 action # S # Concentration: no</item>
+		<item>Toll the Dead # Necromancy # 1 action # VS # Concentration: no</item>
+		<item>True Strike # Divination # 1 action # S # Concentration: yes</item>
+		<item>Vicious Mockery # Enchantment # 1 action # V # Concentration: no</item>
+		<item>Word of Radiance # Evocation # 1 action # VM # Concentration: no</item>
+	</string-array>
+</resources>

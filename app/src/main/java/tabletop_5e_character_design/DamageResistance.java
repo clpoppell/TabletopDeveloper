@@ -1,11 +1,11 @@
-package com.tadbolmont.tabletopdeveloper;
+package tabletop_5e_character_design;
 
 import java.text.NumberFormat;
 import java.text.ParseException;
 
 public class DamageResistance{
-	final String damageType;
-	final double resistanceLevel;
+	public final String damageType;
+	public final double resistanceLevel;
 	
 	public DamageResistance(String[] resistenceString){
 		damageType= resistenceString[0];

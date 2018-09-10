@@ -1,4 +1,4 @@
-package com.tadbolmont.tabletopdeveloper;
+package tabletop_5e_character_design;
 
 public class ConditionDefense{
 	final String condition;

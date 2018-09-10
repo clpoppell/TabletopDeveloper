@@ -19,7 +19,6 @@
 				<category android:name="android.intent.category.LAUNCHER" />
 			</intent-filter>
 		</activity>
-
 		<activity
 			android:name=".NewCharacterForm"
 			android:label="@string/title_activity_new_character_form"
@@ -31,7 +30,15 @@
 		</activity>
 		<activity
 			android:name=".CharacterDisplay"
-			android:label="@string/title_activity_character_display"></activity>
+			android:label="@string/title_activity_character_display" />
+		<activity
+			android:name=".CharacterFeatures"
+			android:label="@string/title_activity_character_features"
+			android:parentActivityName=".CharacterDisplay">
+			<meta-data
+				android:name="android.support.PARENT_ACTIVITY"
+				android:value="com.tadbolmont.tabletopdeveloper.CharacterDisplay" />
+		</activity>
 	</application>
 
 </manifest>

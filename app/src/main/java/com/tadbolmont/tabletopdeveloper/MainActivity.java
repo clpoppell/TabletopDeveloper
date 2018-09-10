@@ -17,4 +17,9 @@ public class MainActivity extends AppCompatActivity {
         Intent intent= new Intent(this, NewCharacterForm.class);
         startActivity(intent);
     }
+    
+    public void loadCharacter(View view){
+    	//Intent intent= new Intent(this, CharcterSheetDisplay.class);
+        //startActivity(intent);
+    }
 }

@@ -158,7 +158,7 @@
 
 		<!-- Skilss -->
 		<LinearLayout
-			android:id="@+id/skill_layout"
+			android:id="@+id/race_skill_layout"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:layout_gravity="center_vertical"
@@ -382,6 +382,7 @@
 			android:textSize="16sp" />
 
 		<!-- Languages -->
+
 		<LinearLayout
 			android:id="@+id/language_layout"
 			android:layout_width="wrap_content"
@@ -441,17 +442,25 @@
 				android:textColor="@color/textColorPrimary" />
 		</LinearLayout>
 
-		<TextView
-			android:id="@+id/testing2"
-			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
-			android:textColor="@color/textColorPrimary"
-			android:visibility="visible" />
-
 		<RadioGroup
 			android:id="@+id/archetype"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
+			android:visibility="visible" >
+
+		</RadioGroup>
+
+		<LinearLayout
+			android:id="@+id/class_skill_layout"
+			android:layout_width="wrap_content"
+			android:layout_height="match_parent"
+			android:orientation="vertical"></LinearLayout>
+
+		<TextView
+			android:id="@+id/testing2"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:textColor="@color/textColorPrimary"
 			android:visibility="visible" />
 
 		<LinearLayout

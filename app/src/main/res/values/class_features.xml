@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<!--
+		! = Separation between values that change over time
+		# = Separation between choice values
+		, = Separation between conditions and simultaneous values
+	-->
+	<string-array name="class_features">
+		<!-- Rage -->
+		<item>
+			Name: Rage /
+			ParentFeature: none /
+			Type: Usable /
+			Values: 1:2 ! 3:3 ! 6:4 ! 12:5 ! 17:6 ! 20:-1 /
+			ActionToUse: Bonus /
+			Condition: HeavyArmor /
+			Desc: In battle, you fight with primal ferocity. On your turn, you can enter a rage as a bonus action. While raging, you gain the following benefits if you aren’t wearing heavy armor:
+			\n\t• You have advantage on Strength checks and Strength saving throws.
+			\n\t• When you make a melee weapon attack using Strength, you gain a bonus to the damage roll that increases as you gain levels as a barbarian, as shown in the Rage Damage column of the Barbarian table.
+			\n\t• You have resistance to bludgeoning, piercing, and slashing damage.
+			If you are able to cast spells, you can’t cast them or concentrate on them while raging. Your rage lasts for 1 minute. It ends early if you are knocked unconscious or if your turn ends and you haven’t attacked a hostile creature since your last turn or taken damage since then. You can also end your rage on your turn as a bonus action. Once you have raged the number of times shown for your barbarian level in the Rages column of the Barbarian table, you must finish a long rest before you can rage again.
+		</item>
+		<item>
+			Name: (Rage advantage) /
+			ParentFeature: Rage /
+			Type: Advantage /
+			Values: Ability Checks (Str), Saving Throws (Str) /
+			Desc: ""
+		</item>
+		<item>
+			Name: (Rage increase) /
+			ParentFeature: Rage /
+			Type: Increase /
+			Values: 1:2 ! 9:3 ! 16:4 /
+			ValueModified: Damage /
+			Condition: Str /
+			Desc: ""
+		</item>
+		<item>
+			Name: (Rage resistance) /
+			ParentFeature: Rage /
+			Type: Resistance /
+			Values: Bludgeoning, Piercing, Slashing /
+			Desc: ""
+		</item>
+		<!-- Unarmored Defense (Barbarian) -->
+		<item>
+			Name: Unarmored Defense (Barbarian) /
+			ParentFeature: none /
+			Type: Set Value /
+			Values: 10 + @Dex + @Con /
+			ValueSet: AC /
+			Condition: LightArmor, MedArmor, HeavyArmor /
+			Desc: While you are not wearing any armor, your Armor Class equals 10 + your Dexterity modifier + your Constitution modifier. You can use a shield and still gain this benefit.
+		</item>
+		<!-- Danger Sense -->
+		<item>
+			Name: Danger Sense /
+			ParentFeature: none /
+			Type: Advantage /
+			Values: Saving Throws (Dex) /
+			Condition: Blinded, Deafened, or Incapacitated /
+			Desc: At 2nd level, you gain an uncanny sense of when things nearby aren’t as they should be, giving you an edge when you dodge away from danger.
+			\n\tYou have advantage on Dexterity saving throws against effects that you can see, such as traps and spells. To gain this benefit, you can’t be blinded, deafened, or incapacitated.
+		</item>
+		<!-- Extra Attack (Barbarian) -->
+		<item>
+			Name: Extra Attack (Barbarian) /
+			Type: Increase /
+			Values: 1 /
+			ValueModified: Attack Number /
+			Desc: Beginning at 5th level, you can attack twice, instead of once, whenever you take the Attack action on your turn.
+		</item>
+		<!-- Fast Movement -->
+		<item>
+			Name: Fast Movement /
+			Type: Increase /
+			Values: 10 /
+			ValueModified: Speed /
+			Condition: HeavyArmor /
+			Desc: Starting at 5th level, your speed increases by 10 feet while you aren’t wearing heavy armor.
+		</item>
+		<!-- Spirit Seeker -->
+		<item>
+			Name: Spirit Seeker /
+			ParentFeature: none /
+			Type: Gain Element /
+			Values: Beast Sense, Speak with Animals /
+			ElementGained: Ritual /
+			Desc: Yours is a path that seeks attunement with the natural world, giving you a kinship with beasts. At 3rd level when you adopt this path, you gain the ability to cast the beast sense and speak with animals spells, but only as rituals.
+		</item>
+		<!-- Mindless Rage -->
+		<item>
+			Name: Mindless Rage /
+			ParentFeature: Rage /
+			Type: Status Defense /
+			Values: Charmed, Frightened /
+			Desc: Beginning at 6th level, you can’t be charmed or frightened while raging. If you are charmed or frightened when you enter your rage, the effect is suspended for the duration of the rage.
+		</item>
+		<!--<item>
+
+		</item>-->
+		<!-- Relentless Rage -->
+		<item>
+			Name: Relentless Rage /
+			ParentFeature: Rage /
+			Type: Plain Text /
+			Desc: Starting at 11th level, your rage can keep you fighting despite grievous wounds. If you drop to 0 hit points while you’re raging and don’t die outright, you can make a DC 10 Constitution saving throw. If you succeed, you drop to 1 hit point instead.
+			\n\tEach time you use this feature after the first, the DC increases by 5. When you finish a short or long rest, the DC resets to 10.
+		</item>
+		<!-- Persistent Rage -->
+		<item>
+			Name: Persistent Rage /
+			ParentFeature: Rage /
+			Type: Plain Text /
+			Desc: Beginning at 15th level, your rage is so fierce that it ends early only if you fall unconscious or if you choose to end it.
+		</item>
+		<!-- Frenzy -->
+		<item>
+			Name: Frenzy /
+			ParentFeature: Rage /
+			Type: Usable /
+			Values: -1 /
+			ActionToUse: None /
+			Desc: Starting when you choose this path at 3rd level, you can go into a frenzy when you rage. If you do so, for the duration of your rage you can make a single melee weapon attack as a bonus action on each of your turns after this one. When your rage ends, you suffer one level of exhaustion.
+		</item>
+		<item>
+			Name: (Frenzy attack) /
+			ParentFeature: Frenzy /
+			Type: Option /
+			Values: Attack /
+			ActionToUse: Bonus /
+			Desc: ""
+		</item>
+		<!-- Totem Spirit -->
+		<item>
+			Name: Totem Spirit /
+			ParentFeature: none /
+			Type: Choice /
+			Values: Totem Spirit - Bear, Totem Spirit - Eagle, Totem Spirit - Wolf /
+			Desc: At 3rd level, when you adopt this path, you choose a totem spirit and gain its feature. You must make or acquire a physical totem object- an amulet or similar adornment—that incorporates fur or feathers, claws, teeth, or bones of the totem animal. At your option, you also gain minor physical attributes that are reminiscent of your totem spirit. For example, if you have a bear totem spirit, you might be unusually hairy and thickskinned, or if your totem is the eagle, your eyes turn bright yellow. Your totem animal might be an animal related to those listed here but m ore appropriate to your homeland. For example, you could choose a hawk or vulture in place of an eagle.
+		</item>
+		<item>
+			Name: Totem Spirit - Bear /
+			ParentFeature: Rage /
+			Type: Resistance /
+			Values: Acid, Cold, Fire, Force, Lightning, Necrotic, Radiant, Thunder /
+			Desc: \nWhile raging, you have resistance to all damage except psychic damage. The spirit of the bear makes you tough enough to stand up to any punishment.
+		</item>
+		<item>
+			Name: Totem Spirit - Eagle /
+			ParentFeature: Rage /
+			Type: Option /
+			Values: Dash /
+			Desc: \nWhile you're raging and aren’t wearing heavy armor, other creatures have disadvantage on opportunity attack rolls against you, and you can use the Dash action as a bonus action on your turn. The spirit of the eagle makes you into a predator who can weave through the fray with ease.
+		</item>
+		<item>
+			Name: Totem Spirit - Wolf /
+			ParentFeature: Rage /
+			Type: Plain Text /
+			Desc: \nWhile you're raging, your friends have advantage on melee attack rolls against any creature within 5 feet of you that is hostile to you. The spirit of the wolf makes you a leader of hunters.
+		</item>
+		<!-- Totemic Attunement -->
+		<item>
+			Name: Totemic Attunement /
+			ParentFeature: none /
+			Type: Choice /
+			Values: Totemic Attunement - Bear # Totemic Attunement - Eagle # Totemic Attunement - Wolf /
+			Desc: At 14th level, you gain a magical benefit based on a totem animal of your choice. You can choose the same animal you selected previously or a different one.
+		</item>
+		<item>
+			Name: Totemic Attunement - Bear /
+			ParentFeature: Rage /
+			Type: Plain Text /
+			Desc: \nWhile you’re raging, any creature within 5 feet of you that’s hostile to you has disadvantage on attack rolls against targets other than you or another character with this feature. An enemy is immune to this effect if it can’t see or hear you or if it can’t be frightened.
+		</item>
+		<item>
+			Name: Totemic Attunement - Eagle /
+			ParentFeature: Rage /
+			Type: Set Value /
+			Values: @Walk /
+			ValueSet: Flight /
+			Desc: \nWhile raging, you have a flying speed equal to your current walking speed. This benefit works only in short bursts; you fall if you end your turn in the air and nothing else is holding you aloft.
+		</item>
+		<item>
+			Name: Totemic Attunement - Wolf /
+			ParentFeature: Rage /
+			Type: Option /
+			Values: Trip /
+			Desc: \nWhile you’re raging, you can use a bonus action on your turn to knock a Large or smaller creature prone when you hit it with melee weapon attack.
+		</item>
+	</string-array>
+</resources>

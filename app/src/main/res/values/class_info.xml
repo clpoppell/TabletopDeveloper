@@ -3,114 +3,19 @@
 	<string-array name="class_info">
 		<item>
 			<!-- Barbarian -->
-			Barbarian /
-			HIT DICE: d12 /
-			ARMOR PROFICIENCIES: none /
-			WEAPON PROFICIENCIES:
-			TOOL PROFICIENCIES: none /
-			SAVING THROWS:
-			SKILL PROFICIENCIES: 2  /
-			ASI: 4, 8, 12, 16, 19
+			Name: Barbarian /
+			HitDice: d12 /
+			ArmorProficiencies: none /
+			WeaponProficiencies: simple, martial /
+			ToolProficiencies: none /
+			SavingThrows: Str, Con /
+			SkillProficiencies: 2 - Animal Handling, Athletics, Intimidation, Nature, Perception, Survival /
+			ASI: 4, 8, 12, 16, 19 /
+			Features /
+			1: Rage, (Rage advantage), (Rage increase), (Rage resistance), Unarmored Defense (Barbarian) -
+
 		</item>
-		<item>
-			<!-- Bard -->
-			Bard
-			HIT DICE: d
-			ARMOR PROFICIENCIES:
-			WEAPON PROFICIENCIES:
-			TOOL PROFICIENCIES:
-			SAVING THROWS:
-			SKILL PROFICIENCIES:
-		</item>
-		<item>
-			<!-- Cleric -->
-			HIT DICE: d
-			ARMOR PROFICIENCIES:
-			WEAPON PROFICIENCIES:
-			TOOL PROFICIENCIES:
-			SAVING THROWS:
-			SKILL PROFICIENCIES:
-		</item>
-		<item>
-			<!-- Druid -->
-			HIT DICE: d
-			ARMOR PROFICIENCIES:
-			WEAPON PROFICIENCIES:
-			TOOL PROFICIENCIES:
-			SAVING THROWS:
-			SKILL PROFICIENCIES:
-		</item>
-		<item>
-			<!-- Fighter -->
-			HIT DICE: d
-			ARMOR PROFICIENCIES:
-			WEAPON PROFICIENCIES:
-			TOOL PROFICIENCIES:
-			SAVING THROWS:
-			SKILL PROFICIENCIES:
-		</item>
-		<item>
-			<!-- Monk -->
-			HIT DICE: d
-			ARMOR PROFICIENCIES:
-			WEAPON PROFICIENCIES:
-			TOOL PROFICIENCIES:
-			SAVING THROWS:
-			SKILL PROFICIENCIES:
-		</item>
-		<item>
-			<!-- Paladin -->
-			HIT DICE: d
-			ARMOR PROFICIENCIES:
-			WEAPON PROFICIENCIES:
-			TOOL PROFICIENCIES:
-			SAVING THROWS:
-			SKILL PROFICIENCIES:
-		</item>
-		<item>
-			<!-- Ranger -->
-			HIT DICE: d
-			ARMOR PROFICIENCIES:
-			WEAPON PROFICIENCIES:
-			TOOL PROFICIENCIES:
-			SAVING THROWS:
-			SKILL PROFICIENCIES:
-		</item>
-		<item>
-			<!-- Rogue -->
-			HIT DICE: d
-			ARMOR PROFICIENCIES:
-			WEAPON PROFICIENCIES:
-			TOOL PROFICIENCIES:
-			SAVING THROWS:
-			SKILL PROFICIENCIES:
-		</item>
-		<item>
-			<!-- Sorcerer -->
-			HIT DICE: d
-			ARMOR PROFICIENCIES:
-			WEAPON PROFICIENCIES:
-			TOOL PROFICIENCIES:
-			SAVING THROWS:
-			SKILL PROFICIENCIES:
-		</item>
-		<item>
-			<!-- Warlock -->
-			HIT DICE: d
-			ARMOR PROFICIENCIES:
-			WEAPON PROFICIENCIES:
-			TOOL PROFICIENCIES:
-			SAVING THROWS:
-			SKILL PROFICIENCIES:
-		</item>
-		<item>
-			<!-- Wizard -->
-			HIT DICE: d
-			ARMOR PROFICIENCIES:
-			WEAPON PROFICIENCIES:
-			TOOL PROFICIENCIES:
-			SAVING THROWS:
-			SKILL PROFICIENCIES:
-		</item>
+
+
 	</string-array>
 </resources>

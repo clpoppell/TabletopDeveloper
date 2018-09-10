@@ -1,7 +1,5 @@
 package tabletop_5e_character_design;
 
-import com.tadbolmont.tabletopdeveloper.Spell;
-
 public class CharacterSpell extends Spell{
 	final public String statUsed;
 	final public int levelGained;
@@ -10,7 +8,7 @@ public class CharacterSpell extends Spell{
 		super(name, level);
 		
 		statUsed= stat;
-		levelGained= 0;
+		levelGained= 1;
 	}
 	
 	public CharacterSpell(String stat, String name, int level, int levelGained){
@@ -24,6 +22,6 @@ public class CharacterSpell extends Spell{
 		super(cantripInfo[1], 0);
 		
 		statUsed= cantripInfo[0].substring(0, 3);
-		levelGained= 0;
+		levelGained= 1;
 	}
 }

@@ -10,7 +10,7 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorPrimaryDark"
+        android:background="@drawable/section_border"
         android:onClick="newCharacter"
         android:text="@string/new_char"
         android:textColor="@color/textColorPrimary"
@@ -23,7 +23,8 @@
         android:id="@+id/button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorPrimaryDark"
+        android:background="@drawable/section_border"
+        android:onClick="loadCharacter"
         android:text="@string/load_char"
         android:textColor="@color/textColorPrimary"
         tools:layout_editor_absoluteX="147dp"

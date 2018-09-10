@@ -12,6 +12,7 @@ import java.util.TreeMap;
 import tabletop_5e_character_design.CharacterClass;
 import tabletop_5e_character_design.CharacterRace;
 import tabletop_5e_character_design.ClassEquipmentList;
+import tabletop_5e_character_design.class_features.ClassFeature;
 
 public final class GameInfo{
 	private static final Resources RES= App.getContext().getResources();
@@ -22,8 +23,13 @@ public final class GameInfo{
 	private static final Map<String, ClassEquipmentList> CLASS_EQUIPMENT_LISTS= createClassEquipmentLists();
 	private static final Map<String, CharacterClass> CLASS_INFO= createClassInfo();
 	private static final Map<String, String[]> WEAPON_INFO= createWeaponInfo();
+	private static final Map<String, ClassFeature> CLASS_FEATURE_INFO= createClassFeatureInfo();
+	
 	private static final Map<String, String[]> SPELL_INFO= createSpellInfo();
 	private static final Map<String, String[]> SPELL_LISTS= createSpellLists();
+	
+	public enum armorState{ NoArmor, LightArmor, MedArmor, HeavyArmor }
+	public enum damageType{ Bludgeoning, Piercing, Slashing }
 	
 	private static Map<String, CharacterRace> createRaceInfo(){
 		Map<String, CharacterRace> races= new HashMap<>();
@@ -55,11 +61,11 @@ public final class GameInfo{
 	
 	private static Map<String, CharacterClass> createClassInfo(){
 		Map<String, CharacterClass> classMap= new HashMap<>();
-		String[] equipLists= RES.getStringArray(R.array.class_equipment_lists);
+		String[] equipLists= RES.getStringArray(R.array.class_info);
 		for(String charClassString : equipLists){
 			String[] classFeatures= charClassString.split(" / ");
 			CharacterClass classInfo= new CharacterClass(classFeatures);
-			classMap.put(classFeatures[0], classInfo);
+			classMap.put(classFeatures[0].substring(6), classInfo);
 		}
 		return classMap;
 	}
@@ -74,7 +80,7 @@ public final class GameInfo{
 		return equipMap;
 	}
 	
-	private static Map<String,String[]> createWeaponInfo(){
+	private static Map<String, String[]> createWeaponInfo(){
 		Map<String, String[]> weapons= new LinkedHashMap<>();
 		String[] weaponStrings= RES.getStringArray(R.array.weapon_list);
 		for(String weapon : weaponStrings){
@@ -83,6 +89,17 @@ public final class GameInfo{
 			weapons.put(key, w);
 		}
 		return weapons;
+	}
+	
+	private static Map<String, ClassFeature> createClassFeatureInfo(){
+		Map<String, ClassFeature> features= new HashMap<>();
+		String[] featureStrings= RES.getStringArray(R.array.class_features);
+		for(String feature : featureStrings){
+			String[] f= feature.split(" / ");
+			String key= f[0].substring(6);
+			features.put(key, ClassFeature.getClassFeature(f));
+		}
+		return features;
 	}
 	
 	private static Map<String, String[]> createSpellInfo(){
@@ -120,6 +137,8 @@ public final class GameInfo{
 	public static CharacterClass getClass(String key){ return CLASS_INFO.get(key.trim()); }
 	
 	public static ClassEquipmentList getClassEquipmentList(String key){ return CLASS_EQUIPMENT_LISTS.get(key.trim()); }
+	
+	public static ClassFeature getClassFeature(String key){ return ClassFeature.getClassFeature(CLASS_FEATURE_INFO.get(key.trim())); }
 	
 	public static String[] getSpellList(String key){ return SPELL_LISTS.get(key.trim()); }
 	

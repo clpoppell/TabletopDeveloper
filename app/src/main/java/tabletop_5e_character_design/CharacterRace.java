@@ -1,8 +1,5 @@
 package tabletop_5e_character_design;
 
-import com.tadbolmont.tabletopdeveloper.ConditionDefense;
-import com.tadbolmont.tabletopdeveloper.DamageResistance;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedHashMap;
@@ -106,6 +103,69 @@ public class CharacterRace{
 		}
 	}
 	
+	public CharacterRace(CharacterRace raceInfo, String asi1, String asi2, String skill1, String skill2, String feat, String language, String cantrip, String tool, String weapon1, String weapon2){
+		name= raceInfo.name;
+		statMods= new String[raceInfo.statMods.length];
+		for(int i= 0; i < statMods.length; i++){
+			statMods[i]= raceInfo.statMods[i];
+		}
+		if("+1 Choice".equalsIgnoreCase(statMods[0])){
+			statMods[0]= "+1 " + asi1;
+			statMods[1]= "+1 " + asi2;
+		}
+		ageRange= raceInfo.ageRange;
+		racialSize= raceInfo.racialSize;
+		racialSpeed= raceInfo.racialSpeed;
+		racialLanguages= new String[raceInfo.racialLanguages.length];
+		for(int i= 0; i < racialLanguages.length; i++){
+			if("Choice".equalsIgnoreCase(raceInfo.racialLanguages[i])){ racialLanguages[i]= language; }
+			else{ racialLanguages[i]= raceInfo.racialLanguages[i]; }
+		}
+		darkvisionRange= raceInfo.darkvisionRange;
+		additionalMovementTypes= raceInfo.additionalMovementTypes;
+		if(raceInfo.racialSkills != null){
+			racialSkills= new String[raceInfo.racialSkills.length];
+			for(int i= 0; i < racialSkills.length; i++){
+				racialSkills[i]= raceInfo.racialSkills[i];
+			}
+			if("Choice".equalsIgnoreCase(racialSkills[0].substring(0, 6))){
+				racialSkills[0]= skill1;
+				if(racialSkills.length > 1 && "Choice".equalsIgnoreCase(racialSkills[1].substring(0, 6))){
+					racialSkills[1]=skill2;
+				}
+			}
+		}
+		if(raceInfo.racialFeats != null && "Choice".equalsIgnoreCase(raceInfo.racialFeats)){ racialFeats= feat; }
+		racialAttack= raceInfo.racialAttack;
+		if(raceInfo.racialCantrip != null && "Choice".equalsIgnoreCase(raceInfo.racialCantrip.spellName.substring(0,6))){ racialCantrip= new CharacterSpell(raceInfo.racialCantrip.statUsed, cantrip, 0); }
+		racialSpellList= raceInfo.racialSpellList;
+		racialDamageResistances= raceInfo.racialDamageResistances;
+		racialDefenses= raceInfo.racialDefenses;
+		if(raceInfo.racialWeaponTraining != null){
+			racialWeaponTraining= new String[raceInfo.racialWeaponTraining.length];
+			for(int i= 0; i < racialWeaponTraining.length; i++){
+				racialWeaponTraining[i]= raceInfo.racialWeaponTraining[i];
+			}
+			if("Choice".equalsIgnoreCase(racialWeaponTraining[0].substring(0, 6))){
+				racialWeaponTraining[0]=weapon1;
+				racialWeaponTraining[1]=weapon2;
+			}
+		}
+		racialArmorTraining= raceInfo.racialArmorTraining;
+		if(racialToolTraining != null){
+			racialToolTraining=new String[raceInfo.racialToolTraining.length];
+			for(int i= 0; i < racialToolTraining.length; i++){
+				racialToolTraining[i]= raceInfo.racialToolTraining[i];
+			}
+			if("Choice".equalsIgnoreCase(racialToolTraining[0].substring(0,6))){ racialToolTraining[0]= tool; }
+		}
+		racialConditionalExpertise= raceInfo.racialConditionalExpertise;
+		buildSize= raceInfo.buildSize;
+		naturalArmor= raceInfo.naturalArmor;
+		reachMod= raceInfo.reachMod;
+		plainTextFeatures= raceInfo.plainTextFeatures;
+	}
+	
 	private RacialSpellList createRacialSpellList(String[] spells){
 		ArrayList<CharacterSpell> spellList= new ArrayList<>();
 		String[] generalSpellInfo= spells[0].split(" ");
@@ -181,6 +241,8 @@ public class CharacterRace{
 	public CharacterAttack getRacialAttack(){ return racialAttack; }
 	
 	public String[] getRacialWeaponTraining(){ return racialWeaponTraining; }
+	
+	public String[] getRacialArmorTraining(){ return racialArmorTraining; }
 	
 	public String[] getRacialToolTraining(){ return racialToolTraining; }
 	

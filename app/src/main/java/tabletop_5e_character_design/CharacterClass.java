@@ -2,9 +2,13 @@ package tabletop_5e_character_design;
 
 import android.util.SparseArray;
 
-import com.google.common.base.Joiner;
 import com.tadbolmont.tabletopdeveloper.GameInfo;
 
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+
+
+@EqualsAndHashCode(onlyExplicitlyIncluded= true) @Getter
 public class CharacterClass{
 	private static final int NAME= "Name: ".length();
 	private static final int HIT_DICE= "HitDice: ".length();
@@ -15,21 +19,21 @@ public class CharacterClass{
 	private static final int SKILL_PROFICIENCIES= "SkillProficiencies: ".length();
 	private static final int ASI_LEVELS= "ASI: ".length();
 	
-	private final String name;
-	private final String hitDice;
-	private final String[] armorProficiencies;
-	private final String[] weaponProficiencies;
-	private final String[] toolProficiencies;
-	private final String[] savingThrows;
-	private final ClassSkillList classSkillChoices;
-	private final int[] asiLevels;
-	private final ClassEquipmentList classEquipmentChoices;
-	private int level= 0;
+	@EqualsAndHashCode.Include private String name;
+	private int hitDice;
+	private String[] armorProficiencies;
+	private String[] weaponProficiencies;
+	private String[] toolProficiencies;
+	private String[] savingThrows;
+	private ClassSkillList classSkillChoices;
+	private int[] asiLevels;
+	private ClassEquipmentList classEquipmentChoices;
+	private int level;
 	private SparseArray<String[]> features= new SparseArray<>();
 	
 	public CharacterClass(String[] classInfo){
 		name= classInfo[0].substring(NAME).trim();
-		hitDice= classInfo[1].substring(HIT_DICE);
+		hitDice= Integer.parseInt(classInfo[1].substring(HIT_DICE));
 		armorProficiencies= classInfo[2].substring(ARMOR_PROFICIENCIES).split(", ");
 		weaponProficiencies= classInfo[3].substring(WEAPON_PROFICIENCIES).split(", ");
 		toolProficiencies= classInfo[4].substring(TOOL_PROFICIENCIES).split(", ");
@@ -44,7 +48,7 @@ public class CharacterClass{
 		
 		classEquipmentChoices= GameInfo.getClassEquipmentList(name);
 		
-		String[] featureStrings= classInfo[9].split(" -");
+		String[] featureStrings= classInfo[9].split(" - ");
 		for(String level : featureStrings){
 			String[] levelStrings= level.split(": ");
 			int key= Integer.parseInt(levelStrings[0]);
@@ -64,35 +68,14 @@ public class CharacterClass{
 		classSkillChoices= charClass.classSkillChoices;
 		asiLevels= charClass.asiLevels;
 		classEquipmentChoices= charClass.classEquipmentChoices;
-		level= 1;
+		level= 0;
 		features= charClass.features;
 	}
 	
 	public void incrementLevel(){ level++; }
 	
-	public String getHitDice(){ return hitDice; }
-	
-	public String[] getArmorProficiencies(){ return armorProficiencies; }
-	
-	public String[] getWeaponProficiencies(){ return weaponProficiencies; }
-	
-	public String[] getToolProficiencies(){ return toolProficiencies; }
-	
-	public String[] getSavingThrows(){ return savingThrows; }
-	
-	public ClassSkillList getClassSkillChoices(){ return classSkillChoices; }
-	
-	public int[] getAsiLevels(){ return asiLevels; }
-	
-	public ClassEquipmentList getClassEquipmentChoices(){ return classEquipmentChoices; }
-	
 	public String[] getFeatureListForLevel(){ return features.get(level); }
 	
-	public String toString(){
-		String s= name;
-		s += "\n" + getClassEquipmentChoices().pack;
-		s += "\n" + Joiner.on("\n").skipNulls().join(getClassEquipmentChoices().getWeaponEquipment());
-		s += "\n" + getClassEquipmentChoices().tool;
-		return s;
-	}
+	@Override
+	public String toString(){ return name + " " + level; }
 }

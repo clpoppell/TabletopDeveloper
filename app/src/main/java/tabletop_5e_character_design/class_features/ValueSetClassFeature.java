@@ -1,6 +1,6 @@
 package tabletop_5e_character_design.class_features;
 
-class ValueSetClassFeature extends ClassFeature{
+public class ValueSetClassFeature extends ClassFeature{
 	public final String valueToSet;
 	public final String value;
 	

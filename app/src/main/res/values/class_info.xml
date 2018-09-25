@@ -4,18 +4,46 @@
 		<item>
 			<!-- Barbarian -->
 			Name: Barbarian /
-			HitDice: d12 /
+			HitDice: 12 /
 			ArmorProficiencies: none /
 			WeaponProficiencies: simple, martial /
 			ToolProficiencies: none /
 			SavingThrows: Str, Con /
 			SkillProficiencies: 2 - Animal Handling, Athletics, Intimidation, Nature, Perception, Survival /
 			ASI: 4, 8, 12, 16, 19 /
+			Archetypes: Path of the Berserker, Path of the Totem Warrior
 			Features /
 			1: Rage, (Rage advantage), (Rage increase), (Rage resistance), Unarmored Defense (Barbarian) -
+			2: Reckless Attack, (Reckless Attack advantage), Danger Sense -
+			3: Frenzy, (Frenzy attack)
 
 		</item>
-
-
+		<item>
+			<!-- Bard -->
+			Name: Bard /
+			HitDice: 8 /
+			ArmorProficiencies: Light Armor /
+			WeaponProficiencies: simple, Hand Crossbow, Longsword, Rapier, Shortsword /
+			ToolProficiencies: #3 instruments /
+			SavingThrows: Dex, Cha /
+			SkillProficiencies: 3 - Acrobatics, Animal Handling, Arcana, Athletics, Deception, History, Insight, Intimidation,
+				Investigation, Medicine, Nature, Perception, Performance, Persuasion, Religion, Sleight of Hand, Stealth, Survival /
+			ASI: 4, 8, 12, 16, 19 /
+			Features /
+			1: Rage
+		</item>
+		<item>
+			<!-- Cleric -->
+			Name: Cleric /
+			HitDice: 8 /
+			ArmorProficiencies: Light Armor, Medium Armor, Shield /
+			WeaponProficiencies: simple /
+			ToolProficiencies: none /
+			SavingThrows: Wis, Cha /
+			SkillProficiencies: 2 - History, Insight, Medicine, Persuasion, Religion /
+			ASI: 4, 8, 12, 16, 19 /
+			Features /
+			1: Rage
+		</item>
 	</string-array>
 </resources>

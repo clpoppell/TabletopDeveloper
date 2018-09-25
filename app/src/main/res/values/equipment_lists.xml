@@ -4,111 +4,145 @@
 		<item>
 			<!-- Barbarian -->
 			Barbarian /
-			PACK: explorer\'s pack /
-			ARMOR: none /
-			WEAPON: greataxe (or) weapon-martial-melee #
-			WEAPON: #two handaxe (or) weapon-simple #
-			WEAPON: #four javelin /
-			TOOL: none
+			Pack: Explorer\'s Pack /
+			Armor: none /
+			Weapon: Greataxe (or) martial-melee #
+			Weapon: 2 Handaxe (or) simple-any #
+			Weapon: 4 Javelin /
+			Tool: none
 		</item>
 		<item>
 			<!-- Bard -->
 			Bard /
-			PACK: diplomat\'s pack (or) entertainer\'s pack /
-			ARMOR: leather armor /
-			WEAPON: rapier (or) longsword (or) weapon-simple #
-			WEAPON: dagger /
-			TOOL: #3 instrument
+			Pack: Diplomat\'s Pack (or) Entertainer\'s Pack /
+			Armor: Leather Armor /
+			Weapon: Rapier (or) Longsword (or) simple-any #
+			Weapon: Dagger /
+			Tool: instrument
 		</item>
 		<item>
 			<!-- Cleric -->
 			Cleric /
-			PACK: priest\'s pack (or) explorer\'s pack /
-			ARMOR: scale mail, shield (or) leather armor, shield (or) chain mail, shield (proficiency) /
-			WEAPON: mace (or) warhammer (proficiency) #
-			WEAPON: weapon-simple /
-			TOOL: holy symbol
+			Pack: Priest\'s Pack (or) Explorer\'s Pack /
+			Armor: Scale Mail, Shield (or) Leather Armor, Shield (or) Chain Mail, Shield /
+			Weapon: Mace (or) Warhammer #
+			Weapon: simple-any /
+			Tool: Holy Symbol
 		</item>
 		<item>
 			<!-- Druid -->
 			Druid /
-			PACK: explorer\'s pack /
-			ARMOR: leather armor /
-			WEAPON: scimitar (or) weapon-simple-melee #
-			WEAPON: wooden shield (or) weapon-simple /
-			TOOL: druidic focus
+			Pack: Explorer\'s Pack /
+			Armor: Leather Armor /
+			Weapon: Scimitar (or) simple-melee #
+			Weapon: Wooden Shield (or) simple-any /
+			Tool: Druidic Focus
 		</item>
 		<item>
 			<!-- Fighter -->
 			Fighter /
-			PACK: dungeoneer\'s pack (or) explorer\'s pack /
-			ARMOR: chain mail (or) leather armor, longbow /
-			WEAPON: weapon-martial, shield (or) #two martial-weapons #
-			WEAPON: light crossbow (or) #two handaxes /
-			TOOL: none
+			Pack: Dungeoneer\'s Pack (or) Explorer\'s Pack /
+			Armor: Chain Mail (or) Leather Armor, Longbow /
+			Weapon: Shield (or) martial-any #
+			Weapon: martial-any #
+			Weapon: Light Crossbow (or) 2 Handaxe /
+			Tool: none
 		</item>
 		<item>
 			<!-- Monk -->
 			Monk /
-			PACK: dungeoneer\'s pack (or) explorer\'s pack /
-			ARMOR: none /
-			WEAPON: shortsword (or) weapon-simple #
-			WEAPON: #10 dart /
-			TOOL: none
+			Pack: Dungeoneer\'s Pack (or) Explorer\'s Pack /
+			Armor: none /
+			Weapon: Shortsword (or) simple-any #
+			Weapon: 10 Dart /
+			Tool: none
 		</item>
 		<item>
 			<!-- Paladin -->
 			Paladin /
-			PACK: priest\'s pack (or) explorer\'s pack /
-			ARMOR: chain mail /
-			WEAPON: weapon-martial, shield (or) #two weapon-martial #
-			WEAPON: #five javelins (or) weapon-simple-melee /
-			TOOL: holy symbol
+			Pack: Priest\'s Pack (or) Explorer\'s Pack /
+			Armor: Chain Mail /
+			Weapon: Shield (or) martial-any #
+			Weapon: martial-any #
+			Weapon: 5 Javelin (or) simple-melee /
+			Tool: Holy Symbol
 		</item>
 		<item>
 			<!-- Ranger -->
 			Ranger /
-			PACK: dungeoneer\'s pack (or) explorer\'s pack /
-			ARMOR: scale mail (or) leather armor /
-			WEAPON: #two shortswords (or) #two weapon-simple-melee #
-			WEAPON: longbow /
-			TOOL: none
+			Pack: Dungeoneer\'s Pack (or) Explorer\'s Pack /
+			Armor: Scale Mail (or) Leather Armor /
+			Weapon: Shortsword (or) simple-melee #
+			Weapon: Shortsword (or) simple-melee #
+			Weapon: Longbow /
+			Tool: none
 		</item>
 		<item>
 			<!-- Rogue -->
 			Rogue /
-			PACK: burglar\'s pack (or) dungeoneer\'s pack (or) explorer\'s pack /
-			ARMOR: leather armor /
-			WEAPON: rapier (or) shortsword #
-			WEAPON: shortbow (or) shortsword #
-			WEAPON: #two dagger /
-			TOOL: thieves\' tools
+			Pack: Burglar\'s Pack (or) Dungeoneer\'s Pack (or) Explorer\'s Pack /
+			Armor: Leather Armor /
+			Weapon: Rapier (or) Shortsword #
+			Weapon: Shortbow (or) Shortsword #
+			Weapon: 2 Dagger /
+			Tool: Thieves\' Tools
 		</item>
 		<item>
 			<!-- Sorcerer -->
 			Sorcerer /
-			PACK: dungeoneer\'s pack (or) explorer\'s pack /
-			ARMOR: none /
-			WEAPON: weapon-simple #
-			WEAPON: #two dagger /
-			TOOL: component pouch (or) arcane focus
+			Pack: Dungeoneer\'s Pack (or) Explorer\'s Pack /
+			Armor: none /
+			Weapon: simple-any #
+			Weapon: 2 Dagger /
+			Tool: Component Pouch (or) Arcane Focus
 		</item>
 		<item>
 			<!-- Warlock -->
 			Warlock /
-			PACK: scholar\'s pack (or) dungeoneer\'s pack /
-			ARMOR: leather armor /
-			WEAPON: weapon-simple #
-			WEAPON: weapon-simple, #two dagger /
-			TOOL: component pouch (or) arcane focus
+			Pack: Scholar\'s Pack (or) Dungeoneer\'s Pack /
+			Armor: Leather Armor /
+			Weapon: Light Crossbow (or) simple-any #
+			Weapon: simple-any #
+			Weapon: 2 Dagger /
+			Tool: Component Pouch (or) Arcane Focus
 		</item>
 		<item>
 			<!-- Wizard -->
 			Wizard /
-			PACK: scholar\'s pack (or) explorer\'s pack /
-			ARMOR: none /
-			WEAPON: quarterstaff (or) dagger /
-			TOOL: component pouch and a spellbook (or) arcane focus and a spellbook
+			Pack: Scholar\'s Pack (or) Explorer\'s Pack /
+			Armor: none /
+			Weapon: Quarterstaff (or) Dagger /
+			Tool: Component Pouch, Spellbook (or) Arcane Focus, Spellbook
+		</item>
+	</string-array>
+	<string-array name="equipment_pack_lists">
+		<item>
+			Name: Burglar\'s Pack #
+			Items: Backpack, Bag of Ball Bearings, String (10 ft), Bell, 5 Candle, Crowbar, Hammer, 10 Piton, Hooded Lantern, 2 Flask of Oil, 5 Ration, Tinderbox, Waterskin, Hempen Rope (50 ft)
+		</item>
+		<item>
+			Name: Diplomat\'s Pack #
+			Items: Chest, 2 Map &amp; Scroll Case, a Set of Fine Clothes, Bottle of Ink, Ink Pen, Lamp, 2 Flask of Oil, 5 Sheets of Paper, Vial of Perfume, Sealing Wax, Soap
+		</item>
+		<item>
+			Name: Dungeoneer\'s Pack #
+			Items: Backpack, Crowbar, Hammer, 10 Piton, 10 Torch, Tinderbox, 10 Rations, Waterskin, Hempen Rope (50 ft)
+		</item>
+		<item>
+			Name: Entertainer\'s Pack #
+			Items: Backpack, Bedroll, 2 Costume, 5 Candle, 5 Ration, Waterskin, Disguise Kit
+		</item>
+		<item>
+			Name: Explorer\'s Pack #
+			Items: Backpack, Bedroll, Mess Kit, Tinderbox, 10 Torch, 10 Ration, Waterskin, Hempen Rope (50 ft)
+		</item>
+		<item>
+			Name: Priest\'s Pack #
+			Items: Backpack, Blanket, 10 Candle, Tinderbox, Alms Box, 2 Block of Incense, Censer, Vestments, 2 Ration, Waterskin
+		</item>
+		<item>
+			Name: Scholar\'s Pack #
+			Items: Backpack, Book of Lore, Bottle of Ink, Ink Pen, 10 Sheet of Parchment, Little Bag of Sand, Small Knife
 		</item>
 	</string-array>
 </resources>

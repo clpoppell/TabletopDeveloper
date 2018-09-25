@@ -2,8 +2,10 @@ package tabletop_5e_character_design;
 
 import java.util.Arrays;
 
+import lombok.Getter;
+
 public class ClassSkillList{
-	public final int numSkills;
+	@Getter private final int numSkills;
 	private final String[] skills;
 	
 	ClassSkillList(int num, String[] list){

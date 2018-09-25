@@ -5,19 +5,31 @@ import com.tadbolmont.tabletopdeveloper.GameInfo;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
+import java.util.Set;
+import java.util.TreeMap;
 
+import lombok.Getter;
+import lombok.val;
 import tabletop_5e_character_design.class_features.ClassFeature;
+import tabletop_5e_character_design.class_features.ValueSetClassFeature;
 
+@Getter
 public class PlayerCharacter{
 	private static PlayerCharacter playerCharacter= null;
 	
+	//region Fields
 	private String name;
 	private CharacterRace charRace;
 	
 	private int proficiencyBonus= 2;
-	private int hitPoints;
+	private int characterLevel;
+	private int currentHitPoints;
+	private int maxHitPoints= 0;
+	private int tempHP= 0;
 	
 	private int strength;
 	private int dexterity;
@@ -33,7 +45,6 @@ public class PlayerCharacter{
 	private int wisMod;
 	private int chaMod;
 	
-	private List<String> savingThrowProficiencies= new ArrayList<>();
 	private int strSaving;
 	private int dexSaving;
 	private int conSaving;
@@ -42,48 +53,43 @@ public class PlayerCharacter{
 	private int chaSaving;
 	
 	private List<CharacterClass> classList= new ArrayList<>();
-	private List<String> armorProficiencies= new ArrayList<>();
-	private List<String> weaponProficiencies= new ArrayList<>();
-	private List<String> toolProficiencies= new ArrayList<>();
+	private List<String> savingThrowProficiencies= new ArrayList<>();
+	private Set<String> armorProficiencies= new LinkedHashSet<>();
+	private Set<String> weaponProficiencies= new LinkedHashSet<>();
+	private Set<String> toolProficiencies= new LinkedHashSet<>();
+	private Set<String> skillProficiencies= new LinkedHashSet<>();
+	
 	private Map<String, ClassFeature> classFeatures= new LinkedHashMap<>();
+	private Map<GameInfo.damageType, Double> resistances= new TreeMap<>();
 	private List<String> rituals= new ArrayList<>();
 	
-	private PlayerCharacter(String name, CharacterRace charRace, int str, int dex, int con, int intel, int wis, int cha, CharacterClass charClass){
+	private Map<String, Integer> miscItemsList= new LinkedHashMap<>();
+	private Map<String, Integer> armorList= new LinkedHashMap<>();
+	private Map<String, Integer> weaponList= new LinkedHashMap<>();
+	private Map<String, Integer> toolItemsList= new LinkedHashMap<>();
+	//endregion
+	
+	private PlayerCharacter(String name, CharacterRace charRace, int str, int dex, int con, int intel, int wis, int cha, ArrayList<String> skills, CharacterClass startingClass,
+							ArrayList<String> charPackList, ArrayList<String> charArmorList, ArrayList<String> charWeaponList, ArrayList<String> charToolList){
 		this.name= name;
 		this.charRace= charRace;
 		
-		Map<String, Integer> statMods= charRace.getStatMods();
+		val statMods= charRace.getStatModMap();
+		addToMaxHitPoints(startingClass.getHitDice());
+		if(statMods.containsKey("HP")){ addToMaxHitPoints(statMods.get("HP")); }
 		
 		strength= str;
-		if(statMods.containsKey("Str")){
-			int strRacialMod= statMods.get("Str");
-			strength += strRacialMod;
-		}
+		if(statMods.containsKey("Str")){ strength += statMods.get("Str"); }
 		dexterity= dex;
-		if(statMods.containsKey("Dex")){
-			int dexRacialMod= statMods.get("Dex");
-			dexterity += dexRacialMod;
-		}
+		if(statMods.containsKey("Dex")){ dexterity += statMods.get("Dex"); }
 		constitution= con;
-		if(statMods.containsKey("Con")){
-			int conRacialMod= statMods.get("Con");
-			constitution += conRacialMod;
-		}
+		if(statMods.containsKey("Con")){ constitution += statMods.get("Con"); }
 		intelligence= intel;
-		if(statMods.containsKey("Int")){
-			int intRacialMod= statMods.get("Int");
-			intelligence += intRacialMod;
-		}
+		if(statMods.containsKey("Int")){ intelligence += statMods.get("Int"); }
 		wisdom= wis;
-		if(statMods.containsKey("Wis")){
-			int wisRacialMod= statMods.get("Wis");
-			wisdom += wisRacialMod;
-		}
+		if(statMods.containsKey("Wis")){ wisdom += statMods.get("Wis"); }
 		charisma= cha;
-		if(statMods.containsKey("Cha")){
-			int chaRacialMod= statMods.get("Cha");
-			charisma += chaRacialMod;
-		}
+		if(statMods.containsKey("Cha")){ charisma += statMods.get("Cha"); }
 		
 		strMod= calculateMod(strength);
 		dexMod= calculateMod(dexterity);
@@ -92,27 +98,28 @@ public class PlayerCharacter{
 		wisMod= calculateMod(wisdom);
 		chaMod= calculateMod(charisma);
 		
-		classList.add(charClass);
-		addClassFeatures(0);
+		classList.add(startingClass);
+		startingClass.incrementLevel();
+		characterLevel++;
+		addClassFeaturesByClassLevel(0);
 		
 		if(charRace.getRacialArmorTraining() != null){ armorProficiencies.addAll(Arrays.asList(charRace.getRacialArmorTraining())); }
-		for(String armor : charClass.getArmorProficiencies()){
-			if(!armorProficiencies.contains(armor)){ armorProficiencies.add(armor); }
-		}
-		if(charRace.getRacialWeaponTraining() != null){ weaponProficiencies.addAll(Arrays.asList(charRace.getRacialWeaponTraining())); }
-		for(String weapon : charClass.getWeaponProficiencies()){
-			if(!weaponProficiencies.contains(weapon)){ weaponProficiencies.add(weapon); }
-		}
-		String[] temp= charRace.getRacialToolTraining();
-		if(temp != null){
-			toolProficiencies.addAll(Arrays.asList(charRace.getRacialToolTraining())); }
-		for(String tool : charClass.getToolProficiencies()){
-			if(!toolProficiencies.contains(tool)){
-				toolProficiencies.add(tool); }
-		}
+		armorProficiencies.addAll(Arrays.asList(startingClass.getArmorProficiencies()));
 		
-		String[] classSavingThrows= charClass.getSavingThrows();
-		savingThrowProficiencies.addAll(Arrays.asList(classSavingThrows));
+		if(charRace.getRacialWeaponTraining() != null){ weaponProficiencies.addAll(Arrays.asList(charRace.getRacialWeaponTraining())); }
+		for(String weapon : startingClass.getWeaponProficiencies()){
+			if("simple".equalsIgnoreCase(weapon) || "martial".equalsIgnoreCase(weapon)){ weaponProficiencies.addAll(GameInfo.getWeaponsByType(weapon, "any", true)); }
+			else{ weaponProficiencies.add(weapon); }
+		}
+		if(charRace.getRacialToolTraining() != null){
+			toolProficiencies.addAll(Arrays.asList(charRace.getRacialToolTraining())); }
+		toolProficiencies.addAll(Arrays.asList(startingClass.getToolProficiencies()));
+		
+		if(charRace.getRacialSkills() != null){
+			skillProficiencies.addAll(Arrays.asList(charRace.getRacialSkills())); }
+		skillProficiencies.addAll(skills);
+		
+		savingThrowProficiencies.addAll(Arrays.asList(startingClass.getSavingThrows()));
 		strSaving= strMod;
 		if(savingThrowProficiencies.contains("Str")){ strSaving += proficiencyBonus; }
 		dexSaving= dexMod;
@@ -125,13 +132,22 @@ public class PlayerCharacter{
 		if(savingThrowProficiencies.contains("Wis")){ wisSaving += proficiencyBonus; }
 		chaSaving= chaMod;
 		if(savingThrowProficiencies.contains("Cha")){ chaSaving += proficiencyBonus; }
+		
+		if(charRace.getRacialDamageResistances() != null){
+			for(DamageResistance resis : charRace.getRacialDamageResistances()){
+				resistances.put(resis.getDamageType(), resis.resistanceLevel);
+			}
+		}
+		
+		createStartingInventory(charPackList, charArmorList, charWeaponList, charToolList);
+	}
+	
+	public static void makePlayerCharacter(String name, CharacterRace charRace, int str, int dex, int con, int intel, int wis, int cha, ArrayList<String> skills, CharacterClass charClass,
+										   ArrayList<String> charPackList, ArrayList<String> charArmorList, ArrayList<String> charWeaponList, ArrayList<String> charToolList){
+		playerCharacter= new PlayerCharacter(name, charRace, str, dex, con, intel, wis, cha, skills, charClass, charPackList, charArmorList, charWeaponList, charToolList);
 	}
 	
 	public static PlayerCharacter getPlayerCharacter(){ return playerCharacter; }
-	
-	public static void makePlayerCharacter(String name, CharacterRace charRace, int str, int dex, int con, int intel, int wis, int cha, CharacterClass charClass){
-		playerCharacter= new PlayerCharacter(name, charRace, str, dex, con, intel, wis, cha, charClass);
-	}
 	
 	private int calculateMod(int n){
 		double base= 10.0;
@@ -141,56 +157,147 @@ public class PlayerCharacter{
 		return (int)Math.floor(quotient);
 	}
 	
-	private void addClassFeatures(int i){
+	private void addToMaxHitPoints(int hpToAdd){
+		maxHitPoints += hpToAdd;
+		currentHitPoints += hpToAdd;
+	}
+	
+	private void addClassFeaturesByClassLevel(int i){
 		CharacterClass charClass= classList.get(i);
 		String[] featureList= charClass.getFeatureListForLevel();
 		for(String feature : featureList){
 			ClassFeature featureToAdd= GameInfo.getClassFeature(feature);
-			if(featureToAdd == null){}
-			else if(!"none".equalsIgnoreCase(featureToAdd.parentFeature)){ classFeatures.get(featureToAdd.parentFeature).addChildFeature(featureToAdd); }
-			else{ classFeatures.put(featureToAdd.name, featureToAdd); }
+			String parent= featureToAdd.parentFeature;
+			
+			if("none".equalsIgnoreCase(parent)){
+				classFeatures.put(featureToAdd.name, featureToAdd);
+				applyClassFeatureEffect(featureToAdd);
+			}
+			else if(classFeatures.containsKey(parent)){ classFeatures.get(parent).addChildFeature(featureToAdd); }
+			else{
+				for(String f : classFeatures.keySet()){
+					List<ClassFeature> children= classFeatures.get(f).getChildFeatures();
+					if(children.contains(GameInfo.getClassFeature(parent))){
+						children.get(children.indexOf(GameInfo.getClassFeature(parent))).addChildFeature(featureToAdd);
+						break;
+					}
+				}
+			}
 		}
 	}
 	
-	//region Accessors
-	public String getName(){ return name; }
+	private void applyClassFeatureEffect(ClassFeature feature){
+		if(feature instanceof ValueSetClassFeature){
+		
+		}
+	}
 	
-	public CharacterRace getCharRace(){ return charRace; }
+	public void addLevel(String className){
+		CharacterClass charClass= GameInfo.getClass(className);
+		if(classList.contains(charClass)){
+			int index= classList.indexOf(charClass);
+			classList.get(index).incrementLevel();
+			addClassFeaturesByClassLevel(index);
+		}
+		else{
+			classList.add(charClass);
+			charClass.incrementLevel();
+			addClassFeaturesByClassLevel(classList.indexOf(charClass));
+		}
+		characterLevel++;
+		
+		Random random= new Random();
+		int hpToAdd= random.nextInt(charClass.getHitDice()) + 1;
+		addToMaxHitPoints(hpToAdd);
+	}
 	
-	public int getStrength(){ return strength; }
+	public void setCurrentHitPoints(int hp){ currentHitPoints= hp < maxHitPoints ? (hp > 0 ? hp : 0)  : maxHitPoints; }
 	
-	public int getDexterity(){ return dexterity; }
+	public void setTempHP(int hp){ tempHP= hp > 0 ? hp : 0; }
 	
-	public int getConstitution(){ return constitution; }
+	public int getSkillModifierForSkill(String skill){
+		int mod;
+		switch(GameInfo.getSkillStat(skill)){
+			case "Str":
+				mod= strMod;
+				break;
+			case "Dex":
+				mod= dexMod;
+				break;
+			case "Con":
+				mod= conMod;
+				break;
+			case "Int":
+				mod= intMod;
+				break;
+			case "Wis":
+				mod= wisMod;
+				break;
+			case "Cha":
+				mod= chaMod;
+				break;
+			default: mod= 0;
+		}
+		if(skillProficiencies.contains(skill)){ mod += proficiencyBonus; }
+		return mod;
+	}
 	
-	public int getIntelligence(){ return intelligence; }
+	//region Inventory Management
+	private void createStartingInventory(List<String> packList, List<String> armorList, List<String> weaponList, ArrayList<String> toolList){
+		for(int i= 0; i < packList.size(); i++){
+			String equip= packList.get(i);
+			if(Character.isDigit(equip.charAt(0))){
+				String[] multi= equip.split(" ", 2);
+				addMiscItem(multi[1], Integer.parseInt(multi[0].trim()));
+			}
+			else{ addMiscItem(equip, 1); }
+		}
+		
+		for(int i= 0; i < armorList.size(); i++){
+			String equip= armorList.get(i);
+			if(Character.isDigit(equip.charAt(0))){
+				String[] multi= equip.split(" ", 2);
+				addMiscItem(multi[1], Integer.parseInt(multi[0].trim()));
+			}
+			else{ addArmorItem(equip, 1); }
+		}
+		
+		for(int i= 0; i < weaponList.size(); i++){
+			String equip= weaponList.get(i);
+			if(Character.isDigit(equip.charAt(0))){
+				String[] multi= equip.split(" ", 2);
+				addWeaponItem(multi[1], Integer.parseInt(multi[0].trim()));
+			}
+			else{ addWeaponItem(equip, 1); }
+		}
+		
+		for(int i= 0; i < toolList.size(); i++){
+			String equip= toolList.get(i);
+			if(Character.isDigit(equip.charAt(0))){
+				String[] multi= equip.split(" ", 2);
+				addToolItem(multi[1], Integer.parseInt(multi[0].trim()));
+			}
+			else{ addToolItem(equip, 1); }
+		}
+	}
 	
-	public int getWisdom(){ return wisdom; }
+	public void addArmorItem(String itemName, int amount){
+		int amountToAdd= armorList.containsKey(itemName) ? armorList.get(itemName) + amount : amount;
+		armorList.put(itemName, amountToAdd);
+	}
 	
-	public int getCharisma(){ return charisma; }
+	public void addWeaponItem(String itemName, int amount){
+		int amountToAdd= weaponList.containsKey(itemName) ? weaponList.get(itemName) + amount : amount;
+		weaponList.put(itemName, amountToAdd);
+	}
 	
-	public int getStrMod(){ return strMod; }
-	
-	public int getDexMod(){ return dexMod; }
-	
-	public int getConMod(){ return conMod; }
-	
-	public int getIntMod(){ return intMod; }
-	
-	public int getWisMod(){ return wisMod; }
-	
-	public int getChaMod(){ return chaMod; }
-	
-	public int getStrSaving(){ return strSaving; }
-	
-	public int getDexSaving(){ return dexSaving; }
-	
-	public int getConSaving(){ return conSaving; }
-	
-	public int getIntSaving(){ return intSaving; }
-	
-	public int getWisSaving(){ return wisSaving; }
-	
-	public int getChaSaving(){ return chaSaving; }
+	private void addToolItem(String itemName, int amount){
+		int amountToAdd= toolItemsList.containsKey(itemName) ? toolItemsList.get(itemName) + amount : amount;
+		toolItemsList.put(itemName, amountToAdd);
+	}
+	public void addMiscItem(String itemName, int amount){
+		int amountToAdd= miscItemsList.containsKey(itemName) ? miscItemsList.get(itemName) + amount : amount;
+		miscItemsList.put(itemName, amountToAdd);
+	}
 	//endregion
 }

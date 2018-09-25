@@ -1,10 +1,13 @@
 package tabletop_5e_character_design;
 
+import lombok.Getter;
+
+@Getter
 public class Spell{
-	final public String spellName;
-	final public int spellLevel;
+	private String spellName;
+	private int spellLevel;
 	
-	public Spell(String name, int level){
+	Spell(String name, int level){
 		spellName= name;
 		spellLevel= level;
 	}

@@ -4,5 +4,6 @@
 	android:layout_width="match_parent"
 	android:layout_height="wrap_content"
 	android:textColor="@color/textColorPrimary"
-	android:background="@drawable/text_input_border"
-	android:padding="10dp" />
+	android:textSize="18sp"
+	android:background="@drawable/button_burder"
+	android:padding="10dp"/>

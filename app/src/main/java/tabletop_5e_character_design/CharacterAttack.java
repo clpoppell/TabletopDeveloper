@@ -1,15 +1,18 @@
 package tabletop_5e_character_design;
 
+import lombok.Getter;
+
+@Getter
 public class CharacterAttack{
-	final String attackName;
-	final int attackRange;
-	final String attackArea;
-	final String attackDamage;
-	final String attackDamageType;
-	final Boolean attackDC;
-	final String statUsed;
-	final String attackType;
-	final String restRegain;
+	private String attackName;
+	private int attackRange;
+	private String attackArea;
+	private String attackDamage;
+	private String attackDamageType;
+	private boolean attackDC;
+	private String statUsed;
+	private String attackType;
+	private String restRegain;
 	
 	public CharacterAttack(String name, int range, String area, String damage, String damageType, Boolean dc, String stat, String type){
 		attackName= name;
@@ -24,7 +27,7 @@ public class CharacterAttack{
 	}
 	
 	//Used by CharacterRace constructor for racial attacks
-	public CharacterAttack(String[] s){
+	CharacterAttack(String[] s){
 		attackName= s[0];
 		attackRange= Integer.parseInt(s[1]);
 		attackArea= s[2];
@@ -33,11 +36,9 @@ public class CharacterAttack{
 		attackDC= s[5].substring(s[5].indexOf(":")).equals("yes");
 		statUsed= s[6];
 		
-		if(attackArea.equals("melee")){ attackType= "unarmed strike"; }
-		else{ attackType= null; }
+		attackType=attackArea.equals("melee") ? "unarmed strike" : null;
 		
-		if(s.length == 8){ restRegain= s[7]; }
-		else{ restRegain= null; }
+		restRegain=s.length == 8 ? s[7] : null;
 	}
 	
 	public String toString(){

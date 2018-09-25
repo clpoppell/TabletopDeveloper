@@ -39,6 +39,9 @@
 				android:name="android.support.PARENT_ACTIVITY"
 				android:value="com.tadbolmont.tabletopdeveloper.CharacterDisplay" />
 		</activity>
+		<activity
+			android:name=".LevelUpScreen"
+			android:label="@string/title_activity_level_up_screen"></activity>
 	</application>
 
 </manifest>

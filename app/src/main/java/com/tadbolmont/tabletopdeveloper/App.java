@@ -3,17 +3,18 @@ package com.tadbolmont.tabletopdeveloper;
 import android.app.Application;
 import android.content.Context;
 
+/**
+ * Convenience class for providing a {@code Context} object.
+ */
 public class App extends Application{
 	
-	private static Context mContext;
+	public static Context mContext;
 	
 	@Override
 	public void onCreate() {
 		super.onCreate();
-		mContext = this;
+		mContext= this;
 	}
 	
-	public static Context getContext(){
-		return mContext;
-	}
+	
 }

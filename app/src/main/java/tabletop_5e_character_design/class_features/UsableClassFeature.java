@@ -2,7 +2,7 @@ package tabletop_5e_character_design.class_features;
 
 import android.util.SparseIntArray;
 
-class UsableClassFeature extends ActionClassFeature{
+public class UsableClassFeature extends ActionClassFeature{
 	private int numTimes;
 	private SparseIntArray levelNumTimeList= new SparseIntArray();
 	

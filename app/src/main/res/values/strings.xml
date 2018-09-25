@@ -6,12 +6,12 @@
 
 	<string name="title_activity_new_character_form">NewCharacterForm</string>
 	<string name="name_entry_hint">Enter name…</string>
-	<string name="insert_name">Name:</string>
-	<string name="race_selection">Race:</string>
-	<string name="class_selection">Class:</string>
-	<string name="level_selection">Level:</string>
+	<string name="insert_name">Name:\u0020</string>
+	<string name="race_selection">Race:\u0020</string>
+	<string name="feat_selection">Bonus Feat:\u0020</string>
+	<string name="class_selection">Class:\u0020</string>
+	<string name="level_selection">Level:\u0020</string>
 	<string name="title_activity_character_display">CharacterDisplay</string>
-	<string name="complete_char_creation">Complete</string>
 
 	<string name="strength_abb">Str</string>
 	<string name="dexterity_abb">Dex</string>
@@ -20,8 +20,9 @@
 	<string name="wisdom_abb">Wis</string>
 	<string name="charisma_abb">Cha</string>
 
-	<string name="skill_selection">Racial Skills:</string>
-	<string name="feat_selection">Bonus Feat:</string>
+	<string name="equipment_choice_label">Starting Equipment</string>
+
+	<string name="complete_char_creation">Complete</string>
 
 	<string name="title_activity_character_sheet_display">CharacterSheetDisplay</string>
 	<string name="action_settings">Settings</string>
@@ -115,4 +116,10 @@
 		"when a user tries to pick up one of cards.\n\n"
 	</string>
 	<string name="title_activity_character_features">CharacterFeatures</string>
+	<string name="equip_pack_label">Pack</string>
+	<string name="equip_armor_label">Armor</string>
+	<string name="equip_weapon_label">Weapons</string>
+	<string name="equip_tool_label">Tool</string>
+	<string name="attack_name">Weapon/Attack</string>
+	<string name="title_activity_level_up_screen">LevelUpScreen</string>
 </resources>

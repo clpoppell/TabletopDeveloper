@@ -10,4 +10,136 @@
         <item name="android:colorBackground">@color/backgroundColor</item>
     </style>
 
+    <!-- Base dialog theme -->
+    <style name="DialogTheme" parent="Theme.AppCompat.Dialog.Alert">
+		<item name="android:textColor">@color/textColorPrimary</item>
+		<item name="android:windowBackground">@drawable/text_input_border</item>
+		<item name="android:textSize">16sp</item>
+		<item name="android:gravity">center_horizontal</item>
+    </style>
+
+	<!-- Base TextView Style -->
+	<style name="MyTextViewStyle" parent="AppTheme">
+		<item name="android:layout_width">wrap_content</item>
+		<item name="android:layout_height">wrap_content</item>
+		<item name="android:textSize">18sp</item>
+	</style>
+
+	<!-- Base Button Style -->
+	<style name="MyButtonStyle" parent="Widget.AppCompat.Button.ButtonBar.AlertDialog">
+		<item name="android:layout_width">wrap_content</item>
+		<item name="android:layout_height">38dp</item>
+		<item name="android:layout_marginBottom">2dp</item>
+		<item name="android:layout_gravity">center</item>
+		<item name="android:background">@drawable/button_burder</item>
+		<item name="android:textColor">@color/textColorPrimary</item>
+	</style>
+
+	<!-- Base Spinner Style -->
+	<style name="MySpinnerStyle" parent="AppTheme">
+		<item name="android:layout_width">wrap_content</item>
+		<item name="android:layout_height">wrap_content</item>
+		<item name="android:background">@drawable/text_input_border</item>
+		<item name="android:spinnerMode">dialog</item>
+	</style>
+
+	<!-- Style for button bar buttons -->
+	<style name="MyButtonBarBtnStyle" parent="Widget.AppCompat.Button.ButtonBar.AlertDialog">
+		<item name="android:layout_width">wrap_content</item>
+		<item name="android:layout_height">wrap_content</item>
+		<item name="android:layout_weight">1</item>
+		<item name="android:textColor">@color/textColorPrimary</item>
+	</style>
+
+	<!-- Style for layouts on New Character Form -->
+	<style name="NewCharacterFormLayoutStyle">
+		<item name="android:layout_width">wrap_content</item>
+		<item name="android:layout_height">wrap_content</item>
+		<item name="android:layout_marginTop">4dp</item>
+		<item name="android:gravity">center_vertical</item>
+		<item name="android:orientation">horizontal</item>
+	</style>
+
+	<!-- Style for display sections -->
+	<style name="SectionLayoutStyle" parent="NewCharacterFormLayoutStyle">
+		<item name="android:layout_width">match_parent</item>
+		<item name="android:background">@drawable/section_border</item>
+		<item name="android:paddingBottom">4dp</item>
+		<item name="android:orientation">vertical</item>
+	</style>
+
+	<style name="CharacterDisplayLayoutStyle">
+
+	</style>
+
+	<!-- Base Style for small labels -->
+	<style name="SmallLabelTextViewStyle" parent="MyTextViewStyle">
+		<item name="android:layout_gravity">center</item>
+		<item name="android:textSize">12sp</item>
+	</style>
+
+	<style name="CharacterDisplayEditTextStyle" parent="AppTheme">
+		<item name="android:layout_width">40dp</item>
+		<item name="android:layout_height">40dp</item>
+		<item name="android:background">@drawable/text_input_border</item>
+		<item name="android:paddingStart">10dp</item>
+		<item name="android:paddingEnd">10dp</item>
+		<item name="android:gravity">center</item>
+		<item name="android:inputType">number</item>
+		<item name="android:maxLength">2</item>
+		<item name="android:textSize">18sp</item>
+		<item name="android:enabled">false</item>
+	</style>
+
+	<style name="CharacterBioTextViewStyle" parent="MyTextViewStyle">
+		<item name="android:textSize">24sp</item>
+	</style>
+
+	<style name="SavingThrowDiceRollBtnStyle" parent="MyButtonStyle">
+		<item name="android:text">Roll</item>
+		<item name="android:onClick">savingThrowRoll</item>
+	</style>
+
+	<style name="SkillDiceRollBtnStyle" parent="MyButtonStyle">
+		<item name="android:text">Roll</item>
+		<item name="android:onClick">skillRoll</item>
+	</style>
+
+	<style name="SavingThrowTextViewStyle" parent="MyTextViewStyle">
+		<item name="android:layout_width">40dp</item>
+		<item name="android:layout_height">40dp</item>
+		<item name="android:layout_marginBottom">1dp</item>
+		<item name="android:gravity">center</item>
+		<item name="android:textSize">20sp</item>
+	</style>
+
+	<style name="SkillModTextViewStyle" parent="MyTextViewStyle">
+		<item name="android:layout_height">40dp</item>
+		<item name="android:layout_marginBottom">1dp</item>
+		<item name="android:layout_marginStart">4dp</item>
+		<item name="android:layout_marginEnd">4dp</item>
+		<item name="android:gravity">center</item>
+		<item name="android:textSize">20sp</item>
+	</style>
+
+	<style name="SkillNameTextViewStyle" parent="SkillModTextViewStyle">
+		<item name="android:gravity">center_vertical</item>
+		<item name="android:layout_marginEnd">14dp</item>
+		<item name="android:layout_marginBottom">1dp</item>
+	</style>
+
+	<style name="DefensesTextViewStyle" parent="MyTextViewStyle">
+		<item name="android:textSize">20sp</item>
+	</style>
+
+	<style name="DefensesSmallLabelTextViewStyle" parent="MyTextViewStyle">
+		<item name="android:layout_marginStart">2dp</item>
+		<item name="android:layout_gravity">center_vertical</item>
+		<item name="android:textSize">10sp</item>
+	</style>
+
+	<style name="HealthTextViewStyle" parent="MyTextViewStyle">
+		<item name="android:textSize">20sp</item>
+	</style>
+
 </resources>

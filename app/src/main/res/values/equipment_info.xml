@@ -1,0 +1,548 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string-array name="armor_info">
+		<item>
+			Name: Padded #
+			Type: Light #
+			Price: 5 gp #
+			AC_Formula: 11 + Dex #
+			StrRequired: 0 #
+			StealthDisadvantage: n #
+			Weight: 8
+		</item>
+		<item>
+			Name: Leather #
+			Type: Light #
+			Price: 10 gp #
+			AC_Formula: 11 + Dex #
+			StrRequired: 0 #
+			StealthDisadvantage: n #
+			Weight: 10
+		</item>
+		<item>
+			Name: Studded Leather #
+			Type: Light #
+			Price: 45 gp #
+			AC_Formula: 12 + Dex #
+			StrRequired: 0 #
+			StealthDisadvantage: n #
+			Weight: 13
+		</item>
+		<item>
+			Name: Hide #
+			Type: Medium #
+			Price: 10 gp #
+			AC_Formula: 12 + Dex (max 2) #
+			StrRequired: 0 #
+			StealthDisadvantage: n #
+			Weight: 12
+		</item>
+		<item>
+			Name: Chain Shirt #
+			Type: Medium #
+			Price: 50 gp #
+			AC_Formula: 13 + Dex (max 2) #
+			StrRequired: 0 #
+			StealthDisadvantage: n #
+			Weight: 20
+		</item>
+		<item>
+			Name: Scale Mail #
+			Type: Medium #
+			Price: 50 gp #
+			AC_Formula: 14 + Dex (max 2) #
+			StrRequired: 0 #
+			StealthDisadvantage: y #
+			Weight: 45
+		</item>
+		<item>
+			Name: Breastplate #
+			Type: Medium #
+			Price: 400 gp #
+			AC_Formula: 14 + Dex (max 2) #
+			StrRequired: 0 #
+			StealthDisadvantage: n #
+			Weight: 20
+		</item>
+		<item>
+			Name: Half Plate #
+			Type: Medium #
+			Price: 750 gp #
+			AC_Formula: 15 + Dex (max 2) #
+			StrRequired: 0 #
+			StealthDisadvantage: y #
+			Weight: 40
+		</item>
+		<item>
+			Name: Ring Mail #
+			Type: Heavy #
+			Price: 30 gp #
+			AC_Formula: 14 #
+			StrRequired: 0 #
+			StealthDisadvantage: y #
+			Weight: 40
+		</item>
+		<item>
+			Name: Chain Mail #
+			Type: Heavy #
+			Price: 75 gp #
+			AC_Formula: 16 #
+			StrRequired: 13 #
+			StealthDisadvantage: y #
+			Weight: 55
+		</item>
+		<item>
+			Name: Splint #
+			Type: Heavy #
+			Price: 200 gp #
+			AC_Formula: 17 #
+			StrRequired: 15 #
+			StealthDisadvantage: y #
+			Weight: 60
+		</item>
+		<item>
+			Name: Plate #
+			Type: Heavy #
+			Price: 1,500 gp #
+			AC_Formula: 18 #
+			StrRequired: 15 #
+			StealthDisadvantage: y #
+			Weight: 65
+		</item>
+		<item>
+			Name: Shield #
+			Type: Shield #
+			Price: 10 gp #
+			AC_Formula: +2 #
+			StrRequired: 0 #
+			StealthDisadvantage: n #
+			Weight: 6
+		</item>
+	</string-array>
+	<string-array name="weapon_info">
+		<!-- Simple Melee -->
+		<item>
+			Name: Club #
+			Group: Simple #
+			Type: Melee #
+			Range: - #
+			Price: 1 sp #
+			Damage: 1d4 #
+			DamageType: Bludgeoning #
+			Weight: 2 #
+			Tags: Light
+		</item>
+		<item>
+			Name: Dagger #
+			Group: Simple #
+			Type: Melee #
+			Range: 20/60 #
+			Price: 2 gp #
+			Damage: 1d4 #
+			DamageType: Piercing #
+			Weight: 1 #
+			Tags: Finesse, Light, Thrown
+		</item>
+		<item>
+			Name: Greatclub #
+			Group: Simple #
+			Type: Melee #
+			Range: - #
+			Price: 2 sp #
+			Damage: 1d8 #
+			DamageType: Bludgeoning #
+			Weight: 10 #
+			Tags: Two-handed
+		</item>
+		<item>
+			Name: Handaxe #
+			Group: Simple #
+			Type: Melee #
+			Range: 20/60 #
+			Price: 5 gp #
+			Damage: 1d6 #
+			DamageType: Slashing #
+			Weight: 2 #
+			Tags: Light, Thrown
+		</item>
+		<item>
+			Name: Javelin #
+			Group: Simple #
+			Type: Melee #
+			Range: 30/120 #
+			Price: 5 sp #
+			Damage: 1d6 #
+			DamageType: Piercing #
+			Weight: 2 #
+			Tags: Thrown
+		</item>
+		<item>
+			Name: Light Hammer #
+			Group: Simple #
+			Type: Melee #
+			Range: 20/60 #
+			Price: 2 gp #
+			Damage: 1d4 #
+			DamageType: Bludgeoning #
+			Weight: 2 #
+			Tags: Light, Thrown
+		</item>
+		<item>
+			Name: Mace #
+			Group: Simple #
+			Type: Melee #
+			Range: - #
+			Price: 5 gp #
+			Damage: 1d6 #
+			DamageType: Bludgeoning #
+			Weight: 4 #
+			Tags: —
+		</item>
+		<item>
+			Name: Quarterstaff #
+			Group: Simple #
+			Type: Melee #
+			Range: - #
+			Price: 2 sp #
+			Damage: 1d6 #
+			DamageType: Bludgeoning #
+			Weight: 4 #
+			Tags: Versatile (1d8)
+		</item>
+		<item>
+			Name: Sickle #
+			Group: Simple #
+			Type: Melee #
+			Range: - #
+			Price: 1 gp #
+			Damage: 1d4 #
+			DamageType: Slashing #
+			Weight: 2 #
+			Tags: Light
+		</item>
+		<item>
+			Name: Spear #
+			Group: Simple #
+			Type: Melee #
+			Range: - #
+			Price: 1 gp #
+			Damage: 1d6 #
+			DamageType: Piercing #
+			Tags: Thrown (range 20/60), Versatile (1d8)
+		</item>
+		<item>
+			Name: Unarmed Strike #
+			Group: Simple #
+			Type: Melee #
+			Range: - #
+			Price: — #
+			Damage: 1 #
+			DamageType: Bludgeoning #
+			Weight: 0 #
+			Tags: —
+		</item>
+
+		<!-- Simple Ranged -->
+		<item>
+			Name: Light Crossbow #
+			Group: Simple #
+			Type: Ranged #
+			Range: 80/320 #
+			Price: 25 gp #
+			Damage: 1d8 #
+			DamageType: Piercing #
+			Weight: 5 #
+			Tags: Ammunition, Loading, Two-handed
+		</item>
+		<item>
+			Name: Dart #
+			Group: Simple #
+			Type: Ranged #
+			Range: 20/60 #
+			Price: 5 cp #
+			Damage: 1d4 #
+			DamageType: Piercing #
+			Weight: 0.25 #
+			Tags: Finesse, Thrown
+		</item>
+		<item>
+			Name: Shortbow #
+			Group: Simple #
+			Type: Ranged #
+			Range: 80/320 #
+			Price: 25 gp #
+			Damage: 1d6 #
+			DamageType: Piercing #
+			Weight: 2 #
+			Tags: Ammunition, Two-handed
+		</item>
+		<item>
+			Name: Sling #
+			Group: Simple #
+			Type: Ranged #
+			Range: 30/120 #
+			Price: 1 sp #
+			Damage: 1d4 #
+			DamageType: Bludgeoning #
+			Weight: 0 #
+			Tags: Ammunition
+		</item>
+
+		<!-- Martial Melee -->
+		<item>
+			Name: Battleaxe #
+			Group: Martial #
+			Type: Melee #
+			Range: - #
+			Price: 10 gp #
+			Damage: 1d8 #
+			DamageType: Slashing #
+			Weight: 4 #
+			Tags: Versatile (1d10)
+		</item>
+		<item>
+			Name: Flail #
+			Group: Martial #
+			Type: Melee #
+			Range: - #
+			Price: 10 gp #
+			Damage: 1d8 #
+			DamageType: Bludgeoning #
+			Weight: 2 #
+			Tags: —
+		</item>
+		<item>
+			Name: Glaive #
+			Group: Martial #
+			Type: Melee #
+			Range: - #
+			Price: 20 gp #
+			Damage: 1d10 #
+			DamageType: Slashing #
+			Weight: 6 #
+			Tags: Heavy, Reach, Two-handed
+		</item>
+		<item>
+			Name: Greataxe #
+			Group: Martial #
+			Type: Melee #
+			Range: - #
+			Price: 30 gp #
+			Damage: 1d12 #
+			DamageType: Slashing #
+			Weight: 7 #
+			Tags: Heavy, Two-handed
+		</item>
+		<item>
+			Name: Greatsword #
+			Group: Martial #
+			Type: Melee #
+			Range: - #
+			Price: 50 gp #
+			Damage: 2d6 #
+			DamageType: Slashing #
+			Weight: 6 #
+			Tags: Heavy, Two-handed
+		</item>
+		<item>
+			Name: Halberd #
+			Group: Martial #
+			Type: Melee #
+			Range: - #
+			Price: 20 gp #
+			Damage: 1d10 #
+			DamageType: Slashing #
+			Weight: 6 #
+			Tags: Heavy, Reach, Two-handed
+		</item>
+		<item>
+			Name: Lance #
+			Group: Martial #
+			Type: Melee #
+			Range: - #
+			Price: 10 gp #
+			Damage: 1d12 #
+			DamageType: Piercing #
+			Weight: 6 #
+			Tags: Reach, Special
+		</item>
+		<item>
+			Name: Longsword #
+			Group: Martial #
+			Type: Melee #
+			Range: - #
+			Price: 15 gp #
+			Damage: 1d8 #
+			DamageType: Slashing #
+			Weight: 3 #
+			Tags: Versatile (1d10)
+		</item>
+		<item>
+			Name: Maul #
+			Group: Martial #
+			Type: Melee #
+			Range: - #
+			Price: 10 gp #
+			Damage: 2d6 #
+			DamageType: Bludgeoning #
+			Weight: 10 #
+			Tags: Heavy, Two-handed
+		</item>
+		<item>
+			Name: Morningstar #
+			Group: Martial #
+			Type: Melee #
+			Range: - #
+			Price: 15 gp #
+			Damage: 1d8 #
+			DamageType: Piercing #
+			Weight: 4 #
+			Tags: —
+		</item>
+		<item>
+			Name: Pike #
+			Group: Martial #
+			Type: Melee #
+			Range: - #
+			Price: 5 gp #
+			Damage: 1d10 #
+			DamageType: Piercing #
+			Weight: 18 #
+			Tags: Heavy, Reach, Two-handed
+		</item>
+		<item>
+			Name: Rapier #
+			Group: Martial #
+			Type: Melee #
+			Range: - #
+			Price: 25 gp #
+			Damage: 1d8 #
+			DamageType: Piercing #
+			Weight: 2 #
+			Tags: Finesse
+		</item>
+		<item>
+			Name: Scimitar #
+			Group: Martial #
+			Type: Melee #
+			Range: - #
+			Price: 25 gp #
+			Damage: 1d6 #
+			DamageType: Slashing #
+			Weight: 3 #
+			Tags: Finesse, Light
+		</item>
+		<item>
+			Name: Shortsword #
+			Group: Martial #
+			Type: Melee #
+			Range: - #
+			Price: 10 gp #
+			Damage: 1d6 #
+			DamageType: Piercing #
+			Weight: 2 #
+			Tags: Finesse, Light
+		</item>
+		<item>
+			Name: Trident #
+			Group:  Martial #
+			Type: Melee #
+			Range: - #
+			Price: 5 gp #
+			Damage: 1d6 #
+			DamageType: Piercing #
+			Weight: 4 #
+			Tags: Thrown (range 20/60), Versatile (1d8)
+		</item>
+		<item>
+			Name: War Pick #
+			Group: Martial #
+			Type: Melee #
+			Range: - #
+			Price: 5 gp #
+			Damage: 1d8 #
+			DamageType: Piercing #
+			Weight: 2 #
+			Tags: —
+		</item>
+		<item>
+			Name: Warhammer #
+			Group: Martial #
+			Type: Melee #
+			Range: - #
+			Price: 15 gp #
+			Damage: 1d8 #
+			DamageType: Bludgeoning #
+			Weight: 2 #
+			Tags: Versatile (1d10)
+		</item>
+		<item>
+			Name: Whip #
+			Group: Martial #
+			Type: Melee #
+			Range: - #
+			Price: 2 gp #
+			Damage: 1d4 #
+			DamageType: Slashing #
+			Weight: 3 #
+			Tags: Finesse, Reach
+		</item>
+
+		<!-- Martial Ranged -->
+		<item>
+			Name: Blowgun #
+			Group: Martial #
+			Type: Ranged #
+			Range: 25/100 #
+			Price: 10 gp #
+			Damage: 1 #
+			DamageType: Piercing #
+			Weight: 1 #
+			Tags: Ammunition, Loading
+		</item>
+		<item>
+			Name: Hand Crossbow #
+			Group: Martial #
+			Type: Ranged #
+			Range: 30/120 #
+			Price: 75 gp #
+			Damage: 1d6 #
+			DamageType: Piercing #
+			Weight: 3 #
+			Tags: Ammunition, Light, Loading
+		</item>
+		<item>
+			Name: Heavy Crossbow #
+			Group: Martial #
+			Type: Ranged #
+			Range: 100/400 #
+			Price: 50 gp #
+			Damage: 1d10 #
+			DamageType: Piercing #
+			Weight: 18 #
+			Tags: Ammunition, Heavy, Loading, Two-handed
+		</item>
+		<item>
+			Name: Longbow #
+			Group: Martial #
+			Type: Ranged #
+			Range: 150/600 #
+			Price: 50 gp #
+			Damage: 1d8 #
+			DamageType: Piercing #
+			Weight: 2 #
+			Tags: Ammunition, Heavy, Two-handed
+		</item>
+		<item>
+			Name: Net #
+			Group: Martial #
+			Type: Ranged #
+			Range: 5/15 #
+			Price: 1 gp #
+			Damage: — #
+			DamageType: — #
+			Weight: 3 #
+			Tags: Special, Thrown
+		</item>
+	</string-array>
+</resources>

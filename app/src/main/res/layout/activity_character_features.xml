@@ -5,11 +5,74 @@
 	android:layout_height="match_parent"
 	tools:context=".CharacterFeatures">
 
-	<TextView
+	<LinearLayout
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
-		android:layout_margin="@dimen/text_margin"
-		android:text="@string/large_text"
-		android:textColor="@color/textColorPrimary" />
+		android:orientation="vertical">
+
+		<LinearLayout
+			android:id="@+id/character_proficiency_display"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:orientation="vertical">
+
+			<!-- Armor Proficiencies -->
+			<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:textColor="@color/textColorPrimary"
+				android:text="Armor Proficiency"
+				android:background="@drawable/border_line_bottom"
+				android:textSize="16sp" />
+
+			<TextView
+				android:id="@+id/character_armor_proficiency"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:textColor="@color/textColorPrimary"
+				android:textSize="16sp" />
+
+			<!-- Weapon Proficiencies -->
+			<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:textColor="@color/textColorPrimary"
+				android:text="Weapon Proficiency"
+				android:background="@drawable/border_line_bottom"
+				android:textSize="16sp" />
+
+			<TextView
+				android:id="@+id/character_weapon_proficiency"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:textColor="@color/textColorPrimary"
+				android:textSize="16sp" />
+
+			<!-- Tool Proficiencies -->
+			<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:textColor="@color/textColorPrimary"
+				android:text="Tool Proficiency"
+				android:background="@drawable/border_line_bottom"
+				android:textSize="16sp" />
+
+			<TextView
+				android:id="@+id/character_tool_proficiency"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:textColor="@color/textColorPrimary"
+				android:textSize="16sp" />
+
+		</LinearLayout>
+
+		<LinearLayout
+			android:id="@+id/character_feature_list"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:orientation="vertical">
+		</LinearLayout>
+
+	</LinearLayout>
 
 </android.support.v4.widget.NestedScrollView>

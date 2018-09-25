@@ -73,6 +73,8 @@ public class ClassFeature{
 		if(!childFeatures.contains(childFeature)){ childFeatures.add(childFeature); }
 	}
 	
+	public List<ClassFeature> getChildFeatures(){ return childFeatures; }
+	
 	@Override
 	public boolean equals(Object o){
 		if(o == this){ return true; }
@@ -83,7 +85,15 @@ public class ClassFeature{
 	}
 	
 	@Override
-	public int hashCode(){
-		return Objects.hash(name);
+	public int hashCode(){ return Objects.hash(name); }
+	
+	@Override
+	public String toString(){
+		StringBuilder s= new StringBuilder(name);
+		s.append("\n").append(desc);
+		for(ClassFeature child : childFeatures){
+			s.append("\n\t").append(child.toString());
+		}
+		return s.toString();
 	}
 }

@@ -1,10 +1,12 @@
 package tabletop_5e_character_design;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+import lombok.Getter;
+
+@Getter
 public class CharacterRace{
 	//region Fields
 	private String name;
@@ -137,7 +139,7 @@ public class CharacterRace{
 		}
 		if(raceInfo.racialFeats != null && "Choice".equalsIgnoreCase(raceInfo.racialFeats)){ racialFeats= feat; }
 		racialAttack= raceInfo.racialAttack;
-		if(raceInfo.racialCantrip != null && "Choice".equalsIgnoreCase(raceInfo.racialCantrip.spellName.substring(0,6))){ racialCantrip= new CharacterSpell(raceInfo.racialCantrip.statUsed, cantrip, 0); }
+		if(raceInfo.racialCantrip != null && "Choice".equalsIgnoreCase(raceInfo.racialCantrip.getSpellName().substring(0,6))){ racialCantrip= new CharacterSpell(raceInfo.racialCantrip.getStatUsed(), cantrip, 0); }
 		racialSpellList= raceInfo.racialSpellList;
 		racialDamageResistances= raceInfo.racialDamageResistances;
 		racialDefenses= raceInfo.racialDefenses;
@@ -188,7 +190,7 @@ public class CharacterRace{
 	
 	public Boolean hasFeatChoice(){ return !(racialFeats == null); }
 	
-	public boolean hasCantripChoice(){ return racialCantrip.spellName.contains("("); }
+	public boolean hasCantripChoice(){ return racialCantrip.getSpellName().contains("("); }
 	
 	public Boolean hasWeaponChoice(){
 		for(String s : racialWeaponTraining){
@@ -200,10 +202,7 @@ public class CharacterRace{
 	public static Boolean isToolChoice(String tool){ return tool.contains("("); }
 	//endregion
 	
-	//region Accessors
-	public String getName(){ return name; }
-	
-	public Map<String, Integer> getStatMods(){
+	public Map<String, Integer> getStatModMap(){
 		Map<String, Integer> statModMap= new LinkedHashMap<>();
 		for(String stat : statMods){
 			String[] statModSplit= stat.split(" ");
@@ -211,16 +210,6 @@ public class CharacterRace{
 		}
 		return statModMap;
 	}
-	
-	public int[] getAgeRange(){ return Arrays.copyOf(ageRange, ageRange.length); }
-	
-	public String getSize(){ return racialSize; }
-	
-	public int getSpeed(){ return racialSpeed; }
-	
-	public int getDarkvisionRange(){ return darkvisionRange; }
-	
-	public String getAdditionalMovementTypes(){ return additionalMovementTypes; }
 	
 	public String[] getRacialSkills(){
 		if(racialSkills != null){
@@ -236,45 +225,5 @@ public class CharacterRace{
 			return skills;
 		}
 		return null;
-	}
-	
-	public CharacterAttack getRacialAttack(){ return racialAttack; }
-	
-	public String[] getRacialWeaponTraining(){ return racialWeaponTraining; }
-	
-	public String[] getRacialArmorTraining(){ return racialArmorTraining; }
-	
-	public String[] getRacialToolTraining(){ return racialToolTraining; }
-	
-	public CharacterSpell getRacialCantrip(){ return racialCantrip; }
-	
-	public RacialSpellList getRacialSpellList(){ return racialSpellList; }
-	
-	public ArrayList<DamageResistance> getRacialDamageResistances(){
-		if(racialDamageResistances != null){ return new ArrayList<>(racialDamageResistances); }
-		return null;
-	}
-	
-	public ArrayList<ConditionDefense> getRacialDefenses(){
-		if(racialDefenses != null){ return new ArrayList<>(racialDefenses); }
-		return null;
-	}
-	
-	public String getRacialConditionalExpertise(){ return racialConditionalExpertise; }
-	
-	public ArrayList<String> getPlainTextFeatures(){
-		if(plainTextFeatures != null){ return new ArrayList<>(plainTextFeatures); }
-		return null;
-	}
-	
-	public String[] getRacialLanguages(){ return Arrays.copyOf(racialLanguages, racialLanguages.length); }
-	//endregion
-	
-	@Override
-	public String toString(){
-		String s= ageRange[0] + "-" + ageRange[1] + "\n";
-		if(racialConditionalExpertise != null) s+=racialConditionalExpertise + "\n";
-		
-		return s;
 	}
 }

@@ -2,7 +2,7 @@
 <resources>
 	<string-array name="armor_info">
 		<item>
-			Name: Padded #
+			Name: Padded Armor #
 			Type: Light #
 			Price: 5 gp #
 			AC_Formula: 11 + Dex #
@@ -11,7 +11,7 @@
 			Weight: 8
 		</item>
 		<item>
-			Name: Leather #
+			Name: Leather Armor #
 			Type: Light #
 			Price: 10 gp #
 			AC_Formula: 11 + Dex #
@@ -20,7 +20,7 @@
 			Weight: 10
 		</item>
 		<item>
-			Name: Studded Leather #
+			Name: Studded Leather Armor #
 			Type: Light #
 			Price: 45 gp #
 			AC_Formula: 12 + Dex #
@@ -29,7 +29,7 @@
 			Weight: 13
 		</item>
 		<item>
-			Name: Hide #
+			Name: Hide Armor #
 			Type: Medium #
 			Price: 10 gp #
 			AC_Formula: 12 + Dex (max 2) #
@@ -101,7 +101,7 @@
 			Weight: 60
 		</item>
 		<item>
-			Name: Plate #
+			Name: Plate Armor #
 			Type: Heavy #
 			Price: 1,500 gp #
 			AC_Formula: 18 #
@@ -543,6 +543,234 @@
 			DamageType: — #
 			Weight: 3 #
 			Tags: Special, Thrown
+		</item>
+	</string-array>
+	<string-array name="tool_info">
+		<!-- Artisan's Tools -->
+		<item>
+			Name: Alchemist\'s supplies #
+			Type: Artisan Tools #
+			Price: 50 gp #
+			Weight: 8
+		</item>
+		<item>
+			Name: Brewer\'s supplies #
+			Type: Artisan Tools #
+			Prices: 20 gp #
+			Weight: 9
+		</item>
+		<item>
+			Name: Calligrapher\'s supplies #
+			Type: Artisan Tools #
+			Price: 10 gp #
+			Weight: 5 lb.
+		</item>
+		<item>
+			Name: Carpenter\'s tools #
+			Type: Artisan Tools #
+			Price: 8 gp #
+			Weight: 6
+		</item>
+		<item>
+			Name: Cartographer\'s tools #
+			Type: Artisan Tools #
+			Price: 15 gp #
+			Weight: 6
+		</item>
+		<item>
+			Name: Cobbler\'s tools #
+			Type: Artisan Tools #
+			Price: 5 gp #
+			Weight: 5
+		</item>
+		<item>
+			Name: Cook\'s utensils #
+			Type: Artisan Tools #
+			Price: 1 gp #
+			Weight: 8
+		</item>
+		<item>
+			Name: Glassblower\'s tools #
+			Type: Artisan Tools #
+			Price: 30 gp #
+			Weight: 5
+		</item>
+		<item>
+			Name: Jeweler\'s tools #
+			Type: Artisan Tools #
+			Price: 25 gp #
+			Weight: 2
+		</item>
+		<item>
+			Name: Leatherworker\'s tools #
+			Type: Artisan Tools #
+			Price: 5 gp #
+			Weight: 5
+		</item>
+		<item>
+			Name: Mason\'s tools #
+			Type: Artisan Tools #
+			Price: 10 gp #
+			Weight: 8
+		</item>
+		<item>
+			Name: Painter\'s supplies #
+			Type: Artisan Tools #
+			Price: 10 gp #
+			Weight: 5
+		</item>
+		<item>
+			Name: Potter\'s tools #
+			Type: Artisan Tools #
+			Price: 10 gp #
+			Weight: 3
+		</item>
+		<item>
+			Name: Smith\'s tools #
+			Type: Artisan Tools #
+			Price: 20 gp #
+			Weight: 8
+		</item>
+		<item>
+			Name: Tinker\'s tools
+			Type: Artisan Tools #
+			Price: 50 gp #
+			Weight: 10
+		</item>
+		<item>
+			Name: Weaver\'s tools #
+			Type: Artisan Tools #
+			Price: 1 gp #
+			Weight: 5
+		</item>
+		<item>
+			Name: Woodcarver's tools #
+			Type: Artisan Tools #
+			Price: 1 gp #
+			Weight: 5
+		</item>
+		<!-- Gaming Sets -->
+		<item>
+			Name: Dice set #
+			Type: Gaming Set #
+			Price: 1 sp #
+			Weight: 0
+		</item>
+		<item>
+			Name: Dragonchess set #
+			Type: Gaming Set #
+			Price: 1 gp #
+			Weight: 0.5
+		</item>
+		<item>
+			Name: Playing card set #
+			Type: Gaming Set #
+			Price: 5 sp #
+			Weight: 0
+		</item>
+		<item>
+			Name: Three-Dragon Ante set #
+			Type: Gaming Set #
+			Price: 1 gp #
+			Weight: 0
+		</item>
+		<!-- Musical Instrument -->
+		<item>
+			Name: Bagpipes #
+			Type: Instrument #
+			Price: 30 gp #
+			Weight: 6
+		</item>
+		<item>
+			Name: Drum #
+			Type: Instrument #
+			Price: 6 gp #
+			Weight: 3
+		</item>
+		<item>
+			Name: Dulcimer #
+			Type: Instrument #
+			Price: 25 gp #
+			Weight: 10
+		</item>
+		<item>
+			Name: Flute #
+			Type: Instrument #
+			Price: 2 gp #
+			Weight: 1
+		</item>
+		<item>
+			Name: Lute #
+			Type: Instrument #
+			Price: 35 gp #
+			Weight: 2
+		</item>
+		<item>
+			Name: Lyre #
+			Type: Instrument #
+			Price: 30 gp #
+			Weight: 2
+		</item>
+		<item>
+			Name: Horn #
+			Type: Instrument #
+			Price: 3 gp #
+			Weight: 2
+		</item>
+		<item>
+			Name: Pan flute #
+			Type: Instrument #
+			Price: 12 gp #
+			Weight: 2
+		</item>
+		<item>
+			Name: Shawm #
+			Type: Instrument #
+			Price: 2 gp #
+			Weight: 1
+		</item>
+		<item>
+			Name: Viol #
+			Type: Instrument #
+			Price: 30 gp #
+			Weight: 1
+		</item>
+		<!-- Misc -->
+		<item>
+			Name: Disguise kit #
+			Type: Misc #
+			Price: 25 gp #
+			Weight: 3
+		</item>
+		<item>
+			Name: Forgery kit #
+			Type: Misc #
+			Price: 15 gp #
+			Weight: 5
+		</item>
+		<item>
+			Name: Herbalism kit #
+			Type: Misc #
+			Price: 5 gp #
+			Weight: 3
+		</item>
+		<item>
+			Name: Navigator\'s tools #
+			Type: Misc #
+			Price: 25 gp #
+			Weight: 2
+		</item>
+		<item>
+			Name: Poisoner\'s kit #
+			Type: Misc #
+			Price: 50 gp #
+			Weight: 2
+		</item>
+		<item>
+			Name: Thieves\' #
+			Type: Misc #
+			Price: tools 25 gp #
+			Weight: 1
 		</item>
 	</string-array>
 </resources>

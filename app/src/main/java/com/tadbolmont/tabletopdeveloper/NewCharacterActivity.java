@@ -39,9 +39,9 @@ import tabletop_5e_character_design.DamageResistance;
 import tabletop_5e_character_design.PlayerCharacter;
 import tabletop_5e_character_design.RacialSpellList;
 
-public class NewCharacterForm extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
-	private static boolean ON= true;
-	private static boolean OFF= false;
+public class NewCharacterActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
+	private static int ON= View.VISIBLE;
+	private static int OFF= View.GONE;
 	
 	private static final Integer[] LEVELS= {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20};
 	
@@ -430,7 +430,7 @@ public class NewCharacterForm extends AppCompatActivity implements AdapterView.O
 		TextView textView= new TextView(this);
 		textView.setText("Class Skills");
 		textView.setTextColor(getResources().getColor(R.color.textColorPrimary));
-		textView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 18);
+		textView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20);
 		classSkillLayout.addView(textView);
 		
 		for(int i= 0; i < skills.size(); i++){
@@ -651,14 +651,14 @@ public class NewCharacterForm extends AppCompatActivity implements AdapterView.O
 		);
 	}
 	
-	private void toggleViewVisibility(Boolean on, View ... views){
+	private void toggleViewVisibility(int state, View ... views){
 		for(View v : views){
-			if(on){ v.setVisibility(View.VISIBLE); }
-			else{ v.setVisibility(View.GONE); }
+			v.setVisibility(state);
 		}
 	}
 	//endregion
 	
+	//region Complete Character Creation
 	public void completeCharacter(View view){
 		EditText nameBox= findViewById(R.id.name_editText);
 		
@@ -709,7 +709,7 @@ public class NewCharacterForm extends AppCompatActivity implements AdapterView.O
 		PlayerCharacter.makePlayerCharacter(nameBox.getText().toString(), characterRace, str, dex, con, intel, wis, cha, charSkills, charClass,
 				getCharPackList(), getCharArmorList(), getCharWeaponList(), getCharToolList());
 		
-		Intent intent= new Intent(this, CharacterDisplay.class);
+		Intent intent= new Intent(this, CharacterDisplayActivity.class);
 		startActivity(intent);
 	}
 	
@@ -767,6 +767,7 @@ public class NewCharacterForm extends AppCompatActivity implements AdapterView.O
 		}
 		return charTools;
 	}
+	//endregion
 	
 	//region onItemSelected
 	@Override
@@ -876,7 +877,7 @@ public class NewCharacterForm extends AppCompatActivity implements AdapterView.O
 		});
 		
 		for(int i= 1; i<raceInfo.length; i++){
-			RadioButton rb= new RadioButton(NewCharacterForm.this);
+			RadioButton rb= new RadioButton(NewCharacterActivity.this);
 			subRaceSelection.addView(rb);
 			rb.setText(raceInfo[i]);
 			rb.setTextColor(getResources().getColor(R.color.textColorPrimary));

@@ -11,11 +11,11 @@
 			SavingThrows: Str, Con /
 			SkillProficiencies: 2 - Animal Handling, Athletics, Intimidation, Nature, Perception, Survival /
 			ASI: 4, 8, 12, 16, 19 /
-			Archetypes: Path of the Berserker, Path of the Totem Warrior
+			Archetypes: Path of the Berserker, Path of the Totem Warrior /
 			Features /
 			1: Rage, (Rage advantage), (Rage increase), (Rage resistance), Unarmored Defense (Barbarian) -
 			2: Reckless Attack, (Reckless Attack advantage), Danger Sense -
-			3: Frenzy, (Frenzy attack)
+			3: Archetype
 
 		</item>
 		<item>
@@ -29,8 +29,10 @@
 			SkillProficiencies: 3 - Acrobatics, Animal Handling, Arcana, Athletics, Deception, History, Insight, Intimidation,
 				Investigation, Medicine, Nature, Perception, Performance, Persuasion, Religion, Sleight of Hand, Stealth, Survival /
 			ASI: 4, 8, 12, 16, 19 /
+			Archetypes: TEMP, TEMP /
 			Features /
-			1: Rage
+			1: Rage -
+			2: Reckless Attack
 		</item>
 		<item>
 			<!-- Cleric -->
@@ -42,6 +44,7 @@
 			SavingThrows: Wis, Cha /
 			SkillProficiencies: 2 - History, Insight, Medicine, Persuasion, Religion /
 			ASI: 4, 8, 12, 16, 19 /
+			Archetypes: TEMP, TEMP /
 			Features /
 			1: Rage
 		</item>

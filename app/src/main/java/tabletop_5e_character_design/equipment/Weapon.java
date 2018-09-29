@@ -1,11 +1,14 @@
-package tabletop_5e_character_design;
+package tabletop_5e_character_design.equipment;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 import lombok.Getter;
+import lombok.ToString;
+import tabletop_5e_character_design.PlayerCharacter;
 
+@Getter @ToString
 public class Weapon{
 	private final static int GROUP= "Group: ".length();
 	private final static int TYPE= "Type: ".length();
@@ -18,15 +21,15 @@ public class Weapon{
 	
 	private final static String NOTFOUND= "NOT FOUND";
 	
-	@Getter String name;
-	@Getter String price;
-	@Getter double weight;
-	@Getter String group;
-	@Getter String type;
-	@Getter String range;
-	@Getter String damage;
-	@Getter String damageType;
-	@Getter List<String> tags;
+	String name;
+	String price;
+	double weight;
+	String group;
+	String type;
+	String range;
+	String damage;
+	String damageType;
+	List<String> tags;
 	
 	/**
 	 * Creates a new Weapon using the provided array and name. If strings in {@code weaponFeatures}

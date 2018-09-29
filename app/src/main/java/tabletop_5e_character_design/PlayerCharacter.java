@@ -58,8 +58,8 @@ public class PlayerCharacter{
 	private Set<String> weaponProficiencies= new LinkedHashSet<>();
 	private Set<String> toolProficiencies= new LinkedHashSet<>();
 	private Set<String> skillProficiencies= new LinkedHashSet<>();
-	
 	private Map<String, ClassFeature> classFeatures= new LinkedHashMap<>();
+	
 	private Map<GameInfo.damageType, Double> resistances= new TreeMap<>();
 	private List<String> rituals= new ArrayList<>();
 	
@@ -101,7 +101,7 @@ public class PlayerCharacter{
 		classList.add(startingClass);
 		startingClass.incrementLevel();
 		characterLevel++;
-		addClassFeaturesByClassLevel(0);
+		addClassFeatures(startingClass.getFeatureListForLevel(startingClass.getLevel()));
 		
 		if(charRace.getRacialArmorTraining() != null){ armorProficiencies.addAll(Arrays.asList(charRace.getRacialArmorTraining())); }
 		armorProficiencies.addAll(Arrays.asList(startingClass.getArmorProficiencies()));
@@ -162,21 +162,36 @@ public class PlayerCharacter{
 		currentHitPoints += hpToAdd;
 	}
 	
-	private void addClassFeaturesByClassLevel(int i){
-		CharacterClass charClass= classList.get(i);
-		String[] featureList= charClass.getFeatureListForLevel();
-		for(String feature : featureList){
+	public void addLevel(String className){
+		CharacterClass charClass= GameInfo.getClass(className);
+		int index= classList.indexOf(charClass);
+		if(index == -1){
+			classList.add(charClass);
+			charClass.incrementLevel();
+		}
+		else{
+			classList.get(index).incrementLevel();
+		}
+		characterLevel++;
+		
+		Random random= new Random();
+		int hpToAdd= random.nextInt(charClass.getHitDice()) + 1;
+		addToMaxHitPoints(hpToAdd);
+	}
+	
+	public void addClassFeatures(List<String> features){
+		for(String feature : features){
 			ClassFeature featureToAdd= GameInfo.getClassFeature(feature);
-			String parent= featureToAdd.parentFeature;
+			String parent= featureToAdd.getParentFeature();
 			
 			if("none".equalsIgnoreCase(parent)){
-				classFeatures.put(featureToAdd.name, featureToAdd);
+				classFeatures.put(featureToAdd.getName(), featureToAdd);
 				applyClassFeatureEffect(featureToAdd);
 			}
 			else if(classFeatures.containsKey(parent)){ classFeatures.get(parent).addChildFeature(featureToAdd); }
 			else{
 				for(String f : classFeatures.keySet()){
-					List<ClassFeature> children= classFeatures.get(f).getChildFeatures();
+					List<ClassFeature> children= new ArrayList<>(classFeatures.get(f).getChildFeatures());
 					if(children.contains(GameInfo.getClassFeature(parent))){
 						children.get(children.indexOf(GameInfo.getClassFeature(parent))).addChildFeature(featureToAdd);
 						break;
@@ -190,25 +205,6 @@ public class PlayerCharacter{
 		if(feature instanceof ValueSetClassFeature){
 		
 		}
-	}
-	
-	public void addLevel(String className){
-		CharacterClass charClass= GameInfo.getClass(className);
-		if(classList.contains(charClass)){
-			int index= classList.indexOf(charClass);
-			classList.get(index).incrementLevel();
-			addClassFeaturesByClassLevel(index);
-		}
-		else{
-			classList.add(charClass);
-			charClass.incrementLevel();
-			addClassFeaturesByClassLevel(classList.indexOf(charClass));
-		}
-		characterLevel++;
-		
-		Random random= new Random();
-		int hpToAdd= random.nextInt(charClass.getHitDice()) + 1;
-		addToMaxHitPoints(hpToAdd);
 	}
 	
 	public void setCurrentHitPoints(int hp){ currentHitPoints= hp < maxHitPoints ? (hp > 0 ? hp : 0)  : maxHitPoints; }
@@ -240,6 +236,13 @@ public class PlayerCharacter{
 		}
 		if(skillProficiencies.contains(skill)){ mod += proficiencyBonus; }
 		return mod;
+	}
+	
+	public CharacterClass getClass(String name){
+		for(CharacterClass c : classList){
+			if(c.getName().equalsIgnoreCase(name)){ return c; }
+		}
+		return null;
 	}
 	
 	//region Inventory Management

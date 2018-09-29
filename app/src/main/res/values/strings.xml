@@ -122,4 +122,7 @@
 	<string name="equip_tool_label">Tool</string>
 	<string name="attack_name">Weapon/Attack</string>
 	<string name="title_activity_level_up_screen">LevelUpScreen</string>
+
+	<!-- TODO: Remove or change this placeholder text -->
+	<string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

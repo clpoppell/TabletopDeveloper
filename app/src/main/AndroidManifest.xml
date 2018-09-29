@@ -20,7 +20,7 @@
 			</intent-filter>
 		</activity>
 		<activity
-			android:name=".NewCharacterForm"
+			android:name=".NewCharacterActivity"
 			android:label="@string/title_activity_new_character_form"
 			android:parentActivityName=".MainActivity"
 			android:windowSoftInputMode="stateHidden">
@@ -29,19 +29,8 @@
 				android:value="com.tadbolmont.tabletopdeveloper.MainActivity" />
 		</activity>
 		<activity
-			android:name=".CharacterDisplay"
+			android:name=".CharacterDisplayActivity"
 			android:label="@string/title_activity_character_display" />
-		<activity
-			android:name=".CharacterFeatures"
-			android:label="@string/title_activity_character_features"
-			android:parentActivityName=".CharacterDisplay">
-			<meta-data
-				android:name="android.support.PARENT_ACTIVITY"
-				android:value="com.tadbolmont.tabletopdeveloper.CharacterDisplay" />
-		</activity>
-		<activity
-			android:name=".LevelUpScreen"
-			android:label="@string/title_activity_level_up_screen"></activity>
 	</application>
 
 </manifest>

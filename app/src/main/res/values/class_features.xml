@@ -8,9 +8,9 @@
 	<string-array name="class_features">
 		<!-- Archetype Choice -->
 		<item>
-			Name: Archetype Choice /
+			Name: Archetype /
 			ParentFeature: none /
-			Type: Archetype /
+			Type: Archetype
 		</item>
 		<!-- Rage -->
 		<item>

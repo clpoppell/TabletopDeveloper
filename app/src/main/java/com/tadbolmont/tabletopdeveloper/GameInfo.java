@@ -2,40 +2,54 @@ package com.tadbolmont.tabletopdeveloper;
 
 import android.content.res.Resources;
 
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.TreeMap;
 
-import tabletop_5e_character_design.ArmorEquipment;
+import tabletop_5e_character_design.Archetype;
+import tabletop_5e_character_design.equipment.Armor;
 import tabletop_5e_character_design.CharacterClass;
 import tabletop_5e_character_design.CharacterRace;
 import tabletop_5e_character_design.ClassEquipmentList;
-import tabletop_5e_character_design.Weapon;
+import tabletop_5e_character_design.equipment.Tool;
+import tabletop_5e_character_design.equipment.Weapon;
 import tabletop_5e_character_design.class_features.ClassFeature;
 
 @SuppressWarnings("ConstantConditions")
 public final class GameInfo{
 	private static final Resources RES= App.mContext.getResources();
+	private static final int NAME= "Name: ".length();
 	
 	private static final Map<String, CharacterRace> RACE_INFO= createRaceInfo();
 	private static final Map<String, String> SKILL_MAP= createSkillInfo();
 	private static final Map<String, String> FEAT_INFO= createFeatInfo();
+	
 	private static final Map<String, ClassEquipmentList> CLASS_EQUIPMENT_LISTS= createClassEquipmentLists();
 	private static final Map<String, CharacterClass> CLASS_INFO= createClassInfo();
+	private static final Map<String, Archetype> ARCHETYPE_INFO= createArchetypeInfo();
 	private static final Map<String, ClassFeature> CLASS_FEATURE_INFO= createClassFeatureInfo();
 	
 	private static final Map<String, String[]> EQUIPMENT_PACKS= createEquipmentPacks();
 	private static final Map<String, Weapon> WEAPON_INFO= createWeaponInfo();
-	private static final Map<String, ArmorEquipment> ARMOR_INFO= createArmorInfo();
+	private static final Map<String, Armor> ARMOR_INFO= createArmorInfo();
+	private static final Map<String, Tool> TOOL_INFO= createToolInfo();
 	
-	private static final Map<String, String[]> SPELL_INFO= createSpellInfo();
 	private static final Map<String, String[]> SPELL_LISTS= createSpellLists();
+	private static final Map<String, String[]> SPELL_INFO= createSpellInfo();
 	
 	public enum armorState{ NoArmor, LightArmor, MedArmor, HeavyArmor }
 	public enum damageType{ Acid, Bludgeoning, Cold, Fire, Force, Lightning, Necrotic, Piercing, Poison, Psychic, Radiant, Slashing, Thunder, NOTFOUND }
 	
+	static String formatNumbersPlusMinus(int n){
+		NumberFormat plusMinusNF = new DecimalFormat("+#;-#");
+		return plusMinusNF.format(n);
+	}
+	
+	//region Create List Methods
 	private static Map<String, CharacterRace> createRaceInfo(){
 		Map<String, CharacterRace> races= new HashMap<>();
 		String[] raceDesc= RES.getStringArray(R.array.race_info);
@@ -76,13 +90,24 @@ public final class GameInfo{
 	
 	private static Map<String, CharacterClass> createClassInfo(){
 		Map<String, CharacterClass> classMap= new HashMap<>();
-		String[] equipLists= RES.getStringArray(R.array.class_info);
-		for(String charClassString : equipLists){
+		String[] classLists= RES.getStringArray(R.array.class_info);
+		for(String charClassString : classLists){
 			String[] classFeatures= charClassString.split(" / ");
 			CharacterClass classInfo= new CharacterClass(classFeatures);
 			classMap.put(classFeatures[0].substring(6), classInfo);
 		}
 		return classMap;
+	}
+	
+	private static Map<String,Archetype> createArchetypeInfo(){
+		Map<String, Archetype> archetypeMap= new HashMap<>();
+		String[] archetypeLists= RES.getStringArray(R.array.archetype_info);
+		for(String archetypeString : archetypeLists){
+			String[] archetypeFeatures= archetypeString.split(" / ");
+			Archetype archetype= new Archetype(archetypeFeatures);
+			archetypeMap.put(archetype.getName(), archetype);
+		}
+		return archetypeMap;
 	}
 	
 	private static Map<String, ClassFeature> createClassFeatureInfo(){
@@ -97,7 +122,6 @@ public final class GameInfo{
 	}
 	
 	private static Map<String,String[]> createEquipmentPacks(){
-		final int NAME= "Name: ".length();
 		final int ITEMS= "Items: ".length();
 		
 		Map<String, String[]> packs= new TreeMap<>();
@@ -110,8 +134,6 @@ public final class GameInfo{
 	}
 	
 	private static Map<String, Weapon> createWeaponInfo(){
-		final int NAME= "Name: ".length();
-		
 		Map<String, Weapon> weapons= new LinkedHashMap<>();
 		String[] weaponStrings= RES.getStringArray(R.array.weapon_info);
 		for(String weapon : weaponStrings){
@@ -122,42 +144,26 @@ public final class GameInfo{
 		return weapons;
 	}
 	
-	private static Map<String,ArmorEquipment> createArmorInfo(){
-		final int NAME= "Name: ".length();
-		final int TYPE= "Type: ".length();
-		final int PRICE= "Price: ".length();
-		final int AC_FORMULA= "AC_Formula: ".length();
-		final int STR_REQUIRED= "StrRequired: ".length();
-		final int STEALTH_DISADVANTAGE= "StealthDisadvantage: ".length();
-		final int WEIGHT= "Weight: ".length();
-		
-		Map<String, ArmorEquipment> armors= new LinkedHashMap<>();
+	private static Map<String, Armor> createArmorInfo(){
+		Map<String, Armor> armors= new LinkedHashMap<>();
 		String[] armorStrings= RES.getStringArray(R.array.armor_info);
 		for(String armor : armorStrings){
 			String[] a= armor.split(" # ");
-			
 			String name= a[0].substring(NAME);
-			String type= a[1].substring(TYPE);
-			String price= a[2].substring(PRICE);
-			String acFormula= a[3].substring(AC_FORMULA);
-			int strRequired= Integer.parseInt(a[4].substring(STR_REQUIRED));
-			boolean stealthDisadvantage= "y".equalsIgnoreCase(a[5].substring(STEALTH_DISADVANTAGE));
-			double weight= Double.parseDouble(a[6].substring(WEIGHT));
-			
-			armors.put(name, new ArmorEquipment(name, type, price, acFormula, strRequired, stealthDisadvantage, weight));
+			armors.put(name, new Armor(name, a));
 		}
 		return armors;
 	}
 	
-	private static Map<String, String[]> createSpellInfo(){
-		Map<String, String[]> spells= new LinkedHashMap<>();
-		String[] spellStrings= RES.getStringArray(R.array.cantrips);
-		for(String spell : spellStrings){
-			String[] s= spell.split(" # ");
-			String key= s[0];
-			spells.put(key, s);
+	private static Map<String, Tool> createToolInfo(){
+		Map<String, Tool> tools= new LinkedHashMap<>();
+		String[] toolStrings= RES.getStringArray(R.array.tool_info);
+		for(String tool : toolStrings){
+			String[] t= tool.split(" # ");
+			String name= t[0].substring(NAME);
+			tools.put(name, new Tool(name, t));
 		}
-		return spells;
+		return tools;
 	}
 	
 	private static Map<String, String[]> createSpellLists(){
@@ -172,6 +178,18 @@ public final class GameInfo{
 		return spellLists;
 	}
 	
+	private static Map<String, String[]> createSpellInfo(){
+		Map<String, String[]> spells= new LinkedHashMap<>();
+		String[] spellStrings= RES.getStringArray(R.array.cantrips);
+		for(String spell : spellStrings){
+			String[] s= spell.split(" # ");
+			String key= s[0];
+			spells.put(key, s);
+		}
+		return spells;
+	}
+	//endregion
+	
 	//region List Accessors
 	public static CharacterRace getRace(String key){ return RACE_INFO.get(key.trim()); }
 	
@@ -183,9 +201,11 @@ public final class GameInfo{
 	
 	public static CharacterClass getClass(String key){ return new CharacterClass(CLASS_INFO.get(key.trim())); }
 	
+	public static Archetype getArchetype(String key){ return new Archetype(ARCHETYPE_INFO.get(key.trim())); }
+	
 	public static ClassEquipmentList getClassEquipmentList(String key){ return CLASS_EQUIPMENT_LISTS.get(key.trim()); }
 	
-	public static ClassFeature getClassFeature(String key){ return ClassFeature.getClassFeature(CLASS_FEATURE_INFO.get(key.trim())); }
+	public static ClassFeature getClassFeature(String key){  return ClassFeature.getClassFeature(CLASS_FEATURE_INFO.get(key.trim())); }
 	
 	public static String[] getSpellList(String key){ return SPELL_LISTS.get(key.trim()); }
 	
@@ -205,9 +225,10 @@ public final class GameInfo{
 		return weaponNames;
 	}
 	
-	public static ArmorEquipment getArmor(String key){ return ARMOR_INFO.get(key.trim()); }
+	public static Armor getArmor(String key){ return ARMOR_INFO.get(key.trim()); }
 	
 	public static Weapon getWeapon(String key){ return WEAPON_INFO.get(key.trim()); }
 	
+	public static Tool getTool(String key){ return TOOL_INFO.get(key.trim()); }
 	//endregion
 }

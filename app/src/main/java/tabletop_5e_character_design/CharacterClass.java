@@ -4,8 +4,13 @@ import android.util.SparseArray;
 
 import com.tadbolmont.tabletopdeveloper.GameInfo;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
+import lombok.Setter;
 
 
 @EqualsAndHashCode(onlyExplicitlyIncluded= true) @Getter
@@ -18,6 +23,7 @@ public class CharacterClass{
 	private static final int SAVING_THROWS= "SavingThrows: ".length();
 	private static final int SKILL_PROFICIENCIES= "SkillProficiencies: ".length();
 	private static final int ASI_LEVELS= "ASI: ".length();
+	private static final int ARCHETYPES= "Archetypes: ".length();
 	
 	@EqualsAndHashCode.Include private String name;
 	private int hitDice;
@@ -29,6 +35,8 @@ public class CharacterClass{
 	private int[] asiLevels;
 	private ClassEquipmentList classEquipmentChoices;
 	private int level;
+	private String[] archetypes;
+	@Setter private Archetype archetypeChoice= null;
 	private SparseArray<String[]> features= new SparseArray<>();
 	
 	public CharacterClass(String[] classInfo){
@@ -46,9 +54,11 @@ public class CharacterClass{
 		asiLevels= new int[asiLevelsString.length];
 		for(int i=0; i < asiLevels.length; i++){ asiLevels[i]= Integer.parseInt(asiLevelsString[i]); }
 		
+		archetypes= classInfo[8].substring(ARCHETYPES).split(", ");
+		
 		classEquipmentChoices= GameInfo.getClassEquipmentList(name);
 		
-		String[] featureStrings= classInfo[9].split(" - ");
+		String[] featureStrings= classInfo[10].split(" - ");
 		for(String level : featureStrings){
 			String[] levelStrings= level.split(": ");
 			int key= Integer.parseInt(levelStrings[0]);
@@ -69,12 +79,13 @@ public class CharacterClass{
 		asiLevels= charClass.asiLevels;
 		classEquipmentChoices= charClass.classEquipmentChoices;
 		level= 0;
+		archetypes= charClass.archetypes;
 		features= charClass.features;
 	}
 	
 	public void incrementLevel(){ level++; }
 	
-	public String[] getFeatureListForLevel(){ return features.get(level); }
+	public List<String> getFeatureListForLevel(int lvl){ return archetypeChoice == null ? new ArrayList<>(Arrays.asList(features.get(lvl))) : archetypeChoice.getFeatureListForLevel(lvl); }
 	
 	@Override
 	public String toString(){ return name + " " + level; }

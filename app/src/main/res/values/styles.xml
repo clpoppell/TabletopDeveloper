@@ -29,9 +29,10 @@
 	<style name="MyButtonStyle" parent="Widget.AppCompat.Button.ButtonBar.AlertDialog">
 		<item name="android:layout_width">wrap_content</item>
 		<item name="android:layout_height">38dp</item>
-		<item name="android:layout_marginBottom">2dp</item>
+		<item name="android:layout_marginBottom">1dp</item>
 		<item name="android:layout_gravity">center</item>
 		<item name="android:background">@drawable/button_burder</item>
+		<item name="android:textSize">18sp</item>
 		<item name="android:textColor">@color/textColorPrimary</item>
 	</style>
 
@@ -62,7 +63,6 @@
 
 	<!-- Style for display sections -->
 	<style name="SectionLayoutStyle" parent="NewCharacterFormLayoutStyle">
-		<item name="android:layout_width">match_parent</item>
 		<item name="android:background">@drawable/section_border</item>
 		<item name="android:paddingBottom">4dp</item>
 		<item name="android:orientation">vertical</item>
@@ -93,6 +93,7 @@
 
 	<style name="CharacterBioTextViewStyle" parent="MyTextViewStyle">
 		<item name="android:textSize">24sp</item>
+		<item name="android:paddingStart">4dp</item>
 	</style>
 
 	<style name="SavingThrowDiceRollBtnStyle" parent="MyButtonStyle">
@@ -101,6 +102,8 @@
 	</style>
 
 	<style name="SkillDiceRollBtnStyle" parent="MyButtonStyle">
+		<item name="android:layout_marginTop">2dp</item>
+		<item name="android:layout_marginEnd">8dp</item>
 		<item name="android:text">Roll</item>
 		<item name="android:onClick">skillRoll</item>
 	</style>
@@ -108,9 +111,7 @@
 	<style name="SavingThrowTextViewStyle" parent="MyTextViewStyle">
 		<item name="android:layout_width">40dp</item>
 		<item name="android:layout_height">40dp</item>
-		<item name="android:layout_marginBottom">1dp</item>
 		<item name="android:gravity">center</item>
-		<item name="android:textSize">20sp</item>
 	</style>
 
 	<style name="SkillModTextViewStyle" parent="MyTextViewStyle">
@@ -119,27 +120,17 @@
 		<item name="android:layout_marginStart">4dp</item>
 		<item name="android:layout_marginEnd">4dp</item>
 		<item name="android:gravity">center</item>
-		<item name="android:textSize">20sp</item>
 	</style>
 
 	<style name="SkillNameTextViewStyle" parent="SkillModTextViewStyle">
 		<item name="android:gravity">center_vertical</item>
 		<item name="android:layout_marginEnd">14dp</item>
-		<item name="android:layout_marginBottom">1dp</item>
-	</style>
-
-	<style name="DefensesTextViewStyle" parent="MyTextViewStyle">
-		<item name="android:textSize">20sp</item>
 	</style>
 
 	<style name="DefensesSmallLabelTextViewStyle" parent="MyTextViewStyle">
 		<item name="android:layout_marginStart">2dp</item>
 		<item name="android:layout_gravity">center_vertical</item>
 		<item name="android:textSize">10sp</item>
-	</style>
-
-	<style name="HealthTextViewStyle" parent="MyTextViewStyle">
-		<item name="android:textSize">20sp</item>
 	</style>
 
 </resources>

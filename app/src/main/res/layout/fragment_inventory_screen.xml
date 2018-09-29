@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	tools:context=".InventoryFragment"
+	android:orientation="vertical">
+
+	<TableLayout
+		android:id="@+id/weapon_list"
+		style="@style/SectionLayoutStyle"
+		android:layout_width="match_parent"/>
+
+	<TableLayout
+		android:id="@+id/armor_list"
+		style="@style/SectionLayoutStyle"
+		android:layout_width="match_parent"/>
+
+	<TableLayout
+		android:id="@+id/tool_list"
+		style="@style/SectionLayoutStyle"
+		android:layout_width="match_parent"/>
+
+	<TableLayout
+		android:id="@+id/other_items_list"
+		style="@style/SectionLayoutStyle"
+		android:layout_width="match_parent"/>
+
+</LinearLayout>

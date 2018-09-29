@@ -2,10 +2,13 @@ package tabletop_5e_character_design.class_features;
 
 import android.util.SparseIntArray;
 
+import lombok.Getter;
+
+@Getter
 public class IncreaseClassFeature extends ClassFeature{
-	final String valueToIncrease;
-	private int increaseValue;
-	private SparseIntArray levelIncreaseList= new SparseIntArray();
+	String valueToIncrease;
+	int increaseValue;
+	SparseIntArray levelIncreaseList= new SparseIntArray();
 	
 	IncreaseClassFeature(String name, String parentFeature, String values, String valueModified, String desc){
 		super(name, parentFeature, desc);
@@ -33,11 +36,5 @@ public class IncreaseClassFeature extends ClassFeature{
 		this.valueToIncrease= valueToIncrease;
 	}
 	
-	public SparseIntArray getLevelIncreaseList(){
-		return levelIncreaseList;
-	}
-	
-	public void setIncreaseValue(int classLevel){
-		increaseValue= levelIncreaseList.get(classLevel, increaseValue);
-	}
+	private void setIncreaseValue(int classLevel){ increaseValue= levelIncreaseList.get(classLevel, increaseValue); }
 }

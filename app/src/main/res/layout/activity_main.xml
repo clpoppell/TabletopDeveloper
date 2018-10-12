@@ -9,7 +9,8 @@
 
     <Button
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:background="@drawable/section_border"
         android:onClick="newCharacter"
         android:text="@string/new_char"
@@ -22,7 +23,8 @@
     <Button
         android:id="@+id/button"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:background="@drawable/section_border"
         android:onClick="loadCharacter"
         android:text="@string/load_char"

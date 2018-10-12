@@ -6,12 +6,14 @@ import lombok.Getter;
 public class CharacterSpell extends Spell{
 	private String statUsed;
 	private int levelGained;
+	private String className;
 	
 	CharacterSpell(String stat, String name, int level){
 		super(name, level);
 		
 		statUsed= stat;
 		levelGained= 1;
+		className= "";
 	}
 	
 	CharacterSpell(String stat, String name, int level, int levelGained){
@@ -19,6 +21,7 @@ public class CharacterSpell extends Spell{
 		
 		statUsed= stat;
 		this.levelGained= levelGained;
+		className= "";
 	}
 	
 	CharacterSpell(String[] cantripInfo){
@@ -26,5 +29,14 @@ public class CharacterSpell extends Spell{
 		
 		statUsed= cantripInfo[0].substring(0, 3);
 		levelGained= 1;
+		className= "";
+	}
+	
+	public CharacterSpell(String stat, String className, Spell spell){
+		super(spell.getName(), spell.getLevel());
+		
+		statUsed= stat;
+		levelGained= 1;
+		this.className= className;
 	}
 }

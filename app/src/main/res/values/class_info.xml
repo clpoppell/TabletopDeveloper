@@ -10,7 +10,6 @@
 			ToolProficiencies: none /
 			SavingThrows: Str, Con /
 			SkillProficiencies: 2 - Animal Handling, Athletics, Intimidation, Nature, Perception, Survival /
-			ASI: 4, 8, 12, 16, 19 /
 			Archetypes: Path of the Berserker, Path of the Totem Warrior /
 			Features /
 			1: Rage, (Rage advantage), (Rage increase), (Rage resistance), Unarmored Defense (Barbarian) -
@@ -28,11 +27,14 @@
 			SavingThrows: Dex, Cha /
 			SkillProficiencies: 3 - Acrobatics, Animal Handling, Arcana, Athletics, Deception, History, Insight, Intimidation,
 				Investigation, Medicine, Nature, Perception, Performance, Persuasion, Religion, Sleight of Hand, Stealth, Survival /
-			ASI: 4, 8, 12, 16, 19 /
-			Archetypes: TEMP, TEMP /
+			Archetypes: College of Lore, College of Valor /
 			Features /
-			1: Rage -
-			2: Reckless Attack
+			1: Bardic Inspiration, Cantrips, (Cantrips Bard gain), (Cantrips Bard gain), (Cantrips Cha casting stat), Spellcasting,
+			(Spellcasting Bard gain 1), (Spellcasting Bard gain 1), (Spellcasting Bard gain 1), (Spellcasting Bard gain 1),
+			(Spellcasting Cha casting stat), (Spellcasting level increase), (Ritual Casting) -
+			2: Jack of All Trades, Song of Rest, Spellcasting, (Spellcasting Bard gain 1), (Spellcasting Cha casting stat),
+			(Spellcasting level increase), (Ritual Casting) -
+			3: Archetype
 		</item>
 		<item>
 			<!-- Cleric -->
@@ -43,7 +45,6 @@
 			ToolProficiencies: none /
 			SavingThrows: Wis, Cha /
 			SkillProficiencies: 2 - History, Insight, Medicine, Persuasion, Religion /
-			ASI: 4, 8, 12, 16, 19 /
 			Archetypes: TEMP, TEMP /
 			Features /
 			1: Rage

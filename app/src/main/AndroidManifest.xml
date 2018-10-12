@@ -31,6 +31,9 @@
 		<activity
 			android:name=".CharacterDisplayActivity"
 			android:label="@string/title_activity_character_display" />
+		<activity
+			android:name=".LevelUpActivity"
+			android:label="@string/title_activity_level_up_screen" />
 	</application>
 
 </manifest>

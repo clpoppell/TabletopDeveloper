@@ -12,6 +12,9 @@ import android.widget.TextView;
 
 import com.google.common.base.Joiner;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.Unbinder;
 import tabletop_5e_character_design.PlayerCharacter;
 import tabletop_5e_character_design.class_features.ClassFeature;
 import tabletop_5e_character_design.class_features.UsableClassFeature;
@@ -19,21 +22,25 @@ import tabletop_5e_character_design.class_features.UsableClassFeature;
 public class CharacterFeatureFragment extends Fragment implements View.OnClickListener{
 	PlayerCharacter character= PlayerCharacter.getPlayerCharacter();
 	View v;
+	private Unbinder unbinder;
 	
-	public CharacterFeatureFragment(){};
+	@BindView(R.id.character_armor_proficiency) TextView armorProf;
+	@BindView(R.id.character_weapon_proficiency) TextView weaponProf;
+	@BindView(R.id.character_tool_proficiency) TextView toolProf;
+	@BindView(R.id.character_feature_list) LinearLayout featureList;
 	
-	@Override
-	public void onCreate(Bundle savedInstanceState){ super.onCreate(savedInstanceState); }
+	public CharacterFeatureFragment(){}
 	
 	@Override
 	public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
 		v= inflater.inflate(R.layout.fragment_character_feature_display, container, false);
 		
-		((TextView)v.findViewById(R.id.character_armor_proficiency)).setText(Joiner.on(", ").join(character.getArmorProficiencies()));
-		((TextView)v.findViewById(R.id.character_weapon_proficiency)).setText(Joiner.on(", ").join(character.getWeaponProficiencies()));
-		((TextView)v.findViewById(R.id.character_tool_proficiency)).setText(Joiner.on(", ").join(character.getToolProficiencies()));
+		unbinder= ButterKnife.bind(this, v);
 		
-		LinearLayout featureList= v.findViewById(R.id.character_feature_list);
+		armorProf.setText(Joiner.on(", ").join(character.getArmorProficiencies()));
+		weaponProf.setText(Joiner.on(", ").join(character.getWeaponProficiencies()));
+		toolProf.setText(Joiner.on(", ").join(character.getToolProficiencies()));
+		
 		for (ClassFeature feature : character.getClassFeatures().values()){
 			TextView textView= new TextView(getActivity());
 			textView.setText(feature.toString());
@@ -44,6 +51,12 @@ public class CharacterFeatureFragment extends Fragment implements View.OnClickLi
 			featureList.addView(textView);
 		}
 		return v;
+	}
+	
+	@Override
+	public void onDestroyView(){
+		super.onDestroyView();
+		unbinder.unbind();
 	}
 	
 	@Override

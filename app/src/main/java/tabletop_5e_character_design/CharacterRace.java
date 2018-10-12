@@ -139,7 +139,7 @@ public class CharacterRace{
 		}
 		if(raceInfo.racialFeats != null && "Choice".equalsIgnoreCase(raceInfo.racialFeats)){ racialFeats= feat; }
 		racialAttack= raceInfo.racialAttack;
-		if(raceInfo.racialCantrip != null && "Choice".equalsIgnoreCase(raceInfo.racialCantrip.getSpellName().substring(0,6))){ racialCantrip= new CharacterSpell(raceInfo.racialCantrip.getStatUsed(), cantrip, 0); }
+		if(raceInfo.racialCantrip != null && "Choice".equalsIgnoreCase(raceInfo.racialCantrip.getName().substring(0,6))){ racialCantrip= new CharacterSpell(raceInfo.racialCantrip.getStatUsed(), cantrip, 0); }
 		racialSpellList= raceInfo.racialSpellList;
 		racialDamageResistances= raceInfo.racialDamageResistances;
 		racialDefenses= raceInfo.racialDefenses;
@@ -190,7 +190,7 @@ public class CharacterRace{
 	
 	public Boolean hasFeatChoice(){ return !(racialFeats == null); }
 	
-	public boolean hasCantripChoice(){ return racialCantrip.getSpellName().contains("("); }
+	public boolean hasCantripChoice(){ return racialCantrip.getName().contains("("); }
 	
 	public Boolean hasWeaponChoice(){
 		for(String s : racialWeaponTraining){

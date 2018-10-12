@@ -4,6 +4,7 @@ import android.graphics.Paint;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
+import android.util.SparseArray;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,7 +13,6 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
@@ -29,7 +29,12 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
-import lombok.val;
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnCheckedChanged;
+import butterknife.OnFocusChange;
+import butterknife.OnItemSelected;
+import butterknife.Unbinder;
 import tabletop_5e_character_design.CharacterClass;
 import tabletop_5e_character_design.PlayerCharacter;
 import tabletop_5e_character_design.class_features.ClassFeature;
@@ -38,79 +43,92 @@ import tabletop_5e_character_design.equipment.Weapon;
 
 import static com.tadbolmont.tabletopdeveloper.GameInfo.formatNumbersPlusMinus;
 
-public class MainCharacterInfoFragment extends Fragment implements AdapterView.OnItemSelectedListener,
-		CompoundButton.OnCheckedChangeListener, View.OnFocusChangeListener{
-	public MainCharacterInfoFragment(){}
+public class MainCharacterInfoFragment extends Fragment{
+	
 	//region Fields
-	PlayerCharacter character= PlayerCharacter.getPlayerCharacter();
-	View v;
+	private PlayerCharacter character= PlayerCharacter.getPlayerCharacter();
+	SparseArray<String> attackMap;
+	private View v;
 	
-	EditText strDisplay;
-	EditText dexDisplay;
-	EditText conDisplay;
-	EditText intDisplay;
-	EditText wisDisplay;
-	EditText chaDisplay;
+	@BindView(R.id.char_name) TextView nameDisplay;
+	@BindView(R.id.char_race) TextView raceNameDisplay;
+	@BindView(R.id.char_class) TextView classNameDisplay;
 	
-	TextView strModDisplay;
-	TextView dexModDisplay;
-	TextView conModDisplay;
-	TextView intModDisplay;
-	TextView wisModDisplay;
-	TextView chaModDisplay;
+	@BindView(R.id.stat_number_label) TextView statNumberLabel;
+	@BindView(R.id.str_editText) EditText strDisplay;
+	@BindView(R.id.dex_editText) EditText dexDisplay;
+	@BindView(R.id.con_editText) EditText conDisplay;
+	@BindView(R.id.int_editText) EditText intDisplay;
+	@BindView(R.id.wis_editText) EditText wisDisplay;
+	@BindView(R.id.cha_editText) EditText chaDisplay;
 	
-	TextView strSavingThrowDisplay;
-	TextView dexSavingThrowDisplay;
-	TextView conSavingThrowDisplay;
-	TextView intSavingThrowDisplay;
-	TextView wisSavingThrowDisplay;
-	TextView chaSavingThrowDisplay;
+	@BindView(R.id.stat_mod_label) TextView statModLabel;
+	@BindView(R.id.str_mod) TextView strModDisplay;
+	@BindView(R.id.dex_mod) TextView dexModDisplay;
+	@BindView(R.id.con_mod) TextView conModDisplay;
+	@BindView(R.id.int_mod) TextView intModDisplay;
+	@BindView(R.id.wis_mod) TextView wisModDisplay;
+	@BindView(R.id.cha_mod) TextView chaModDisplay;
+	
+	@BindView(R.id.saving_throw_label) TextView savingThrowLabel;
+	@BindView(R.id.str_saving_throw) TextView strSavingThrowDisplay;
+	@BindView(R.id.dex_saving_throw) TextView dexSavingThrowDisplay;
+	@BindView(R.id.con_saving_throw) TextView conSavingThrowDisplay;
+	@BindView(R.id.int_saving_throw) TextView intSavingThrowDisplay;
+	@BindView(R.id.wis_saving_throw) TextView wisSavingThrowDisplay;
+	@BindView(R.id.cha_saving_throw) TextView chaSavingThrowDisplay;
+	
+	@BindView(R.id.ac_label) TextView acLabel;
+	@BindView(R.id.resistance_label) TextView resistanceLabel;
+	@BindView(R.id.resistance_list) TextView resistanceTextView;
+	@BindView(R.id.shield_checkBox) CheckBox shieldCheckBox;
+	@BindView(R.id.armor_choices) Spinner armorChoices;
+	@BindView(R.id.misc_stat_bonus_display) EditText miscStatDisplay;
+	@BindView(R.id.misc_stat_bonus_label) TextView miscStatLabel;
+	
+	@BindView(R.id.shield_bonus_display) EditText shieldBonusDisplay;
+	@BindView(R.id.armor_bonus_display) EditText armorBonusDisplay;
+	@BindView(R.id.dexterity_mod_display) EditText acDexModDisplay;
+	@BindView(R.id.ac_display) TextView acDisplay;
+	
+	@BindView(R.id.hit_dice_layout) LinearLayout hitDiceLayout;
+	@BindView(R.id.current_hp_display) EditText currentHPDisplay;
+	@BindView(R.id.max_hp_display) EditText maxHPDisplay;
+	@BindView(R.id.temp_hp_display) EditText tempHPDisplay;
+	@BindView(R.id.hit_dice_label) TextView hitDiceLabel;
+	
+	@BindView(R.id.attacks_display_layout) TableLayout attackDisplay;
+	
+	private Unbinder unbinder;
 	//endregion
 	
-	@Override
-	public void onCreate(Bundle savedInstanceState){ super.onCreate(savedInstanceState); }
+	public MainCharacterInfoFragment(){}
 	
+	//region View Methods
 	@Override
 	public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
 		v= inflater.inflate(R.layout.fragment_main_character_info, container, false);
-		
-		strDisplay= v.findViewById(R.id.str_editText);
-		dexDisplay= v.findViewById(R.id.dex_editText);
-		conDisplay= v.findViewById(R.id.con_editText);
-		intDisplay= v.findViewById(R.id.int_editText);
-		wisDisplay= v.findViewById(R.id.wis_editText);
-		chaDisplay= v.findViewById(R.id.cha_editText);
-		
-		strModDisplay= v.findViewById(R.id.str_mod);
-		dexModDisplay= v.findViewById(R.id.dex_mod);
-		conModDisplay= v.findViewById(R.id.con_mod);
-		intModDisplay= v.findViewById(R.id.int_mod);
-		wisModDisplay= v.findViewById(R.id.wis_mod);
-		chaModDisplay= v.findViewById(R.id.cha_mod);
-		
-		strSavingThrowDisplay= v.findViewById(R.id.str_saving_throw);
-		dexSavingThrowDisplay= v.findViewById(R.id.dex_saving_throw);
-		conSavingThrowDisplay= v.findViewById(R.id.con_saving_throw);
-		intSavingThrowDisplay= v.findViewById(R.id.int_saving_throw);
-		wisSavingThrowDisplay= v.findViewById(R.id.wis_saving_throw);
-		chaSavingThrowDisplay= v.findViewById(R.id.cha_saving_throw);
-		
-		populate();
-		
+		unbinder=ButterKnife.bind(this, v);
 		return v;
 	}
 	
+	@Override
+	public void onViewCreated(@NonNull View view, Bundle savedInstanceState){ populate(); }
+	
+	@Override
+	public void onDestroyView(){
+		super.onDestroyView();
+		unbinder.unbind();
+	}
+	//endregion
+	
 	//TODO Work on Attack Display
 	//region Populate Methods
-	private void populate(){
-		TextView nameDisplay= v.findViewById(R.id.char_name);
+	public void populate(){
 		nameDisplay.setText(character.getName());
-		
-		TextView raceNameDisplay= v.findViewById(R.id.char_race);
 		raceNameDisplay.setText(character.getCharRace().getName());
 		
-		TextView classNameDisplay= v.findViewById(R.id.char_class);
-		val classList= character.getClassList();
+		List<CharacterClass> classList= character.getClassList();
 		classNameDisplay.setText(Joiner.on("\n").join(classList));
 		
 		populateStatDisplay();
@@ -121,13 +139,8 @@ public class MainCharacterInfoFragment extends Fragment implements AdapterView.O
 	}
 	
 	private void populateStatDisplay(){
-		TextView statNumberLabel= v.findViewById(R.id.stat_number_label);
 		statNumberLabel.setPaintFlags(statNumberLabel.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
-		
-		TextView statModLabel= v.findViewById(R.id.stat_mod_label);
 		statModLabel.setPaintFlags(statModLabel.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
-		
-		TextView savingThrowLabel= v.findViewById(R.id.saving_throw_label);
 		savingThrowLabel.setPaintFlags(savingThrowLabel.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
 		
 		strDisplay.setText(formatNumbersLeadingZeros(character.getStrength()));
@@ -181,16 +194,11 @@ public class MainCharacterInfoFragment extends Fragment implements AdapterView.O
 	}
 	
 	private void populateDefensesDisplay(){
-		TextView acLabel= v.findViewById(R.id.ac_label);
 		acLabel.setPaintFlags(acLabel.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
-		
-		populateArmorChoices();
-		((CheckBox)v.findViewById(R.id.shield_checkBox)).setOnCheckedChangeListener(this);
-		
-		TextView resistanceLabel= v.findViewById(R.id.resistance_label);
 		resistanceLabel.setPaintFlags(resistanceLabel.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
 		
-		TextView resistanceTextView= v.findViewById(R.id.resistance_list);
+		populateArmorChoices();
+		
 		StringBuilder s= new StringBuilder("");
 		Map<GameInfo.damageType, Double> resis= character.getResistances();
 		for(GameInfo.damageType type : resis.keySet()){
@@ -207,17 +215,14 @@ public class MainCharacterInfoFragment extends Fragment implements AdapterView.O
 		int acBase= 10;
 		int dexMod= character.getDexMod();
 		int miscMod= 0;
-		String armorChoiceName= ((Spinner)v.findViewById(R.id.armor_choices)).getSelectedItem().toString();
-		
-		EditText miscStatDisplay= v.findViewById(R.id.misc_stat_bonus_display);
-		TextView miscStatLabel= v.findViewById(R.id.misc_stat_bonus_label);
+		String armorChoiceName= armorChoices.getSelectedItem().toString();
 		
 		if("None".equalsIgnoreCase(armorChoiceName)){
 			miscStatDisplay.setText("");
 			miscStatLabel.setText("Misc\nMod");
 		}
 		else if(character.getClassFeatures().containsKey(armorChoiceName)){
-			String[] formula=((ValueSetClassFeature) character.getClassFeatures().get(armorChoiceName)).value.split(" \\+ ");
+			String[] formula=((ValueSetClassFeature) character.getClassFeatures().get(armorChoiceName)).getValue().split(" \\+ ");
 			for(String part : formula){
 				//noinspection IfStatementWithNegatedCondition
 				if(!part.matches("\\d+")){
@@ -232,78 +237,67 @@ public class MainCharacterInfoFragment extends Fragment implements AdapterView.O
 						case "Con":
 							miscStatDisplay.setText(character.getConMod() + "");
 							miscStatLabel.setText("Con\nMod");
-							miscMod=character.getConMod();
+							miscMod= character.getConMod();
 							break;
 						case "Int":
 							miscStatDisplay.setText(character.getIntMod() + "");
 							miscStatLabel.setText("Int\nMod");
-							miscMod=character.getIntMod();
+							miscMod= character.getIntMod();
 							break;
 						case "Wis":
 							miscStatDisplay.setText(character.getWisMod() + "");
 							miscStatLabel.setText("Wis\nMod");
-							miscMod=character.getWisMod();
+							miscMod= character.getWisMod();
 							break;
 						case "Cha":
 							miscStatDisplay.setText(character.getChaMod() + "");
 							miscStatLabel.setText("Cha\nMod");
-							miscMod=character.getChaMod();
+							miscMod= character.getChaMod();
 							break;
 					}
 				}
-				else{ acBase=Integer.parseInt(part); }
+				else{ acBase= Integer.parseInt(part); }
 			}
 		}
 		int shieldAC= 0;
-		if(((CheckBox)v.findViewById(R.id.shield_checkBox)).isChecked()){
+		if(shieldCheckBox.isChecked()){
 			shieldAC= 2;
-			((EditText)v.findViewById(R.id.shield_bonus_display)).setText(shieldAC + "");
+			shieldBonusDisplay.setText(shieldAC + "");
 		}
-		else{ ((EditText)v.findViewById(R.id.shield_bonus_display)).setText(""); }
+		else{ shieldBonusDisplay.setText(""); }
 		
 		int totalAC= acBase + dexMod + shieldAC + miscMod;
 		
-		((EditText)v.findViewById(R.id.armor_bonus_display)).setText(acBase + "");
-		((EditText)v.findViewById(R.id.dexterity_mod_display)).setText(character.getDexMod() + "");
-		((TextView)v.findViewById(R.id.ac_display)).setText(totalAC + "");
+		armorBonusDisplay.setText(acBase + "");
+		acDexModDisplay.setText(character.getDexMod() + "");
+		acDisplay.setText(totalAC + "");
 	}
 	
 	private void populateArmorChoices(){
-		Spinner armorChoiceSpinner= v.findViewById(R.id.armor_choices);
-		List<String> armorChoices= new ArrayList<>();
-		armorChoices.add("None");
+		List<String> armorChoiceList= new ArrayList<>();
+		armorChoiceList.add("None");
 		
 		for(ClassFeature feature : character.getClassFeatures().values()){
-			if(feature instanceof ValueSetClassFeature && ((ValueSetClassFeature)feature).valueToSet.equals("AC")){
-				armorChoices.add(feature.getName());
+			if(feature instanceof ValueSetClassFeature && ((ValueSetClassFeature)feature).getValueToSet().equals("AC")){
+				armorChoiceList.add(feature.getName());
 			}
 		}
 		
-		ArrayAdapter<String> armorChoiceAdapter= new ArrayAdapter<>(Objects.requireNonNull(getActivity()), R.layout.spinner_item, armorChoices);
+		ArrayAdapter<String> armorChoiceAdapter= new ArrayAdapter<>(Objects.requireNonNull(getActivity()), R.layout.spinner_item, armorChoiceList);
 		armorChoiceAdapter.setDropDownViewResource(R.layout.spinner_item_bg);
-		armorChoiceSpinner.setAdapter(armorChoiceAdapter);
-		armorChoiceSpinner.setOnItemSelectedListener(this);
+		armorChoices.setAdapter(armorChoiceAdapter);
 	}
 	
 	public void populateHealthDisplay(){
-		EditText currentHPDisplay= v.findViewById(R.id.current_hp_display);
-		EditText maxHPDisplay= v.findViewById(R.id.max_hp_display);
-		EditText tempHPDisplay= v.findViewById(R.id.temp_hp_display);
-		
 		currentHPDisplay.setText(character.getCurrentHitPoints() + "");
 		maxHPDisplay.setText(character.getMaxHitPoints() + "");
 		tempHPDisplay.setText(character.getTempHP() + "");
 		
-		currentHPDisplay.setOnFocusChangeListener(this);
 		currentHPDisplay.setOnEditorActionListener(new DoneOnEditorActionListener());
-		
-		tempHPDisplay.setOnFocusChangeListener(this);
 		tempHPDisplay.setOnEditorActionListener(new DoneOnEditorActionListener());
 		
-		TextView hitDiceLabel= v.findViewById(R.id.hit_dice_label);
 		hitDiceLabel.setPaintFlags(hitDiceLabel.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
 		
-		LinearLayout hitDiceLayout= v.findViewById(R.id.hit_dice_layout);
 		for(int i= hitDiceLayout.getChildCount() - 1; i > 0; i--){
 			hitDiceLayout.removeView(hitDiceLayout.getChildAt(i));
 		}
@@ -318,11 +312,14 @@ public class MainCharacterInfoFragment extends Fragment implements AdapterView.O
 	}
 	
 	private void populateAttacksDisplay(){
-		TableLayout attackDisplay= v.findViewById(R.id.attacks_display_layout);
-		List<String> attackList= new ArrayList<>(character.getWeaponList().keySet());
-		attackList.add("Unarmed Strike");
+		attackMap= new SparseArray<>();
+		List<String> attacks= new ArrayList<>(character.getWeaponList().keySet());
+		attacks.add("Unarmed Strike");
+		int id= -1;
 		
-		for(String attack : attackList){
+		for(String attack : attacks){
+			id++;
+			
 			Weapon w= GameInfo.getWeapon(attack);
 			TableRow row= new TableRow(getActivity());
 			TextView name= new TextView(getActivity());
@@ -337,6 +334,7 @@ public class MainCharacterInfoFragment extends Fragment implements AdapterView.O
 			int mod= w.usesDex() ? character.getDexMod() : character.getStrMod();
 			
 			toHit.setText(character.getWeaponProficiencies().contains(attack) ? formatNumbersPlusMinus(mod + character.getProficiencyBonus()) : formatNumbersPlusMinus(mod));
+			toHit.setOnClickListener(handleDamageRollClick(toHit));
 			
 			damage.setText(w.getDamage() + "" + formatNumbersPlusMinus(mod));
 			damageType.setText(w.getDamageType());
@@ -359,31 +357,58 @@ public class MainCharacterInfoFragment extends Fragment implements AdapterView.O
 			row.addView(damage);
 			row.addView(damageType);
 			
+			row.setId(id);
+			
 			attackDisplay.addView(row);
+			attackMap.put(row.getId(), attack);
 		}
 	}
 	//endregion
 	
-	private String formatNumbersLeadingZeros(int n){
+	private static String formatNumbersLeadingZeros(int n){
 		if(Integer.toString(n).length() < 2){ return "0"+n; }
 		return "" + n;
 	}
 	
-	@Override
+	View.OnClickListener handleDamageRollClick(final Button button){
+		return new View.OnClickListener(){
+			public void onClick(View v){
+				int key= ((View)button.getParent()).getId();
+				String attackName= attackMap.get(key);
+				Weapon w= GameInfo.getWeapon(attackName);
+				
+				int profeciency= character.getWeaponProficiencies().contains(attackName) ? character.getProficiencyBonus() : 0;
+				int mod= w.usesDex() ? character.getDexMod() : character.getStrMod();
+				int attackMod= mod + profeciency;
+				
+				Bundle bundle= new Bundle();
+				bundle.putInt("dieSize", 20);
+				bundle.putString("title", attackName);
+				bundle.putInt("mod", attackMod);
+				
+				DiceRollDialogFragment dialog= new DiceRollDialogFragment();
+				dialog.setArguments(bundle);
+				dialog.show(Objects.requireNonNull(getActivity()).getFragmentManager(), "roll");
+			}
+		};
+	}
+	
+	@OnItemSelected(R.id.armor_choices)
 	public void onItemSelected(AdapterView<?> parent, View view, int position, long id){ populateACDisplay(); }
 	
-	@Override
-	public void onNothingSelected(AdapterView<?> parent){}
+	@OnCheckedChanged(R.id.shield_checkBox)
+	public void onShieldEquipCheckedChange(){ populateACDisplay(); }
 	
-	@Override
-	public void onCheckedChanged(CompoundButton buttonView, boolean isChecked){ populateACDisplay(); }
-	
-	@Override
+	@OnFocusChange({R.id.current_hp_display, R.id.temp_hp_display})
 	public void onFocusChange(View v, boolean hasFocus){
 		if(hasFocus){ ((EditText)v).setText(""); }
 		else{
 			String number= ((EditText)v).getText().toString();
-			int hp= StringUtils.isNumeric(number) ? Integer.parseInt(number) : 0;
+			int hp;
+			if(StringUtils.isNumeric(number)){ hp= Integer.parseInt(number); }
+			else{
+				hp= v.getId() == R.id.current_hp_display ? character.getCurrentHitPoints() : character.getTempHP();
+			}
 			
 			switch(v.getId()){
 				case R.id.current_hp_display:

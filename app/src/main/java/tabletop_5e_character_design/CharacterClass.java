@@ -32,7 +32,6 @@ public class CharacterClass{
 	private String[] toolProficiencies;
 	private String[] savingThrows;
 	private ClassSkillList classSkillChoices;
-	private int[] asiLevels;
 	private ClassEquipmentList classEquipmentChoices;
 	private int level;
 	private String[] archetypes;
@@ -50,15 +49,11 @@ public class CharacterClass{
 		String[] skillStrings= classInfo[6].substring(SKILL_PROFICIENCIES).split(" - ");
 		classSkillChoices= new ClassSkillList(Integer.parseInt(skillStrings[0]), skillStrings[1].split(", "));
 		
-		String[] asiLevelsString= classInfo[7].substring(ASI_LEVELS).split(", ");
-		asiLevels= new int[asiLevelsString.length];
-		for(int i=0; i < asiLevels.length; i++){ asiLevels[i]= Integer.parseInt(asiLevelsString[i]); }
-		
-		archetypes= classInfo[8].substring(ARCHETYPES).split(", ");
+		archetypes= classInfo[7].substring(ARCHETYPES).split(", ");
 		
 		classEquipmentChoices= GameInfo.getClassEquipmentList(name);
 		
-		String[] featureStrings= classInfo[10].split(" - ");
+		String[] featureStrings= classInfo[9].split(" - ");
 		for(String level : featureStrings){
 			String[] levelStrings= level.split(": ");
 			int key= Integer.parseInt(levelStrings[0]);
@@ -76,7 +71,6 @@ public class CharacterClass{
 		toolProficiencies= charClass.toolProficiencies;
 		savingThrows= charClass.savingThrows;
 		classSkillChoices= charClass.classSkillChoices;
-		asiLevels= charClass.asiLevels;
 		classEquipmentChoices= charClass.classEquipmentChoices;
 		level= 0;
 		archetypes= charClass.archetypes;

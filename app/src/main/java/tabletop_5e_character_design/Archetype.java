@@ -22,7 +22,8 @@ public class Archetype{
 		for(String level : featureStrings){
 			String[] levelStrings= level.split(": ");
 			int key= Integer.parseInt(levelStrings[0]);
-			String[] value= levelStrings[1].split(", ");
+			String[] value;
+			value= levelStrings.length > 1 ? levelStrings[1].split(", ") : new String[1];
 			features.put(key, value);
 		}
 	}
@@ -31,6 +32,6 @@ public class Archetype{
 		name= archetype.name;
 		features= archetype.features;
 	}
-	public List<String> getFeatureListForLevel(int lvl){ return new ArrayList<>(Arrays.asList(features.get(lvl))); }
 	
+	public List<String> getFeatureListForLevel(int lvl){ return new ArrayList<>(Arrays.asList(features.get(lvl))); }
 }

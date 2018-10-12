@@ -5,23 +5,27 @@ import android.content.res.Resources;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
 import tabletop_5e_character_design.Archetype;
-import tabletop_5e_character_design.equipment.Armor;
 import tabletop_5e_character_design.CharacterClass;
 import tabletop_5e_character_design.CharacterRace;
+import tabletop_5e_character_design.CharacterSpell;
 import tabletop_5e_character_design.ClassEquipmentList;
+import tabletop_5e_character_design.Spell;
+import tabletop_5e_character_design.class_features.ClassFeature;
+import tabletop_5e_character_design.equipment.Armor;
 import tabletop_5e_character_design.equipment.Tool;
 import tabletop_5e_character_design.equipment.Weapon;
-import tabletop_5e_character_design.class_features.ClassFeature;
 
 @SuppressWarnings("ConstantConditions")
 public final class GameInfo{
-	private static final Resources RES= App.mContext.getResources();
+	private static final Resources RES= App.context.getResources();
 	private static final int NAME= "Name: ".length();
 	
 	private static final Map<String, CharacterRace> RACE_INFO= createRaceInfo();
@@ -39,10 +43,11 @@ public final class GameInfo{
 	private static final Map<String, Tool> TOOL_INFO= createToolInfo();
 	
 	private static final Map<String, String[]> SPELL_LISTS= createSpellLists();
-	private static final Map<String, String[]> SPELL_INFO= createSpellInfo();
+	private static final Map<String, Spell> SPELL_INFO= createSpellInfo();
 	
 	public enum armorState{ NoArmor, LightArmor, MedArmor, HeavyArmor }
 	public enum damageType{ Acid, Bludgeoning, Cold, Fire, Force, Lightning, Necrotic, Piercing, Poison, Psychic, Radiant, Slashing, Thunder, NOTFOUND }
+	public enum status{ Blinded, Charmed, Deafened, Frightened, Grappled, Incapacitated, Invisible, Paralyzed, Petrified, Poisoned, Prone, Restrained, Stunned, Unconscious, NOTFOUND }
 	
 	static String formatNumbersPlusMinus(int n){
 		NumberFormat plusMinusNF = new DecimalFormat("+#;-#");
@@ -178,13 +183,14 @@ public final class GameInfo{
 		return spellLists;
 	}
 	
-	private static Map<String, String[]> createSpellInfo(){
-		Map<String, String[]> spells= new LinkedHashMap<>();
-		String[] spellStrings= RES.getStringArray(R.array.cantrips);
+	private static Map<String, Spell> createSpellInfo(){
+		Map<String, Spell> spells= new LinkedHashMap<>();
+		List<String> spellStrings= new ArrayList<>(Arrays.asList(RES.getStringArray(R.array.cantrips)));
+		spellStrings.addAll(Arrays.asList(RES.getStringArray(R.array.spell_info_level_1)));
 		for(String spell : spellStrings){
 			String[] s= spell.split(" # ");
-			String key= s[0];
-			spells.put(key, s);
+			String key= s[0].substring(NAME);
+			spells.put(key, new Spell(s));
 		}
 		return spells;
 	}
@@ -205,9 +211,13 @@ public final class GameInfo{
 	
 	public static ClassEquipmentList getClassEquipmentList(String key){ return CLASS_EQUIPMENT_LISTS.get(key.trim()); }
 	
-	public static ClassFeature getClassFeature(String key){  return ClassFeature.getClassFeature(CLASS_FEATURE_INFO.get(key.trim())); }
+	public static ClassFeature getClassFeature(String key){ return CLASS_FEATURE_INFO.get(key.trim()).copy(); }
 	
 	public static String[] getSpellList(String key){ return SPELL_LISTS.get(key.trim()); }
+	
+	public static Spell getSpell(String key){ return SPELL_INFO.get(key.trim()); }
+	
+	public static CharacterSpell makeCharacterSpell(String name, String stat, String className){ return new CharacterSpell(stat, className, getSpell(name)); }
 	
 	public static String[] getEquipmentPack(String key){ return EQUIPMENT_PACKS.get(key); }
 	

@@ -7,7 +7,7 @@
 
 	<android.support.v4.widget.NestedScrollView
 		android:layout_width="match_parent"
-		android:layout_height="wrap_content"
+		android:layout_height="match_parent"
 		android:layout_above="@+id/button_layout_new_char">
 
 		<LinearLayout
@@ -243,24 +243,37 @@
 
 			<!-- Class Selection -->
 			<LinearLayout
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:orientation="horizontal"
+				android:paddingStart="4dp">
+
+				<TextView
+					android:id="@+id/class_textView"
+					style="@style/MyTextViewStyle"
+					android:text="@string/class_selection" />
+
+				<View
+					android:layout_width="0dp"
+					android:layout_height="0dp"
+					android:layout_weight="1" />
+
+				<TextView
+					android:id="@+id/class_selection_btn"
+					style="@style/SectionCollapseBtnStyle" />
+
+			</LinearLayout>
+
+			<LinearLayout
+				android:id="@+id/class_layout"
 				style="@style/SectionLayoutStyle">
 
 				<!-- Class -->
-				<LinearLayout
-					android:id="@+id/class_layout"
-					style="@style/NewCharacterFormLayoutStyle"
-					android:paddingStart="8dp">
-
-					<TextView
-						android:id="@+id/class_textView"
-						style="@style/MyTextViewStyle"
-						android:text="@string/class_selection" />
-
-					<Spinner
-						android:id="@+id/class_spinner"
-						style="@style/MySpinnerStyle" />
-
-				</LinearLayout>
+				<fragment
+					android:id="@+id/class_selection_fragment"
+					android:name="com.tadbolmont.tabletopdeveloper.ClassSelectionFragment"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content" />
 
 				<RadioGroup
 					android:id="@+id/archetype"
@@ -277,7 +290,7 @@
 					android:paddingStart="30dp"
 					android:orientation="vertical" />
 
-				<!-- Starting Item -->
+				<!-- Starting Items -->
 				<LinearLayout
 					android:id="@+id/starting_equipment_layout"
 					style="@style/NewCharacterFormLayoutStyle"

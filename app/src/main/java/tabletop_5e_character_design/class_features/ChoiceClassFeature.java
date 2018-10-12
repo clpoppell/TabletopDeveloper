@@ -18,4 +18,7 @@ public class ChoiceClassFeature extends ClassFeature{
 		
 		this.choices= choices;
 	}
+	
+	@Override
+	public ChoiceClassFeature copy(){ return new ChoiceClassFeature(name, parentFeature, choices, desc); }
 }

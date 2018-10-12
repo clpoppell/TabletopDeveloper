@@ -1,7 +1,7 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Base.Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
@@ -9,6 +9,14 @@
         <item name="android:textColorSecondary">@color/textColorSecondary</item>
         <item name="android:colorBackground">@color/backgroundColor</item>
     </style>
+
+	<!-- Toolbar Theme -->
+	<style name="ToolbarTheme" parent="AppTheme">
+		<item name="android:layout_width">match_parent</item>
+		<item name="android:layout_height">?attr/actionBarSize</item>
+		<item name="android:background">?attr/colorPrimary</item>
+		<item name="android:elevation">4dp</item>
+	</style>
 
     <!-- Base dialog theme -->
     <style name="DialogTheme" parent="Theme.AppCompat.Dialog.Alert">
@@ -63,13 +71,22 @@
 
 	<!-- Style for display sections -->
 	<style name="SectionLayoutStyle" parent="NewCharacterFormLayoutStyle">
+		<item name="android:layout_width">match_parent</item>
 		<item name="android:background">@drawable/section_border</item>
-		<item name="android:paddingBottom">4dp</item>
+		<item name="android:padding">4dp</item>
 		<item name="android:orientation">vertical</item>
 	</style>
 
 	<style name="CharacterDisplayLayoutStyle">
 
+	</style>
+
+	<!-- Style for section collapse buttons -->
+	<style name="SectionCollapseBtnStyle" parent="MyTextViewStyle">
+		<item name="android:layout_gravity">bottom</item>
+		<item name="android:onClick">collapseSection</item>
+		<item name="android:text">Close</item>
+		<item name="android:textSize">14sp</item>
 	</style>
 
 	<!-- Base Style for small labels -->

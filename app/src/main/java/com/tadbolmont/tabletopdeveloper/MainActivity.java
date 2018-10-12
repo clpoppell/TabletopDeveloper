@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
     }
     
     public void loadCharacter(View view){
-    	//Intent intent= new Intent(this, CharcterSheetDisplay.class);
+    	//Intent intent= new Intent(this, CharacterSheetDisplay.class);
         //startActivity(intent);
     }
 }

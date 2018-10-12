@@ -8,8 +8,6 @@ import android.util.TypedValue;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
@@ -27,46 +25,94 @@ import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
+import butterknife.BindArray;
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnItemSelected;
 import tabletop_5e_character_design.CharacterAttack;
-import tabletop_5e_character_design.CharacterClass;
 import tabletop_5e_character_design.CharacterRace;
 import tabletop_5e_character_design.CharacterSpell;
 import tabletop_5e_character_design.ClassEquipmentList;
-import tabletop_5e_character_design.ClassSkillList;
 import tabletop_5e_character_design.ConditionDefense;
 import tabletop_5e_character_design.DamageResistance;
 import tabletop_5e_character_design.PlayerCharacter;
 import tabletop_5e_character_design.RacialSpellList;
 
-public class NewCharacterActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
-	private static int ON= View.VISIBLE;
-	private static int OFF= View.GONE;
-	
+import static com.tadbolmont.tabletopdeveloper.App.OFF;
+import static com.tadbolmont.tabletopdeveloper.App.ON;
+import static com.tadbolmont.tabletopdeveloper.App.toggleViewVisibility;
+
+//TODO complete class selection
+public class NewCharacterActivity extends AppCompatActivity implements ClassSelectionFragment.OnClassSelectedListener{
 	private static final Integer[] LEVELS= {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20};
 	
+	//region Views
+	@BindView(R.id.name_editText) EditText nameBox;
+	@BindView(R.id.race_spinner) Spinner raceSpinner;
+	@BindView(R.id.sub_race) RadioGroup subRaceSelection;
+	
+	@BindView(R.id.asi_textView) TextView asiTextView;
+	@BindView(R.id.asi_select_spinner1) Spinner asiSpinner1;
+	@BindView(R.id.asi_select_spinner2) Spinner asiSpinner2;
+	@BindView(R.id.asi_select_mod_textView1) TextView asiSelectMod1;
+	@BindView(R.id.asi_select_mod_textView2) TextView asiSelectMod2;
+	
+	@BindView(R.id.race_skill_layout) LinearLayout racialSkillLayout;
+	@BindView(R.id.skill_textView1) TextView skillTextView1;
+	@BindView(R.id.skill_select_spinner1) Spinner skillSpinner1;
+	@BindView(R.id.skill_textView2) TextView skillTextView2;
+	@BindView(R.id.skill_select_spinner2) Spinner skillSpinner2;
+
+	@BindView(R.id.feat_selection_layout) LinearLayout featLayout;
+	@BindView(R.id.feat_select_spinner) Spinner featSpinner;
+	@BindView(R.id.racial_attack_textView) TextView racialAttackTextView;
+	
+	@BindView(R.id.weapon_proficiency_layout) LinearLayout weaponProfLayout;
+	@BindView(R.id.weapon_textView) TextView weaponTextView1;
+	@BindView(R.id.weapon_textView2) TextView weaponTextView2;
+	@BindView(R.id.weapon_select_spinner1) Spinner weaponSpinner1;
+	@BindView(R.id.weapon_select_spinner2) Spinner weaponSpinner2;
+	
+	@BindView(R.id.tool_selection_layout) LinearLayout toolSelectionLayout;
+	@BindView(R.id.tool_select_spinner) Spinner toolSpinner;
+	@BindView(R.id.tool_select_textView) TextView toolTextView;
+	
+	@BindView(R.id.cantrip_layout) LinearLayout cantripLayout;
+	@BindView(R.id.cantrip_select_spinner) Spinner cantripSpinner;
+	@BindView(R.id.cantrip_textView) TextView cantripTextView;
+	@BindView(R.id.cantrip_textView2) TextView cantripTextView2;
+	@BindView(R.id.racial_spell_textView) TextView racialSpellTextView;
+	
+	@BindView(R.id.language_textView) TextView languageTextView;
+	@BindView(R.id.language_select_spinner) Spinner languageSpinner;
+	@BindView(R.id.physical_features_textView) TextView physFeaturesTextView;
+	@BindView(R.id.other_race_info_display) TextView otherInfoTextView;
+	
+	@BindView(R.id.class_skill_layout) LinearLayout classSkillLayout;
+	
+	@BindView(R.id.equip_pack_label) TextView packLabel;
+	@BindView(R.id.pack_equipment_textView) TextView packText;
+	@BindView(R.id.pack_selection_spinner) Spinner equipmentPackSpinner;
+	
+	@BindView(R.id.equip_armor_selection_layout) LinearLayout equipmentArmorLayout;
+	@BindView(R.id.equip_armor_label) TextView armorLabel;
+	@BindView(R.id.armor_equipment_textView) TextView armorText;
+	@BindView(R.id.armor_selection_spinner) Spinner equipmentArmorSpinner;
+	
+	@BindView(R.id.equip_weapon_label) TextView weaponLabel;
+	@BindView(R.id.equip_weapon_selection_layout) LinearLayout equipmentWeaponLayout;
+	
+	@BindView(R.id.equipment_tool_selection_layout) LinearLayout equipmentToolLayout;
+	@BindView(R.id.equip_tool_label) TextView toolLabel;
+	
+	@BindView(R.id.level_spinner) Spinner levelSpinner;
+	
+	ClassSelectionFragment classFragment;
+	//endregion
+	
 	//region Fields
-	private Spinner raceSpinner;
-	private Spinner asiSpinner1;
-	private Spinner asiSpinner2;
-	private Spinner skillSpinner1;
-	private Spinner skillSpinner2;
-	private Spinner featSpinner;
-	private Spinner weaponSpinner1;
-	private Spinner weaponSpinner2;
-	private Spinner toolSpinner;
-	private Spinner cantripSpinner;
-	private Spinner languageSpinner;
-	
-	private Spinner classSpinner;
-	private List<CheckBox> classSkillCheckBoxList= new ArrayList<>();
-	private Spinner equipmentPackSpinner;
-	private Spinner equipmentArmorSpinner;
-	private LinearLayout equipmentWeaponLayout;
-	private LinearLayout equipmentToolLayout;
-	
-	private Spinner levelSpinner;
-	
 	private String[] raceList;
 	private String subRaceName;
 	private CharacterRace subRaceInfo;
@@ -75,48 +121,68 @@ public class NewCharacterActivity extends AppCompatActivity implements AdapterVi
 	private String asiExclusion;
 	
 	private ArrayList<String> skillList;
-	private List<String> skillsToExclude= new ArrayList<>();
-	private int classSkillCount= 0;
-	private ArrayList<String> charSkills= new ArrayList<>();
 	
-	private String[] languageList;
+	@BindArray(R.array.language_list) String[] languageList;
 	private ArrayList<String> languageExclusions;
 	
-	private String[] classList;
-	private String className;
-	private CharacterClass classInfo= GameInfo.getClass("Barbarian");
+	private String className= "Barbarian";
 	//endregion
 	
+	private void resetViewVisibility(){
+		toggleViewVisibility(OFF,
+				asiSpinner1, asiSelectMod1, asiSpinner2, asiSelectMod2,
+				racialSkillLayout, skillTextView1, skillSpinner1, skillTextView2, skillSpinner2,
+				featLayout, featSpinner, racialAttackTextView,
+				weaponProfLayout, weaponTextView1, weaponSpinner1, weaponTextView2, weaponSpinner2,
+				toolSelectionLayout, toolSpinner,
+				cantripLayout, cantripSpinner, cantripTextView, cantripTextView2, racialSpellTextView,
+				otherInfoTextView, languageSpinner);
+	}
+	
+	@SuppressWarnings("unused")
+	public void collapseSection(View view){
+		View layout;
+		
+		switch(view.getId()){
+			case R.id.class_selection_btn:
+				layout= findViewById(R.id.class_layout);
+				break;
+			case R.id.skill_section_btn:
+				layout= findViewById(R.id.skill_display_layout);
+				break;
+			case R.id.defenses_section_btn:
+				layout= findViewById(R.id.defenses_display_layout);
+				break;
+			case R.id.health_section_btn:
+				layout= findViewById(R.id.health_display_layout);
+				break;
+			case R.id.attack_section_btn:
+				layout= findViewById(R.id.attacks_display_layout);
+				break;
+			default: layout= view;
+		}
+		if(layout.getVisibility() == ON){
+			toggleViewVisibility(OFF, layout);
+			((TextView)view).setText("Open");
+		}
+		else{
+			toggleViewVisibility(ON, layout);
+			((TextView)view).setText("Close");
+		}
+	}
+	
 	//TODO Check for testing blocks
-	//region Set-Up Methods
+	//region Race Set-Up Methods
 	@Override
 	protected void onCreate(Bundle savedInstanceState){
 		setTheme(R.style.AppTheme);
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_new_character_form);
+		ButterKnife.bind(this);
 		
-		raceSpinner= findViewById(R.id.race_spinner);
-		asiSpinner1= findViewById(R.id.asi_select_spinner1);
-		asiSpinner2=findViewById(R.id.asi_select_spinner2);
-		skillSpinner1= findViewById(R.id.skill_select_spinner1);
-		skillSpinner2=findViewById(R.id.skill_select_spinner2);
-		featSpinner= findViewById(R.id.feat_select_spinner);
-		weaponSpinner1= findViewById(R.id.weapon_select_spinner1);
-		weaponSpinner2=findViewById(R.id.weapon_select_spinner2);
-		toolSpinner= findViewById(R.id.tool_select_spinner);
-		cantripSpinner= findViewById(R.id.cantrip_select_spinner);
-		languageSpinner= findViewById(R.id.language_select_spinner);
-		classSpinner= findViewById(R.id.class_spinner);
-		equipmentPackSpinner= findViewById(R.id.pack_selection_spinner);
-		equipmentArmorSpinner= findViewById(R.id.armor_selection_spinner);
-		equipmentWeaponLayout= findViewById(R.id.equip_weapon_selection_layout);
-		equipmentToolLayout= findViewById(R.id.equipment_tool_selection_layout);
-		levelSpinner= findViewById(R.id.level_spinner);
-		
-		languageList= getResources().getStringArray(R.array.language_list);
+		classFragment= (ClassSelectionFragment)getSupportFragmentManager().findFragmentById(R.id.class_selection_fragment);
 		
 		createRaceSpinner();
-		createClassSpinner();
 		createLevelSpinner();
 	}
 	
@@ -134,30 +200,9 @@ public class NewCharacterActivity extends AppCompatActivity implements AdapterVi
 		raceAdapter.setDropDownViewResource(R.layout.spinner_item_bg);
 		//Apply the raceAdapter to the spinner
 		raceSpinner.setAdapter(raceAdapter);
-		
-		raceSpinner.setOnItemSelectedListener(this);
-	}
-	
-	private void createClassSpinner(){
-		//Create an ArrayAdapter
-		classList= getResources().getStringArray(R.array.class_list);
-		ArrayList<String> mainClassNames= new ArrayList<>();
-		for(String classN : classList){
-			String className= (classN.split(" # "))[0];
-			mainClassNames.add(className);
-		}
-		
-		ArrayAdapter<String> classAdapter= new ArrayAdapter<>(this, R.layout.spinner_item, mainClassNames);
-		//Specify the layout to use when the list of choices appears
-		classAdapter.setDropDownViewResource(R.layout.spinner_item_bg);
-		//Apply the raceAdapter to the spinner
-		classSpinner.setAdapter(classAdapter);
-		
-		classSpinner.setOnItemSelectedListener(this);
 	}
 	
 	private void createLevelSpinner(){
-		levelSpinner.setOnItemSelectedListener(this);
 		//Create an ArrayAdapter using the int array and a spinner layout
 		ArrayAdapter<Integer> levelAdapter= new ArrayAdapter<>(this, R.layout.spinner_item, LEVELS);
 		//Specify the layout to use when the list of choices appears
@@ -167,13 +212,8 @@ public class NewCharacterActivity extends AppCompatActivity implements AdapterVi
 	}
 	
 	private void asiSelectionSetup(){
-		asiSpinner1.setVisibility(Spinner.VISIBLE);
-		findViewById(R.id.asi_select_mod_textView1).setVisibility(TextView.VISIBLE);
-		asiSpinner2.setVisibility(LinearLayout.VISIBLE);
-		findViewById(R.id.asi_select_mod_textView2).setVisibility(TextView.VISIBLE);
+		toggleViewVisibility(ON, asiSpinner1, asiSpinner2, asiSelectMod1, asiSelectMod2);
 
-		TextView asiSelectMod1= findViewById(R.id.asi_select_mod_textView1);
-		TextView asiSelectMod2= findViewById(R.id.asi_select_mod_textView2);
 		asiSelectMod1.setText("+1, ");
 		asiSelectMod2.setText(" +1");
 		
@@ -185,12 +225,9 @@ public class NewCharacterActivity extends AppCompatActivity implements AdapterVi
 		statAdapter1.setDropDownViewResource(R.layout.spinner_item_bg);
 		//Apply the statAdapter to the spinner
 		asiSpinner1.setAdapter(statAdapter1);
-		//Sets the item selection listener
-		asiSpinner1.setOnItemSelectedListener(this);
 	}
 	
 	private void physFeaturesSetup(){
-		TextView physFeaturesTextView= findViewById(R.id.physical_features_textView);
 		CharacterRace charRace= GameInfo.getRace(subRaceName);
 		
 		StringBuilder s= new StringBuilder("Size: ").append(charRace.getRacialSize()).append("\n");
@@ -210,23 +247,20 @@ public class NewCharacterActivity extends AppCompatActivity implements AdapterVi
 		int numSkillSelection= 0;
 		StringBuilder s= new StringBuilder("Racial Skills: ");
 		if(skills != null){
-			findViewById(R.id.race_skill_layout).setVisibility(LinearLayout.VISIBLE);
-			findViewById(R.id.skill_textView1).setVisibility(TextView.VISIBLE);
+			toggleViewVisibility(ON, racialSkillLayout, skillTextView1);
 			for(String skill : skills){
 				if(CharacterRace.isSkillSelection(skill)){
 					numSkillSelection++;
 				} else{
 					s.append(skill).append(" , ");
-					skillsToExclude.add(skill);
+					classFragment.skillsAlreadySelected.add(skill);
 				}
 			}
 			
 			switch(numSkillSelection){
-				case 2:
-					findViewById(R.id.skill_textView2).setVisibility(Spinner.VISIBLE);
-					findViewById(R.id.skill_select_spinner2).setVisibility(Spinner.VISIBLE);
+				case 2: toggleViewVisibility(ON, skillTextView2, skillSpinner2);
 				case 1:
-					skillSpinner1.setVisibility(Spinner.VISIBLE);
+					toggleViewVisibility(ON, skillSpinner1);
 					//Create an ArrayAdapter
 					skillList= (ArrayList<String>) createSkillList(skills[0]);
 					ArrayAdapter<String> skillAdapter1= new ArrayAdapter<>(this, R.layout.spinner_item, skillList);
@@ -235,13 +269,11 @@ public class NewCharacterActivity extends AppCompatActivity implements AdapterVi
 					//Apply the statAdapter to the spinner
 					skillSpinner1.setAdapter(skillAdapter1);
 					//Sets the item selection listener
-					skillSpinner1.setOnItemSelectedListener(this);
 					break;
 				default:
 					s.deleteCharAt(s.lastIndexOf(", "));
 			}
-			TextView skillTextView= findViewById(R.id.skill_textView1);
-			skillTextView.setText(s);
+			skillTextView1.setText(s);
 		}
 	}
 	
@@ -257,8 +289,7 @@ public class NewCharacterActivity extends AppCompatActivity implements AdapterVi
 	}
 	
 	private void featSelectionSetup(){
-		findViewById(R.id.feat_selection_layout).setVisibility(LinearLayout.VISIBLE);
-		featSpinner.setVisibility(Spinner.VISIBLE);
+		toggleViewVisibility(ON, featLayout, featSpinner);
 		
 		//Create an ArrayAdapter
 		String[] featList= getResources().getStringArray(R.array.feat_list);
@@ -273,10 +304,11 @@ public class NewCharacterActivity extends AppCompatActivity implements AdapterVi
 		String[] weaponProficiencies= subRaceInfo.getRacialWeaponTraining();
 		String s= "Weapons: ";
 		if(weaponProficiencies != null){
-			findViewById(R.id.weapon_proficiency_layout).setVisibility(LinearLayout.VISIBLE);
-			findViewById(R.id.weapon_textView).setVisibility(TextView.VISIBLE);
+			toggleViewVisibility(ON, weaponProfLayout, weaponTextView1);
+			
 			if(subRaceInfo.hasWeaponChoice()){
-				weaponSpinner1.setVisibility(Spinner.VISIBLE);
+				toggleViewVisibility(ON, weaponSpinner1);
+//				weaponSpinner1.setVisibility(Spinner.VISIBLE);
 				//Create an ArrayAdapter
 				ArrayList<String> weaponList= GameInfo.getWeaponsByType("Martial", "any", true);
 				ArrayAdapter<String> weaponAdapter1= new ArrayAdapter<>(this, R.layout.spinner_item, weaponList);
@@ -285,13 +317,11 @@ public class NewCharacterActivity extends AppCompatActivity implements AdapterVi
 				//Apply the statAdapter to the spinner
 				weaponSpinner1.setAdapter(weaponAdapter1);
 				//Sets the item selection listener
-				weaponSpinner1.setOnItemSelectedListener(this);
 			}
 			else{
 				s += Joiner.on(", ").skipNulls().join(weaponProficiencies);
 			}
 		}
-		TextView weaponTextView1= findViewById(R.id.weapon_textView);
 		weaponTextView1.setText(s);
 	}
 	
@@ -299,12 +329,11 @@ public class NewCharacterActivity extends AppCompatActivity implements AdapterVi
 		String[] toolProficiencies= subRaceInfo.getRacialToolTraining();
 		StringBuilder s= new StringBuilder("Tools: ");
 		if(toolProficiencies != null){
-			findViewById(R.id.tool_selection_layout).setVisibility(LinearLayout.VISIBLE);
-			findViewById(R.id.tool_select_spinner).setVisibility(Spinner.VISIBLE);
+			
 			for(String tool : toolProficiencies){
 				if(CharacterRace.isToolChoice(tool)){
-					s.append(",");
-					toolSpinner.setVisibility(Spinner.VISIBLE);
+					s.append(", ");
+					toggleViewVisibility(ON, toolSpinner);
 					//Create an ArrayAdapter
 					String choiceString= tool.substring(tool.indexOf("(") + 1, tool.indexOf(")"));
 					String [] toolList= choiceString.split(" - ");
@@ -313,12 +342,9 @@ public class NewCharacterActivity extends AppCompatActivity implements AdapterVi
 					toolAdapter.setDropDownViewResource(R.layout.spinner_item_bg);
 					//Apply the statAdapter to the spinner
 					toolSpinner.setAdapter(toolAdapter);
-					//Sets the item selection listener
-					toolSpinner.setOnItemSelectedListener(this);
 				}
 				else{ s.append(tool).append(", "); }
 			}
-			TextView toolTextView= findViewById(R.id.tool_select_textView);
 			toolTextView.setText(s.substring(0, s.lastIndexOf(",")));
 		}
 	}
@@ -329,18 +355,15 @@ public class NewCharacterActivity extends AppCompatActivity implements AdapterVi
 		String s= "Cantrip: ";
 		
 		if(cantrip != null){
-			findViewById(R.id.cantrip_layout).setVisibility(LinearLayout.VISIBLE);
-			findViewById(R.id.cantrip_textView).setVisibility(TextView.VISIBLE);
+			toggleViewVisibility(ON, cantripLayout, cantripTextView);
 			if(charRace.hasCantripChoice()){
-				String key= cantrip.getSpellName().substring(cantrip.getSpellName().indexOf("(") + 1, cantrip.getSpellName().indexOf(")"));
+				String key= cantrip.getName().substring(cantrip.getName().indexOf("(") + 1, cantrip.getName().indexOf(")"));
 				String[] cantrips= GameInfo.getSpellList(key + " Cantrips");
 				
-				TextView cantripTextView2= findViewById(R.id.cantrip_textView2);
-				cantripTextView2.setVisibility(TextView.VISIBLE);
+				toggleViewVisibility(ON, cantripTextView2, cantripSpinner);
 				String cantripStat= " (" + charRace.getRacialCantrip().getStatUsed() + ")";
 				cantripTextView2.setText(cantripStat);
 				
-				cantripSpinner.setVisibility(Spinner.VISIBLE);
 				//Create an ArrayAdapter;
 				ArrayAdapter<String> cantripAdapter= new ArrayAdapter<>(this, R.layout.spinner_item, cantrips);
 				//Specify the layout to use when the list of choices appears
@@ -349,29 +372,26 @@ public class NewCharacterActivity extends AppCompatActivity implements AdapterVi
 				cantripSpinner.setAdapter(cantripAdapter);
 			}
 			else{
-				s += cantrip.getSpellName() + " (" + cantrip.getStatUsed() + ")";
+				s += cantrip.getName() + " (" + cantrip.getStatUsed() + ")";
 			}
-			TextView cantripTextView= findViewById(R.id.cantrip_textView);
 			cantripTextView.setText(s);
 		}
 	}
 	
 	private void spellInfoSetup(){
-		TextView racialSpellTextView= findViewById(R.id.racial_spell_textView);
 		RacialSpellList racialSpells= GameInfo.getRace(subRaceName).getRacialSpellList();
 		if(racialSpells != null){
 			StringBuilder s= new StringBuilder("Racial Spells: ");
 			for(CharacterSpell spell : racialSpells.getSpellList()){
-				s.append(spell.getSpellName()).append(" - Level ").append(spell.getLevelGained()).append("\n\t");
+				s.append(spell.getName()).append(" - Level ").append(spell.getLevelGained()).append("\n\t");
 			}
 			s.append("Regain: ").append(racialSpells.restRegain).append(", Casting Stat: ").append(racialSpells.getSpellList().get(0).getStatUsed());
-			racialSpellTextView.setVisibility(TextView.VISIBLE);
+			toggleViewVisibility(ON, racialSpellTextView);
 			racialSpellTextView.setText(s);
 		}
 	}
 	
 	private void otherInfoSetup(){
-		TextView otherInfoTextView= findViewById(R.id.other_race_info_display);
 		StringBuilder s= new StringBuilder("");
 		
 		ArrayList<DamageResistance> resisList= subRaceInfo.getRacialDamageResistances();
@@ -399,13 +419,13 @@ public class NewCharacterActivity extends AppCompatActivity implements AdapterVi
 		else{ s.deleteCharAt(s.lastIndexOf("\n")); }
 		
 		if(s.length() > 0){
-			otherInfoTextView.setVisibility(TextView.VISIBLE);
+			toggleViewVisibility(ON, otherInfoTextView);
 			otherInfoTextView.setText(s.toString().replace("-", ", "));
 		}
 	}
 	
 	private void languageSelectionSetup(){
-		languageSpinner.setVisibility(LinearLayout.VISIBLE);
+		toggleViewVisibility(ON, languageSpinner);
 		
 		//Create an ArrayAdapter
 		ArrayList<String> languages= new ArrayList<>(Arrays.asList(languageList));
@@ -416,43 +436,9 @@ public class NewCharacterActivity extends AppCompatActivity implements AdapterVi
 		//Apply the statAdapter to the spinner
 		languageSpinner.setAdapter(languageAdapter);
 	}
+	//endregion
 	
-	private void classSkillSelectionSetup(){
-		final ClassSkillList classSkillList= classInfo.getClassSkillChoices();
-		ArrayList<String> skills= new ArrayList<>(Arrays.asList(classSkillList.getSkills()));
-		skills.removeAll(skillsToExclude);
-		classSkillCount= 0;
-		
-		LinearLayout classSkillLayout= findViewById(R.id.class_skill_layout);
-		classSkillCheckBoxList.clear();
-		classSkillLayout.removeAllViews();
-		
-		TextView textView= new TextView(this);
-		textView.setText("Class Skills");
-		textView.setTextColor(getResources().getColor(R.color.textColorPrimary));
-		textView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20);
-		classSkillLayout.addView(textView);
-		
-		for(int i= 0; i < skills.size(); i++){
-			CheckBox skillCheckBox= new CheckBox(this);
-			skillCheckBox.setText(skills.get(i));
-			skillCheckBox.setTextColor(getResources().getColor(R.color.textColorPrimary));
-			skillCheckBox.setTextSize(TypedValue.COMPLEX_UNIT_SP, 18);
-			
-			skillCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener(){
-				@Override
-				public void onCheckedChanged(CompoundButton buttonView, boolean isChecked){
-					if(classSkillCount == classSkillList.getNumSkills() && isChecked){ buttonView.setChecked(false); }
-					else if(isChecked){ classSkillCount++; }
-					else{ classSkillCount--; }
-				}
-			});
-			
-			classSkillLayout.addView(skillCheckBox);
-			classSkillCheckBoxList.add(skillCheckBox);
-		}
-	}
-	
+	//region Class Set-Up Methods
 	private void classEquipmentSelectionSetup(){
 		ClassEquipmentList equipment= GameInfo.getClassEquipmentList(className);
 		
@@ -463,16 +449,13 @@ public class NewCharacterActivity extends AppCompatActivity implements AdapterVi
 	}
 	
 	public void setupClassPackEquipment(ClassEquipmentList equipment){
-		TextView packLabel= findViewById(R.id.equip_pack_label);
-		TextView packText= findViewById(R.id.pack_equipment_textView);
-		
 		packLabel.setPaintFlags(packLabel.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
 		
 		String[] packChoice= equipment.pack.split(" \\(or\\) ");
 		
 		if(packChoice.length > 1){
-			toggleViewVisibility(OFF, packText);
 			toggleViewVisibility(ON, equipmentPackSpinner);
+			toggleViewVisibility(OFF, packText);
 			
 			ArrayAdapter<String> spinnerAdapter= new ArrayAdapter<>(this, R.layout.spinner_item, packChoice);
 			spinnerAdapter.setDropDownViewResource(R.layout.spinner_item_bg);
@@ -485,34 +468,21 @@ public class NewCharacterActivity extends AppCompatActivity implements AdapterVi
 			packText.setText(packChoice[0]);
 		}
 	}
-		
+	
 	public void setupClassArmorEquipment(ClassEquipmentList equipment){
-		LinearLayout armorSelectionLayout= findViewById(R.id.equip_armor_selection_layout);
-		TextView armorLabel= findViewById(R.id.equip_armor_label);
-		TextView armorText= findViewById(R.id.armor_equipment_textView);
-		
 		String[] armorChoice= equipment.armor.split(" \\(or\\) ");
 		
 		if(armorChoice.length > 1){
-			toggleViewVisibility(ON, armorSelectionLayout);
-			toggleViewVisibility(ON, armorLabel);
-			toggleViewVisibility(OFF, armorText);
-			toggleViewVisibility(ON, equipmentArmorSpinner);
-			
+			toggleViewVisibility(ON, equipmentArmorLayout, armorLabel, armorText, equipmentArmorSpinner);
 			armorLabel.setPaintFlags(armorLabel.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
 			
 			ArrayAdapter<String> spinnerAdapter= new ArrayAdapter<>(this, R.layout.spinner_item, armorChoice);
 			spinnerAdapter.setDropDownViewResource(R.layout.spinner_item_bg);
 			equipmentArmorSpinner.setAdapter(spinnerAdapter);
 		}
-		else if("none".equalsIgnoreCase(armorChoice[0])){
-			toggleViewVisibility(OFF, armorLabel);
-			toggleViewVisibility(OFF, armorSelectionLayout);
-		}
+		else if("none".equalsIgnoreCase(armorChoice[0])){ toggleViewVisibility(OFF, equipmentArmorLayout, armorLabel); }
 		else{
-			findViewById(R.id.equip_armor_selection_layout).setVisibility(LinearLayout.VISIBLE);
-			toggleViewVisibility(ON, armorLabel);
-			toggleViewVisibility(ON, armorText);
+			toggleViewVisibility(ON, equipmentArmorLayout, armorLabel, armorText);
 			toggleViewVisibility(OFF, equipmentArmorSpinner);
 			
 			armorLabel.setPaintFlags(armorLabel.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
@@ -522,7 +492,6 @@ public class NewCharacterActivity extends AppCompatActivity implements AdapterVi
 	
 	public void setupClassWeaponEquipment(ClassEquipmentList equipment){
 		equipmentWeaponLayout.removeAllViews();
-		TextView weaponLabel= findViewById(R.id.equip_weapon_label);
 		weaponLabel.setPaintFlags(weaponLabel.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
 		
 		List<String> weaponChoicesList= equipment.getWeaponEquipment();
@@ -561,15 +530,13 @@ public class NewCharacterActivity extends AppCompatActivity implements AdapterVi
 	
 	public void setupClassToolEquipment(ClassEquipmentList equipment){
 		equipmentToolLayout.removeAllViews();
-		TextView toolLabel= findViewById(R.id.equip_tool_label);
 		toolLabel.setPaintFlags(toolLabel.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
 		
 		String[] toolChoice= equipment.tool.split(" \\(or\\) ");
 		
 		//noinspection IfStatementWithTooManyBranches
 		if(toolChoice.length > 1){
-			toggleViewVisibility(ON, toolLabel);
-			toggleViewVisibility(ON, equipmentToolLayout);
+			toggleViewVisibility(ON, toolLabel, equipmentToolLayout);
 			
 			Spinner spinner= new Spinner(this, Spinner.MODE_DIALOG);
 			ArrayAdapter<String> spinnerAdapter= new ArrayAdapter<>(this, R.layout.spinner_item, toolChoice);
@@ -581,8 +548,7 @@ public class NewCharacterActivity extends AppCompatActivity implements AdapterVi
 			equipmentToolLayout.addView(spinner);
 		}
 		else if("instrument".equalsIgnoreCase(toolChoice[0])){
-			toggleViewVisibility(ON, toolLabel);
-			toggleViewVisibility(ON, equipmentToolLayout);
+			toggleViewVisibility(ON, equipmentToolLayout, toolLabel);
 			
 			Spinner spinner= new Spinner(this, Spinner.MODE_DIALOG);
 			
@@ -595,8 +561,7 @@ public class NewCharacterActivity extends AppCompatActivity implements AdapterVi
 			equipmentToolLayout.addView(spinner);
 		}
 		else if(!"none".equalsIgnoreCase(toolChoice[0])){
-			toggleViewVisibility(ON, toolLabel);
-			toggleViewVisibility(ON, equipmentToolLayout);
+			toggleViewVisibility(ON, equipmentToolLayout, toolLabel);
 			
 			TextView toolText= new TextView(this);
 			toolText.setText(toolChoice[0]);
@@ -605,63 +570,12 @@ public class NewCharacterActivity extends AppCompatActivity implements AdapterVi
 			
 			equipmentToolLayout.addView(toolText);
 		}
-		else{
-			toggleViewVisibility(OFF, toolLabel);
-			toggleViewVisibility(OFF, equipmentToolLayout);
-		}
-	}
-	
-	private void resetViewVisibility(){
-		toggleViewVisibility( OFF,
-				findViewById(R.id.asi_select_spinner1),
-				findViewById(R.id.asi_select_mod_textView1),
-				findViewById(R.id.asi_select_spinner2),
-				findViewById(R.id.asi_select_mod_textView2),
-				
-				findViewById(R.id.race_skill_layout),
-				findViewById(R.id.skill_textView1),
-				findViewById(R.id.skill_select_spinner1),
-				findViewById(R.id.skill_textView2),
-				findViewById(R.id.skill_select_spinner2),
-				
-				findViewById(R.id.feat_selection_layout),
-				findViewById(R.id.feat_select_spinner),
-				
-				findViewById(R.id.racial_attack_textView),
-				
-				findViewById(R.id.weapon_proficiency_layout),
-				findViewById(R.id.weapon_textView),
-				findViewById(R.id.weapon_select_spinner1),
-				findViewById(R.id.weapon_textView2),
-				findViewById(R.id.weapon_select_spinner2),
-				
-				findViewById(R.id.tool_selection_layout),
-				findViewById(R.id.tool_select_spinner),
-				
-				findViewById(R.id.cantrip_layout),
-				findViewById(R.id.cantrip_textView),
-				findViewById(R.id.cantrip_select_spinner),
-				findViewById(R.id.cantrip_textView2),
-				
-				findViewById(R.id.racial_spell_textView),
-				
-				findViewById(R.id.other_race_info_display),
-				
-				findViewById(R.id.language_select_spinner)
-		);
-	}
-	
-	private void toggleViewVisibility(int state, View ... views){
-		for(View v : views){
-			v.setVisibility(state);
-		}
+		else{ toggleViewVisibility(OFF, equipmentToolLayout, toolLabel); }
 	}
 	//endregion
 	
 	//region Complete Character Creation
 	public void completeCharacter(View view){
-		EditText nameBox= findViewById(R.id.name_editText);
-		
 		String asi1= null;
 		String asi2= null;
 		String skill1= null;
@@ -673,56 +587,47 @@ public class NewCharacterActivity extends AppCompatActivity implements AdapterVi
 		String weapon1= null;
 		String weapon2= null;
 		
-		int visible= View.VISIBLE;
-		if(asiSpinner1.getVisibility() == visible){
+		if(asiSpinner1.getVisibility() == ON){
 			asi1= asiSpinner1.getSelectedItem().toString();
 			asi2= asiSpinner2.getSelectedItem().toString();
 		}
-		if(skillSpinner1.getVisibility() == visible){
+		if(skillSpinner1.getVisibility() == ON){
 			skill1= skillSpinner1.getSelectedItem().toString();
-			if(skillSpinner2.getVisibility() == visible){ skill2= skillSpinner2.getSelectedItem().toString(); }
-			for(CheckBox checkBox : classSkillCheckBoxList){
-				if(checkBox.isChecked()){ charSkills.add(checkBox.getText().toString()); }
+			if(skillSpinner2.getVisibility() == ON){
+				skill2= skillSpinner2.getSelectedItem().toString();
 			}
 		}
-		if(featSpinner.getVisibility() == visible){ feat= featSpinner.getSelectedItem().toString(); }
-		if(languageSpinner.getVisibility() == visible){ language= languageSpinner.getSelectedItem().toString(); }
-		if(cantripSpinner.getVisibility() == visible){ cantrip= cantripSpinner.getSelectedItem().toString(); }
-		if(toolSpinner.getVisibility() == visible){ tool= toolSpinner.getSelectedItem().toString(); }
-		if(weaponSpinner1.getVisibility() == visible){
+		if(featSpinner.getVisibility() == ON){ feat= featSpinner.getSelectedItem().toString(); }
+		if(languageSpinner.getVisibility() == ON){ language= languageSpinner.getSelectedItem().toString(); }
+		if(cantripSpinner.getVisibility() == ON){ cantrip= cantripSpinner.getSelectedItem().toString(); }
+		if(toolSpinner.getVisibility() == ON){ tool= toolSpinner.getSelectedItem().toString(); }
+		if(weaponSpinner1.getVisibility() == ON){
 			weapon1= weaponSpinner1.getSelectedItem().toString();
 			weapon2= weaponSpinner2.getSelectedItem().toString();
 		}
 		
 		CharacterRace characterRace= new CharacterRace(subRaceInfo, asi1, asi2, skill1, skill2, feat, language, cantrip, tool, weapon1, weapon2);
 		
-		int str= 8;
-		int dex= 14;
-		int con= 13;
-		int intel= 15;
-		int wis= 10;
+		int str= 13;
+		int dex= 13;
+		int con= 12;
+		int intel= 12;
+		int wis= 12;
 		int cha= 12;
 		
-		String className= classSpinner.getSelectedItem().toString();
-		CharacterClass charClass= new CharacterClass(GameInfo.getClass(className));
-		
-		PlayerCharacter.makePlayerCharacter(nameBox.getText().toString(), characterRace, str, dex, con, intel, wis, cha, charSkills, charClass,
+		PlayerCharacter.makePlayerCharacter(nameBox.getText().toString(), characterRace, str, dex, con, intel, wis, cha, classFragment.charClass,
 				getCharPackList(), getCharArmorList(), getCharWeaponList(), getCharToolList());
 		
-		Intent intent= new Intent(this, CharacterDisplayActivity.class);
-		startActivity(intent);
+		if((Objects.requireNonNull(classFragment)).applyLevelToPC()){ startActivity(new Intent(this, CharacterDisplayActivity.class)); }
 	}
 	
 	private ArrayList<String> getCharPackList(){
 		String pack;
-		Spinner packSpinner= findViewById(R.id.pack_selection_spinner);
-		TextView packText= findViewById(R.id.pack_equipment_textView);
-		pack= packSpinner.getVisibility() == Spinner.VISIBLE ? packSpinner.getSelectedItem().toString() : packText.getText().toString();
+		pack= equipmentPackSpinner.getVisibility() == ON ? equipmentPackSpinner.getSelectedItem().toString() : packText.getText().toString();
 		ArrayList<String> charEquipment= new ArrayList<>(Arrays.asList(GameInfo.getEquipmentPack(pack)));
 		
-		LinearLayout toolLayout= findViewById(R.id.equipment_tool_selection_layout);
-		if(toolLayout.getVisibility() == LinearLayout.VISIBLE){
-			View view= toolLayout.getChildAt(0);
+		if(equipmentToolLayout.getVisibility() == ON){
+			View view= equipmentToolLayout.getChildAt(0);
 			if(view instanceof Spinner){ charEquipment.add(((Spinner) view).getSelectedItem().toString()); }
 			else if(view instanceof TextView){ charEquipment.add(((TextView) view).getText().toString()); }
 		}
@@ -732,10 +637,8 @@ public class NewCharacterActivity extends AppCompatActivity implements AdapterVi
 	private ArrayList<String> getCharArmorList(){
 		ArrayList<String> charArmors= new ArrayList<>();
 		
-		if(findViewById(R.id.equip_armor_selection_layout).getVisibility() == LinearLayout.VISIBLE){
-			Spinner armorSpinner= findViewById(R.id.armor_selection_spinner);
-			TextView armorText= findViewById(R.id.armor_equipment_textView);
-			if(armorSpinner.getVisibility() == Spinner.VISIBLE){ charArmors.add(armorSpinner.getSelectedItem().toString()); }
+		if(equipmentArmorLayout.getVisibility() == ON){
+			if(equipmentArmorSpinner.getVisibility() == ON){ charArmors.add(equipmentArmorSpinner.getSelectedItem().toString()); }
 			else{ charArmors.add(armorText.getText().toString()); }
 		}
 		return charArmors;
@@ -744,9 +647,8 @@ public class NewCharacterActivity extends AppCompatActivity implements AdapterVi
 	private ArrayList<String> getCharWeaponList(){
 		ArrayList<String> charWeapons= new ArrayList<>();
 		
-		LinearLayout weaponLayout= findViewById(R.id.equip_weapon_selection_layout);
-		for(int i= 0; i < weaponLayout.getChildCount(); i++){
-			View v= weaponLayout.getChildAt(i);
+		for(int i= 0; i < equipmentWeaponLayout.getChildCount(); i++){
+			View v= equipmentWeaponLayout.getChildAt(i);
 			if(v instanceof Spinner){ charWeapons.add(((Spinner) v).getSelectedItem().toString()); }
 			else if(v instanceof TextView){ charWeapons.add(((TextView) v).getText().toString()); }
 		}
@@ -756,9 +658,8 @@ public class NewCharacterActivity extends AppCompatActivity implements AdapterVi
 	private ArrayList<String> getCharToolList(){
 		ArrayList<String> charTools= new ArrayList<>();
 		
-		LinearLayout toolLayout= findViewById(R.id.equipment_tool_selection_layout);
-		for(int i= 0; i < toolLayout.getChildCount(); i++){
-			View v= toolLayout.getChildAt(i);
+		for(int i= 0; i < equipmentToolLayout.getChildCount(); i++){
+			View v= equipmentToolLayout.getChildAt(i);
 			String tool= "";
 			if(v instanceof Spinner){ tool= ((Spinner) v).getSelectedItem().toString(); }
 			else if(v instanceof TextView){ tool= ((TextView) v).getText().toString(); }
@@ -770,36 +671,11 @@ public class NewCharacterActivity extends AppCompatActivity implements AdapterVi
 	//endregion
 	
 	//region onItemSelected
-	@Override
-	public void onItemSelected(AdapterView<?> parent, View view, int pos, long id){
-		switch(parent.getId()){
-			case R.id.race_spinner:
-				onRaceItemSelected();
-				break;
-			case R.id.asi_select_spinner1:
-				onASIItemSelected();
-				break;
-			case R.id.skill_select_spinner1:
-				onSkillItemSelected();
-				break;
-			case R.id.weapon_select_spinner1:
-				onWeaponItemSelected();
-				break;
-			case R.id.class_spinner:
-				className= classSpinner.getSelectedItem().toString();
-				classInfo= GameInfo.getClass(className);
-				
-				classSkillSelectionSetup();
-				classEquipmentSelectionSetup();
-				break;
-		}
-	}
-	
-	private void onRaceItemSelected(){
-		int index= raceSpinner.getSelectedItemPosition();
+	@OnItemSelected(R.id.race_spinner)
+	public void onRaceItemSelected(AdapterView<?> parent){
+		int index= parent.getSelectedItemPosition();
 		
 		//Creates radio buttons for subrace selection
-		RadioGroup subRaceSelection= findViewById(R.id.sub_race);
 		subRaceSelection.removeAllViews();
 		String selectedRace= raceList[index];
 		
@@ -819,7 +695,6 @@ public class NewCharacterActivity extends AppCompatActivity implements AdapterVi
 				
 				otherInfoSetup();
 				
-				TextView asiTextView= findViewById(R.id.asi_textView);
 				Map<String, Integer> asis= subRaceInfo.getStatModMap();
 				asiExclusion= "";
 				NumberFormat plusMinusNF = new DecimalFormat("+#;-#");
@@ -837,15 +712,14 @@ public class NewCharacterActivity extends AppCompatActivity implements AdapterVi
 				
 				physFeaturesSetup();
 				
-				skillsToExclude.clear();
+				classFragment.skillsAlreadySelected.clear();
 				racialSkillSelectionSetup();
-				classSkillSelectionSetup();
+				classFragment.populateSkillSelection();
 				
 				if(subRaceInfo.hasFeatChoice()){ featSelectionSetup(); }
 				
 				CharacterAttack racialAttack= GameInfo.getRace(subRaceName).getRacialAttack();
 				if(racialAttack != null){
-					TextView racialAttackTextView= findViewById(R.id.racial_attack_textView);
 					racialAttackTextView.setText(racialAttack.toString());
 					racialAttackTextView.setVisibility(TextView.VISIBLE);
 				}
@@ -858,7 +732,6 @@ public class NewCharacterActivity extends AppCompatActivity implements AdapterVi
 				
 				spellInfoSetup();
 				
-				TextView languageTextView= findViewById(R.id.language_textView);
 				String[] raceLanguages= subRaceInfo.getRacialLanguages();
 				Boolean hasChoice= false;
 				StringBuilder s= new StringBuilder("Languages: ");
@@ -886,8 +759,9 @@ public class NewCharacterActivity extends AppCompatActivity implements AdapterVi
 		}
 	}
 	
-	private void onASIItemSelected(){
-		String selection= asiSpinner1.getSelectedItem().toString();
+	@OnItemSelected(R.id.asi_select_spinner1)
+	public void onASIItemSelected(AdapterView<?> parent){
+		String selection= parent.getSelectedItem().toString();
 		//Create an ArrayAdapter
 		ArrayList<String> statList2= new ArrayList<>(statsList);
 		statList2.remove(selection);
@@ -899,8 +773,9 @@ public class NewCharacterActivity extends AppCompatActivity implements AdapterVi
 		asiSpinner2.setAdapter(statAdapter2);
 	}
 	
-	private void onSkillItemSelected(){
-		String selection= skillSpinner1.getSelectedItem().toString();
+	@OnItemSelected(R.id.skill_select_spinner1)
+	public void onSkillItemSelected(AdapterView<?> parent){
+		String selection= parent.getSelectedItem().toString();
 		//Create an ArrayAdapter
 		ArrayList<String> skillList2= new ArrayList<>(skillList);
 		skillList2.remove(selection);
@@ -910,16 +785,26 @@ public class NewCharacterActivity extends AppCompatActivity implements AdapterVi
 		//Apply the Adapter to the spinner
 		skillSpinner2.setAdapter(skillAdapter2);
 		
-		skillsToExclude.clear();
-		skillsToExclude.add(skillSpinner1.getSelectedItem().toString());
-		if(skillSpinner2.getVisibility() == Spinner.VISIBLE){ skillsToExclude.add(skillSpinner2.getSelectedItem().toString()); }
-		classSkillSelectionSetup();
+		classFragment.skillsAlreadySelected.clear();
+		if(skillSpinner2.getVisibility() == OFF){
+			classFragment.skillsAlreadySelected.add(skillSpinner1.getSelectedItem().toString());
+			classFragment.populateSkillSelection();
+		}
 	}
 	
-	private void onWeaponItemSelected(){
-		String selection= weaponSpinner1.getSelectedItem().toString();
-		weaponSpinner2.setVisibility(Spinner.VISIBLE);
-		findViewById(R.id.weapon_textView2).setVisibility(TextView.VISIBLE);
+	@OnItemSelected(R.id.skill_select_spinner2)
+	public void onSkillItem2Selected(AdapterView<?> parent){
+		classFragment.skillsAlreadySelected.clear();
+		classFragment.skillsAlreadySelected.add(skillSpinner1.getSelectedItem().toString());
+		classFragment.skillsAlreadySelected.add(skillSpinner2.getSelectedItem().toString());
+		classFragment.populateSkillSelection();
+	}
+	
+	@OnItemSelected(R.id.weapon_select_spinner1)
+	public void onWeaponItemSelected(AdapterView<?> parent){
+		String selection= parent.getSelectedItem().toString();
+		toggleViewVisibility(ON, weaponSpinner2, weaponTextView2);
+		
 		//Create an ArrayAdapter
 		ArrayList<String> weaponList2= new ArrayList<>(GameInfo.getWeaponsByType("Martial", "any", true));
 		weaponList2.remove(selection);
@@ -931,6 +816,10 @@ public class NewCharacterActivity extends AppCompatActivity implements AdapterVi
 	}
 	
 	@Override
-	public void onNothingSelected(AdapterView<?> parent){}
+	public void onClassItemSelected(){
+		className= classFragment.charClass.getName();
+		classFragment.populateSkillSelection();
+		classEquipmentSelectionSetup();
+	}
 	//endregion
 }

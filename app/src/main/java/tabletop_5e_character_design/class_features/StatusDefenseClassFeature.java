@@ -16,4 +16,7 @@ public class StatusDefenseClassFeature extends ClassFeature{
 		
 		this.statusDefenses=Arrays.copyOf(statusDefenses, statusDefenses.length);
 	}
+	
+	@Override
+	public StatusDefenseClassFeature copy(){ return new StatusDefenseClassFeature(name, parentFeature, statusDefenses, desc); }
 }

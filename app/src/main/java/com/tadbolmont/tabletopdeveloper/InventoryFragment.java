@@ -13,6 +13,9 @@ import android.widget.TextView;
 
 import java.util.Map;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.Unbinder;
 import tabletop_5e_character_design.PlayerCharacter;
 import tabletop_5e_character_design.equipment.Armor;
 import tabletop_5e_character_design.equipment.Item;
@@ -26,19 +29,20 @@ public class InventoryFragment extends Fragment{
 	PlayerCharacter character= PlayerCharacter.getPlayerCharacter();
 	View v;
 	
-	public InventoryFragment(){}
-	
-	TableLayout weaponList;
-	TableLayout armorList;
-	TableLayout toolList;
+	@BindView(R.id.weapon_list) TableLayout weaponList;
+	@BindView(R.id.armor_list) TableLayout armorList;
+	@BindView(R.id.tool_list) TableLayout toolList;
 	TableLayout otherList;
 	
-	@Override
-	public void onCreate(Bundle savedInstanceState){ super.onCreate(savedInstanceState); }
+	private Unbinder unbinder;
+	
+	public InventoryFragment(){}
 	
 	@Override
 	public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
-		v=inflater.inflate(R.layout.fragment_inventory_screen, container, false);
+		v= inflater.inflate(R.layout.fragment_inventory_screen, container, false);
+		
+		unbinder= ButterKnife.bind(this, v);
 		
 		populateWeaponList();
 		populateArmorList();
@@ -48,9 +52,14 @@ public class InventoryFragment extends Fragment{
 		return v;
 	}
 	
+	@Override
+	public void onDestroyView(){
+		super.onDestroyView();
+		unbinder.unbind();
+	}
+	
 	private void populateWeaponList(){
-		weaponList=v.findViewById(R.id.weapon_list);
-		Map<String, Integer> weapons=character.getWeaponList();
+		Map<String, Integer> weapons= character.getWeaponList();
 		
 		for(String weapon : weapons.keySet()){
 			Weapon w=GameInfo.getWeapon(weapon);
@@ -68,7 +77,6 @@ public class InventoryFragment extends Fragment{
 	}
 	
 	private void populateArmorList(){
-		armorList=v.findViewById(R.id.armor_list);
 		Map<String, Integer> armors= character.getArmorList();
 		
 		for(String armor : armors.keySet()){
@@ -88,7 +96,6 @@ public class InventoryFragment extends Fragment{
 	}
 	
 	private void populateToolList(){
-		toolList=v.findViewById(R.id.tool_list);
 		Map<String, Integer> tools= character.getToolItemsList();
 		
 		for(String tool : tools.keySet()){
@@ -108,7 +115,6 @@ public class InventoryFragment extends Fragment{
 	}
 	
 	private void populateOtherItemList(){
-		otherList=v.findViewById(R.id.armor_list);
 		Map<String, Integer> items=character.getMiscItemsList();
 		
 		for(String item : items.keySet()){

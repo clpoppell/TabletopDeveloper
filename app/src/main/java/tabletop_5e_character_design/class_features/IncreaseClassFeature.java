@@ -10,7 +10,7 @@ public class IncreaseClassFeature extends ClassFeature{
 	int increaseValue;
 	SparseIntArray levelIncreaseList= new SparseIntArray();
 	
-	IncreaseClassFeature(String name, String parentFeature, String values, String valueModified, String desc){
+	IncreaseClassFeature(String name, String parentFeature, String valueModified, String values, String desc){
 		super(name, parentFeature, desc);
 		
 		String[] valuesList= values.split(" ! ");
@@ -29,7 +29,7 @@ public class IncreaseClassFeature extends ClassFeature{
 		valueToIncrease= valueModified;
 	}
 	
-	IncreaseClassFeature(String name, String parentFeature, SparseIntArray levelIncreaseList, String valueToIncrease, String desc){
+	IncreaseClassFeature(String name, String parentFeature, String valueToIncrease, SparseIntArray levelIncreaseList, String desc){
 		super(name, parentFeature, desc);
 		
 		this.levelIncreaseList= levelIncreaseList.clone();
@@ -37,4 +37,7 @@ public class IncreaseClassFeature extends ClassFeature{
 	}
 	
 	private void setIncreaseValue(int classLevel){ increaseValue= levelIncreaseList.get(classLevel, increaseValue); }
+	
+	@Override
+	public IncreaseClassFeature copy(){ return new IncreaseClassFeature(name, parentFeature, valueToIncrease, levelIncreaseList, desc); }
 }

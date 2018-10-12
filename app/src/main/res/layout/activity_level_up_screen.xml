@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:orientation="vertical">
+
+	<android.support.v4.widget.NestedScrollView
+		android:layout_width="match_parent"
+		android:layout_height="0dp"
+		android:layout_weight="1">
+
+		<FrameLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content">
+
+			<fragment
+				android:id="@+id/class_selection_fragment"
+				android:name="com.tadbolmont.tabletopdeveloper.ClassSelectionFragment"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content" />
+
+		</FrameLayout>
+
+	</android.support.v4.widget.NestedScrollView>
+
+	<LinearLayout
+		android:id="@+id/button_layout_level_up"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="4dp"
+		android:orientation="horizontal"
+		android:background="@drawable/border_line_top">
+
+		<Button
+			android:id="@+id/complete_character_btn"
+			style="@style/MyButtonBarBtnStyle"
+			android:onClick="completeLevelUp"
+			android:text="@string/complete_char_creation" />
+
+	</LinearLayout>
+
+</LinearLayout>

@@ -16,4 +16,7 @@ public class ResistanceClassFeature extends ClassFeature{
 		
 		this.resistancesGained= Arrays.copyOf(resistancesGained, resistancesGained.length);
 	}
+	
+	@Override
+	public ResistanceClassFeature copy(){ return new ResistanceClassFeature(name, parentFeature, resistancesGained, desc); }
 }

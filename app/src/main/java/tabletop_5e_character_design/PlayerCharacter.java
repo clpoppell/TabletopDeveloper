@@ -13,8 +13,9 @@ import java.util.Set;
 import java.util.TreeMap;
 
 import lombok.Getter;
-import lombok.val;
 import tabletop_5e_character_design.class_features.ClassFeature;
+import tabletop_5e_character_design.class_features.ElementGainClassFeature;
+import tabletop_5e_character_design.class_features.IncreaseClassFeature;
 import tabletop_5e_character_design.class_features.ValueSetClassFeature;
 
 @Getter
@@ -29,6 +30,7 @@ public class PlayerCharacter{
 	private int characterLevel;
 	private int currentHitPoints;
 	private int maxHitPoints= 0;
+	private int additionalMaxHP= 0;
 	private int tempHP= 0;
 	
 	private int strength;
@@ -57,10 +59,18 @@ public class PlayerCharacter{
 	private Set<String> armorProficiencies= new LinkedHashSet<>();
 	private Set<String> weaponProficiencies= new LinkedHashSet<>();
 	private Set<String> toolProficiencies= new LinkedHashSet<>();
+	
 	private Set<String> skillProficiencies= new LinkedHashSet<>();
+	private Set<String> skillExpertise= new LinkedHashSet<>();
+	private boolean halfProf;
+	
 	private Map<String, ClassFeature> classFeatures= new LinkedHashMap<>();
 	
 	private Map<GameInfo.damageType, Double> resistances= new TreeMap<>();
+	private Map<GameInfo.status, String> statusDefenses= new TreeMap<>();
+	
+	private List<CharacterSpell> cantrips= new ArrayList<>();
+	private List<CharacterSpell> spells= new ArrayList<>();
 	private List<String> rituals= new ArrayList<>();
 	
 	private Map<String, Integer> miscItemsList= new LinkedHashMap<>();
@@ -69,27 +79,20 @@ public class PlayerCharacter{
 	private Map<String, Integer> toolItemsList= new LinkedHashMap<>();
 	//endregion
 	
-	private PlayerCharacter(String name, CharacterRace charRace, int str, int dex, int con, int intel, int wis, int cha, ArrayList<String> skills, CharacterClass startingClass,
+	private PlayerCharacter(String name, CharacterRace charRace, int str, int dex, int con, int intel, int wis, int cha, CharacterClass startingClass,
 							ArrayList<String> charPackList, ArrayList<String> charArmorList, ArrayList<String> charWeaponList, ArrayList<String> charToolList){
 		this.name= name;
 		this.charRace= charRace;
 		
-		val statMods= charRace.getStatModMap();
-		addToMaxHitPoints(startingClass.getHitDice());
-		if(statMods.containsKey("HP")){ addToMaxHitPoints(statMods.get("HP")); }
-		
 		strength= str;
-		if(statMods.containsKey("Str")){ strength += statMods.get("Str"); }
 		dexterity= dex;
-		if(statMods.containsKey("Dex")){ dexterity += statMods.get("Dex"); }
 		constitution= con;
-		if(statMods.containsKey("Con")){ constitution += statMods.get("Con"); }
 		intelligence= intel;
-		if(statMods.containsKey("Int")){ intelligence += statMods.get("Int"); }
 		wisdom= wis;
-		if(statMods.containsKey("Wis")){ wisdom += statMods.get("Wis"); }
 		charisma= cha;
-		if(statMods.containsKey("Cha")){ charisma += statMods.get("Cha"); }
+		
+		Map<String, Integer> asiList= charRace.getStatModMap();
+		applyASI(asiList);
 		
 		strMod= calculateMod(strength);
 		dexMod= calculateMod(dexterity);
@@ -97,11 +100,6 @@ public class PlayerCharacter{
 		intMod= calculateMod(intelligence);
 		wisMod= calculateMod(wisdom);
 		chaMod= calculateMod(charisma);
-		
-		classList.add(startingClass);
-		startingClass.incrementLevel();
-		characterLevel++;
-		addClassFeatures(startingClass.getFeatureListForLevel(startingClass.getLevel()));
 		
 		if(charRace.getRacialArmorTraining() != null){ armorProficiencies.addAll(Arrays.asList(charRace.getRacialArmorTraining())); }
 		armorProficiencies.addAll(Arrays.asList(startingClass.getArmorProficiencies()));
@@ -115,9 +113,14 @@ public class PlayerCharacter{
 			toolProficiencies.addAll(Arrays.asList(charRace.getRacialToolTraining())); }
 		toolProficiencies.addAll(Arrays.asList(startingClass.getToolProficiencies()));
 		
-		if(charRace.getRacialSkills() != null){
-			skillProficiencies.addAll(Arrays.asList(charRace.getRacialSkills())); }
-		skillProficiencies.addAll(skills);
+		if(charRace.getRacialSkills() != null){ skillProficiencies.addAll(Arrays.asList(charRace.getRacialSkills())); }
+		halfProf= false;
+		
+		if(charRace.getRacialDamageResistances() != null){
+			for(DamageResistance resis : charRace.getRacialDamageResistances()){
+				resistances.put(resis.getDamageType(), resis.resistanceLevel);
+			}
+		}
 		
 		savingThrowProficiencies.addAll(Arrays.asList(startingClass.getSavingThrows()));
 		strSaving= strMod;
@@ -133,18 +136,12 @@ public class PlayerCharacter{
 		chaSaving= chaMod;
 		if(savingThrowProficiencies.contains("Cha")){ chaSaving += proficiencyBonus; }
 		
-		if(charRace.getRacialDamageResistances() != null){
-			for(DamageResistance resis : charRace.getRacialDamageResistances()){
-				resistances.put(resis.getDamageType(), resis.resistanceLevel);
-			}
-		}
-		
 		createStartingInventory(charPackList, charArmorList, charWeaponList, charToolList);
 	}
 	
-	public static void makePlayerCharacter(String name, CharacterRace charRace, int str, int dex, int con, int intel, int wis, int cha, ArrayList<String> skills, CharacterClass charClass,
+	public static void makePlayerCharacter(String name, CharacterRace charRace, int str, int dex, int con, int intel, int wis, int cha, CharacterClass charClass,
 										   ArrayList<String> charPackList, ArrayList<String> charArmorList, ArrayList<String> charWeaponList, ArrayList<String> charToolList){
-		playerCharacter= new PlayerCharacter(name, charRace, str, dex, con, intel, wis, cha, skills, charClass, charPackList, charArmorList, charWeaponList, charToolList);
+		playerCharacter= new PlayerCharacter(name, charRace, str, dex, con, intel, wis, cha, charClass, charPackList, charArmorList, charWeaponList, charToolList);
 	}
 	
 	public static PlayerCharacter getPlayerCharacter(){ return playerCharacter; }
@@ -169,18 +166,19 @@ public class PlayerCharacter{
 			classList.add(charClass);
 			charClass.incrementLevel();
 		}
-		else{
-			classList.get(index).incrementLevel();
-		}
+		else{ classList.get(index).incrementLevel(); }
 		characterLevel++;
 		
+		int hpToAdd= conMod + additionalMaxHP;
 		Random random= new Random();
-		int hpToAdd= random.nextInt(charClass.getHitDice()) + 1;
+		
+		hpToAdd += characterLevel == 1 ? charClass.getHitDice() : random.nextInt(charClass.getHitDice()) + 1;
 		addToMaxHitPoints(hpToAdd);
 	}
 	
-	public void addClassFeatures(List<String> features){
+	public PlayerCharacter addClassFeatures(List<String> features){
 		for(String feature : features){
+			if(feature == null){ return this; }
 			ClassFeature featureToAdd= GameInfo.getClassFeature(feature);
 			String parent= featureToAdd.getParentFeature();
 			
@@ -199,11 +197,89 @@ public class PlayerCharacter{
 				}
 			}
 		}
+		return this;
 	}
 	
-	private void applyClassFeatureEffect(ClassFeature feature){
-		if(feature instanceof ValueSetClassFeature){
+	public PlayerCharacter applyASI(Map<String, Integer> asi){
+		for(String a : asi.keySet()){
+			switch(a){
+				case "HP":
+					additionalMaxHP += asi.get(a);
+					break;
+				case "Str":
+					strength += asi.get(a);
+					break;
+				case "Dex":
+					dexterity += asi.get(a);
+					break;
+				case "Con":
+					constitution += asi.get(a);
+					break;
+				case "Int":
+					intelligence += asi.get(a);
+					break;
+				case "Wis":
+					wisdom += asi.get(a);
+					break;
+				case "Cha":
+					charisma += asi.get(a);
+					break;
+			}
+		}
+		return this;
+	}
+	
+	public PlayerCharacter addSkills(List<String> skills){
+		skillProficiencies.addAll(skills);
+		return this;
+	}
+	
+	public PlayerCharacter addExpertise(List<String> expertise){
+		skillExpertise.addAll(expertise);
+		return this;
+	}
+	
+	public PlayerCharacter addCantrips(String stat, String className, List<String> spells){
+		if(stat == null){ return this; }
 		
+		for(String spell : spells){
+			Spell c= GameInfo.getSpell(spell);
+			cantrips.add(new CharacterSpell(stat, className, c));
+		}
+		return this;
+	}
+	
+	public void addSpells(List<String> spellList, String stat, String className, boolean hasRitual){
+		if(stat == null){ return; }
+		
+		for(String spell : spellList){
+			spells.add(GameInfo.makeCharacterSpell(spell, stat, className));
+			if(hasRitual){ rituals.add(spell); }
+		}
+	}
+	
+	@SuppressWarnings("SwitchStatementWithTooFewBranches")
+	private void applyClassFeatureEffect(ClassFeature feature){
+		if(feature instanceof ElementGainClassFeature){
+			switch(((ElementGainClassFeature)feature).getElementGained()){
+				case "Ritual":
+					rituals.addAll(Arrays.asList(((ElementGainClassFeature) feature).getElements()));
+					break;
+			}
+		}
+		else if(feature instanceof IncreaseClassFeature){
+			switch(((IncreaseClassFeature) feature).getValueToIncrease()){
+				case "Spell Slots":
+					//TODO add logic
+					break;
+			}
+		}
+		else if(feature instanceof ValueSetClassFeature){
+			switch(((ValueSetClassFeature)feature).getValueToSet()){
+				case "Half Prof":
+					halfProf= true;
+					break;
+			}
 		}
 	}
 	
@@ -234,7 +310,9 @@ public class PlayerCharacter{
 				break;
 			default: mod= 0;
 		}
-		if(skillProficiencies.contains(skill)){ mod += proficiencyBonus; }
+		if(skillExpertise.contains(skill)){ mod += (proficiencyBonus * 2); }
+		else if(skillProficiencies.contains(skill)){ mod += proficiencyBonus; }
+		else if(halfProf){ mod += (proficiencyBonus / 2); }
 		return mod;
 	}
 	

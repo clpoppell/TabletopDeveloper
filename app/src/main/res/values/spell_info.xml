@@ -1,0 +1,1069 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<!-- Cantrips -->
+	<string-array name="cantrips">
+		<item>
+			Name: Acid Splash #
+			Level: 0 #
+			School: Conjuration #
+			Action: 1 action #
+			Components: V,S #
+			Concentration: no #
+			Ritual: no
+		</item>
+		<item>
+			Name: Blade Ward #
+			Level: 0 #
+			School: Abjuration #
+			Action: 1 action #
+			Components: V,S #
+			Concentration: no #
+			Ritual: no
+		</item>
+		<item>
+			Name: Booming Blade #
+			Level: 0 #
+			School: Evocation #
+			Action: 1 action #
+			Components: V,M #
+			Concentration: no #
+			Ritual: no
+		</item>
+		<item>
+			Name: Chill Touch #
+			Level: 0 #
+			School: Necromancy #
+			Action: 1 action #
+			Components: V,S #
+			Concentration: no #
+			Ritual: no
+		</item>
+		<item>
+			Name: Control Flames #
+			Level: 0 #
+			School: Transmutation #
+			Action: 1 action #
+			Components: S #
+			Concentration: no #
+			Ritual: no
+		</item>
+		<item>
+			Name: Create Bonfire #
+			Level: 0 #
+			School: Conjuration #
+			Action: 1 action #
+			Components: V,S #
+			Concentration: yes #
+			Ritual: no
+		</item>
+		<item>
+			Name: Dancing Lights #
+			Level: 0 #
+			School: Evocation #
+			Action: 1 action #
+			Components: V,S,M #
+			Concentration: yes #
+			Ritual: no
+		</item>
+		<item>
+			Name: Druidcraft #
+			Level: 0 #
+			School: Transmutation #
+			Level: 0 #
+			Action: 1 action #
+			Components: V,S #
+			Concentration: no #
+			Ritual: no
+		</item>
+		<item>
+			Name: Eldritch Blast #
+			Level: 0 #
+			School: Evocation #
+			Action: 1 action #
+			Components: V,S #
+			Concentration: no #
+			Ritual: no
+		</item>
+		<item>
+			Name: Fire Bolt #
+			Level: 0 #
+			School: Evocation #
+			Action: 1 action #
+			Components: V,S #
+			Concentration: no #
+			Ritual: no
+		</item>
+		<item>
+			Name: Friends #
+			Level: 0 #
+			School: Enchantment #
+			Action: 1 action #
+			Components: S,M #
+			Concentration: yes #
+			Ritual: no
+		</item>
+		<item>
+			Name: Frostbite #
+			Level: 0 #
+			School: Evocation #
+			Action: 1 action #
+			Components: V,S #
+			Concentration: no #
+			Ritual: no
+		</item>
+		<item>
+			Name: Green-Flame Blade #
+			Level: 0 #
+			School: Evocation #
+			Action: 1 action #
+			Components: V,M #
+			Concentration: no #
+			Ritual: no
+		</item>
+		<item>
+			Name: Guidance #
+			Level: 0 #
+			School: Divination #
+			Action: 1 action #
+			Components: V,S #
+			Concentration: yes #
+			Ritual: no
+		</item>
+		<item>
+			Name: Gust #
+			Level: 0 #
+			School: Transmutation #
+			Action: 1 action #
+			Components: V,S #
+			Concentration: no #
+			Ritual: no
+		</item>
+		<item>
+			Name: Infestation #
+			Level: 0 #
+			School: Conjuration #
+			Action: 1 action #
+			Components: V,S,M #
+			Concentration: no #
+			Ritual: no
+		</item>
+		<item>
+			Name: Light #
+			Level: 0 #
+			School: Evocation #
+			Action: 1 action #
+			Components: V,M #
+			Concentration: no #
+			Ritual: no
+		</item>
+		<item>
+			Name: Lightning Lure #
+			Level: 0 #
+			School: Evocation #
+			Action: 1 action #
+			Components: V #
+			Concentration: no #
+			Ritual: no
+		</item>
+		<item>
+			Name: Mage Hand #
+			Level: 0 #
+			School: Conjuration #
+			Action: 1 action #
+			Components: V,S #
+			Concentration: no #
+			Ritual: no
+		</item>
+		<item>
+			Name: Magic Stone #
+			Level: 0 #
+			School: Transmutation #
+			Action: 1 bonus action #
+			Components: V,S #
+			Concentration: no #
+			Ritual: no
+		</item>
+		<item>
+			Name: Mending #
+			Level: 0 #
+			School: Transmutation #
+			Action: 1 minute #
+			Components: V,S,M #
+			Concentration: no #
+			Ritual: no
+		</item>
+		<item>
+			Name: Message #
+			Level: 0 #
+			School: Transmutation #
+			Action: 1 action #
+			Components: V,S,M #
+			Concentration: no #
+			Ritual: no
+		</item>
+		<item>
+			Name: Minor Illusion #
+			Level: 0 #
+			School: Illusion #
+			Action: 1 action #
+			Components: S,M #
+			Concentration: no #
+			Ritual: no
+		</item>
+		<item>
+			Name: Mold Earth #
+			Level: 0 #
+			School: Transmutation #
+			Action: 1 action #
+			Components: S #
+			Concentration: no #
+			Ritual: no
+		</item>
+		<item>
+			Name: Poison Spray #
+			Level: 0 #
+			School: Conjuration #
+			Action: 1 action #
+			Components: V,S #
+			Concentration: no #
+			Ritual: no
+		</item>
+		<item>
+			Name: Prestidigitation #
+			Level: 0 #
+			School: Transmutation #
+			Action: 1 action #
+			Components: V,S #
+			Concentration: no #
+			Ritual: no
+		</item>
+		<item>
+			Name: Primal Savagery #
+			Level: 0 #
+			School: Transmutation #
+			Action: 1 action #
+			Components: S #
+			Concentration: no #
+			Ritual: no
+		</item>
+		<item>
+			Name: Produce Flame #
+			Level: 0 #
+			School: Conjuration #
+			Action: 1 action #
+			Components: V,S #
+			Concentration: no #
+			Ritual: no
+		</item>
+		<item>
+			Name: Ray of Frost #
+			Level: 0 #
+			School: Evocation #
+			Action: 1 action #
+			Components: V,S #
+			Concentration: no #
+			Ritual: no
+		</item>
+		<item>
+			Name: Resistance #
+			Level: 0 #
+			School: Abjuration #
+			Action: 1 action #
+			Components: V,S,M #
+			Concentration: yes #
+			Ritual: no
+		</item>
+		<item>
+			Name: Sacred Flame #
+			Level: 0 #
+			School: Evocation #
+			Action: 1 action #
+			Components: V,S #
+			Concentration: no #
+			Ritual: no
+		</item>
+		<item>
+			Name: Shape Water #
+			Level: 0 #
+			School: Transmutation #
+			Action: 1 action #
+			Components: S #
+			Concentration: no #
+			Ritual: no
+		</item>
+		<item>
+			Name: Shillelagh #
+			Level: 0 #
+			School: Transmutation #
+			Action: 1 bonus action #
+			Components: V,S,M #
+			Concentration: no #
+			Ritual: no
+		</item>
+		<item>
+			Name: Shocking Grasp #
+			Level: 0 #
+			School: Evocation #
+			Action: 1 action #
+			Components: V,S #
+			Concentration: no #
+			Ritual: no
+		</item>
+		<item>
+			Name: Spare the Dying #
+			Level: 0 #
+			School: Necromancy #
+			Action: 1 action #
+			Components: V,S #
+			Concentration: no #
+			Ritual: no
+		</item>
+		<item>
+			Name: Sword Burst #
+			Level: 0 #
+			School: Conjuration #
+			Action: 1 action #
+			Components: V #
+			Concentration: no #
+			Ritual: no
+		</item>
+		<item>
+			Name: Thaumaturgy #
+			Level: 0 #
+			School: Transmutation #
+			Action: 1 action #
+			Components: V #
+			Concentration: no #
+			Ritual: no
+		</item>
+		<item>
+			Name: Thorn Whip #
+			Level: 0 #
+			School: Transmutation #
+			Action: 1 action #
+			Components: V,S,M #
+			Concentration: no #
+			Ritual: no
+		</item>
+		<item>
+			Name: Thunderclap #
+			Level: 0 #
+			School: Evocation #
+			Action: 1 action #
+			Components: S #
+			Concentration: no #
+			Ritual: no
+		</item>
+		<item>
+			Name: Toll the Dead #
+			Level: 0 #
+			School: Necromancy #
+			Action: 1 action #
+			Components: V,S #
+			Concentration: no #
+			Ritual: no
+		</item>
+		<item>
+			Name: True Strike #
+			Level: 0 #
+			School: Divination #
+			Action: 1 action #
+			Components: S #
+			Concentration: yes #
+			Ritual: no
+		</item>
+		<item>
+			Name: Vicious Mockery #
+			Level: 0 #
+			School: Enchantment #
+			Action: 1 action #
+			Components: V #
+			Concentration: no #
+			Ritual: no
+		</item>
+		<item>
+			Name: Word of Radiance #
+			Level: 0 #
+			School: Evocation #
+			Action: 1 action #
+			Components: V,M #
+			Concentration: no #
+			Ritual: no
+		</item>
+	</string-array>
+	<string-array name="spell_info_level_1">
+		<item>
+			Name: Absorb Elements #
+			Level: 1 #
+			School: Abjuration #
+			Action: 1 reaction #
+			Components: S #
+			Concentration: no #
+			Ritual: no
+		</item>
+		<item>
+			Name: Alarm #
+			Level: 1 #
+			School: Abjuration #
+			Action: 1 minute #
+			Components: V,S,M #
+			Concentration: no #
+			Ritual: yes
+		</item>
+		<item>
+			Name: Animal Friendship #
+			Level: 1 #
+			Enchantment #
+			Action: 1 action #
+			Components: VSM #
+			Concentration: no #
+			Ritual: no
+		</item>
+		<item>
+			Name: Armor of Agathys #
+			Level: 1 #
+			School: Abjuration #
+			Action: 1 action #
+			Components: VSM #
+			Concentration: no #
+			Ritual: no
+		</item>
+		<item>
+			Name: Arms of Hadar #
+			Level: 1 #
+			School: Conjuration #
+			Action: 1 action #
+			Components: VS #
+			Concentration: no #
+			Ritual: no
+
+		</item>
+		<item>
+			Name: Bane #
+			Level: 1 #
+			School: Enchantment #
+			Action: 1 action #
+			Components: VSM	#
+			Concentration: yes #
+			Ritual: no
+		</item>
+		<item>
+			Name: Beast Bond #
+			Level: 1 #
+			School: Divination #
+			Action: 1 action #
+			Components: VSM	#
+			Concentration: yes #
+			Ritual: no
+		</item>
+		<item>
+			Name: Bless #
+			Level: 1 #
+			School: Enchantment #
+			Action: 1 action #
+			Components: VSM #
+			Concentration: yes #
+			Ritual: no
+		</item>
+		<item>
+			Name: Burning Hands #
+			Level: 1 #
+			School: Evocation #
+			Action: 1 action #
+			Components: VS #
+			Concentration: no #
+			Ritual: no
+		</item>
+		<item>
+			Name: Catapult #
+			Level: 1 #
+			School: Transmutation #
+			Action: 1 action #
+			Components: S #
+			Concentration: no #
+			Ritual: no
+		</item>
+		<item>
+			Name: Cause Fear #
+			Level: 1 #
+			School: Necromancy #
+			Action: 1 action #
+			Components: V #
+			Concentration: yes #
+			Ritual: no
+		</item>
+		<item>
+			Name: Ceremony #
+			Level: 1 #
+			School: Abjuration #
+			Action: 1 hour #
+			Components: VSMgp #
+			Concentration: no #
+			Ritual: yes
+		</item>
+		<item>
+			Name: Chaos Bolt #
+			Level: 1 #
+			School: Evocation #
+			Action: 1 action #
+			Components: VS #
+			Concentration: no #
+			Ritual: no
+		</item>
+		<item>
+			Name: Charm Person #
+			Level: 1 #
+			School: Enchantment #
+			Action: 1 action #
+			Components: VS #
+			Concentration: no #
+			Ritual: no
+		</item>
+		<item>
+			Name: Chromatic Orb #
+			Level: 1 #
+			School: Evocation #
+			Action: 1 action #
+			Components: VSMgp #
+			Concentration: no #
+			Ritual: no
+		</item>
+		<item>
+			Name: Color Spray #
+			Level: 1 #
+			School: Illusion #
+			Action: 1 action #
+			Components: VSM #
+			Concentration: no #
+			Ritual: no
+		</item>
+		<item>
+			Name: Command #
+			Level: 1 #
+			School: Enchantment #
+			Action: 1 action #
+			Components: V #
+			Concentration: no #
+			Ritual: no
+		</item>
+		<item>
+			Name: Compelled Duel #
+			Level: 1 #
+			School: Enchantment #
+			Action: 1 bonus action #
+			Components: V #
+			Concentration: yes #
+			Ritual: no
+		</item>
+		<item>
+			Name: Comprehend Languages #
+			Level: 1 #
+			School: Divination #
+			Action: 1 action #
+			Components: VSM #
+			Concentration: no #
+			Ritual: yes
+		</item>
+		<item>
+			Name: Create or Destroy Water #
+			Level: 1 #
+			School: Transmutation #
+			Action: 1 action #
+			Components: VSM #
+			Concentration: no #
+			Ritual: no
+		</item>
+		<item>
+			Name: Cure Wounds #
+			Level: 1 #
+			School: Evocation #
+			Action: 1 action #
+			Components: VS #
+			Concentration: no #
+			Ritual: no
+		</item>
+		<item>
+			Name: Detect Evil and Good #
+			Level: 1 #
+			School: Divination #
+			Action: 1 action #
+			Components: VS #
+			Concentration: yes #
+			Ritual: no
+		</item>
+		<item>
+			Name: Detect Magic #
+			Level: 1 #
+			School: Divination #
+			Action: 1 action #
+			Components: VS #
+			Concentration: yes #
+			Ritual: yes
+		</item>
+		<item>
+			Name: Detect Poison and Disease #
+			Level: 1 #
+			School: Divination #
+			Action: 1 action #
+			Components: VSM #
+			Concentration: yes #
+			Ritual: yes
+		</item>
+		<item>
+			Name: Disguise Self #
+			Level: 1 #
+			School: Illusion #
+			Action: 1 action #
+			Components: VS #
+			Concentration: no #
+			Ritual: no
+		</item>
+		<item>
+			Name: Dissonant Whispers #
+			Level: 1 #
+			School: Enchantment #
+			Action: 1 action #
+			Components: V #
+			Concentration: no #
+			Ritual: no
+		</item>
+		<item>
+			Name: Divine Favor #
+			Level: 1 #
+			School: Evocation #
+			Action: 1 bonus action #
+			Components: VS #
+			Concentration: yes #
+			Ritual: no
+		</item>
+		<item>
+			Name: Earth Tremor #
+			Level: 1 #
+			School: Evocation #
+			Action: 1 action #
+			Components: VS #
+			Concentration: no #
+			Ritual: no
+		</item>
+		<item>
+			Name: Ensnaring Strike #
+			Level: 1 #
+			School: Conjuration #
+			Action: 1 bonus action #
+			Components: V #
+			Concentration: yes #
+			Ritual: no
+		</item>
+		<item>
+			Name: Entangle #
+			Level: 1 #
+			School: Conjuration #
+			Action: 1 action #
+			Components: VS #
+			Concentration: yes #
+			Ritual: no
+		</item>
+		<item>
+			Name: Expeditious Retreat #
+			Level: 1 #
+			School: Transmutation #
+			Action: 1 bonus action #
+			Components: VS #
+			Concentration: yes #
+			Ritual: no
+		</item>
+		<item>
+			Name: Faerie Fire #
+			Level: 1 #
+			School: Evocation #
+			Action: 1 action #
+			Components: V #
+			Concentration: yes #
+			Ritual: no
+		</item>
+		<item>
+			Name: False Life #
+			Level: 1 #
+			School: Necromancy #
+			Action: 1 action #
+			Components: VSM #
+			Concentration: no #
+			Ritual: no
+		</item>
+		<item>
+			Name: Feather Fall #
+			Level: 1 #
+			School: Transmutation #
+			Action: 1 reaction #
+			Components: VM #
+			Concentration: no #
+			Ritual: no
+		</item>
+		<item>
+			Name: Find Familiar #
+			Level: 1 #
+			School: Conjuration #
+			Action: 1 hour #
+			Components: VSMgp #
+			Concentration: no #
+			Ritual: yes
+		</item>
+		<item>
+			Name: Fog Cloud #
+			Level: 1 #
+			School: Conjuration #
+			Action: 1 action #
+			Components: VS #
+			Concentration: yes #
+			Ritual: no
+		</item>
+		<item>
+			Name: Goodberry #
+			Level: 1 #
+			School: Transmutation #
+			Action: 1 action #
+			Components: VSM #
+			Concentration: no #
+			Ritual: no
+		</item>
+		<item>
+			Name: Grease #
+			Level: 1 #
+			School: Conjuration #
+			Action: 1 action #
+			Components: VSM #
+			Concentration: no #
+			Ritual: no
+		</item>
+		<item>
+			Name: Guiding Bolt #
+			Level: 1 #
+			School: Evocation #
+			Action: 1 action #
+			Components: VS #
+			Concentration: no #
+			Ritual: no
+		</item>
+		<item>
+			Name: Hail of Thorns #
+			Level: 1 #
+			School: Conjuration #
+			Action: 1 bonus action #
+			Components: V #
+			Concentration: yes #
+			Ritual: no
+		</item>
+		<item>
+			Name: Healing Word #
+			Level: 1 #
+			School: Evocation #
+			Action: 1 bonus action #
+			Components: V #
+			Concentration: no #
+			Ritual: no
+		</item>
+		<item>
+			Name: Hellish Rebuke #
+			Level: 1 #
+			School: Evocation #
+			Action: 1 reaction #
+			Components: VS #
+			Concentration: no #
+			Ritual: no
+		</item>
+		<item>
+			Name: Heroism #
+			Level: 1 #
+			School: Enchantment #
+			Action: 1 action #
+			Components: VS #
+			Concentration: yes #
+			Ritual: no
+		</item>
+		<item>
+			Name: Hex #
+			Level: 1 #
+			School: Enchantment #
+			Action: 1 bonus action #
+			Components: VSM #
+			Concentration: yes #
+			Ritual: no
+		</item>
+		<item>
+			Name: Hunter\'s Mark #
+			Level: 1 #
+			School: Divination #
+			Action: 1 bonus action #
+			Components: V #
+			Concentration: yes #
+			Ritual: no
+		</item>
+		<item>
+			Name: Ice Knife #
+			Level: 1 #
+			School: Conjuration #		
+			Action: 1 action #
+			Components: SM #
+			Concentration: no #
+			Ritual: no
+		</item>
+		<item>
+			Name: Identify #
+			Level: 1 #
+			School: Divination #
+			Action: 1 minute #
+			Components: VSMgp #
+			Concentration: no #
+			Ritual: yes
+		</item>
+		<item>
+			Name: Illusory Script #
+			Level: 1 #
+			School: Illusion #
+			Action: 1 minute #
+			Components: SMgp #
+			Concentration: no #
+			Ritual: yes
+		</item>
+		<item>
+			Name: Inflict Wounds #
+			Level: 1 #
+			School: Necromancy #
+			Action: 1 action #
+			Components: VS #
+			Concentration: no #
+			Ritual: no
+		</item>
+		<item>
+			Name: Jump #
+			Level: 1 #
+			School: Transmutation #
+			Action: 1 action #
+			Components: VSM #
+			Concentration: no #
+			Ritual: no
+		</item>
+		<item>
+			Name: Longstrider #
+			Level: 1 #
+			School: Transmutation #
+			Action: 1 action #
+			Components: VSM #
+			Concentration: no #
+			Ritual: no
+		</item>
+		<item>
+			Name: Mage Armor #
+			Level: 1 #
+			School: Abjuration #
+			Action: 1 action #
+			Components: VSM #
+			Concentration: no #
+			Ritual: no
+		</item>
+		<item>
+			Name: Magic Missile #
+			Level: 1 #
+			School: Evocation #
+			Action: 1 action #
+			Components: VS #
+			Concentration: no #
+			Ritual: no
+		</item>
+		<item>
+			Name: Protection from Evil and Good #
+			Level: 1 #
+			School: Abjuration #
+			Action: 1 action #
+			Components: VSM #
+			Concentration: yes #
+			Ritual: no
+		</item>
+		<item>
+			Name: Purify Food and Drink #
+			Level: 1 #
+			School: Transmutation #
+			Action: 1 action #
+			Components: VS #
+			Concentration: no #
+			Ritual: yes
+		</item>
+		<item>
+			Name: Ray of Sickness #
+			Level: 1 #
+			School: Necromancy #
+			Action: 1 action #
+			Components: VS #
+			Concentration: no #
+			Ritual: no
+		</item>
+		<item>
+			Name: Sanctuary #
+			Level: 1 #
+			School: Abjuration #
+			Action: 1 bonus action #
+			Components: VSM #
+			Concentration: no #
+			Ritual: no
+		</item>
+		<item>
+			Name: Searing Smite #
+			Level: 1 #
+			School: Evocation #
+			Action: 1 bonus action #
+			Components: V #
+			Concentration: yes #
+			Ritual: no
+		</item>
+		<item>
+			Name: Shield #
+			Level: 1 #
+			School: Abjuration #
+			1 reaction #
+			Components: VS #
+			Concentration: no #
+			Ritual: no
+		</item>
+		<item>
+			Name: Shield of Faith #
+			Level: 1 #
+			School: Abjuration #
+			Action: 1 bonus action #
+			Components: VSM #
+			Concentration: yes #
+			Ritual: no
+		</item>
+		<item>
+			Name: Silent Image #
+			Level: 1 #
+			School: Illusion #
+			Action: 1 action #
+			Components: VSM #
+			Concentration: yes #
+			Ritual: no
+		</item>
+		<item>
+			Name: Sleep #
+			Level: 1 #
+			School: Enchantment #
+			Action: 1 action #
+			Components: VSM #
+			Concentration: no #
+			Ritual: no
+		</item>
+		<item>
+			Name: Snare #
+			Level: 1 #
+			School: School: Abjuration #
+			Action: 1 minute #
+			Components: SMgp #
+			Concentration: no #
+			Ritual: no
+		</item>
+		<item>
+			Name: Speak with Animals #
+			Level: 1 #
+			School: Divination #
+			Action: 1 action #
+			Components: VS #
+			Concentration: no #
+			Ritual: yes
+		</item>
+		<item>
+			Name: Tasha\'s Hideous Laughter #
+			Level: 1 #
+			School: Enchantment #
+			Action: 1 action #
+			Components: VSM #
+			Concentration: yes #
+			Ritual: no
+		</item>
+		<item>
+			Name: Tenser\'s Floating Disk #
+			Level: 1 #
+			School: Conjuration #
+			Action: 1 action #
+			Components: VSM #
+			Concentration: no #
+			Ritual: yes
+		</item>
+		<item>
+			Name: Thunderous Smite #
+			Level: 1 #
+			School: Evocation #
+			Action: 1 bonus action #
+			Components: V #
+			Concentration: yes #
+			Ritual: no
+		</item>
+		<item>
+			Name: Thunderwave #
+			Level: 1 #
+			School: Evocation #
+			Action: 1 action #
+			Components: VS #
+			Concentration: no #
+			Ritual: no
+		</item>
+		<item>
+			Name: Unseen Servant #
+			Level: 1 #
+			School: Conjuration #
+			Action: 1 action #
+			Components: VSM #
+			Concentration: no #
+			Ritual: yes
+		</item>
+		<item>
+			Name: Witch Bolt #
+			Level: 1 #
+			School: Evocation #
+			Action: 1 action #
+			Components: VSM #
+			Concentration: yes #
+			Ritual: no
+		</item>
+		<item>
+			Name: Wrathful Smite #
+			Level: 1 #
+			School: Evocation #
+			Action: 1 bonus action #
+			Components: V #
+			Concentration: yes #
+			Ritual: no
+		</item>
+		<item>
+			Name: Zephyr Strike #
+			Level: 1 #
+			School: Transmutation #
+			Action: 1 bonus action #
+			Components: V
+			Concentration: yes #
+			Ritual: no
+		</item>
+	</string-array>
+	<string-array name="spell_info_level_2">
+
+	</string-array>
+	<string-array name="spell_info_level_3">
+
+	</string-array>
+	<string-array name="spell_info_level_4">
+
+	</string-array>
+	<string-array name="spell_info_level_5">
+
+	</string-array>
+	<string-array name="spell_info_level_6">
+
+	</string-array>
+	<string-array name="spell_info_level_7">
+
+	</string-array>
+	<string-array name="spell_info_level_8">
+
+	</string-array>
+	<string-array name="spell_info_level_9">
+
+	</string-array>
+</resources>

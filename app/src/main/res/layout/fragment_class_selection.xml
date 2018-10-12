@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	tools:context=".ClassSelectionFragment"
+	android:orientation="vertical">
+
+	<Spinner
+		android:id="@+id/level_up_class_spinner"
+		style="@style/MySpinnerStyle" />
+
+	<TextView
+		android:id="@+id/class_feature_textView"
+		style="@style/MyTextViewStyle" />
+
+	<RadioGroup
+		android:id="@+id/archetype_selection"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content" />
+
+	<TextView
+		android:id="@+id/archetype_feature_textView"
+		style="@style/MyTextViewStyle" />
+
+	<RadioGroup
+		android:id="@+id/choice_selection"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content" />
+
+	<TextView
+		android:id="@+id/choice_feature_textView"
+		style="@style/MyTextViewStyle" />
+
+	<LinearLayout
+		android:id="@+id/asi_choice_layout"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:orientation="vertical"
+		android:visibility="gone">
+
+		<CheckBox
+			android:id="@+id/str_checkBox"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:text="@string/strength_abb"
+			android:textColor="@color/textColorPrimary"
+			android:textSize="18sp" />
+
+		<CheckBox
+			android:id="@+id/dex_checkBox"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:text="@string/dexterity_abb"
+			android:textColor="@color/textColorPrimary"
+			android:textSize="18sp" />
+
+		<CheckBox
+			android:id="@+id/con_checkBox"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:text="@string/constitution_abb"
+			android:textColor="@color/textColorPrimary"
+			android:textSize="18sp" />
+
+		<CheckBox
+			android:id="@+id/int_checkBox"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:text="@string/intelligence_abb"
+			android:textColor="@color/textColorPrimary"
+			android:textSize="18sp" />
+
+		<CheckBox
+			android:id="@+id/wis_checkBox"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:text="@string/wisdom_abb"
+			android:textColor="@color/textColorPrimary"
+			android:textSize="18sp" />
+
+		<CheckBox
+			android:id="@+id/cha_checkBox"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:text="@string/charisma_abb"
+			android:textColor="@color/textColorPrimary"
+			android:textSize="18sp" />
+	</LinearLayout>
+
+	<TextView
+		android:id="@+id/cantrip_selection_label"
+		style="@style/MyTextViewStyle"
+		android:text="Cantrip Choice(s)"
+		android:visibility="gone" />
+
+	<LinearLayout
+		android:id="@+id/cantrip_selection_layout"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:orientation="vertical"
+		android:visibility="gone" />
+
+	<TextView
+		android:id="@+id/spell_selection_label"
+		style="@style/MyTextViewStyle"
+		android:text="Spell Choice(s)"
+		android:visibility="gone" />
+
+	<LinearLayout
+		android:id="@+id/spell_selection_layout"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:orientation="vertical"
+		android:visibility="gone" >
+
+	</LinearLayout>
+
+	<TextView
+		android:id="@+id/skill_selection_label"
+		style="@style/MyTextViewStyle"
+		android:visibility="gone" />
+
+	<TableLayout
+		android:id="@+id/skill_selection_layout"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:visibility="gone" />
+
+</LinearLayout>

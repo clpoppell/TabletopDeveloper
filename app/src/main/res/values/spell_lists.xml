@@ -5,7 +5,7 @@
 		<!-- Bard -->
 		<item>
 		<!-- Bard Cantrips -->
-			Bard Cantrips -
+			Bard 0 -
 			Blade Ward,
 			Dancing Lights,
 			Friends,
@@ -20,7 +20,7 @@
 		</item>
 		<item>
 		<!-- Bard Spells -->
-			Bard 1st -
+			Bard 1 -
 			Animal Friendship,
 			Bane,
 			Charm Person,
@@ -44,10 +44,50 @@
 			Thunderwave,
 			Unseen Servant
 		</item>
+		<item>
+			Bard 2 -
+			Animal Messenger
+		</item>
+		<item>
+			Bard 3 -
+			Bestow Curse
+		</item>
+		<!-- Cleric -->
+		<item>
+		<!-- Cleric Cantrips -->
+			Cleric o -
+			Guidance,
+			Light,
+			Mending,
+			Resistance,
+			Sacred Flame,
+			Spare the Dying,
+			Thaumaturgy,
+			Toll the Dead,
+			Word of Radiance
+		</item>
+		<item>
+			Cleric 1 -
+			Bane,
+			Bless,
+			Command,
+			Create or Destroy Water,
+			Cure Wounds,
+			Detect Evil and Good,
+			Detect Magic,
+			Detect Poison and Disease,
+			Guiding Bolt,
+			Healing Word,
+			Inflict Wounds,
+			Protection from Evil and Good,
+			Purify Food and Drink,
+			Sanctuary,
+			Shield of Faith
+		</item>
 		<!-- Wizard -->
 		<item>
 		<!-- Wizard Cantrips -->
-		Wizard Cantrips -
+		Wizard 0 -
 			Acid Splash,
 			Blade Ward,
 			Booming Blade,
@@ -80,13 +120,17 @@
 		</item>
 		<item>
 		<!-- Wizard Spells -->
-		Wizard 1st -
+			Wizard 1 -
 			Alarm,
 			Burning Hands
 		</item>
-
-
-
-
+		<item>
+			Wizard 2 -
+			Animal Messenger
+		</item>
+		<item>
+			Wizard 3 -
+			Bestow Curse
+		</item>
 	</string-array>
 </resources>

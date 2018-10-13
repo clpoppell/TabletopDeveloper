@@ -14,7 +14,7 @@ public class ElementGainClassFeature extends ClassFeature{
 		elements= values.split(", ");
 	}
 	
-	ElementGainClassFeature(String name, String parentFeature, String elementGained, String[] elements, String desc){
+	private ElementGainClassFeature(String name, String parentFeature, String elementGained, String[] elements, String desc){
 		super(name, parentFeature, desc);
 		
 		this.elementGained= elementGained;

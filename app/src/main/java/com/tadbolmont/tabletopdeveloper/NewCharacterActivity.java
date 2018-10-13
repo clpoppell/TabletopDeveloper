@@ -357,8 +357,9 @@ public class NewCharacterActivity extends AppCompatActivity implements ClassSele
 		if(cantrip != null){
 			toggleViewVisibility(ON, cantripLayout, cantripTextView);
 			if(charRace.hasCantripChoice()){
-				String key= cantrip.getName().substring(cantrip.getName().indexOf("(") + 1, cantrip.getName().indexOf(")"));
-				String[] cantrips= GameInfo.getSpellList(key + " Cantrips");
+				String className= cantrip.getName().substring(cantrip.getName().indexOf("(") + 1, cantrip.getName().indexOf(")"));
+				
+				String[] cantrips= GameInfo.getSpellList(className, 0);
 				
 				toggleViewVisibility(ON, cantripTextView2, cantripSpinner);
 				String cantripStat= " (" + charRace.getRacialCantrip().getStatUsed() + ")";

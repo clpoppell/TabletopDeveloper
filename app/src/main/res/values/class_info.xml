@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 	<string-array name="class_info">
+		<!-- Barbarian -->
 		<item>
-			<!-- Barbarian -->
 			Name: Barbarian /
 			HitDice: 12 /
 			ArmorProficiencies: none /
@@ -17,8 +17,8 @@
 			3: Archetype
 
 		</item>
+		<!-- Bard -->
 		<item>
-			<!-- Bard -->
 			Name: Bard /
 			HitDice: 8 /
 			ArmorProficiencies: Light Armor /
@@ -36,8 +36,8 @@
 			(Spellcasting level increase), (Ritual Casting) -
 			3: Archetype
 		</item>
+		<!-- Cleric -->
 		<item>
-			<!-- Cleric -->
 			Name: Cleric /
 			HitDice: 8 /
 			ArmorProficiencies: Light Armor, Medium Armor, Shield /
@@ -45,9 +45,10 @@
 			ToolProficiencies: none /
 			SavingThrows: Wis, Cha /
 			SkillProficiencies: 2 - History, Insight, Medicine, Persuasion, Religion /
-			Archetypes: TEMP, TEMP /
+			Archetypes: Knowledge Domain, Life Domain, Light Domain, Nature Domain, Tempest Domain, Trickery Domain, War Domain /
 			Features /
-			1: Rage
+			1: Archetype
 		</item>
+		<!-- Druid -->
 	</string-array>
 </resources>

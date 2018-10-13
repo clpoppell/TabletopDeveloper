@@ -1043,10 +1043,26 @@
 		</item>
 	</string-array>
 	<string-array name="spell_info_level_2">
-
+		<item>
+			Name: Animal Messenger #
+			Level: 2 #
+			School: Enchantment #
+			Action: 1 action #
+			Components: V,S,M #
+			Concentration: no #
+			Ritual: yes
+		</item>
 	</string-array>
 	<string-array name="spell_info_level_3">
-
+		<item>
+			Name: Bestow Curse #
+			Level: 3 #
+			School: Necromancy #
+			Action: 1 action #
+			Components: V,S #
+			Concentration: yes #
+			Ritual: no
+		</item>
 	</string-array>
 	<string-array name="spell_info_level_4">
 

@@ -8,6 +8,7 @@
 	<!-- TODO Check for conditions, possibly need to implement -->
 	<!-- TODO Change Usable feature numbers -->
 	<string-array name="class_features">
+	<!--region General -->
 		<!-- Archetype Choice -->
 		<item>
 			Name: Archetype /
@@ -37,6 +38,15 @@
 			ValueSet: Casting Stat /
 			Desc: ""
 		</item>
+		<!-- Cantrips - Gain -->
+		<item>
+			Name: (Cantrips Bard gain) /
+			ParentFeature: Cantrips /
+			Type: Gain Element /
+			ElementGained: Cantrip /
+			Values: *Bard 0 /
+			Desc: ""
+		</item>
 		<!-- Spellcasting -->
 		<item>
 			Name: Spellcasting /
@@ -58,7 +68,7 @@
 			Values: 1 /
 			Desc: ""
 		</item>
-		<!-- Casting Stats -->
+		<!-- Spellcasting - Casting Stats -->
 		<item>
 			Name: (Spellcasting Int casting stat) /
 			ParentFeature: Spellcasting /
@@ -83,8 +93,82 @@
 			ValueSet: Casting Stat /
 			Desc: ""
 		</item>
+		<!-- Spellcasting - Gain Any -->
+		<item>
+			Name: (Spellcasting Any gain 1) /
+			ParentFeature: Spellcasting /
+			Type: Gain Element /
+			ElementGained: Spell /
+			Values: *Any 0, *Any 1 /
+			Desc: ""
+		</item>
+		<item>
+			Name: (Spellcasting Any gain 2) /
+			ParentFeature: Spellcasting /
+			Type: Gain Element /
+			ElementGained: Spell /
+			Values: *Any 0, *Any 1, *Any 2 /
+			Desc: ""
+		</item>
+		<item>
+			Name: (Spellcasting Any gain 3) /
+			ParentFeature: Spellcasting /
+			Type: Gain Element /
+			ElementGained: Spell /
+			Values: *Any 0, *Any 1, *Any 2, *Any 3 /
+			Desc: ""
+		</item>
+		<item>
+			Name: (Spellcasting Any gain 4) /
+			ParentFeature: Spellcasting /
+			Type: Gain Element /
+			ElementGained: Spell /
+			Values: *Any 0, *Any 1, *Any 2, *Any 3, *Any 4 /
+			Desc: ""
+		</item>
+		<item>
+			Name: (Spellcasting Any gain 5) /
+			ParentFeature: Spellcasting /
+			Type: Gain Element /
+			ElementGained: Spell /
+			Values: *Any 0, *Any 1, *Any 2, *Any 3, *Any 4, * Any 5 /
+			Desc: ""
+		</item>
+		<item>
+			Name: (Spellcasting Any gain 6) /
+			ParentFeature: Spellcasting /
+			Type: Gain Element /
+			ElementGained: Spell /
+			Values: *Any 0, *Any 1, *Any 2, *Any 3, *Any 4, * Any 5, *Any 6 /
+			Desc: ""
+		</item>
+		<item>
+			Name: (Spellcasting Any gain 7) /
+			ParentFeature: Spellcasting /
+			Type: Gain Element /
+			ElementGained: Spell /
+			Values: *Any 0, *Any 1, *Any 2, *Any 3, *Any 4, * Any 5, *Any 6, *Any 7 /
+			Desc: ""
+		</item>
+		<item>
+			Name: (Spellcasting Any gain 8) /
+			ParentFeature: Spellcasting /
+			Type: Gain Element /
+			ElementGained: Spell /
+			Values: *Any 0, *Any 1, *Any 2, *Any 3, *Any 4, * Any 5, *Any 6, *Any 7, *Any 8 /
+			Desc: ""
+		</item>
+		<item>
+			Name: (Spellcasting Any gain 9) /
+			ParentFeature: Spellcasting /
+			Type: Gain Element /
+			ElementGained: Spell /
+			Values: *Any 0, *Any 1, *Any 2, *Any 3, *Any 4, * Any 5, *Any 6, *Any 7, *Any 8, *Any 9 /
+			Desc: ""
+		</item>
+		<!--endregion-->
 
-	<!-- Barbarian -->
+	<!--region Barbarian -->
 		<!-- Rage -->
 		<item>
 			Name: Rage /
@@ -389,24 +473,80 @@
 			Values: Trip /
 			Desc: \nWhile you\'re raging, you can use a bonus action on your turn to knock a Large or smaller creature prone when you hit it with melee weapon attack.
 		</item>
+		<!--endregion-->
 
-	<!-- Bard -->
-		<!-- Cantrips -->
-		<item>
-			Name: (Cantrips Bard gain) /
-			ParentFeature: Cantrips /
-			Type: Gain Element /
-			ElementGained: Cantrip /
-			Values: *Bard Cantrips /
-			Desc: ""
-		</item>
-		<!-- Spellcasting -->
+	<!--region Bard -->
+		<!-- Spellcasting - Gain Bard -->
 		<item>
 			Name: (Spellcasting Bard gain 1) /
 			ParentFeature: Spellcasting /
 			Type: Gain Element /
 			ElementGained: Spell /
-			Values: *Bard 1st /
+			Values: *Bard 1 /
+			Desc: ""
+		</item>
+		<item>
+			Name: (Spellcasting Bard gain 2) /
+			ParentFeature: Spellcasting /
+			Type: Gain Element /
+			ElementGained: Spell /
+			Values: *Bard 1, *Bard 2 /
+			Desc: ""
+		</item>
+		<item>
+			Name: (Spellcasting Bard gain 3) /
+			ParentFeature: Spellcasting /
+			Type: Gain Element /
+			ElementGained: Spell /
+			Values: *Bard 1, *Bard 2, *Bard 3 /
+			Desc: ""
+		</item>
+		<item>
+			Name: (Spellcasting Bard gain 4) /
+			ParentFeature: Spellcasting /
+			Type: Gain Element /
+			ElementGained: Spell /
+			Values: *Bard 1, *Bard 2, *Bard 3, *Bard 4 /
+			Desc: ""
+		</item>
+		<item>
+			Name: (Spellcasting Bard gain 5) /
+			ParentFeature: Spellcasting /
+			Type: Gain Element /
+			ElementGained: Spell /
+			Values: *Bard 1, *Bard 2, *Bard 3, *Bard 4, *Bard 5 /
+			Desc: ""
+		</item>
+		<item>
+			Name: (Spellcasting Bard gain 6) /
+			ParentFeature: Spellcasting /
+			Type: Gain Element /
+			ElementGained: Spell /
+			Values: *Bard 1, *Bard 2, *Bard 3, *Bard 4, *Bard 5, *Bard 6 /
+			Desc: ""
+		</item>
+		<item>
+			Name: (Spellcasting Bard gain 7) /
+			ParentFeature: Spellcasting /
+			Type: Gain Element /
+			ElementGained: Spell /
+			Values: *Bard 1, *Bard 2, *Bard 3, *Bard 4, *Bard 5, *Bard 6, *Bard 7 /
+			Desc: ""
+		</item>
+		<item>
+			Name: (Spellcasting Bard gain 8) /
+			ParentFeature: Spellcasting /
+			Type: Gain Element /
+			ElementGained: Spell /
+			Values: *Bard 1, *Bard 2, *Bard 3, *Bard 4, *Bard 5, *Bard 6, *Bard 7, *Bard 8 /
+			Desc: ""
+		</item>
+		<item>
+			Name: (Spellcasting Bard gain 9) /
+			ParentFeature: Spellcasting /
+			Type: Gain Element /
+			ElementGained: Spell /
+			Values: *Bard 1, *Bard 2, *Bard 3, *Bard 4, *Bard 5, *Bard 6, *Bard 7, *Bard 8, *Bard 9 /
 			Desc: ""
 		</item>
 		<!-- Bardic Inspiration -->
@@ -440,7 +580,7 @@
 			hear your performance regain hit points at the end of the short rest, each of those creatures regains an extra 1d6 hit points.
 			\n\tThe extra hit points increase when you reach certain levels in this class: to 1d8 at 9th level, to 1d10 at 13th level, and to 1d12 at 17th level.
 		</item>
-		<!-- Expertise -->
+		<!-- Expertise (Bard) -->
 		<item>
 			Name: Expertise (Bard) /
 			ParentFeature: none /
@@ -469,6 +609,24 @@
 			As an action, you can start a performance that lasts until the end of your next turn. During that time, you and any
 			friendly creatures within 30 feet of you have advantage on saving throws against being frightened or charmed.
 			A creature must be able to hear you to gain this benefit. The performance ends early if you are incapacitated or silenced or if you voluntarily end it (no action required).
+		</item>
+		<!-- Magical Secrets -->
+		<item>
+			Name: Magical Secrets /
+			ParentFeature: none /
+			Type: Plain Text /
+			Desc: By 10th level, you have plundered magical knowledge from a wide spectrum of disciplines. Choose two spells from
+			any class, including this one. A spell you choose must be of a level you can cast, as shown on the Bard table, or a cantrip.
+			\n\tThe chosen spells count as bard spells for you and are included in the number in the Spells Known column of the Bard table.
+			\n\tYou learn two additional spells from any class at 14th level and again at 18th level.
+		</item>
+		<!-- TODO Possibly change type -->
+		<!-- Superior Inspiration -->
+		<item>
+			Name: Superior Inspiration /
+			ParentFeature: Bardic Inspiration /
+			Type: Plain Text /
+			Desc: At 20th level, when you roll initiative and have no uses of Bardic Inspiration left, you regain one use.
 		</item>
 
 		<!-- Bonus Proficiencies (Lore Bard) -->
@@ -550,15 +708,166 @@
 			Desc: At 14th level, you have mastered the art of weaving spellcasting and weapon use into a single harm onious act.
 			When you use your action to cast a bard spell, you can make one weapon attack as a bonus action.
 		</item>
-	<!-- Cleric -->
-	<!-- Druid -->
-	<!-- Fighter -->
-	<!-- Monk -->
-	<!-- Paladin -->
-	<!-- Ranger -->
-	<!-- Rogue -->
-	<!-- Sorcerer -->
-	<!-- Warlock -->
-	<!-- Wizard -->
+		<!--endregion-->
+
+	<!--region Cleric -->
+		<!-- Spellcasting - Gain Cleric -->
+		<item>
+			Name: (Spellcasting Cleric gain 1) /
+			ParentFeature: Spellcasting /
+			Type: Gain Element /
+			ElementGained: Spell /
+			Values: Cleric 1 /
+			Desc: ""
+		</item>
+		<item>
+			Name: (Spellcasting Cleric gain 2) /
+			ParentFeature: Spellcasting /
+			Type: Gain Element /
+			ElementGained: Spell /
+			Values: Cleric 1, Cleric 2 /
+			Desc: ""
+		</item>
+		<item>
+			Name: (Spellcasting Cleric gain 3) /
+			ParentFeature: Spellcasting /
+			Type: Gain Element /
+			ElementGained: Spell /
+			Values: Cleric 1, Cleric 2, Cleric 3 /
+			Desc: ""
+		</item>
+		<item>
+			Name: (Spellcasting Cleric gain 4) /
+			ParentFeature: Spellcasting /
+			Type: Gain Element /
+			ElementGained: Spell /
+			Values: Cleric 1, Cleric 2, Cleric 3, Cleric 4 /
+			Desc: ""
+		</item>
+		<item>
+			Name: (Spellcasting Cleric gain 5) /
+			ParentFeature: Spellcasting /
+			Type: Gain Element /
+			ElementGained: Spell /
+			Values: Cleric 1, Cleric 2, Cleric 3, Cleric 4, Cleric 5 /
+			Desc: ""
+		</item>
+		<item>
+			Name: (Spellcasting Cleric gain 6) /
+			ParentFeature: Spellcasting /
+			Type: Gain Element /
+			ElementGained: Spell /
+			Values: Cleric 1, Cleric 2, Cleric 3, Cleric 4, Cleric 5, Cleric 6 /
+			Desc: ""
+		</item>
+		<item>
+			Name: (Spellcasting Cleric gain 7) /
+			ParentFeature: Spellcasting /
+			Type: Gain Element /
+			ElementGained: Spell /
+			Values: Cleric 1, Cleric 2, Cleric 3, Cleric 4, Cleric 5, Cleric 6, Cleric 7 /
+			Desc: ""
+		</item>
+		<item>
+			Name: (Spellcasting Cleric gain 8) /
+			ParentFeature: Spellcasting /
+			Type: Gain Element /
+			ElementGained: Spell /
+			Values: Cleric 1, Cleric 2, Cleric 3, Cleric 4, Cleric 5, Cleric 6, Cleric 7, Cleric 8 /
+			Desc: ""
+		</item>
+		<item>
+			Name: (Spellcasting Cleric gain 9) /
+			ParentFeature: Spellcasting /
+			Type: Gain Element /
+			ElementGained: Spell /
+			Values: Cleric 1, Cleric 2, Cleric 3, Cleric 4, Cleric 5, Cleric 6, Cleric 7, Cleric 8, Cleric 9 /
+			Desc: ""
+		</item>
+		<!-- Channel Divinity -->
+		<item>
+			Name: Channel Divinity /
+			ParentFeature: none /
+			Type: Usable /
+			Values: 1:1 ! 6:2 ! 18:3 /
+			ActionToUse: Action /
+			Desc: At 2nd level, you gain the ability to channel divine energy directly from your deity, using that energy to fuel
+			magical effects. You start with two such effects: Turn Undead and an effect determined by your domain. Some domains
+			grant you additional effects as you advance in levels, as noted in the dom ain description.
+			\n\tWhen you use your Channel Divinity, you choose which effect to create. You must then finish a short or long rest
+			to use your Channel Divinity again.
+			\n\tSome Channel Divinity effects require saving throws. When you use such an effect from this class, the DC equals
+			your cleric spell save DC.
+			\n\tBeginning at 6th level, you can use your Channel Divinity twice between rests, and beginning at 18th level.
+			you can use it three times between rests. When you finish a short or long rest, you regain your expended uses.
+		</item>
+		<item>
+			Name: Turn Undead /
+			ParentFeature: Channel Divinity /
+			Type: Plain Text /
+			Desc: As an action, you present your holy symbol and speak a prayer censuring the undead. Each undead that can see
+			or hear you within 30 feet of you must make a Wisdom saving throw. If the creature fails its saving throw, it is
+			turned for 1 minute or until it takes any damage.
+			\n\tA turned creature must spend its turns trying to move as far away from you as it can, and it can\'t willingly
+			move to a space within 30 feet of you. It also can\'t take reactions. For its action, it can use only the Dash
+			action or try to escape from an effect that prevents it from moving. If there’s nowhere to move, the creature can use the Dodge action.
+		</item>
+		<item>
+			Name: Destroy Undead /
+			ParentFeature: Turn Undead /
+			Type: Plain Text /
+			Desc: Starting at 5th level, when an undead fails its saving throw against your Turn Undead feature, the creature is
+			instantly destroyed if its challenge rating is at or below a certain threshold, as shown in the Destroy Undead table.
+			\n\tDestroy Undead
+			\n\tCleric Level \t Destroys Undead of CR
+			\n\t5th \t 1/2 or lower
+			\n\t8th \t 1 or lower
+			\n\t11th \t 2 or lower
+			\n\t14th \t 3 or lower
+			\n\t17th \t 4 or lower
+		</item>
+		<!-- Divine Intervention -->
+		<item>
+			Name: Divine Intervention /
+			ParentFeature: none /
+			Type: Plain Text /
+			Desc: Beginning at 10th level, you can call on your deity to intervene on your behalf when your need is great.
+			\n\tImploring your deity’s aid requires you to use your action. Describe the assistance you seek, and roll
+			percentile dice. If you roll a number equal to or lower than your cleric level, your deity intervenes. The DM
+			chooses the nature of the intervention; the effect of any cleric spell or cleric dom ain spell w ould be appropriate.
+			\n\tIf your deity intervenes, you can’t use this feature again for 7 days. Otherwise, you can use it again after you
+			finish a long rest.
+			\n\tAt 20th level, your call for intervention succeeds automatically, no roll required.
+		</item>
+
+
+		<!--endregion-->
+
+	<!--region Druid -->
+		<!--endregion-->
+
+	<!--region Fighter -->
+		<!--endregion-->
+
+	<!--region Monk -->
+		<!--endregion-->
+
+	<!--region Paladin -->
+		<!--endregion-->
+
+	<!--region Ranger -->
+		<!--endregion-->
+
+	<!--region Rogue -->
+		<!--endregion-->
+
+	<!--region Sorcerer -->
+		<!--endregion-->
+
+	<!--region Warlock -->
+		<!--endregion-->
+
+	<!--region Wizard -->
+		<!--endregion-->
 	</string-array>
 </resources>

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 	<string-array name="archetype_info">
+		<!-- Barbarian -->
 		<item>
 			Name: Path of the Berserker /
 			Features /
@@ -45,84 +46,128 @@
 			19: ASI -
 			20: Primal Champion, (Primal Champion Str Increase), (Primal Champion Con Increase)
 		</item>
+		<!-- Bard -->
 		<item>
 			Name: College of Lore /
 			Features /
-			3: Expertise (Bard), Bonus Proficiencies (Lore Bard), Cutting Words, Spellcasting, (Spellcasting Bard gain 1),
+			3: Expertise (Bard), Bonus Proficiencies (Lore Bard), Cutting Words, Spellcasting, (Spellcasting Bard gain 2),
 			(Spellcasting Cha casting stat), (Spellcasting level increase), (Ritual Casting) -
-			4: ASI, Spellcasting, (Spellcasting Bard gain 1), (Spellcasting Cha casting stat), (Spellcasting level increase), (Ritual Casting) -
-			5: Font of Inspiration, Spellcasting, (Spellcasting Bard gain 1), (Spellcasting Cha casting stat),
+			4: ASI, Cantrips, (Cantrips Bard gain), (Cantrips Cha casting stat), Spellcasting, (Spellcasting Bard gain 2),
+			(Spellcasting Cha casting stat), (Spellcasting level increase), (Ritual Casting) -
+			5: Font of Inspiration, Spellcasting, (Spellcasting Bard gain 3), (Spellcasting Cha casting stat),
 			(Spellcasting level increase), (Ritual Casting) -
-			6: Countercharm, Additional Magical Secrets, Spellcasting, (Spellcasting Bard gain 1), (Spellcasting Cha casting stat),
-			(Spellcasting level increase), (Ritual Casting) <!--
-			7: Spellcasting, (Spellcasting Bard gain 1), (Spellcasting Cha casting stat),
+			6: Countercharm, Additional Magical Secrets, Spellcasting, (Spellcasting Bard gain 3), (Spellcasting Any gain 3), (Spellcasting Any gain 3),
+			(Spellcasting Cha casting stat), (Spellcasting level increase), (Ritual Casting) -
+			7: Spellcasting, (Spellcasting Bard gain 4), (Spellcasting Cha casting stat),
 			(Spellcasting level increase), (Ritual Casting) -
-			8: ASI, Spellcasting, (Spellcasting Bard gain 1), (Spellcasting Cha casting stat),
+			8: ASI, Spellcasting, (Spellcasting Bard gain 4), (Spellcasting Cha casting stat),
 			(Spellcasting level increase), (Ritual Casting) -
-			9: Spellcasting, (Spellcasting Bard gain 1), (Spellcasting Cha casting stat),
+			9: Spellcasting, (Spellcasting Bard gain 5), (Spellcasting Cha casting stat),
 			(Spellcasting level increase), (Ritual Casting) -
-			10: Spellcasting, (Spellcasting Bard gain 1), (Spellcasting Cha casting stat),
+			10: Expertise (Bard), Magical Secrets, Cantrips, (Cantrips Bard gain), (Cantrips Cha casting stat), Spellcasting,
+			(Spellcasting Any gain 5), (Spellcasting Any gain 5), (Spellcasting Cha casting stat), (Spellcasting level increase), (Ritual Casting) -
+			11: Spellcasting, (Spellcasting Bard gain 6), (Spellcasting Cha casting stat),
 			(Spellcasting level increase), (Ritual Casting) -
-			11: Spellcasting, (Spellcasting Bard gain 1), (Spellcasting Cha casting stat),
+			12: ASI, Spellcasting, (Spellcasting Bard gain 6), (Spellcasting Cha casting stat),
 			(Spellcasting level increase), (Ritual Casting) -
-			12: ASI, Spellcasting, (Spellcasting Bard gain 1), (Spellcasting Cha casting stat),
+			13: Spellcasting, (Spellcasting Bard gain 7), (Spellcasting Cha casting stat),
 			(Spellcasting level increase), (Ritual Casting) -
-			13: Spellcasting, (Spellcasting Bard gain 1), (Spellcasting Cha casting stat),
+			14: Magical Secrets, Peerless Skill, Spellcasting, (Spellcasting Any gain 7), (Spellcasting Any gain 7), (Spellcasting Cha casting stat),
 			(Spellcasting level increase), (Ritual Casting) -
-			14: Peerless Skill, Spellcasting, (Spellcasting Bard gain 1), (Spellcasting Cha casting stat),
+			15: Spellcasting, (Spellcasting Bard gain 8), (Spellcasting Cha casting stat),
 			(Spellcasting level increase), (Ritual Casting) -
-			15: Spellcasting, (Spellcasting Bard gain 1), (Spellcasting Cha casting stat),
+			16: ASI, Spellcasting, (Spellcasting Bard gain 8), (Spellcasting Cha casting stat),
 			(Spellcasting level increase), (Ritual Casting) -
-			16: ASI, Spellcasting, (Spellcasting Bard gain 1), (Spellcasting Cha casting stat),
+			17: Spellcasting, (Spellcasting Bard gain 9), (Spellcasting Cha casting stat),
 			(Spellcasting level increase), (Ritual Casting) -
-			17: Spellcasting, (Spellcasting Bard gain 1), (Spellcasting Cha casting stat),
+			18: Magical Secrets, Spellcasting, (Spellcasting Any gain 9), (Spellcasting Any gain 9), (Spellcasting Cha casting stat),
 			(Spellcasting level increase), (Ritual Casting) -
-			18: Spellcasting, (Spellcasting Bard gain 1), (Spellcasting Cha casting stat),
-			(Spellcasting level increase), (Ritual Casting) -
-			19: ASI, Spellcasting, (Spellcasting Bard gain 1), (Spellcasting Cha casting stat),
-			(Spellcasting level increase), (Ritual Casting) -
-			20: Spellcasting, (Spellcasting Bard gain 1), (Spellcasting Cha casting stat),
-			(Spellcasting level increase), (Ritual Casting)-->
+			19: ASI -
+			20: Superior Inspiration
 		</item>
 		<item>
 			Name: College of Valor /
 			Features /
 			3: Expertise (Bard), Bonus Proficiencies (Valor Bard), Combat Inspiration, Spellcasting,
-			(Spellcasting Bard gain 1), (Spellcasting Cha casting stat), (Spellcasting level increase), (Ritual Casting) -
-			4: ASI, Spellcasting, (Spellcasting Bard gain 1), (Spellcasting Cha casting stat),
+			(Spellcasting Bard gain 2), (Spellcasting Cha casting stat), (Spellcasting level increase), (Ritual Casting) -
+			4: ASI, Cantrips, (Cantrips Bard gain), (Cantrips Cha casting stat), Spellcasting, (Spellcasting Bard gain 2),
+			(Spellcasting Cha casting stat), (Spellcasting level increase), (Ritual Casting) -
+			5: Font of Inspiration, Spellcasting, (Spellcasting Bard gain 3), (Spellcasting Cha casting stat),
 			(Spellcasting level increase), (Ritual Casting) -
-			5: Font of Inspiration, Spellcasting, (Spellcasting Bard gain 1), (Spellcasting Cha casting stat),
+			6: Countercharm, Extra Attack (Valor Bard), Spellcasting, (Spellcasting Bard gain 3), (Spellcasting Cha casting stat),
 			(Spellcasting level increase), (Ritual Casting) -
-			6: Countercharm, Extra Attack (Valor Bard), Spellcasting, (Spellcasting Bard gain 1), (Spellcasting Cha casting stat),
-			(Spellcasting level increase), (Ritual Casting)<!--
-			7: Spellcasting, (Spellcasting Bard gain 1), (Spellcasting Cha casting stat),
+			7: Spellcasting, (Spellcasting Bard gain 4), (Spellcasting Cha casting stat),
 			(Spellcasting level increase), (Ritual Casting) -
-			8: ASI, Spellcasting, (Spellcasting Bard gain 1), (Spellcasting Cha casting stat),
+			8: ASI, Spellcasting, (Spellcasting Bard gain 4), (Spellcasting Cha casting stat),
 			(Spellcasting level increase), (Ritual Casting) -
-			9: Spellcasting, (Spellcasting Bard gain 1), (Spellcasting Cha casting stat),
+			9: Spellcasting, (Spellcasting Bard gain 5), (Spellcasting Cha casting stat),
 			(Spellcasting level increase), (Ritual Casting) -
-			10: Spellcasting, (Spellcasting Bard gain 1), (Spellcasting Cha casting stat),
+			10: Expertise (Bard), Magical Secrets, Cantrips, (Cantrips Bard gain), (Cantrips Cha casting stat), Spellcasting,
+			(Spellcasting Any gain 5), (Spellcasting Any gain 5), (Spellcasting Cha casting stat), (Spellcasting level increase), (Ritual Casting) -
+			11: Spellcasting, (Spellcasting Bard gain 6), (Spellcasting Cha casting stat),
 			(Spellcasting level increase), (Ritual Casting) -
-			11: Spellcasting, (Spellcasting Bard gain 1), (Spellcasting Cha casting stat),
+			12: ASI, Spellcasting, (Spellcasting Bard gain 6), (Spellcasting Cha casting stat),
 			(Spellcasting level increase), (Ritual Casting) -
-			12: ASI, Spellcasting, (Spellcasting Bard gain 1), (Spellcasting Cha casting stat),
+			13: Spellcasting, (Spellcasting Bard gain 7), (Spellcasting Cha casting stat),
 			(Spellcasting level increase), (Ritual Casting) -
-			13: Spellcasting, (Spellcasting Bard gain 1), (Spellcasting Cha casting stat),
+			14: Magical Secrets, Battle Magic, Spellcasting, (Spellcasting Any gain 7), (Spellcasting Any gain 7), (Spellcasting Cha casting stat),
 			(Spellcasting level increase), (Ritual Casting) -
-			14: Peerless Skill, Spellcasting, (Spellcasting Bard gain 1), (Spellcasting Cha casting stat),
+			15: Spellcasting, (Spellcasting Bard gain 8), (Spellcasting Cha casting stat),
 			(Spellcasting level increase), (Ritual Casting) -
-			15: Spellcasting, (Spellcasting Bard gain 1), (Spellcasting Cha casting stat),
+			16: ASI, Spellcasting, (Spellcasting Bard gain 8), (Spellcasting Cha casting stat),
 			(Spellcasting level increase), (Ritual Casting) -
-			16: ASI, Spellcasting, (Spellcasting Bard gain 1), (Spellcasting Cha casting stat),
+			17: Spellcasting, (Spellcasting Bard gain 9), (Spellcasting Cha casting stat),
 			(Spellcasting level increase), (Ritual Casting) -
-			17: Spellcasting, (Spellcasting Bard gain 1), (Spellcasting Cha casting stat),
+			18: Magical Secrets, Spellcasting, (Spellcasting Any gain 9), (Spellcasting Any gain 9), (Spellcasting Cha casting stat),
 			(Spellcasting level increase), (Ritual Casting) -
-			18: Spellcasting, (Spellcasting Bard gain 1), (Spellcasting Cha casting stat),
+			19: ASI -
+			20: Superior Inspiration
+		</item>
+		<!-- Cleric -->
+		<item>
+			Name: Knowledge Domain /
+			Features /
+			1: Cantrips, (Cantrips Bard gain), (Cantrips Bard gain), (Cantrips Bard gain), (Cantrips Cha casting stat),
+			Spellcasting, (Spellcasting Bard gain 1), (Spellcasting Wis casting stat), (Spellcasting level increase), (Ritual Casting) -
+			2: Spellcasting, (Spellcasting Wis casting stat), (Spellcasting level increase), (Ritual Casting) -
+			3: Spellcasting, (Spellcasting Bard gain 2), (Spellcasting Wis casting stat), (Spellcasting level increase), (Ritual Casting) -
+			4: Cantrips, (Cantrips Bard gain), (Cantrips Cha casting stat), ASI, Spellcasting, (Spellcasting Cha casting stat),
 			(Spellcasting level increase), (Ritual Casting) -
-			19: ASI, Spellcasting, (Spellcasting Bard gain 1), (Spellcasting Cha casting stat),
+			5: Spellcasting, (Spellcasting Bard gain 3), (Spellcasting Cha casting stat), (Spellcasting level increase), (Ritual Casting) -
+			6: Spellcasting, (Spellcasting Cha casting stat), (Spellcasting level increase), (Ritual Casting) -
+			7: Spellcasting, (Spellcasting Bard gain 4), (Spellcasting Cha casting stat), (Spellcasting level increase), (Ritual Casting) -
+			8: ASI, Spellcasting, (Spellcasting Cha casting stat), (Spellcasting level increase), (Ritual Casting) -
+			9: Spellcasting, (Spellcasting Bard gain 5), (Spellcasting Cha casting stat), (Spellcasting level increase), (Ritual Casting) -
+			10: Cantrips, (Cantrips Bard gain), (Cantrips Cha casting stat), Spellcasting, (Spellcasting Cha casting stat),
 			(Spellcasting level increase), (Ritual Casting) -
-			20: Spellcasting, (Spellcasting Bard gain 1), (Spellcasting Cha casting stat),
-			(Spellcasting level increase), (Ritual Casting)-->
+			11: Spellcasting, (Spellcasting Bard gain 6), (Spellcasting Cha casting stat), (Spellcasting level increase), (Ritual Casting) -
+			12: ASI, Spellcasting, (Spellcasting Cha casting stat), (Spellcasting level increase), (Ritual Casting) -
+			13: Spellcasting, (Spellcasting Bard gain 7), (Spellcasting Cha casting stat), (Spellcasting level increase), (Ritual Casting) -
+			14: Spellcasting, (Spellcasting Cha casting stat), (Spellcasting level increase), (Ritual Casting) -
+			15: Spellcasting, (Spellcasting Bard gain 8), (Spellcasting Cha casting stat), (Spellcasting level increase), (Ritual Casting) -
+			16: ASI, Spellcasting, (Spellcasting Cha casting stat), (Spellcasting level increase), (Ritual Casting) -
+			17: Spellcasting, (Spellcasting Bard gain 9), (Spellcasting Cha casting stat), (Spellcasting level increase), (Ritual Casting) -
+			18: Spellcasting, (Spellcasting Cha casting stat), (Spellcasting level increase), (Ritual Casting) -
+			19: ASI -
+			20:
+		</item>
+		<item>
+			Name: Life Domain
+		</item>
+		<item>
+			Name: Light Domain
+		</item>
+		<item>
+			Name: Nature Domain
+		</item>
+		<item>
+			Name: Tempest Domain
+		</item>
+		<item>
+			Name: Trickery Domain
+		</item>
+		<item>
+			Name: War Domain
 		</item>
 	</string-array>
 </resources>

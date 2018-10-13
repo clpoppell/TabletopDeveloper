@@ -55,12 +55,7 @@ import static com.tadbolmont.tabletopdeveloper.App.toggleViewVisibility;
  */
 //TODO Possibly rework to account for multi-part choice features
 public class ClassSelectionFragment extends Fragment{
-	//region Fields
-	OnClassSelectedListener callback;
-	private PlayerCharacter character;
-	private View v;
-	private Unbinder unbinder;
-	
+	//region Views
 	@BindView(R.id.level_up_class_spinner) Spinner levelUpClassSpinner;
 	@BindView(R.id.class_feature_textView) TextView classFeatureDisplay;
 	@BindView(R.id.archetype_selection) RadioGroup archetypeSelection;
@@ -77,6 +72,13 @@ public class ClassSelectionFragment extends Fragment{
 	
 	@BindView(R.id.skill_selection_label) TextView skillSelectionLabel;
 	@BindView(R.id.skill_selection_layout) LinearLayout skillSelectionLayout;
+	//endregion
+	
+	//region Fields
+	OnClassSelectedListener callback;
+	private PlayerCharacter character;
+	private View v;
+	private Unbinder unbinder;
 	
 	CharacterClass charClass= GameInfo.getClass("Barbarian");
 	private Map<String, CharacterClass> classMap;
@@ -278,11 +280,17 @@ public class ClassSelectionFragment extends Fragment{
 	}
 	
 	private Spinner createSpellSelection(ElementGainClassFeature feature){
-		List<String> spellChoices;
+		List<String> spellChoices= new ArrayList<>();
 		
 		String[] elements= feature.getElements();
-		spellChoices= elements[0].contains("*") ? new ArrayList<>(Arrays.asList(GameInfo.getSpellList(elements[0].substring(1)))) : Arrays.asList(elements);
-		
+		for(String element : elements){
+			if(element.contains("*")){
+				String[] keys= element.substring(1).split(" ");
+				String className= keys[0];
+				int level= Integer.parseInt(keys[1]);
+				spellChoices.addAll(Arrays.asList(GameInfo.getSpellList(className, level)));
+			}
+		}
 		Spinner spinner= new Spinner(getActivity());
 		ArrayAdapter<String> adapter= new ArrayAdapter<>(Objects.requireNonNull(getActivity()), R.layout.spinner_item, spellChoices);
 		adapter.setDropDownViewResource(R.layout.spinner_item_bg);

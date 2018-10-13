@@ -1,6 +1,7 @@
 package com.tadbolmont.tabletopdeveloper;
 
 import android.content.res.Resources;
+import android.util.SparseArray;
 
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
@@ -8,8 +9,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.TreeMap;
 
 import tabletop_5e_character_design.Archetype;
@@ -42,7 +45,7 @@ public final class GameInfo{
 	private static final Map<String, Armor> ARMOR_INFO= createArmorInfo();
 	private static final Map<String, Tool> TOOL_INFO= createToolInfo();
 	
-	private static final Map<String, String[]> SPELL_LISTS= createSpellLists();
+	private static final Map<String, SparseArray<String[]>> SPELL_LISTS= createSpellLists();
 	private static final Map<String, Spell> SPELL_INFO= createSpellInfo();
 	
 	public enum armorState{ NoArmor, LightArmor, MedArmor, HeavyArmor }
@@ -171,22 +174,32 @@ public final class GameInfo{
 		return tools;
 	}
 	
-	private static Map<String, String[]> createSpellLists(){
-		Map<String, String[]> spellLists= new LinkedHashMap<>();
+	private static Map<String, SparseArray<String[]>> createSpellLists(){
+		Map<String, SparseArray<String[]>> spellLists= new LinkedHashMap<>();
 		String[] listStrings = RES.getStringArray(R.array.spell_lists);
 		for(String list : listStrings){
 			String[] l= list.split(" - ");
-			String key= l[0];
-			String[] value= l[1].split(", ");
-			spellLists.put(key, value);
+			String[] keys= l[0].split(" ");
+			if(spellLists.containsKey(keys[0])){
+				spellLists.get(keys[0]).put(Integer.parseInt(keys[1]), l[1].split(", "));
+			}
+			else{
+				SparseArray<String[]> value= new SparseArray<>();
+				value.put(Integer.parseInt(keys[1]), l[1].split(", "));
+				spellLists.put(keys[0], value);
+			}
 		}
 		return spellLists;
 	}
 	
 	private static Map<String, Spell> createSpellInfo(){
 		Map<String, Spell> spells= new LinkedHashMap<>();
+		
 		List<String> spellStrings= new ArrayList<>(Arrays.asList(RES.getStringArray(R.array.cantrips)));
 		spellStrings.addAll(Arrays.asList(RES.getStringArray(R.array.spell_info_level_1)));
+		spellStrings.addAll(Arrays.asList(RES.getStringArray(R.array.spell_info_level_2)));
+		spellStrings.addAll(Arrays.asList(RES.getStringArray(R.array.spell_info_level_3)));
+		
 		for(String spell : spellStrings){
 			String[] s= spell.split(" # ");
 			String key= s[0].substring(NAME);
@@ -209,13 +222,23 @@ public final class GameInfo{
 	
 	public static Archetype getArchetype(String key){ return new Archetype(ARCHETYPE_INFO.get(key.trim())); }
 	
-	public static ClassEquipmentList getClassEquipmentList(String key){ return CLASS_EQUIPMENT_LISTS.get(key.trim()); }
+	public static ClassEquipmentList getClassEquipmentList(String className){ return CLASS_EQUIPMENT_LISTS.get(className.trim()); }
 	
-	public static ClassFeature getClassFeature(String key){ return CLASS_FEATURE_INFO.get(key.trim()).copy(); }
+	public static ClassFeature getClassFeature(String featureName){ return CLASS_FEATURE_INFO.get(featureName.trim()).copy(); }
 	
-	public static String[] getSpellList(String key){ return SPELL_LISTS.get(key.trim()); }
+	public static String[] getSpellList(String className, int level){
+		if("Any".equalsIgnoreCase(className.trim())){
+			Set<String> list= new LinkedHashSet<>();
+			for(String cName : SPELL_LISTS.keySet()){
+				List<String> spells= Arrays.asList(SPELL_LISTS.get(cName).get(level));
+				list.addAll(spells);
+			}
+			return list.toArray(new String[list.size()]);
+		}
+		return SPELL_LISTS.get(className.trim()).get(level);
+	}
 	
-	public static Spell getSpell(String key){ return SPELL_INFO.get(key.trim()); }
+	public static Spell getSpell(String spellName){ return SPELL_INFO.get(spellName.trim()); }
 	
 	public static CharacterSpell makeCharacterSpell(String name, String stat, String className){ return new CharacterSpell(stat, className, getSpell(name)); }
 	
